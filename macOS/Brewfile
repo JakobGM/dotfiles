@@ -1,0 +1,53 @@
+# Read this link for documentation: https://robots.thoughtbot.com/brewfile-a-gemfile-but-for-homebrew
+
+cask_args appdir: '/Applications'
+
+tap 'homebrew/bundle'
+tap 'ravenac95/sudolikeboss'
+
+# Brew
+brew "diff-so-fancy"  # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
+brew 'cloc'  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
+brew 'coreutils'
+brew 'flake8'
+brew 'git'
+brew 'git-annex'
+brew 'mobile-shell'  # Mosh: the mobile shell
+brew 'shellcheck'
+brew 'sudolikeaboss'
+brew 'thefuck'
+brew 'tmux'
+brew 'tree'
+brew 'unrar'  # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
+brew 'wget'
+
+# Cask
+cask '1password'
+cask 'appcleaner'
+cask 'atom'
+cask 'dropbox'
+cask 'evernote'
+cask 'flux'
+cask 'goofy'
+cask 'google-chrome'
+cask 'google-drive'
+cask 'notational-velocity'
+cask 'numi'
+cask 'nylas-n1'
+cask 'omnifocus'
+cask 'omnifocus-clip-o-tron'
+cask 'programmer-dvorak'
+cask 'pycharm'
+cask 'qbserve'
+cask 'rescuetime'
+cask 'selfcontrol'
+cask 'sizeup'
+cask 'slack'
+cask 'spotify'
+cask 'time-out'
+cask 'toggldesktop'
+cask 'transmission'
+cask 'visual-studio-code'
+cask 'vivaldi'
+cask 'vlc'
+cask 'zest'
