@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Install oh-my-zsh for the current user
 # The install script takes care of dependencies 
 # and existing installations!
-if [ -d $HOME/.oh-my-zsh ]; then
-    sudo rm -r $HOME/.oh-my-zsh
-fi
+#if [ -d $HOME/.oh-my-zsh ]; then
+    #sudo rm -r $HOME/.oh-my-zsh
+#fi
 
 # Installing oh-my-zsh within a script. Source: https://github.com/robbyrussell/oh-my-zsh/issues/5873
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/batch-mode/tools/install.sh)" -s --batch || {
@@ -14,7 +14,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/ba
 }
 
 # Glob hidden files
-shopt -s dotglob nullglob
+setopt glob_dots
 
 # Get location of dotfiles repo
 # Important assumption: It is located at $HOME/.dotfiles
@@ -23,12 +23,10 @@ echo "----------------------"
 echo "Repo name: "$repo
 
 # Symlink all home directory dotfiles
-homefiles=$repo/home/*
-ln --symbolic --verbose --interactive $homefiles $HOME
+ln --symbolic --verbose --interactive $repo/home/* $HOME
 
 # Symlink all ZSH_CUSTOM files
-zsh_custom_files=$repo/zsh_custom/*
-ln -svi $zsh_custom_files $HOME/.oh-my-zsh/custom
+ln -svi $repo/zsh_custom/* $HOME/.oh-my-zsh/custom
 
 # Source zsh config if the shell is zsh
 if [ ! -z $ZSH ]; then
