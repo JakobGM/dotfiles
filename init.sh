@@ -1,5 +1,12 @@
 #!/bin/zsh
 
+# Check if zsh is installed
+CHECK_ZSH_INSTALLED=$(grep /zsh$ /etc/shells | wc -l)
+if [ ! $CHECK_ZSH_INSTALLED -ge 1 ]; then
+  echo "\033[0;33m Zsh is not installed!\033[0m Please install zsh first!"
+  exit
+fi
+
 # Install oh-my-zsh for the current user
 # The install script takes care of dependencies 
 # and existing installations!
