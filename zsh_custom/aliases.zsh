@@ -1,12 +1,4 @@
 #!/bin/zsh
-# Virtual Environment
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
-
-# Owner
-export USER_NAME="jakobgm"
 
 # Aliases
 alias atlas='ssh jakobgm@atlas.orakel.ntnu.no'
@@ -26,11 +18,3 @@ alias logstud='ssh jakobgm@login.stud.ntnu.no'
 alias zshconfig='vim $HOME/.zshrc'
 alias markov='ssh -Y jakobgm@markov.math.ntnu.no'
 
-# pip should only run if there is a virtualenv currently activated
-export PIP_REQUIRE_VIRTUALENV=true
-
-# Install global python packages with 'gpip install --upgrade pip setuptools wheel virtualenv'
-gpip(){   PIP_REQUIRE_VIRTUALENV="" sudo -H pip "$@"
-}
-gpip3(){   PIP_REQUIRE_VIRTUALENV="" sudo -H pip3 "$@"
-}
