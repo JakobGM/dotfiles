@@ -1,0 +1,5 @@
+# Ignore md5 checksum files
+*.md5
+
+# Untracked files used by script
+*.ignore
