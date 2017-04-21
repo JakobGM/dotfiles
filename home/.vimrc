@@ -27,6 +27,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
 Plugin 'scrooloose/syntastic' " Syntax checking on save
 Plugin 'nvie/vim-flake8' " PEP-8 checking
+Plugin 'scrooloose/nerdcommenter' " Language dependent commenter
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -160,3 +161,10 @@ let g:syntastic_always_populate_loc_list = 1
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+" Show relative numbers except for selected line
+set relativenumber 
+set number 
