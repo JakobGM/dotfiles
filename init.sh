@@ -40,11 +40,10 @@ if [ ! -z $ZSH ]; then
     source $HOME/.zshrc
 fi
 
-# Install packages based on OS (TODO!)
 echo "-------------------------------"
 if [ $OSTYPE = "linux-gnu" ]; then
     echo "Installing Linux packages"
-     $repo/ubuntu/install.sh
+     $repo/linux/install.sh
 elif [ $OSTYPE =~ "darwin" ]; then
     if [ brew bundle --file=$repo/macOS/Brewfile ]; then
         echo "Installing new MacOS packages with brew"
@@ -64,8 +63,10 @@ else
     echo "Vundle already installed"
 fi
 
-# Install all vim plugins with Vundle
-vim +PluginInstall +qall
+# This hack removes the Vim UI output 
+# Source: https://github.com/VundleVim/Vundle.vim/issues/511
+echo "Installing Vundle plugins"
+echo | echo | vim +PluginInstall +qall &>/dev/null
 
-# Global python packages
+echo "Installing global python packages"
 gpip install -r $repo/python/global_requirements.txt
