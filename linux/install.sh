@@ -9,3 +9,6 @@ sudo apt-get update
 sudo apt-get install mosh
 
 xargs sudo apt-get -y install < packages.txt
+
+# Install all programs TODO: Split up
+sudo apt-get install cloc coreutils flake8 git python-pip python3 shellsheck thufuck tmux tree
