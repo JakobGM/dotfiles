@@ -41,14 +41,15 @@ if [ ! -z $ZSH ]; then
 fi
 
 # Install packages based on OS (TODO!)
-if [ $os = "ubuntu" ]; then
-    bash $repo/ubuntu/install.sh
-elif [ $os = "macOS" ]; then
-    save_pwd=$pwd
-    cd $repo/macOS
-    brew tap homebrew/bundle
-    brew bundle
-    cd $save_pwd
+echo "-------------------------------"
+if [ $OSTYPE = "linux-gnu" ]; then
+    echo "Installing Linux packages"
+     $repo/ubuntu/install.sh
+elif [ $OSTYPE =~ "darwin" ]; then
+    if [ brew bundle --file=$repo/macOS/Brewfile ]; then
+        echo "Installing new MacOS packages with brew"
+        brew bundle --file=$repo/macOS/Brewfile
+    fi
 fi
 
 # Install Vundle if it is not installed
@@ -65,3 +66,6 @@ fi
 
 # Install all vim plugins with Vundle
 vim +PluginInstall +qall
+
+# Global python packages
+gpip install -r $repo/python/global_requirements.txt
