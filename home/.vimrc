@@ -10,24 +10,25 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'tmhedberg/SimpylFold'  " Better folding behaviour [Use space!]
-Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown' " Markdown syntax
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'jmcantrell/vim-virtualenv' " Detection of python venv [https://github.com/jmcantrell/vim-virtualenv]
-Plugin 'blueshirts/darcula' " Darcula color scheme
-Plugin 'altercation/vim-colors-solarized' " Solarized color scheme
-Plugin 'scrooloose/nerdtree' " File browsing
-Plugin 'jistr/vim-nerdtree-tabs' " Proper tabs for nerdtree
-Plugin 'kien/ctrlp.vim' " Quick file searching
-Plugin 'tpope/vim-fugitive' " Git plugin
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " Powerline
-Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
-Plugin 'scrooloose/syntastic' " Syntax checking on save
+Plugin 'altercation/vim-colors-solarized' " Solarized color scheme
+Plugin 'blueshirts/darcula' " Darcula color scheme
+Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
+Plugin 'danro/rename.vim' " Enables :rename <new_name>
+Plugin 'godlygeek/tabular'
+Plugin 'jistr/vim-nerdtree-tabs' " Proper tabs for nerdtree
+Plugin 'jmcantrell/vim-virtualenv' " Detection of python venv [https://github.com/jmcantrell/vim-virtualenv]
+Plugin 'kien/ctrlp.vim' " Quick file searching
 Plugin 'nvie/vim-flake8' " PEP-8 checking
+Plugin 'plasticboy/vim-markdown' " Markdown syntax
 Plugin 'scrooloose/nerdcommenter' " Language dependent commenter
+Plugin 'scrooloose/nerdtree' " File browsing
+Plugin 'scrooloose/syntastic' " Syntax checking on save
+Plugin 'tmhedberg/SimpylFold'  " Better folding behaviour [Use space!]
+Plugin 'tpope/vim-fugitive' " Git plugin
+Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -142,7 +143,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 map <F6> :NERDTree<CR>
 
 " Run python scripts with F9
-autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; python' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; ipython' shellescape(@%, 1)<cr>
 
 " Update the files more frequently (shows the gitgutter diff faster)
 set updatetime=250
