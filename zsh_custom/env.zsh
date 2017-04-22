@@ -13,6 +13,6 @@ gpip3(){   PIP_REQUIRE_VIRTUALENV="" sudo -H pip3 "$@"
 # Virtual Environment
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-source /usr/local/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_PYTHON=python3
 export VIRTUALENV_PYTHON=python3
+source /usr/local/bin/virtualenvwrapper.sh

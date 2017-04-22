@@ -27,10 +27,10 @@ setopt glob_dots
 # Important assumption: It is located at $HOME/.dotfiles
 repo=$HOME/.dotfiles
 echo "----------------------"
-echo "Repo name: "$repo
+echo "Repo name: ${repo}"
 
 # Symlink all home directory dotfiles
-ln --symbolic --verbose --interactive $repo/home/* $HOME
+ln -svi $repo/home/* $HOME
 
 # Symlink all ZSH_CUSTOM files
 ln -svi $repo/zsh_custom/* $HOME/.oh-my-zsh/custom
@@ -44,7 +44,7 @@ echo "-------------------------------"
 if [ $OSTYPE = "linux-gnu" ]; then
     echo "Installing Linux packages"
      $repo/linux/install.sh
-elif [ $OSTYPE =~ "darwin" ]; then
+elif [ $(uname) = "darwin" ]; then
     if [ brew bundle --file=$repo/macOS/Brewfile ]; then
         echo "Installing new MacOS packages with brew"
         brew bundle --file=$repo/macOS/Brewfile
