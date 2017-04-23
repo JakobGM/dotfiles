@@ -3,7 +3,7 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
-tap 'ravenac95/sudolikeboss'
+tap 'ravenac95/sudolikeaboss'
 
 # Brew
 brew "diff-so-fancy"  # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
@@ -12,7 +12,7 @@ brew 'coreutils'
 brew 'flake8'
 brew 'git'
 brew 'git-annex'
-brew 'jshint'
+brew 'macvim', args: ['override-system-vim']
 brew 'mobile-shell'  # Mosh: the mobile shell
 brew 'shellcheck'
 brew 'sudolikeaboss'
