@@ -3,3 +3,6 @@
 
 # Untracked files used by script
 *.ignore
+
+# Ignore local environment variables
+zsh_custom/local.zsh
