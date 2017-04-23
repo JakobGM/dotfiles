@@ -180,3 +180,7 @@ set ignorecase
 
 " Except when using Capital letters
 set smartcase
+
+" Index more files for ctrlP fuzzy searc
+let g:ctrlp_max_files=0
+let g:ctrlp_max_depth=40
