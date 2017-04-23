@@ -15,11 +15,11 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
 Plugin 'blueshirts/darcula' " Darcula color scheme
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
+Plugin 'ctrlpvim/ctrlp.vim' " Quick file searching
 Plugin 'danro/rename.vim' " Enables :rename <new_name>
 Plugin 'godlygeek/tabular'
 Plugin 'jistr/vim-nerdtree-tabs' " Proper tabs for nerdtree
 Plugin 'jmcantrell/vim-virtualenv' " Detection of python venv [https://github.com/jmcantrell/vim-virtualenv]
-Plugin 'ctrlpvim/ctrlp.vim' " Quick file searching
 Plugin 'nvie/vim-flake8' " PEP-8 checking
 Plugin 'plasticboy/vim-markdown' " Markdown syntax
 Plugin 'scrooloose/nerdcommenter' " Language dependent commenter
@@ -184,3 +184,4 @@ set smartcase
 " Index more files for ctrlP fuzzy search
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
+let g:ctrlp_follow_symlinks=1
