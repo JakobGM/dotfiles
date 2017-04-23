@@ -19,7 +19,7 @@ Plugin 'danro/rename.vim' " Enables :rename <new_name>
 Plugin 'godlygeek/tabular'
 Plugin 'jistr/vim-nerdtree-tabs' " Proper tabs for nerdtree
 Plugin 'jmcantrell/vim-virtualenv' " Detection of python venv [https://github.com/jmcantrell/vim-virtualenv]
-Plugin 'kien/ctrlp.vim' " Quick file searching
+Plugin 'ctrlpvim/ctrlp.vim' " Quick file searching
 Plugin 'nvie/vim-flake8' " PEP-8 checking
 Plugin 'plasticboy/vim-markdown' " Markdown syntax
 Plugin 'scrooloose/nerdcommenter' " Language dependent commenter
@@ -181,6 +181,6 @@ set ignorecase
 " Except when using Capital letters
 set smartcase
 
-" Index more files for ctrlP fuzzy searc
+" Index more files for ctrlP fuzzy search
 let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
