@@ -14,6 +14,7 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " Powerline
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
 Plugin 'blueshirts/darcula' " Darcula color scheme
+Plugin 'chrisbra/Recover.vim' " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
 Plugin 'ctrlpvim/ctrlp.vim' " Quick file searching
 Plugin 'danro/rename.vim' " Enables :rename <new_name>
