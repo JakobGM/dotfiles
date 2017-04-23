@@ -1,5 +1,5 @@
 " Vundle extension manager settings [https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#vim-extensions]
-set nocompatible              " required
+set nocompatible              " required (and sane)
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -13,7 +13,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " Powerline
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
-Plugin 'altercation/vim-colors-solarized' " Solarized color scheme
 Plugin 'blueshirts/darcula' " Darcula color scheme
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
 Plugin 'danro/rename.vim' " Enables :rename <new_name>
@@ -43,9 +42,6 @@ syntax enable
 colorscheme darcula
 set background=dark
 "colorscheme solarized
-
-" Toggle Dark/Ligth color scheme
-call togglebg#map("<F5>")
 
 " One tab in a file is shown as 4 spaces
 set tabstop=4
@@ -89,10 +85,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-nnoremap <C-Down> <C-W><C-J>
-nnoremap <C-Up> <C-W><C-K>
-nnoremap <C-Right> <C-W><C-L>
-nnoremap <C-Left> <C-W><C-H>
 
 " Enable folding with space key
 set foldmethod=indent
@@ -160,7 +152,7 @@ let g:syntastic_always_populate_loc_list = 1
 " Uncomment line if you want the location of all errors (too noisy for bad
 " programmers)
 " let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " Show hidden files in NERDTree
@@ -169,3 +161,22 @@ let NERDTreeShowHidden=1
 " Show relative numbers except for selected line
 set relativenumber 
 set number 
+
+" Deactivate the use of the arrow keys, forcing the use of <jkhl>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+
+" Start scrolling when 3 lines from bottom of screen
+set scrolloff=3
+
+" When searching ignore case
+set ignorecase            
+
+" Except when using Capital letters
+set smartcase
