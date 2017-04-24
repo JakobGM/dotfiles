@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'} " Powerline
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter' " Show git diff in number column
 Plugin 'blueshirts/darcula' " Darcula color scheme
@@ -187,3 +186,8 @@ let g:ctrlp_max_files=0
 let g:ctrlp_max_depth=40
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_show_hidden=1
+
+" Install powerline from global package
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup

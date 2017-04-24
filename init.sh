@@ -69,4 +69,18 @@ echo "Installing Vundle plugins"
 echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
-gpip install -r $repo/python/global_requirements.txt
+gpip3 install --upgrade pip
+gpip3 install -r $repo/python/global_requirements.txt
+
+echo "Installing Powerline"
+# Get information about the package
+pow_info=`gpip3 show powerline-status`
+
+# Get the location of the package
+[[ $pow_info =~ 'Location: (.*site-packages)' ]] && pow_repo=$match[1]/powerline
+
+# Symlinking .zshrc powerline config
+sudo cp $pow_repo/bindings/zsh/powerline.zsh $HOME/.oh-my-zsh/custom
+
+# Get read permissions for global python packages
+sudo chown -R $USER $match[1]
