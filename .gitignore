@@ -5,7 +5,7 @@
 *.ignore
 
 # Ignore local environment variables
-zsh_custom/local.zsh
+zsh_custom/local*.zsh
 
 # Ignore installed tmux plugins
 home/.tmux/*
