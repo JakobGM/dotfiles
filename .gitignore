@@ -8,4 +8,4 @@
 zsh_custom/local.zsh
 
 # Ignore installed tmux plugins
-home/.tmux/plugins/*
+home/.tmux/*
