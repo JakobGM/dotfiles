@@ -70,12 +70,12 @@ echo "Installing Vundle plugins"
 echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
-gpip3 install --upgrade pip
-gpip3 install -r $repo/python/global_requirements.txt
+pip3 install --upgrade pip
+pip3 install -r $repo/python/global_requirements.txt
 
 echo "Installing Powerline"
 # Get information about the package
-pow_info=`gpip3 show powerline-status`
+pow_info=`pip3 show powerline-status`
 
 # Get the location of the package
 [[ $pow_info =~ 'Location: (.*site-packages)' ]] && pow_repo=$match[1]/powerline
@@ -88,3 +88,6 @@ sudo chown -R $USER $match[1]
 
 # Save powerline repo path in $POWERLINE_REPO
 echo "export POWERLINE_REPO=$pow_repo" > $HOME/.oh-my-zsh/custom/local_powerline.zsh
+
+# Install powerline for the ipython interpreter too
+ipython -m pip install powerline-status
