@@ -19,6 +19,9 @@ alias thorium='ssh jakobgm@thorium.orakel.ntnu.no'
 alias xenon='ssh jakobgm@kokekunster.no'
 alias zeus='ssh jakobgm@zeus.orakel.ntnu.no'
 alias zshconfig='vim $HOME/.zshrc'
+alias ta='tmux attach -t'
+alias tn='tmux new -s'
+alias tl='tmux ls'
 
 # Functions
 eval $(thefuck --alias)
