@@ -16,7 +16,6 @@ brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'  # Mosh: the mobile shell
 brew 'shellcheck'
 brew 'sudolikeaboss'
-brew 'thefuck'
 brew 'tmux'
 brew 'tree'
 brew 'unrar'  # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669

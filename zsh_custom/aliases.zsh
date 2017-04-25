@@ -22,6 +22,3 @@ alias zshconfig='vim $HOME/.zshrc'
 alias ta='tmux attach -t'
 alias tn='tmux new -s'
 alias tl='tmux ls'
-
-# Functions
-eval $(thefuck --alias)
