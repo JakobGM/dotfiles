@@ -70,12 +70,12 @@ echo "Installing Vundle plugins"
 echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
-pip3 install --upgrade pip
-pip3 install -r $repo/python/global_requirements.txt
+python3 -m pip install --upgrade pip
+python3 -m pip install --user -r $repo/python/global_requirements.txt
 
 echo "Installing Powerline"
 # Get information about the package
-pow_info=`pip3 show powerline-status`
+pow_info=`python3 -m pip show powerline-status`
 
 # Get the location of the package
 [[ $pow_info =~ 'Location: (.*site-packages)' ]] && pow_repo=$match[1]/powerline

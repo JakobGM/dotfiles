@@ -1,2 +1,1 @@
-thefuck
 powerline-status
