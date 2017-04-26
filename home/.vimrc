@@ -30,6 +30,7 @@ Plugin 'tpope/vim-fugitive' " Git plugin
 Plugin 'tpope/vim-surround' " Adds the surround motion bound to s
 Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
 Plugin 'xuhdev/vim-latex-live-preview' " Autocompilation of TeX documents
+Plugin 'vim-latex/vim-latex' " LaTeX plugin for lots of different features
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
