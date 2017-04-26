@@ -27,6 +27,7 @@ Plugin 'scrooloose/nerdtree' " File browsing
 Plugin 'scrooloose/syntastic' " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'  " Better folding behaviour [Use space!]
 Plugin 'tpope/vim-fugitive' " Git plugin
+Plugin 'tpope/vim-surround' " Adds the surround motion bound to s
 Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
 
 " All of your Plugins must be added before the following line
@@ -99,7 +100,8 @@ au BufNewFile,BufRead *.py
     \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
-    \ set fileformat=unix
+    \ set fileformat=unix |
+    \ set colorcolumn=80
 
 " Proper indentation for Web development
 au BufNewFile,BufRead *.js, *.html, *.css
@@ -135,7 +137,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 map <F6> :NERDTree<CR>
 
 " Run python scripts with F9
-autocmd FileType python nnoremap <buffer> <F9> :exec '!clear; ipython' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F9> :w<cr>:exec '!clear; ipython' shellescape(@%, 1)<cr>
 
 " Update the files more frequently (shows the gitgutter diff faster)
 set updatetime=250
