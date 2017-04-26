@@ -29,6 +29,7 @@ Plugin 'tmhedberg/SimpylFold'  " Better folding behaviour [Use space!]
 Plugin 'tpope/vim-fugitive' " Git plugin
 Plugin 'tpope/vim-surround' " Adds the surround motion bound to s
 Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
+Plugin 'xuhdev/vim-latex-live-preview' " Autocompilation of TeX documents
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -193,3 +194,10 @@ let g:ctrlp_show_hidden=1
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+
+" LaTeX settings
+" Render LaTeX document every second
+autocmd Filetype tex setl updatetime=1000
+
+" Use Preview as pdf reader
+let g:livepreview_previewer = 'open -a Preview'
