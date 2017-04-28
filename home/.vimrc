@@ -21,7 +21,6 @@ Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
 Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
-Plugin 'scrooloose/nerdcommenter'       " Language dependent commenter
 Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'scrooloose/syntastic'           " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
@@ -54,7 +53,6 @@ filetype plugin indent on    " required
 " or Solarized Dark (or Light) [https://github.com/altercation/vim-colors-solarized]
 colorscheme darcula
 set background=dark
-"colorscheme solarized
 
 " One tab in a file is shown as 4 spaces
 set tabstop=4
@@ -65,7 +63,8 @@ set softtabstop=4
 " Tab is replaced by the spaces specified as above
 set expandtab
 
-" Show line numbers
+" Show relative line numbers except for the current line
+set relativenumber
 set number
 
 " Show command in bottom bar
@@ -97,7 +96,6 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
@@ -151,10 +149,6 @@ let g:syntastic_check_on_wq = 0
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
-" Show relative numbers except for selected line
-set relativenumber 
-set number 
-
 " Deactivate the use of the arrow keys, forcing the use of <jkhl>
 noremap <up> <nop>
 noremap <down> <nop>
@@ -191,3 +185,9 @@ autocmd Filetype tex setl updatetime=1000
 
 " Use Preview as pdf reader
 let g:livepreview_previewer = 'open -a Preview'
+
+" Don't let the filetype plugin insert newlines automatically
+" This can be set on a filetype basis manually instead
+set textwidth=0
+
+nnoremap <leader><space> :nohlsearch<CR>
