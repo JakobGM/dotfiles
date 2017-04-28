@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'         " Powerful completion tool
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'blueshirts/darcula'             " Darcula color scheme
+Plugin 'bogado/file-line'               " Open files at a specific line number (vim filename:42)
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
