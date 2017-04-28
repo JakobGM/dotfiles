@@ -10,36 +10,46 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter' " Show git diff in number column
-Plugin 'blueshirts/darcula' " Darcula color scheme
-Plugin 'chrisbra/Recover.vim' " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
-Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim
-Plugin 'ctrlpvim/ctrlp.vim' " Quick file searching
-Plugin 'danro/rename.vim' " Enables :rename <new_name>
-Plugin 'godlygeek/tabular'
-Plugin 'jistr/vim-nerdtree-tabs' " Proper tabs for nerdtree
-Plugin 'jmcantrell/vim-virtualenv' " Detection of python venv [https://github.com/jmcantrell/vim-virtualenv]
-Plugin 'nvie/vim-flake8' " PEP-8 checking
-Plugin 'plasticboy/vim-markdown' " Markdown syntax
-Plugin 'scrooloose/nerdcommenter' " Language dependent commenter
-Plugin 'scrooloose/nerdtree' " File browsing
-Plugin 'scrooloose/syntastic' " Syntax checking on save
-Plugin 'tmhedberg/SimpylFold'  " Better folding behaviour [Use space!]
-Plugin 'tpope/vim-fugitive' " Git plugin
-Plugin 'tpope/vim-surround' " Adds the surround motion bound to s
-Plugin 'vim-scripts/indentpython.vim'  " Helps with python indentation
-Plugin 'xuhdev/vim-latex-live-preview' " Autocompilation of TeX documents
-Plugin 'vim-latex/vim-latex' " LaTeX plugin for lots of different features
+Plugin 'Valloric/YouCompleteMe'         " Powerful completion tool
+Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
+Plugin 'blueshirts/darcula'             " Darcula color scheme
+Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
+Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
+Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
+Plugin 'danro/rename.vim'               " Enables :rename <new_name>
+Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
+Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
+Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
+Plugin 'plasticboy/vim-markdown'        " Markdown syntax
+Plugin 'scrooloose/nerdcommenter'       " Language dependent commenter
+Plugin 'scrooloose/nerdtree'            " File browsing
+Plugin 'scrooloose/syntastic'           " Syntax checking on save
+Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
+Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
+Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
+Plugin 'tpope/vim-sensible'             " Sensible vim defaults
+Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
+Plugin 'vim-latex/vim-latex'            " LaTeX plugin for lots of different features
+Plugin 'xuhdev/vim-latex-live-preview'  " Autocompilation of TeX documents
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-"" Settings from "A good .vimrc"
-" Enable syntax highlighting
-syntax enable
+" Stuff enabled by vim-sensible:
+"  syntax enable                        -  Color highlighting
+"  filetype plugin indent on            -  Filetype detection and correct indentation
+"  wildmenu                             -  Show autocomplete in vim command mode
+"  encoding=utf-8                       -  Encode as UTF-8
+"  autoread                             -  Autoread file changes (undoable by u)
+"  incsearch                            -  Start searching before pressing enter
+"  <C>-L keybinding                     -  For removing search highlight
+"  laststatus=2                         -  Show statusline at all times
+"  scrolloff=1                          -  Always show at least one line above/below the cursor
+"  load matchit.vim                     -  Jump between matching tags with %
+"  backspace=2                          -  Delete over newlines, etc.
 
+"" Settings from "A good .vimrc"
 " Use colorscheme used in pycharm [https://github.com/blueshirts/darcula]
 " or Solarized Dark (or Light) [https://github.com/altercation/vim-colors-solarized]
 colorscheme darcula
@@ -64,23 +74,11 @@ set showcmd
 " Highlight line of cursor
 set cursorline
 
-" Filetype-specific line indents
-filetype indent on
-
-" Graphical menu for autocomplete
-set wildmenu
-
 " Highlight matching paranthesis
 set showmatch
 
-" Move to first occurence during search
-set incsearch
-
 " Highlight search matches
 set hlsearch
-
-" Remove highlight after finished search
-nnoremap <leader><space> :nohlsearch<CR>
 
 "" Settings for python [https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#vim-extensions]
 " Remap vim pane switching to Ctrl-<jkhl>
@@ -117,12 +115,6 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 " Flag unnecessary whitespace in python files
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Use UTF-8 encoding
-set encoding=utf-8
-
-" Make space behave like other apps (delete over newlines)
-set backspace=2
-
 " Make sure the autocomplete window disappears after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
@@ -143,9 +135,6 @@ autocmd FileType python nnoremap <buffer> <F9> :w<cr>:exec '!clear; ipython' she
 
 " Update the files more frequently (shows the gitgutter diff faster)
 set updatetime=250
-
-" Make vim powerline appear not only when split is opened
-set laststatus=2
 
 " When vim smartwraps overflowing text, the text on the new line is indented
 " properly
