@@ -5,15 +5,19 @@
 
 # OS-specific set-u
 echo "-------------------------------"
-if [ "$OSTYPE" = "linux-gnu" ]; then
-    sudo apt-get install zsh
-elif [ "$(uname)" = "darwin" ]; then
+OS=$(uname)
+if [ "$OS" = "Linux" ]; then
+    sudo apt-get install -y zsh curl
+elif [ "$OS" = "darwin" ]; then
     echo "Installing homebrew"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     echo "Installing cask"
     brew tap caskroom/cask
     echo "Installing zsh"
     brew install zsh
+else
+    echo "Could not detect OS type. Aborting!"
+    exit 1
 fi
 
 # Running the rest if the init script as zsh

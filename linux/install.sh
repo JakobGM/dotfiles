@@ -50,4 +50,7 @@ else
 fi
 
 echo "Finished installing new linux packages"
-md5sum $this_file > "${this_file}.md5"
+md5sum "$this_file" > "${this_file}.md5"
+
+echo "Installing fonts"
+fc-cache -vf ~/.fonts

@@ -19,7 +19,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/loket/oh-my-zsh/feature/ba
     echo "Could not install Oh My Zsh" >/dev/stderr
     exit 1
 }
-sudo chown -R $USER $HOME/.oh-my-zsh
+sudo chown -R $USER:$USER $HOME/.oh-my-zsh
 
 # Glob hidden files
 setopt glob_dots
@@ -42,10 +42,11 @@ if [ ! -z $ZSH ]; then
 fi
 
 echo "-------------------------------"
-if [ $OSTYPE = "linux-gnu" ]; then
+OS=$(uname)
+if [ "$OS" = "Linux" ]; then
     echo "Installing Linux packages"
      $dotrepo/linux/install.sh
-elif [ $(uname) = "darwin" ]; then
+elif [ "$OS" = "darwin" ]; then
     echo "Setup for MacOS running..."
     $dotrepo/macOS/install.sh
     if [ brew bundle --file=$dotrepo/macOS/Brewfile ]; then
@@ -86,7 +87,7 @@ pow_info=`python3 -m pip show powerline-status`
 sudo cp $pow_repo/bindings/zsh/powerline.zsh $HOME/.oh-my-zsh/custom
 
 # Get read permissions for global python packages
-sudo chown -R $USER $match[1]
+sudo chown -R $USER:$USER $match[1]
 
 # Save powerline repo path in $POWERLINE_REPO
 echo "export POWERLINE_REPO=$pow_repo" > $HOME/.oh-my-zsh/custom/local_powerline.zsh
