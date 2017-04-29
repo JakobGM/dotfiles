@@ -26,15 +26,15 @@ setopt glob_dots
 
 # Get location of dotfiles repo
 # Important assumption: It is located at $HOME/.dotfiles
-repo=$HOME/.dotfiles
+export dotrepo=$HOME/.dotfiles
 echo "----------------------"
 echo "Repo name: ${repo}"
 
 # Symlink all home directory dotfiles
-ln -svf $repo/home/* $HOME
+ln -svf $dotrepo/home/* $HOME
 
 # Symlink all ZSH_CUSTOM files
-ln -svf $repo/zsh_custom/* $HOME/.oh-my-zsh/custom
+ln -svf $dotrepo/zsh_custom/* $HOME/.oh-my-zsh/custom
 
 # Source zsh config if the shell is zsh
 if [ ! -z $ZSH ]; then
@@ -44,11 +44,13 @@ fi
 echo "-------------------------------"
 if [ $OSTYPE = "linux-gnu" ]; then
     echo "Installing Linux packages"
-     $repo/linux/install.sh
+     $dotrepo/linux/install.sh
 elif [ $(uname) = "darwin" ]; then
-    if [ brew bundle --file=$repo/macOS/Brewfile ]; then
+    echo "Setup for MacOS running..."
+    $dotrepo/macOS/install.sh
+    if [ brew bundle --file=$dotrepo/macOS/Brewfile ]; then
         echo "Installing new MacOS packages with brew"
-        brew bundle --file=$repo/macOS/Brewfile
+        brew bundle --file=$dotrepo/macOS/Brewfile
     fi
 fi
 
@@ -71,7 +73,7 @@ echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
 python3 -m pip install --upgrade pip
-python3 -m pip install --quiet --user -r $repo/python/global_requirements.txt
+python3 -m pip install --quiet --user -r $dotrepo/python/global_requirements.txt
 
 echo "Installing Powerline"
 # Get information about the package
@@ -94,4 +96,4 @@ ipython -m pip install --quiet powerline-status
 
 # Install ruby gems
 sudo gem install bundler
-bundle install --gemfile=$repo/ruby/Gemfile
+bundle install --gemfile=$dotrepo/ruby/Gemfile

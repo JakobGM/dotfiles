@@ -4,7 +4,7 @@
 # See https://askubuntu.com/questions/541781/install-list-of-packages-using-apt-get
 
 # Check if this version of the file has already been run
-this_file=$HOME/.dotfiles/linux/install.sh
+this_file=$dotrepo/linux/install.sh
 if md5sum --status -c ${this_file}.md5; then
         echo "Linux packages already installed."
         exit 0
@@ -25,7 +25,7 @@ sudo apt-get install -y build-essential cmake # For compilation
 sudo apt-get install -y python-dev python3-dev
 
 # Comile YouCompleteMe if it hasn't already been
-compiled=$HOME/.dotfiles/linux/.ycm_compiled.ignore
+compiled=$dotrepo/linux/.ycm_compiled.ignore
 if [ ! -e $compiled ]; then
         echo "Compiling YouCompleteMe for Vim, brace yourself!"
         # Swap file in case if on a memory-deprived VCS
