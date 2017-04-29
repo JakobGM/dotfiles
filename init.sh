@@ -91,3 +91,7 @@ echo "export POWERLINE_REPO=$pow_repo" > $HOME/.oh-my-zsh/custom/local_powerline
 
 # Install powerline for the ipython interpreter too
 ipython -m pip install powerline-status
+
+# Install ruby gems
+sudo gem install bundler
+bundle install --gemfile=$repo/ruby/Gemfile

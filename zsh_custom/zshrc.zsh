@@ -9,3 +9,6 @@ ZSH_THEME="agnoster"
 
 # Fuck command
 # eval $(thefuck --alias)
+
+# Completions for tmuxinator
+source tmuxinator.zsh
