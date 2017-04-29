@@ -31,10 +31,10 @@ echo "----------------------"
 echo "Repo name: ${repo}"
 
 # Symlink all home directory dotfiles
-ln -svi $repo/home/* $HOME
+ln -svf $repo/home/* $HOME
 
 # Symlink all ZSH_CUSTOM files
-ln -svi $repo/zsh_custom/* $HOME/.oh-my-zsh/custom
+ln -svf $repo/zsh_custom/* $HOME/.oh-my-zsh/custom
 
 # Source zsh config if the shell is zsh
 if [ ! -z $ZSH ]; then
@@ -71,7 +71,7 @@ echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
 python3 -m pip install --upgrade pip
-python3 -m pip install --user -r $repo/python/global_requirements.txt
+python3 -m pip install --quiet --user -r $repo/python/global_requirements.txt
 
 echo "Installing Powerline"
 # Get information about the package
@@ -90,7 +90,7 @@ sudo chown -R $USER $match[1]
 echo "export POWERLINE_REPO=$pow_repo" > $HOME/.oh-my-zsh/custom/local_powerline.zsh
 
 # Install powerline for the ipython interpreter too
-ipython -m pip install powerline-status
+ipython -m pip install --quiet powerline-status
 
 # Install ruby gems
 sudo gem install bundler
