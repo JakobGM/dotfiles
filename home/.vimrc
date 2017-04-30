@@ -29,8 +29,6 @@ Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
 Plugin 'tpope/vim-sensible'             " Sensible vim defaults
 Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
-Plugin 'vim-latex/vim-latex'            " LaTeX plugin for lots of different features
-Plugin 'xuhdev/vim-latex-live-preview'  " Autocompilation of TeX documents
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
