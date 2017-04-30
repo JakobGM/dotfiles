@@ -192,3 +192,6 @@ let g:livepreview_previewer = 'open -a Preview'
 set textwidth=0
 
 nnoremap <leader><space> :nohlsearch<CR>
+
+" One <tab> equals 4 <space> is the best standard setting
+set shiftwidth=4
