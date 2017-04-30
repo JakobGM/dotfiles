@@ -81,12 +81,6 @@ set showmatch
 set hlsearch
 
 "" Settings for python [https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#vim-extensions]
-" Remap vim pane switching to Ctrl-<jkhl>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 " Enable folding with space key
 set foldmethod=indent
 set foldlevel=99
