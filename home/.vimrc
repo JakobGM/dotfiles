@@ -22,6 +22,7 @@ Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
 Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
+Plugin 'python-mode/python-mode'        " Lots of different python plugins and functionality
 Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'scrooloose/syntastic'           " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
@@ -187,3 +188,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " One <tab> equals 4 <space> is the best standard setting
 set shiftwidth=4
+
+" Set python 3 as standard for python-mode plugin
+let g:pymode_python = 'python3'
