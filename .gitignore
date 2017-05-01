@@ -9,3 +9,6 @@ zsh_custom/local*.zsh
 
 # Ignore installed tmux plugins
 home/.tmux/*
+
+# Ignore vim swap files
+*.swp
