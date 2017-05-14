@@ -21,6 +21,8 @@ Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
 Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
+Plugin 'junegunn/goyo.vim'              " Distraction free editing with :Goyo
+Plugin 'junegunn/limelight.vim'         " Make cursor-focused paragraph the only colored text
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
 Plugin 'python-mode/python-mode'        " Lots of different python plugins and functionality
 Plugin 'scrooloose/nerdtree'            " File browsing
@@ -191,3 +193,14 @@ set shiftwidth=4
 
 " Set python 3 as standard for python-mode plugin
 let g:pymode_python = 'python3'
+
+" Don't automatically open linting error window in python-mode
+let g:pymode_lint_cwindow = 0
+
+" Need to set this in order to make :Limelight work with Darcula colorscheme
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+" Automatically enter :Limelight mode in Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
