@@ -12,3 +12,6 @@ home/.tmux/*
 
 # Ignore vim swap files
 *.swp
+
+# Ignore plugins installed with Vundle
+home/.vim/bundle/*
