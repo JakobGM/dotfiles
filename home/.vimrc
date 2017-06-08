@@ -19,6 +19,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
+Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
 Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
 Plugin 'junegunn/goyo.vim'              " Distraction free editing with :Goyo
@@ -212,3 +213,6 @@ let g:limelight_conceal_ctermfg = 240
 " Automatically enter :Limelight mode in Goyo
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
+
+" Use vim-test to run test suite automagically with <leader>t
+nmap <silent> <leader>t :TestSuite<CR>
