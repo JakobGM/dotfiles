@@ -10,6 +10,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
+Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'Valloric/YouCompleteMe'         " Powerful completion tool
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'blueshirts/darcula'             " Darcula color scheme
@@ -216,3 +217,6 @@ autocmd! User GoyoLeave Limelight!
 
 " Use vim-test to run test suite automagically with <leader>t
 nmap <silent> <leader>t :TestSuite<CR>
+
+" Use Django as python test runner (for now)
+let test#python#runner = 'djangotest'
