@@ -19,6 +19,7 @@ Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
+Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
