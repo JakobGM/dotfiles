@@ -35,6 +35,8 @@ Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
 Plugin 'tpope/vim-sensible'             " Sensible vim defaults
 Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
+Plugin 'xolox/vim-easytags'             " Automatically generate CTags
+Plugin 'xolox/vim-misc'                 " Dependency of vim-easytags
 
 " Unused at the moment
 " Plugin 'python-mode/python-mode'        " Lots of different python plugins and functionality
