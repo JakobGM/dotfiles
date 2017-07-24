@@ -11,7 +11,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
-Plugin 'Valloric/YouCompleteMe'         " Powerful completion tool
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'blueshirts/darcula'             " Darcula color scheme
 Plugin 'bogado/file-line'               " Open files at a specific line number (vim filename:42)
@@ -19,6 +18,7 @@ Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
+Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
@@ -27,7 +27,6 @@ Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python a
 Plugin 'junegunn/goyo.vim'              " Distraction free editing with :Goyo
 Plugin 'junegunn/limelight.vim'         " Make cursor-focused paragraph the only colored text
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
-Plugin 'python-mode/python-mode'        " Lots of different python plugins and functionality
 Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'scrooloose/syntastic'           " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
@@ -35,6 +34,9 @@ Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
 Plugin 'tpope/vim-sensible'             " Sensible vim defaults
 Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
+
+" Unused at the moment
+" Plugin 'python-mode/python-mode'        " Lots of different python plugins and functionality
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,7 +55,7 @@ filetype plugin indent on    " required
 "  load matchit.vim                     -  Jump between matching tags with %
 "  backspace=2                          -  Delete over newlines, etc.
 
-"" Settings from "A good .vimrc"
+"" Settings from 'A good .vimrc'
 " Use colorscheme used in pycharm [https://github.com/blueshirts/darcula]
 " or Solarized Dark (or Light) [https://github.com/altercation/vim-colors-solarized]
 colorscheme darcula
@@ -113,7 +115,7 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Make sure the autocomplete window disappears after completion
-let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_completion=1
 
 " Remap go to definition using YouCompleteMe
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
@@ -123,11 +125,11 @@ let python_highlight_all=1
 
 " Reccomended settings for Django and YCM found here:
 " https://code.djangoproject.com/wiki/UsingVimWithDjango
-let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
-let g:ycm_use_ultisnips_completer = 1             " Default 1, just ensure
-let g:ycm_seed_identifiers_with_syntax = 1        " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1                " Completion in comments
-let g:ycm_complete_in_strings = 1                 " Completion in string
+" let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+" let g:ycm_use_ultisnips_completer = 1             " Default 1, just ensure
+" let g:ycm_seed_identifiers_with_syntax = 1        " Completion for programming language's keyword
+" let g:ycm_complete_in_comments = 1                " Completion in comments
+" let g:ycm_complete_in_strings = 1                 " Completion in string
 
 " Hide .pyc files in nerdtree
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
