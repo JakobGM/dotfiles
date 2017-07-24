@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'blueshirts/darcula'             " Darcula color scheme
+Plugin 'mgedmin/python-imports.vim'     " Python imports with <F5>
 Plugin 'bogado/file-line'               " Open files at a specific line number (vim filename:42)
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
@@ -226,3 +227,7 @@ nmap <silent> <leader>t :TestSuite<CR>
 
 " Use Django as python test runner (for now)
 let test#python#runner = 'djangotest'
+
+" Keybinding for python imports
+map <F5>    :ImportName<CR>
+map <C-F5>  :ImportNameHere<CR>
