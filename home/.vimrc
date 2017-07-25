@@ -10,10 +10,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
+Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'blueshirts/darcula'             " Darcula color scheme
-Plugin 'mgedmin/python-imports.vim'     " Python imports with <F5>
 Plugin 'bogado/file-line'               " Open files at a specific line number (vim filename:42)
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
@@ -21,12 +20,14 @@ Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
+Plugin 'ervandew/supertab'              " Use <Tab> for autocompletion
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
 Plugin 'jistr/vim-nerdtree-tabs'        " A bit more consistent NERDTree behaviour
 Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
 Plugin 'junegunn/goyo.vim'              " Distraction free editing with :Goyo
 Plugin 'junegunn/limelight.vim'         " Make cursor-focused paragraph the only colored text
+Plugin 'mgedmin/python-imports.vim'     " Python imports with <F5>
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
 Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'scrooloose/syntastic'           " Syntax checking on save
@@ -228,7 +229,7 @@ autocmd! User GoyoLeave Limelight!
 nmap <silent> <leader>t :TestSuite<CR>
 
 " Use Django as python test runner (for now)
-let test#python#runner = 'djangotest'
+let test#python#runner = 'pytest'
 
 " Keybinding for python imports
 map <F5>    :ImportName<CR>
