@@ -76,10 +76,6 @@ set softtabstop=4
 " Tab is replaced by the spaces specified as above
 set expandtab
 
-" Show relative line numbers except for the current line
-set relativenumber
-set number
-
 " Show command in bottom bar
 set showcmd
 
