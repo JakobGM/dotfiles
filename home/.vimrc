@@ -19,7 +19,6 @@ Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
-Plugin 'easymotion/vim-easymotion'      " Smart motions with <leader><leader>
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
 Plugin 'ervandew/supertab'              " Use <Tab> for autocompletion
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
@@ -38,6 +37,7 @@ Plugin 'tpope/vim-dispatch'             " Run tests in tmux pane with <F12>
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
 Plugin 'tpope/vim-sensible'             " Sensible vim defaults
 Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
+Plugin 'vim-airline/vim-airline'        " Powerline on bottom of vim
 Plugin 'xolox/vim-easytags'             " Automatically generate CTags
 Plugin 'xolox/vim-misc'                 " Dependency of vim-easytags
 
@@ -193,11 +193,6 @@ let g:ctrlp_max_depth=40
 let g:ctrlp_follow_symlinks=1
 let g:ctrlp_show_hidden=1
 
-" Install powerline from global package
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-
 " LaTeX settings
 " Render LaTeX document every second
 autocmd Filetype tex setl updatetime=1000
@@ -246,3 +241,6 @@ set norelativenumber
 set nocursorline
 set ttyfast
 set lazyredraw
+
+" <leader>. is bound to CtrlP Ctags search
+nnoremap <leader>. :CtrlPTag<cr>
