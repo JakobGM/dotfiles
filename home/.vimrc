@@ -19,6 +19,7 @@ Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>
 Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
+Plugin 'easymotion/vim-easymotion'      " Smart motions with <leader><leader>
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
 Plugin 'ervandew/supertab'              " Use <Tab> for autocompletion
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
@@ -33,6 +34,7 @@ Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'scrooloose/syntastic'           " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
 Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
+Plugin 'tpope/vim-dispatch'             " Run tests in tmux pane with <F12>
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
 Plugin 'tpope/vim-sensible'             " Sensible vim defaults
 Plugin 'tpope/vim-surround'             " Adds the surround motion bound to s
@@ -160,7 +162,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
 " Set linters for python files
-let g:syntastic_python_checkers = ['mypy', 'flake8']
+let g:syntastic_python_checkers = ['mypy', 'flake8', 'pylint']
+let g:syntastic_css_checkers = ['stylelint']
 
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
@@ -228,9 +231,18 @@ autocmd! User GoyoLeave Limelight!
 " Use vim-test to run test suite automagically with <leader>t
 nmap <silent> <leader>t :TestSuite<CR>
 
-" Use Django as python test runner (for now)
+" Use pytest as the preferred test framework for python files
 let test#python#runner = 'pytest'
 
 " Keybinding for python imports
 map <F5>    :ImportName<CR>
 map <C-F5>  :ImportNameHere<CR>
+
+" Vim-dispatch settings
+nnoremap <F12> :Dispatch pytest<CR>
+
+" Some experimenting with latency
+set norelativenumber
+set nocursorline
+set ttyfast
+set lazyredraw
