@@ -1,2 +1,2 @@
 jedi
-powerline-status
+neovim

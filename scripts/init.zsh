@@ -74,7 +74,7 @@ echo | echo | vim +PluginInstall +qall &>/dev/null
 
 echo "Installing global python packages"
 python3 -m pip install --upgrade pip
-python3 -m pip install --quiet --user -r $dotrepo/python/global_requirements.txt
+python3 -m pip install --quiet --upgrade --user -r $dotrepo/python/global_requirements.txt
 
 echo "Installing Powerline"
 # Get information about the package

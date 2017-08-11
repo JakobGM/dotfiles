@@ -30,8 +30,8 @@ Plugin 'junegunn/limelight.vim'         " Make cursor-focused paragraph the only
 Plugin 'mgedmin/python-imports.vim'     " Python imports with <F5>
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
 Plugin 'scrooloose/nerdtree'            " File browsing
-Plugin 'scrooloose/syntastic'           " Syntax checking on save
 Plugin 'tmhedberg/SimpylFold'           " Better folding behaviour [Use space!]
+Plugin 'w0rp/ale'                       " Async syntax checker
 Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
 Plugin 'tpope/vim-dispatch'             " Run tests in tmux pane with <F12>
 Plugin 'tpope/vim-fugitive'             " Git plugin with commands 'G<command>'
@@ -149,18 +149,6 @@ set updatetime=250
 " properly
 set breakindent
 
-" Recommended beginner settings for vim-syntastic, a syntax checker plugin
-let g:syntastic_always_populate_loc_list = 1
-" Uncomment line if you want the location of all errors (too noisy for bad
-" programmers)
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-
-" Set linters for python files
-let g:syntastic_python_checkers = ['mypy', 'flake8', 'pylint']
-let g:syntastic_css_checkers = ['stylelint']
-
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 
@@ -240,3 +228,9 @@ set lazyredraw
 
 " <leader>. is bound to CtrlP Ctags search
 nnoremap <leader>. :CtrlPTag<cr>
+
+" Ale syntax checking in airline bar
+let g:airline#extensions#ale#enabled = 1
+"
+" Python path for current python project, used with Jedi-vim
+let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/kokekunster/bin/python'
