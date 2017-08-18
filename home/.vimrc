@@ -21,6 +21,7 @@ Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
 Plugin 'ervandew/supertab'              " Use <Tab> for autocompletion
 Plugin 'fntlnz/atags.vim'               " Asynchronous generation of Ctags
+Plugin 'fooSoft/vim-argwrap'            " Wrap function arguments with <leader>a
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'itchyny/lightline.vim'          " Lightweight statusline without slow plugin integrations
 Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
@@ -189,3 +190,9 @@ let g:atags_build_commands_list = [
     \ 'awk "length($0) < 400" tags.tmp > tags',
     \ 'rm tags.tmp'
     \ ]
+
+" Wrap function arguments
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
+" Use trailing comma on last argument
+let g:argwrap_tail_comma = 1
