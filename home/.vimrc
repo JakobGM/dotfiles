@@ -144,6 +144,9 @@ let g:ctrlp_show_hidden=1
 " This can be set on a filetype basis manually instead
 set textwidth=0 wrapmargin=0
 
+" Do not let vim force line breaks when exceeding textwidth in insert mode
+set formatoptions-=t
+
 " Need to set this in order to make :Limelight work with Darcula colorscheme
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
