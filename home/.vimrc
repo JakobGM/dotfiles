@@ -14,6 +14,7 @@ Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'               " Asynchronous file/tags searcher
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
+Plugin 'jreybert/vimagit'               " Modal git editing with <leader>g
 Plugin 'blueshirts/darcula'             " Darcula color scheme
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
@@ -226,3 +227,7 @@ nnoremap <silent> <leader>gl :Commits<CR>
 
 " All git commits in current buffer
 nnoremap <silent> <leader>Gl :Commits<CR>
+
+
+" Vimagit settings
+nnoremap <leader>g :Magit<CR>
