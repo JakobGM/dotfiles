@@ -23,3 +23,6 @@ export EDITOR=vim
 
 # Add user binaries
 export PATH="$PATH:$HOME/.dotfiles/bin"
+
+# Use ag in order to filter out .git folders but include hidden files before fzf is invoked
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'

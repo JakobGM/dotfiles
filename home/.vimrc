@@ -11,11 +11,12 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'               " Asynchronous file/tags searcher
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'blueshirts/darcula'             " Darcula color scheme
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
-Plugin 'ctrlpvim/ctrlp.vim'             " Quick fuzzy file searching
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
@@ -71,6 +72,9 @@ set expandtab
 
 " Show command in bottom bar
 set showcmd
+
+" <Leader> is set to space
+:let mapleader=" "
 
 " Proper indentation for python files
 au BufNewFile,BufRead *.py
@@ -135,12 +139,6 @@ set incsearch
 " Do not highlight search matches
 set nohlsearch
 
-" Index more files for ctrlP fuzzy search
-let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-let g:ctrlp_follow_symlinks=1
-let g:ctrlp_show_hidden=1
-
 " Don't let the filetype plugin insert newlines automatically
 " This can be set on a filetype basis manually instead
 set textwidth=0 wrapmargin=0
@@ -174,9 +172,6 @@ set nocursorline
 set ttyfast
 set lazyredraw
 
-" <leader>. is bound to CtrlP Ctags search
-nnoremap <leader>. :CtrlPTag<cr>
-
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/kokekunster/bin/python'
 
@@ -196,3 +191,38 @@ nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " Use trailing comma on last argument
 let g:argwrap_tail_comma = 1
+
+" Open new splits to the right and below (feels more intuitive)
+set splitright
+set splitbelow
+
+" Maintain undo history between sessions
+set undofile
+set undodir=~/.vim/undodir
+
+" FZF related settings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" All files in project
+nnoremap <silent> <leader><space> :Files<CR>
+
+" All tags in current buffer
+nnoremap <silent> <leader>T :BTags<CR>
+
+" All tags in project
+nnoremap <silent> <leader>t :Tags<CR>
+
+" Command history
+nnoremap <silent> <leader>: :History:<CR>
+
+" All git commits
+nnoremap <silent> <leader>gl :Commits<CR>
+
+" All git commits in current buffer
+nnoremap <silent> <leader>Gl :Commits<CR>
