@@ -6,19 +6,22 @@ tap 'homebrew/bundle'
 tap 'ravenac95/sudolikeaboss'
 
 # Brew
-brew "diff-so-fancy"  # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
-brew 'cloc'  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
+brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
 brew 'coreutils'
+brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
 brew 'flake8'
 brew 'git'
 brew 'git-annex'
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
-brew 'mobile-shell'  # Mosh: the mobile shell
+brew 'mobile-shell'                                                          # Mosh: the mobile shell
+brew 'neovim'
+brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
+brew 'ripgrep'
 brew 'shellcheck'
 brew 'sudolikeaboss'
 brew 'tmux'
 brew 'tree'
-brew 'unrar'  # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
+brew 'unrar'                                                                 # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
 brew 'wget'
 
 # Cask
@@ -46,7 +49,6 @@ cask 'programmer-dvorak'
 cask 'pycharm'
 cask 'qbserve'
 cask 'r-app'
-cask 'reattach-to-user-namespace'
 cask 'rescuetime'
 cask 'rstudio'
 cask 'selfcontrol'
