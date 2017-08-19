@@ -246,3 +246,4 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 " Vimagit settings
 nnoremap <leader>g :Magit<CR>
+nnoremap <leader>p :! git push<CR>
