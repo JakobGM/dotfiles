@@ -247,3 +247,16 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 " Vimagit settings
 nnoremap <leader>g :Magit<CR>
 nnoremap <leader>p :! git push<CR>
+
+" Neovim terminal commands
+" To map <Esc> to exit terminal-mode:
+tnoremap <Esc> <C-\><C-n>
+
+" To simulate |i_CTRL-R| in terminal-mode:
+tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+" Window swithing like vim-tmux-navigator
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
