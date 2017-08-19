@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'               " Asynchronous file/tags searcher
+Plugin 'melonmanchan/vim-tmux-resizer'  " Resize vim/tmux panes with Alt-hjkl
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
 Plugin 'jreybert/vimagit'               " Modal git editing with <leader>g
 Plugin 'blueshirts/darcula'             " Darcula color scheme
@@ -260,3 +261,6 @@ tnoremap <C-h> <C-\><C-N><C-w>h
 tnoremap <C-j> <C-\><C-N><C-w>j
 tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
+
+" Enable vim/tmux pane resizing with Alt-hjkl
+let g:tmux_resizer_no_mappings = 0
