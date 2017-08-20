@@ -156,8 +156,8 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" Use vim-test to run test suite automagically with <leader>t
-nmap <silent> <leader>t :TestSuite<CR>
+" Use vim-test to run test suite automagically with <leader>s
+nmap <silent> <leader>s :TestSuite<CR>
 
 " Use pytest as the preferred test framework for python files
 let test#python#runner = 'pytest'
@@ -263,4 +263,4 @@ tnoremap <C-k> <C-\><C-N><C-w>k
 tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Enable vim/tmux pane resizing with Alt-hjkl
-let g:tmux_resizer_no_mappings = 0
+" let g:tmux_resizer_no_mappings = 0
