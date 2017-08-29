@@ -259,3 +259,6 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Make sure that 256 colors are used
 set termguicolors
+
+" Enable deletion of untracked files in Magit
+let g:magit_discard_untracked_do_delete=1
