@@ -97,3 +97,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Fuck command
 #eval $(thefuck --alias)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

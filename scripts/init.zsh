@@ -57,14 +57,14 @@ fi
 
 # Install Vundle if it is not installed
 echo
-if [ ! -d $HOME/.vim/bundle/Vundle.vim ]
+if [ ! $HOME/.vim/autoload/plug.vim ]
 then
-    echo "Installing Vundle"
+    echo "Installing VimPlug"
     sudo mv $HOME/.vim $HOME/.vim.old
-    mkdir -p $HOME/.vim/bundle
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
-    echo "Vundle already installed"
+    echo "VimPlug already installed"
 fi
 
 # This hack removes the Vim UI output 

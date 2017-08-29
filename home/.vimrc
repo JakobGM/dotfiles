@@ -2,47 +2,40 @@
 set nocompatible              " required (and sane)
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'airblade/vim-gitgutter'                                     " Show git diff in number column
+Plug 'alvan/vim-closetag'                                         " Autoclose html tags
+Plug 'blueshirts/darcula'                                         " Darcula color scheme
+Plug 'chrisbra/Recover.vim'                                       " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
+Plug 'christoomey/vim-tmux-navigator'                             " Navigate between tmux and vim with <C>+jkhl
+Plug 'danro/rename.vim'                                           " Enables :rename <new_name>
+Plug 'davidhalter/jedi-vim'                                       " Autocompletion for python
+Plug 'editorconfig/editorconfig-vim'                              " Respect .editorconfig configurations
+Plug 'edkolev/tmuxline.vim'                                       " Colortheme for tmux powerline, using vim colorschemes
+Plug 'ervandew/supertab'                                          " Use <Tab> for autocompletion
+Plug 'fooSoft/vim-argwrap'                                        " Wrap function arguments with <leader>a
+Plug 'godlygeek/tabular'                                          " :Tab /<repexp> in order to allign
+Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
+Plug 'janko-m/vim-test'                                           " Run the entire test suite with <leader>t
+Plug 'jmcantrell/vim-virtualenv'                                  " Detection of python venv for :python and :!python
+Plug 'jreybert/vimagit'                                           " Modal git editing with <leader>g
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
+Plug 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
+Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
+Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
+Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
+Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
+Plug 'scrooloose/nerdtree'                                        " File browsing
+Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
+Plug 'tpope/vim-dispatch'                                         " Run tests in tmux pane with <F12>
+Plug 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
+Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
+Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
+Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
 
-" Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
-Plugin 'airblade/vim-gitgutter'                                     " Show git diff in number column
-Plugin 'alvan/vim-closetag'                                         " Autoclose html tags
-Plugin 'blueshirts/darcula'                                         " Darcula color scheme
-Plugin 'chrisbra/Recover.vim'                                       " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
-Plugin 'christoomey/vim-tmux-navigator'                             " Navigate between tmux and vim with <C>+jkhl
-Plugin 'danro/rename.vim'                                           " Enables :rename <new_name>
-Plugin 'davidhalter/jedi-vim'                                       " Autocompletion for python
-Plugin 'editorconfig/editorconfig-vim'                              " Respect .editorconfig configurations
-Plugin 'edkolev/tmuxline.vim'                                       " Colortheme for tmux powerline, using vim colorschemes
-Plugin 'ervandew/supertab'                                          " Use <Tab> for autocompletion
-Plugin 'fooSoft/vim-argwrap'                                        " Wrap function arguments with <leader>a
-Plugin 'godlygeek/tabular'                                          " :Tab /<repexp> in order to allign
-Plugin 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
-Plugin 'janko-m/vim-test'                                           " Run the entire test suite with <leader>t
-Plugin 'jmcantrell/vim-virtualenv'                                  " Detection of python venv for :python and :!python
-Plugin 'jreybert/vimagit'                                           " Modal git editing with <leader>g
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
-Plugin 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
-Plugin 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
-Plugin 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
-Plugin 'morhetz/gruvbox'                                            " Gruvbox colorscheme
-Plugin 'plasticboy/vim-markdown'                                    " Markdown syntax
-Plugin 'scrooloose/nerdtree'                                        " File browsing
-Plugin 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
-Plugin 'tpope/vim-dispatch'                                         " Run tests in tmux pane with <F12>
-Plugin 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
-Plugin 'tpope/vim-sensible'                                         " Sensible vim defaults
-Plugin 'tpope/vim-surround'                                         " Adds the surround motion bound to s
-Plugin 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
+call plug#end()
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
 " Stuff enabled by vim-sensible:
 "  syntax enable                        -  Color highlighting
 "  filetype plugin indent on            -  Filetype detection and correct indentation
