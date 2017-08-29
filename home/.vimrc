@@ -180,17 +180,6 @@ set lazyredraw
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/kokekunster/bin/python'
 
-" Atags settings
-" Generate tags everytime a file is being written.
-autocmd BufWritePost * call atags#generate()
-
-" Generate tags only for files that are not in .gitignore
-let g:atags_build_commands_list = [
-    \ 'ag -g "" | ctags -L - --fields=+l -f tags.tmp',
-    \ 'awk "length($0) < 400" tags.tmp > tags',
-    \ 'rm tags.tmp'
-    \ ]
-
 " Wrap function arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
