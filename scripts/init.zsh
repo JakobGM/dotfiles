@@ -76,25 +76,6 @@ echo "Installing global python packages"
 python3 -m pip install --upgrade pip
 python3 -m pip install --quiet --upgrade --user -r $dotrepo/python/global_requirements.txt
 
-echo "Installing Powerline"
-# Get information about the package
-pow_info=`python3 -m pip show powerline-status`
-
-# Get the location of the package
-[[ $pow_info =~ 'Location: (.*site-packages)' ]] && pow_repo=$match[1]/powerline
-
-# Symlinking .zshrc powerline config
-sudo cp $pow_repo/bindings/zsh/powerline.zsh $HOME/.oh-my-zsh/custom
-
-# Get read permissions for global python packages
-sudo chown -R $USER:$USER $match[1]
-
-# Save powerline repo path in $POWERLINE_REPO
-echo "export POWERLINE_REPO=$pow_repo" > $HOME/.oh-my-zsh/custom/local_powerline.zsh
-
-# Install powerline for the ipython interpreter too
-ipython -m pip install --quiet powerline-status
-
 # Install ruby gems
 sudo gem install bundler
 bundle install --gemfile=$dotrepo/ruby/Gemfile
