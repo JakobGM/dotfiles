@@ -11,24 +11,26 @@ Plugin 'gmarik/Vundle.vim'
 
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'airblade/vim-gitgutter'         " Show git diff in number column
-Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plugin 'junegunn/fzf.vim'               " Asynchronous file/tags searcher
-Plugin 'melonmanchan/vim-tmux-resizer'  " Resize vim/tmux panes with Alt-hjkl
 Plugin 'alvan/vim-closetag'             " Autoclose html tags
-Plugin 'jreybert/vimagit'               " Modal git editing with <leader>g
 Plugin 'blueshirts/darcula'             " Darcula color scheme
 Plugin 'chrisbra/Recover.vim'           " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plugin 'christoomey/vim-tmux-navigator' " Navigate between tmux and vim with <C>+jkhl
 Plugin 'danro/rename.vim'               " Enables :rename <new_name>
 Plugin 'davidhalter/jedi-vim'           " Autocompletion for python
 Plugin 'editorconfig/editorconfig-vim'  " Respect .editorconfig configurations
+Plugin 'edkolev/tmuxline.vim'           " Colortheme for tmux powerline, using vim colorschemes
 Plugin 'ervandew/supertab'              " Use <Tab> for autocompletion
-Plugin 'fntlnz/atags.vim'               " Asynchronous generation of Ctags
 Plugin 'fooSoft/vim-argwrap'            " Wrap function arguments with <leader>a
 Plugin 'godlygeek/tabular'              " :Tab /<repexp> in order to allign
 Plugin 'itchyny/lightline.vim'          " Lightweight statusline without slow plugin integrations
 Plugin 'janko-m/vim-test'				" Run the entire test suite with <leader>t
-Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python [https://github.com/jmcantrell/vim-virtualenv]
+Plugin 'jmcantrell/vim-virtualenv'      " Detection of python venv for :python and :!python
+Plugin 'jreybert/vimagit'               " Modal git editing with <leader>g
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'               " Asynchronous file/tags searcher
+Plugin 'ludovicchabant/vim-gutentags'   " Automatically create ctag files
+Plugin 'melonmanchan/vim-tmux-resizer'  " Resize vim/tmux panes with Alt-hjkl
+Plugin 'morhetz/gruvbox'				" Gruvbox colorscheme
 Plugin 'plasticboy/vim-markdown'        " Markdown syntax
 Plugin 'scrooloose/nerdtree'            " File browsing
 Plugin 'tpope/vim-commentary'           " Adds comment action with 'gc'
@@ -57,7 +59,8 @@ filetype plugin indent on    " required
 "" Settings from 'A good .vimrc'
 " Use colorscheme used in pycharm [https://github.com/blueshirts/darcula]
 " or Solarized Dark (or Light) [https://github.com/altercation/vim-colors-solarized]
-colorscheme darcula
+" colorscheme darcula
+colorscheme gruvbox
 set background=dark
 
 " One tab in a file is shown as 4 spaces
@@ -264,3 +267,6 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Enable vim/tmux pane resizing with Alt-hjkl
 " let g:tmux_resizer_no_mappings = 0
+
+" Make sure that 256 colors are used
+set termguicolors
