@@ -257,3 +257,9 @@ set termguicolors
 
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
+
+" iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards.
+" Normal meta key mode disables keybinding of <M-whatever>. The solution is binding <M-eoa> to æøå instead.
+inoremap <M-e> æ
+inoremap <M-o> ø
+inoremap <M-a> å
