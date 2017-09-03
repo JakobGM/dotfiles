@@ -10,13 +10,18 @@ if md5sum --status -c ${this_file}.md5; then
         exit 0
 fi
 
-sudo apt-get update -y
+# NeoVim repository
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+
+# Mosh repository
 sudo add-apt-repository -y ppa:keithw/mosh
+
+sudo apt-get update -y
 sudo apt-get install -y mosh
 sudo apt-get install -y python-software-properties
 
 # Install all programs TODO: Split up
-sudo apt-get install -y cloc coreutils flake8 git python-pip python3 shellsheck thufuck tmux tree python3-dev python3-pip
+sudo apt-get install -y cloc coreutils flake8 git python-pip python3 shellsheck thufuck tmux tree python3-dev python3-pip neovim
 
 # Compile YouCompleteMe plugin for vim
 # Requirements
