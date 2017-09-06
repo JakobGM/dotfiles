@@ -3,27 +3,26 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
-tap 'ravenac95/sudolikeaboss'
 
-# Brew
+                                                                             # Brew
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
-brew 'coreutils'
+brew 'coreutils'                                                             # Lot's of important terminal tools
 brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
-brew 'flake8'
-brew 'git'
+brew 'flake8'                                                                # Python linter for PEP8 standard
+brew 'git'                                                                   # Version control
 brew 'git-annex'
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'                                                          # Mosh: the mobile shell
-brew 'neovim'
+brew 'neovim'                                                                # Fork of vim, invoked with nvim
 brew 'r'                                                                     # Rlang interpreter
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
-brew 'ripgrep'
-brew 'shellcheck'
-brew 'sudolikeaboss'
-brew 'tmux'
-brew 'tree'
+brew 'ripgrep'                                                               # Faster/easier grep
+brew 'shellcheck'                                                            # Shellscript linter
+brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
+brew 'tmux'                                                                  # Terminal multiplexer
+brew 'tree'                                                                  # Quick overview of file hierarchy
 brew 'unrar'                                                                 # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
-brew 'wget'
+brew 'wget'                                                                  # Recursive web content downloader
 
 # Cask
 cask '1password'
