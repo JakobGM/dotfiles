@@ -46,7 +46,7 @@ OS=$(uname)
 if [ "$OS" = "Linux" ]; then
     echo "Installing Linux packages"
      $dotrepo/linux/install.sh
-elif [ "$OS" = "darwin" ]; then
+elif [ "$OS" = "Darwin" ]; then
     echo "Setup for MacOS running..."
     $dotrepo/macOS/install.sh
     if [ brew bundle --file=$dotrepo/macOS/Brewfile ]; then
