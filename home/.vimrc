@@ -17,6 +17,7 @@ Plug 'ervandew/supertab'                                          " Use <Tab> fo
 Plug 'fooSoft/vim-argwrap'                                        " Wrap function arguments with <leader>a
 Plug 'godlygeek/tabular'                                          " :Tab /<repexp> in order to allign
 Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
+Plug 'jalvesaq/Nvim-R'                                            " Plugin for all R-lang related functionality
 Plug 'janko-m/vim-test'                                           " Run the entire test suite with <leader>t
 Plug 'jmcantrell/vim-virtualenv'                                  " Detection of python venv for :python and :!python
 Plug 'jreybert/vimagit'                                           " Modal git editing with <leader>g

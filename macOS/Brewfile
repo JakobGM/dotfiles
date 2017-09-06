@@ -15,6 +15,7 @@ brew 'git-annex'
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'                                                          # Mosh: the mobile shell
 brew 'neovim'
+brew 'r'                                                                     # Rlang interpreter
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
 brew 'ripgrep'
 brew 'shellcheck'
