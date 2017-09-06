@@ -31,3 +31,6 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
     # --follow: Follow symlinks
     # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Setting default username such that it doesn´t always state it in the terminal
+DEFAULT_USER="jakobgm"

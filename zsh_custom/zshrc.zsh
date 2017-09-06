@@ -1,14 +1,14 @@
 # Setting default username such that it doesn´t always state it in the terminal
 DEFAULT_USER="jakobgm"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+# Completions for tmuxinator
+source tmuxinator.zsh
 
-# Fuck command
-# eval $(thefuck --alias)
+# Enable fzf related functionity, such as <C-r>
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Setting default username such that it doesn´t always state it in the terminal
+DEFAULT_USER="jakobgm"
 
 # Completions for tmuxinator
 source tmuxinator.zsh
