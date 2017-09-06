@@ -8,11 +8,16 @@ echo "-------------------------------"
 OS=$(uname)
 if [ "$OS" = "Linux" ]; then
     sudo apt-get install -y zsh curl
-elif [ "$OS" = "darwin" ]; then
+elif [ "$OS" = "Darwin" ]; then
     echo "Installing homebrew"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+    echo "Cleaning up files related to Brew"
+    brew cleanup
+
     echo "Installing cask"
     brew tap caskroom/cask
+
     echo "Installing zsh"
     brew install zsh
 else

@@ -1,2 +1,2 @@
 echo "Installing fonts"
-cp -f $repo/home/.fonts/* $HOME/Library/Fonts 
+cp -f $dotrepo/home/.fonts/* $HOME/Library/Fonts 

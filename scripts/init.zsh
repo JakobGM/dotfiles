@@ -49,10 +49,9 @@ if [ "$OS" = "Linux" ]; then
 elif [ "$OS" = "Darwin" ]; then
     echo "Setup for MacOS running..."
     $dotrepo/macOS/install.sh
-    if [ brew bundle --file=$dotrepo/macOS/Brewfile ]; then
-        echo "Installing new MacOS packages with brew"
-        brew bundle --file=$dotrepo/macOS/Brewfile
-    fi
+
+    echo "Installing new MacOS packages with brew"
+    brew bundle --file=$dotrepo/macOS/Brewfile
 fi
 
 # Install Vundle if it is not installed
