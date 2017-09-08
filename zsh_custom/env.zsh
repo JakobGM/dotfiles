@@ -34,3 +34,12 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 
 # Setting default username such that it doesn´t always state it in the terminal
 DEFAULT_USER="jakobgm"
+
+# Use rustgrep for fzf, grep hidden files, but ignore .git folders
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+# Forces you to use aliases
+export YSU_HARDCORE=1
+
+# Setting default username such that it doesn´t always state it in the terminal
+DEFAULT_USER="jakobgm"

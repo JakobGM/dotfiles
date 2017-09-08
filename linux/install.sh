@@ -23,9 +23,6 @@ sudo apt-get install -y python-software-properties
 # Install all programs TODO: Split up
 sudo apt-get install -y cloc coreutils flake8 git python-pip python3 shellsheck thufuck tmux tree python3-dev python3-pip neovim
 
-# Install package manager for zsh
-sudo apt-get install -y zsh-antigen
-
 # Compile YouCompleteMe plugin for vim
 # Requirements
 sudo apt-get upgrade -y vim

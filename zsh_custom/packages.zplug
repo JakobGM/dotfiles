@@ -1,0 +1,35 @@
+# Make sure to use double quotes
+
+# Press up/down on half-written input, and restrict history accordingly
+zplug "zsh-users/zsh-history-substring-search"
+
+# Homebrew completions
+zplug "zsh-users/zsh-completions"
+
+# Reminds you of unused aliases
+zplug "MichaelAquilina/zsh-you-should-use"
+
+# Fish like autocompletions
+zplug "zsh-users/zsh-autosuggestions"
+
+# Highlighting in terminal
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# Fuzzy finder
+zplug "jhawthorn/fzy"
+
+# Oh-my-zsh plugins
+zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "plugins/brew", from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/command-not-found", from:oh-my-zsh
+zplug "plugins/docker", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/osx", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/z", from:oh-my-zsh
+
+# Load theme file
+zplug "themes/agnoster", from:oh-my-zsh, as:theme
+
+# For faster, history based cd'ing using "z" instead
