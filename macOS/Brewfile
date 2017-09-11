@@ -9,6 +9,7 @@ brew 'cloc'                                                                  # C
 brew 'coreutils'                                                             # Lot's of important terminal tools
 brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
 brew 'flake8'                                                                # Python linter for PEP8 standard
+brew 'fzy'                                                                   # Better matching algorithm than fzf
 brew 'git'                                                                   # Version control
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'                                                          # Mosh: the mobile shell

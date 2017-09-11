@@ -43,3 +43,6 @@ export YSU_HARDCORE=1
 
 # Setting default username such that it doesn´t always state it in the terminal
 DEFAULT_USER="jakobgm"
+
+# Set which filters that should be used by "enchancd"
+export ENHANCD_FILTER=fzy:fzf
