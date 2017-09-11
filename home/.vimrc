@@ -29,6 +29,7 @@ Plug 'mhinz/vim-startify' 										  " Start screen for vim
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
 Plug 'neomake/neomake'                                            " Asynchronous linting and compiling
 Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
+Plug 'ryanoasis/vim-devicons'                                     " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                        " File browsing
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete for NeoVim
 Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
@@ -265,3 +266,19 @@ endif
 
 " Run Neomake every time the current file is saved
 autocmd! BufWritePost * Neomake
+
+" Settings for vim-devicons for lightline
+let g:lightline = {
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \ }
+      \ }
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
