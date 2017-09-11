@@ -5,6 +5,7 @@ filetype off                  " required
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'                                     " Show git diff in number column
+Plug 'alfredodeza/pytest.vim'                                     " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                         " Autoclose html tags
 Plug 'blueshirts/darcula'                                         " Darcula color scheme
 Plug 'chrisbra/Recover.vim'                                       " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
@@ -18,7 +19,6 @@ Plug 'fooSoft/vim-argwrap'                                        " Wrap functio
 Plug 'godlygeek/tabular'                                          " :Tab /<repexp> in order to allign
 Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
 Plug 'jalvesaq/Nvim-R'                                            " Plugin for all R-lang related functionality
-Plug 'janko-m/vim-test'                                           " Run the entire test suite with <leader>t
 Plug 'jmcantrell/vim-virtualenv'                                  " Detection of python venv for :python and :!python
 Plug 'jreybert/vimagit'                                           " Modal git editing with <leader>g
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
@@ -32,7 +32,6 @@ Plug 'plasticboy/vim-markdown'                                    " Markdown syn
 Plug 'scrooloose/nerdtree'                                        " File browsing
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete for NeoVim
 Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
-Plug 'tpope/vim-dispatch'                                         " Run tests in tmux pane with <F12>
 Plug 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
 Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
@@ -156,17 +155,8 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" Use vim-test to run test suite automagically with <leader>s
-nmap <silent> <leader>s :TestSuite<CR>
-
-" Use pytest as the preferred test framework for python files
-let test#python#runner = 'pytest'
-
 " Keybinding for python imports
 map <F5>    :ImportName<CR>
-
-" Vim-dispatch settings
-nnoremap <F12> :Dispatch pytest<CR>
 
 " Some experimenting with latency
 set norelativenumber
