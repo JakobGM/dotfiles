@@ -28,6 +28,7 @@ Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/t
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
 Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
 Plug 'scrooloose/nerdtree'                                        " File browsing
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete for NeoVim
 Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
 Plug 'tpope/vim-dispatch'                                         " Run tests in tmux pane with <F12>
 Plug 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
@@ -172,7 +173,7 @@ set ttyfast
 set lazyredraw
 
 " Python path for current python project, used with Jedi-vim
-let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/kokekunster/bin/python'
+let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
 
 " Wrap function arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -264,3 +265,8 @@ let g:magit_discard_untracked_do_delete=1
 inoremap <M-e> æ
 inoremap <M-o> ø
 inoremap <M-a> å
+
+" Use deoplete (AutoComplete for NeoVim)
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+endif
