@@ -24,6 +24,7 @@ Plug 'jreybert/vimagit'                                           " Modal git ed
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
 Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
+Plug 'majutsushi/tagbar'                                          " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
 Plug 'mhinz/vim-startify' 										  " Start screen for vim
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
@@ -282,3 +283,9 @@ endfunction
 function! MyFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
+" Open Tagbar CTags with <F8>
+nmap <F8> :TagbarToggle<CR>
+
+" Always open TagBar in supported files
+autocmd FileType * nested :call tagbar#autoopen(0)
