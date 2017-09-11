@@ -47,3 +47,7 @@ alias nn='nvim .'
 alias v='vim'
 alias vv='vim .'
 alias matlab='cd /Applications/MATLAB_R2016a.app/bin; ./matlab -nodesktop -nosplash'
+
+
+# UNIX aliases
+alias ls='colorls'

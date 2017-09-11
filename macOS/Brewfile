@@ -17,6 +17,7 @@ brew 'neovim'                                                                # F
 brew 'r'                                                                     # Rlang interpreter
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
 brew 'ripgrep'                                                               # Faster/easier grep
+brew 'ruby'                                                                  # Ruby language for various gems
 brew 'shellcheck'                                                            # Shellscript linter
 brew 'sqlite3'                                                               # For use with zsh-histdb
 brew 'tmux'                                                                  # Terminal multiplexer
