@@ -25,6 +25,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++
 Plug 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
 Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
 Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
+Plug 'mhinz/vim-startify' 										  " Start screen for vim
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
 Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
 Plug 'scrooloose/nerdtree'                                        " File browsing
