@@ -27,6 +27,7 @@ Plug 'ludovicchabant/vim-gutentags'                               " Automaticall
 Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
 Plug 'mhinz/vim-startify' 										  " Start screen for vim
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
+Plug 'neomake/neomake'                                            " Asynchronous linting and compiling
 Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
 Plug 'scrooloose/nerdtree'                                        " File browsing
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete for NeoVim
@@ -271,3 +272,6 @@ inoremap <M-a> å
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 endif
+
+" Run Neomake every time the current file is saved
+autocmd! BufWritePost * Neomake
