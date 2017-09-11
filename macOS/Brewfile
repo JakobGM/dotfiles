@@ -18,6 +18,7 @@ brew 'r'                                                                     # R
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
 brew 'ripgrep'                                                               # Faster/easier grep
 brew 'shellcheck'                                                            # Shellscript linter
+brew 'sqlite3'                                                               # For use with zsh-histdb
 brew 'tmux'                                                                  # Terminal multiplexer
 brew 'tree'                                                                  # Quick overview of file hierarchy
 brew 'unrar'                                                                 # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669

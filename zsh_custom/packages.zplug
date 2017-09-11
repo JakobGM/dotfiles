@@ -36,3 +36,6 @@ zplug "themes/agnoster", from:oh-my-zsh, as:theme
 
 # Fuzzy search based cd tool
 zplug "b4b4r07/enhancd", use:init.sh
+
+# Store ZSH history in a SQLite3 database
+zplug "larkery/zsh-histdb", use:sqlite-history.zsh
