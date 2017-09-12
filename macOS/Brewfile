@@ -2,8 +2,12 @@
 
 cask_args appdir: '/Applications'
 
+tap 'caskroom/cask'
 tap 'homebrew/bundle'
+tap 'homebrew/science'
 
+brew 'Caskroom/cask/xquartz'                                                 # Dependency for Rlang
+brew 'brew-cask'                                                             # For installing MacOS GUI applications with "brew cask install X"
 brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
 brew 'coreutils'                                                             # Lot's of important terminal tools
@@ -14,7 +18,7 @@ brew 'git'                                                                   # V
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'                                                          # Mosh: the mobile shell
 brew 'neovim'                                                                # Fork of vim, invoked with nvim
-brew 'r'                                                                     # Rlang interpreter
+brew 'r', args: ['with-openblas']                                            # Rlang interpreter
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
 brew 'ripgrep'                                                               # Faster/easier grep
 brew 'ruby'                                                                  # Ruby language for various gems
@@ -29,31 +33,25 @@ brew 'wget'                                                                  # R
 cask '1password'
 cask 'anaconda'
 cask 'appcleaner'
-cask 'atom'
-cask 'docker'
 cask 'dropbox'
-cask 'evernote'
 cask 'flux'
 cask 'fzf'
-cask 'goofy'
 cask 'google-chrome'
 cask 'google-drive'
 cask 'iterm2'
+cask 'java'
 cask 'mactex'
 cask 'messenger'
 cask 'ngrok'
 cask 'notational-velocity'
 cask 'numi'
-cask 'nylas-n1'
 cask 'omnifocus'
 cask 'omnifocus-clip-o-tron'
 cask 'programmer-dvorak'
-cask 'pycharm'
 cask 'qbserve'
 cask 'r-app'
 cask 'rescuetime'
 cask 'rstudio'
-cask 'selfcontrol'
 cask 'sizeup'
 cask 'slack'
 cask 'spotify'
@@ -62,6 +60,5 @@ cask 'time-out'
 cask 'toggldesktop'
 cask 'transmission'
 cask 'visual-studio-code'
-cask 'vivaldi'
 cask 'vlc'
 cask 'zest'
