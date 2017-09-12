@@ -38,6 +38,7 @@ Plug 'tpope/vim-fugitive'                                         " Git plugin w
 Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
 Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
 Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
+Plug 'w0rp/ale', { 'for': 'r' }                                   " Neomake does not support Lintr
 
 call plug#end()
 
