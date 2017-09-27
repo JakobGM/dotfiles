@@ -28,7 +28,7 @@ Plug 'majutsushi/tagbar'                                          " Browse/displ
 Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
 Plug 'mhinz/vim-startify' 										  " Start screen for vim
 Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
-Plug 'neomake/neomake'                                            " Asynchronous linting and compiling
+Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }       " Asynchronous linting and compiling
 Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
 Plug 'ryanoasis/vim-devicons'                                     " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                        " File browsing
@@ -267,7 +267,9 @@ if has('nvim')
 endif
 
 " Run Neomake every time the current file is saved
-autocmd! BufWritePost * Neomake
+if exists(":Neomake")
+    autocmd! BufWritePost * Neomake
+endif
 
 " Settings for vim-devicons for lightline
 let g:lightline = {
