@@ -3,6 +3,7 @@
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
+tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/science'
 
@@ -48,6 +49,7 @@ cask 'notational-velocity'
 cask 'numi'
 cask 'omnifocus'
 cask 'omnifocus-clip-o-tron'
+cask 'font-firacode-nerd-font'                                                     # Superpatched version of the FiraCode font (powerline, etc.)
 cask 'programmer-dvorak'
 cask 'qbserve'
 cask 'r-app'
