@@ -19,3 +19,6 @@ home/.vim/bundle/*
 # Ignore superflous .config files, as a lot of it is automatically generated boilderplate
 # These files need to be added with the -f flag when using `git add`
 home/.config/*
+
+# Ignore vim session files
+Session.vim
