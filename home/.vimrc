@@ -164,9 +164,11 @@ map <F5>    :ImportName<CR>
 
 " Some experimenting with latency
 set norelativenumber
-set nocursorline
 set ttyfast
 set lazyredraw
+
+" Costy settings
+set cursorline
 
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
