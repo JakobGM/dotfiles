@@ -7,11 +7,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'                                     " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                     " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                         " Autoclose html tags
-Plug 'blueshirts/darcula'                                         " Darcula color scheme
 Plug 'chrisbra/Recover.vim'                                       " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plug 'christoomey/vim-tmux-navigator'                             " Navigate between tmux and vim with <C>+jkhl
 Plug 'danro/rename.vim'                                           " Enables :rename <new_name>
-Plug 'davidhalter/jedi-vim'                                       " Autocompletion for python
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }                  " Autocompletion for python
 Plug 'editorconfig/editorconfig-vim'                              " Respect .editorconfig configurations
 Plug 'edkolev/tmuxline.vim'                                       " Colortheme for tmux powerline, using vim colorschemes
 Plug 'ervandew/supertab'                                          " Use <Tab> for autocompletion
@@ -39,6 +38,7 @@ Plug 'tpope/vim-obsession'                                        " Record/save 
 Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
 Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
 Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
+Plug 'wincent/scalpel'                                            " Use :Scalpel to rename variables
 Plug 'w0rp/ale', { 'for': 'r' }                                   " Neomake does not support Lintr
 
 call plug#end()
