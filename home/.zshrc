@@ -12,6 +12,9 @@ done
 # Install zplug zsh packages to the following path
 export ZPLUG_HOME=$HOME/.zplug
 
+# Cache zplug plugins in order to improve zsh startup time
+export ZPLUG_USE_CACHE=true
+
 # Check if zplug is installed
 if [[ ! -d $ZPLUG_HOME ]]; then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
