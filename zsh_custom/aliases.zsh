@@ -10,6 +10,7 @@ alias kokperm='sudo chmod -R 755 /Users/jakobgm/kokekunster.no/img /Users/jakobg
 alias please='sudo !!'
 alias thor='thorium'
 alias zshconfig='vim $HOME/.zshrc'
+alias man='tldr'
 
 
 # Tmux aliases
