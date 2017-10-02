@@ -33,7 +33,7 @@ export PATH="$PATH:$HOME/.dotfiles/bin"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Setting default username such that it doesn´t always state it in the terminal
-DEFAULT_USER="jakobgm"
+export DEFAULT_USER="jakobgm"
 
 # Use rustgrep for fzf, grep hidden files, but ignore .git folders
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
@@ -41,8 +41,8 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.g
 # Forces you to use aliases
 export YSU_HARDCORE=1
 
-# Setting default username such that it doesn´t always state it in the terminal
-DEFAULT_USER="jakobgm"
-
 # Set which filters that should be used by "enchancd"
 export ENHANCD_FILTER=fzy:fzf
+
+# This variable should point directly to the dotfiles repository root
+export DOTREPO="$HOME/.dotfiles"
