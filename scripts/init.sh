@@ -5,7 +5,7 @@
 
 # OS-specific set-u
 echo "-------------------------------"
-OS=$(uname)
+export OS=$(uname)
 if [ "$OS" = "Linux" ]; then
     sudo apt-get install -y zsh curl
 elif [ "$OS" = "Darwin" ]; then
