@@ -49,6 +49,7 @@ alias v='vim'
 alias vv='vim .'
 alias matlab='cd /Applications/MATLAB_R2016a.app/bin; ./matlab -nodesktop -nosplash'
 alias slack='cd ~/dev/terminal-slack/ && node main.js'
+alias reddit='rtv --enable-media'
 
 
 # UNIX aliases

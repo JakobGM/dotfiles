@@ -13,11 +13,13 @@ brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
 brew 'coreutils'                                                             # Lot's of important terminal tools
 brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
+brew 'feh'                                                                   # For opening images from terminal
 brew 'flake8'                                                                # Python linter for PEP8 standard
 brew 'fzy'                                                                   # Better matching algorithm than fzf
 brew 'git'                                                                   # Version control
 brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
 brew 'mobile-shell'                                                          # Mosh: the mobile shell
+brew 'mpv'                                                                   # For opening gifs/videos from terminal
 brew 'neovim'                                                                # Fork of vim, invoked with nvim
 brew 'r', args: ['with-openblas']                                            # Rlang interpreter
 brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X

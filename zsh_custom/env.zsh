@@ -1,5 +1,5 @@
 # For use with X11 forwarding on remote python interpreterns
-export DISPLAY=localhost:10.0
+# export DISPLAY=localhost:10.0
 
 # pip should only run if there is a virtualenv currently activated
 export PIP_REQUIRE_VIRTUALENV=false  # But there are some global packages that are needed
@@ -46,3 +46,6 @@ export ENHANCD_FILTER=fzy:fzf
 
 # This variable should point directly to the dotfiles repository root
 export DOTREPO="$HOME/.dotfiles"
+
+# How to open MIME-types from terminal
+export MAILCAPS=$DOTREPO/home/.mailcap
