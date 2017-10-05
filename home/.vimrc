@@ -231,8 +231,8 @@ command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-h
 
 
 " Vimagit settings
-nnoremap <leader>g :Magit<CR>
-nnoremap <leader>p :! git push<CR>
+nnoremap <leader>gg :Magit<CR>
+nnoremap <leader>gp :! git push<CR>
 
 " Neovim terminal commands
 if has('nvim')
@@ -298,3 +298,7 @@ autocmd FileType * nested :call tagbar#autoopen(0)
 
 " Do *not* replace _ with -> in R filetype
 let R_assign = 0
+
+" Hunk-add and hunk-revert for chunk staging
+nmap <Leader>ga <Plug>GitGutterStageHunk
+nmap <Leader>gr <Plug>GitGutterUndoHunk
