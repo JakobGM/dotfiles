@@ -308,3 +308,6 @@ nmap <silent><LocalLeader>tf <Esc>:Pytest file<CR>
 nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
 nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
 nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
+
+" Write to file
+nmap <Leader>w <Esc>:w<CR>
