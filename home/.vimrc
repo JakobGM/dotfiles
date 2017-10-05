@@ -4,43 +4,45 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'airblade/vim-gitgutter'                                     " Show git diff in number column
-Plug 'alfredodeza/pytest.vim'                                     " :Pytest class/method/function/file/project
-Plug 'alvan/vim-closetag'                                         " Autoclose html tags
-Plug 'chrisbra/Recover.vim'                                       " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
-Plug 'christoomey/vim-tmux-navigator'                             " Navigate between tmux and vim with <C>+jkhl
-Plug 'danro/rename.vim'                                           " Enables :rename <new_name>
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }                  " Autocompletion for python
-Plug 'editorconfig/editorconfig-vim'                              " Respect .editorconfig configurations
-Plug 'edkolev/tmuxline.vim'                                       " Colortheme for tmux powerline, using vim colorschemes
-Plug 'ervandew/supertab'                                          " Use <Tab> for autocompletion
-Plug 'fooSoft/vim-argwrap'                                        " Wrap function arguments with <leader>a
-Plug 'godlygeek/tabular'                                          " :Tab /<repexp> in order to allign
-Plug 'itchyny/lightline.vim'                                      " Lightweight statusline without slow plugin integrations
-Plug 'jalvesaq/Nvim-R'                                            " Plugin for all R-lang related functionality
-Plug 'jmcantrell/vim-virtualenv'                                  " Detection of python venv for :python and :!python
-Plug 'jreybert/vimagit'                                           " Modal git editing with <leader>g
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file++ searching
-Plug 'junegunn/fzf.vim'                                           " Asynchronous file/tags searcher
-Plug 'ludovicchabant/vim-gutentags'                               " Automatically create ctag files
-Plug 'majutsushi/tagbar'                                          " Browse/display CTags
-Plug 'melonmanchan/vim-tmux-resizer'                              " Resize vim/tmux panes with Alt-hjkl
-Plug 'mhinz/vim-startify' 										  " Start screen for vim
-Plug 'morhetz/gruvbox'                                            " Gruvbox colorscheme
-Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }       " Asynchronous linting and compiling
-Plug 'plasticboy/vim-markdown'                                    " Markdown syntax
-Plug 'ryanoasis/vim-devicons'                                     " For file icons in lots of plugins
-Plug 'scrooloose/nerdtree'                                        " File browsing
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete for NeoVim
-Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
-Plug 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
-Plug 'tpope/vim-obsession'                                        " Record/save editor instances with :Obsess
-Plug 'tpope/vim-repeat'                                           " Add repeat support with '.' for lots of plugins
-Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
-Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
-Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
-Plug 'wincent/scalpel'                                            " Use :Scalpel to rename variables
-Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                          " Neomake does not support Lintr
+Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
+Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
+Plug 'alvan/vim-closetag'                                               " Autoclose html tags
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' } " Language server protocol support for neovim
+Plug 'chrisbra/Recover.vim'                                             " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
+Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
+Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
+" Plug 'davidhalter/jedi-vim', { 'for': 'python' }                        " Autocompletion for python
+Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
+Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
+Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
+Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
+Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
+Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
+Plug 'jalvesaq/Nvim-R'                                                  " Plugin for all R-lang related functionality
+Plug 'jmcantrell/vim-virtualenv'                                        " Detection of python venv for :python and :!python
+Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
+Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
+Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
+Plug 'majutsushi/tagbar'                                                " Browse/display CTags
+Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
+Plug 'mhinz/vim-startify'                                               " Start screen for vim
+Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
+Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }             " Asynchronous linting and compiling
+Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
+Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
+Plug 'scrooloose/nerdtree'                                              " File browsing
+Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " AutoComplete for NeoVim
+Plug 'Shougo/echodoc.vim'                                               " Showing function signature and inline doc
+Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
+Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
+Plug 'tpope/vim-obsession'                                              " Record/save editor instances with :Obsess
+Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
+Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
+Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
+Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
+Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
+Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
 
 call plug#end()
 
@@ -93,7 +95,9 @@ au BufNewFile,BufRead *.py
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
-    \ set colorcolumn=80
+    \ set colorcolumn=80 |
+    \ set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
 
 " Proper indentation for Web development
 au BufNewFile,BufRead *.js, *.html, *.css
@@ -312,3 +316,20 @@ nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
 
 " Write to file
 nmap <Leader>w <Esc>:w<CR>
+
+"" Language server protocol settings
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'python' : ['pyls']
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> <LocalLeader>K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <LocalLeader>d :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>

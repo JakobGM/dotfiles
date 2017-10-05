@@ -1,2 +1,2 @@
-jedi
 neovim
+python-language-server
