@@ -300,14 +300,8 @@ let R_assign = 0
 nmap <Leader>ga <Plug>GitGutterStageHunk
 nmap <Leader>gr <Plug>GitGutterUndoHunk
 
-" Autosource vimrc file on write
-augroup vimrc
-  autocmd!
-  autocmd FileType * echom 1234  
-augroup END
-
 " Pytest mappings
-nmap <silent><Localleader>tf <Esc>:Pytest file<CR>
-nmap <silent><Localleader>tc <Esc>:Pytest class<CR>
-nmap <silent><Localleader>tm <Esc>Pytest method<CR>
-nmap <silent><Localleader>tp <Esc>Pytest project<CR>
+nmap <silent><LocalLeader>tf <Esc>:Pytest file<CR>
+nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
+nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
+nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
