@@ -308,3 +308,9 @@ augroup vimrc
   autocmd!
   autocmd FileType * echom 1234  
 augroup END
+
+" Pytest mappings
+nmap <silent><Localleader>tf <Esc>:Pytest file<CR>
+nmap <silent><Localleader>tc <Esc>:Pytest class<CR>
+nmap <silent><Localleader>tm <Esc>Pytest method<CR>
+nmap <silent><Localleader>tp <Esc>Pytest project<CR>
