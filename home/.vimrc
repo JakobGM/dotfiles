@@ -35,6 +35,7 @@ Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }     " AutoComplete
 Plug 'tpope/vim-commentary'                                       " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                         " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-obsession'                                        " Record/save editor instances with :Obsess
+Plug 'tpope/vim-repeat'                                           " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                         " Sensible vim defaults
 Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
 Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
