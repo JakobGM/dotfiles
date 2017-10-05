@@ -159,9 +159,6 @@ let g:limelight_conceal_ctermfg = 240
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
-" Keybinding for python imports
-map <F5>    :ImportName<CR>
-
 " Some experimenting with latency
 set norelativenumber
 set ttyfast
