@@ -81,6 +81,9 @@ set showcmd
 " <Leader> is set to space
 :let mapleader=" "
 
+" And use "," as the local leader key
+let maplocalleader = ","
+
 " Proper indentation for python files
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
