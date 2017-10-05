@@ -11,6 +11,7 @@ brew 'Caskroom/cask/xquartz'                                                 # D
 brew 'brew-cask'                                                             # For installing MacOS GUI applications with "brew cask install X"
 brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
+brew 'ghi'                                                                   # Manage GitHub issues with ghi
 brew 'coreutils'                                                             # Lot's of important terminal tools
 brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
 brew 'feh'                                                                   # For opening images from terminal

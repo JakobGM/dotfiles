@@ -19,7 +19,7 @@ export LANG=en_US.UTF-8
 export PATH=/usr/local/anaconda3/bin:"$PATH"
 
 # Set editor used by default by other programs, for instance tmuxinator
-export EDITOR=vim
+export EDITOR=nvim
 
 # Add user binaries
 export PATH="$PATH:$HOME/.dotfiles/bin"
