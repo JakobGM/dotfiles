@@ -302,3 +302,9 @@ let R_assign = 0
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk
 nmap <Leader>gr <Plug>GitGutterUndoHunk
+
+" Autosource vimrc file on write
+augroup vimrc
+  autocmd!
+  autocmd FileType * echom 1234  
+augroup END
