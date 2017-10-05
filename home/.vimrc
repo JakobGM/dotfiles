@@ -39,7 +39,7 @@ Plug 'tpope/vim-sensible'                                         " Sensible vim
 Plug 'tpope/vim-surround'                                         " Adds the surround motion bound to s
 Plug 'vimjas/vim-python-pep8-indent'                              " More PEP8 compliant python indentation
 Plug 'wincent/scalpel'                                            " Use :Scalpel to rename variables
-Plug 'w0rp/ale', { 'for': 'r' }                                   " Neomake does not support Lintr
+Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                          " Neomake does not support Lintr
 
 call plug#end()
 
