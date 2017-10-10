@@ -24,8 +24,6 @@ zplug "plugins/brew", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh # For enhanced vi-like functionality when pressing <Esc>
 
@@ -34,9 +32,6 @@ zplug "plugins/z", from:oh-my-zsh
 
 # Load theme file
 zplug "themes/agnoster", from:oh-my-zsh, as:theme
-
-# Fuzzy search based cd tool
-zplug "b4b4r07/enhancd", use:init.sh
 
 # Store ZSH history in a SQLite3 database
 zplug "larkery/zsh-histdb", use:sqlite-history.zsh
