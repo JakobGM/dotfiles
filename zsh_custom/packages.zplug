@@ -27,6 +27,7 @@ zplug "plugins/docker", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/osx", from:oh-my-zsh
 zplug "plugins/pip", from:oh-my-zsh
+zplug "plugins/vi-mode", from:oh-my-zsh # For enhanced vi-like functionality when pressing <Esc>
 
 # For faster, history based cd'ing using "z" instead
 zplug "plugins/z", from:oh-my-zsh
