@@ -1,5 +1,8 @@
+# Where we have placed the repository with all dotfiles
+export DOTREPO=$HOME/.dotfiles
+
 # Use dotfiles repository for custom zsh files
-ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
+ZSH_CUSTOM=$DOTREPO/zsh_custom
 
 # Source all files in $ZSH_CUSTOM having file extension .zsh
 for file in $ZSH_CUSTOM/*.zsh; do
