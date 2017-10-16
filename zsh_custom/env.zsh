@@ -24,6 +24,9 @@ export EDITOR=nvim
 # Add user binaries
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
+# Add linuxbrew paths [http://linuxbrew.sh/]
+export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+
 # How to invoke the fzf command, especially in fzf.vim
     # --files: List files that would be searched but do not search
     # --no-ignore: Do not respect .gitignore, etc...
