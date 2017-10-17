@@ -30,6 +30,7 @@ Plug 'mhinz/vim-startify'                                               " Start 
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }             " Asynchronous linting and compiling
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
+Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " AutoComplete for NeoVim
