@@ -11,7 +11,6 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' } " Langua
 Plug 'chrisbra/Recover.vim'                                             " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
-" Plug 'davidhalter/jedi-vim', { 'for': 'python' }                        " Autocompletion for python
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
 Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
@@ -23,6 +22,7 @@ Plug 'jmcantrell/vim-virtualenv'                                        " Detect
 Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
+Plug 'justinmk/vim-sneak'                                               " Move to 2 character combinations with sXY, and navigate with ; and ,
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'majutsushi/tagbar'                                                " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
@@ -33,7 +33,7 @@ Plug 'plasticboy/vim-markdown'                                          " Markdo
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " AutoComplete for NeoVim
-Plug 'Shougo/echodoc.vim'                                               " Showing function signature and inline doc
+Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-obsession'                                              " Record/save editor instances with :Obsess
@@ -41,8 +41,8 @@ Plug 'tpope/vim-repeat'                                                 " Add re
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
-Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
 Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
+Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
 
 call plug#end()
 
