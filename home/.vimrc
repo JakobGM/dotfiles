@@ -15,6 +15,7 @@ Plug 'editorconfig/editorconfig-vim'                                    " Respec
 Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
+Plug 'gko/vim-coloresque'                                               " Highlight colors
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'jalvesaq/Nvim-R'                                                  " Plugin for all R-lang related functionality
