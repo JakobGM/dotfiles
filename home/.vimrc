@@ -333,3 +333,8 @@ let g:LanguageClient_autoStart = 1
 nnoremap <silent> <LocalLeader>K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <LocalLeader>d :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>
+
+" Use 256 colors in gui_running mode
+if !has('gui_running')
+  set t_Co=256
+endif
