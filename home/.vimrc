@@ -45,6 +45,8 @@ Plug 'tpope/vim-surround'                                               " Adds t
 Plug 'tweekmonster/braceless.vim'                                       " Binds python indented text objects to P, and jump with [[ [m [M
 Plug 'tweekmonster/django-plus.vim'                                     " Lots of Django related tweaks
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
+Plug 'vim-pandoc/vim-pandoc'                                            " Plugin for pandoc supported document types
+Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Proper syntax highlighting for pandoc rendered documents, e.g. .Rmd files
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
@@ -183,6 +185,7 @@ set cursorline
 
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
+let g:python2_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim2/bin/python'
 
 " Wrap function arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>
