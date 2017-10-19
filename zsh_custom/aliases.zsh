@@ -7,7 +7,6 @@ alias dnsflush='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flus
 
 # Misc aliases
 alias kokperm='sudo chmod -R 755 /Users/jakobgm/kokekunster.no/img /Users/jakobgm/kokekunster.no/arkiv /Users/jakobgm/kokekunster.no/ressurser; sudo chgrp -R _www /Users/jakobgm/kokekunster.no/img /Users/jakobgm/kokekunster.no/arkiv /Users/jakobgm/kokekunster.no/ressurser'
-alias please='sudo !!'
 alias thor='thorium'
 alias zshconfig='vim $HOME/.zshrc'
 alias man='tldr'

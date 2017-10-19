@@ -5,7 +5,7 @@ echo
 if [ ! $HOME/.vim/autoload/plug.vim ]
 then
     echo "Installing VimPlug"
-    sudo mv $HOME/.vim $HOME/.vim.old
+    mv $HOME/.vim $HOME/.vim.old
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
             https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
