@@ -1,9 +1,8 @@
 # Read this link for documentation: https://robots.thoughtbot.com/brewfile-a-gemfile-but-for-homebrew
+tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/science'
 
-brew 'Caskroom/cask/xquartz'                                                 # Dependency for Rlang
-brew 'brew-cask'                                                             # For installing MacOS GUI applications with "brew cask install X"
 brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
 brew 'exa'                                                                   # Use exa as a replacement for ls
