@@ -1,9 +1,4 @@
 # Read this link for documentation: https://robots.thoughtbot.com/brewfile-a-gemfile-but-for-homebrew
-
-cask_args appdir: '/Applications'
-
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
 tap 'homebrew/bundle'
 tap 'homebrew/science'
 
@@ -34,38 +29,3 @@ brew 'tmux'                                                                  # T
 brew 'tree'                                                                  # Quick overview of file hierarchy
 brew 'unrar'                                                                 # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
 brew 'wget'                                                                  # Recursive web content downloader
-
-# Cask
-cask '1password'
-cask 'anaconda'
-cask 'appcleaner'
-cask 'dropbox'
-cask 'flux'
-cask 'fzf'
-cask 'google-chrome'
-cask 'google-drive'
-cask 'iterm2'
-cask 'java'
-cask 'mactex'
-cask 'messenger'
-cask 'ngrok'
-cask 'notational-velocity'
-cask 'numi'
-cask 'omnifocus'
-cask 'omnifocus-clip-o-tron'
-cask 'font-firacode-nerd-font'                                                     # Superpatched version of the FiraCode font (powerline, etc.)
-cask 'programmer-dvorak'
-cask 'qbserve'
-cask 'r-app'
-cask 'rescuetime'
-cask 'rstudio'
-cask 'sizeup'
-cask 'slack'
-cask 'spotify'
-cask 'the_silver_searcher'
-cask 'time-out'
-cask 'toggldesktop'
-cask 'transmission'
-cask 'visual-studio-code'
-cask 'vlc'
-cask 'zest'
