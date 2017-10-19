@@ -52,3 +52,6 @@ export DOTREPO="$HOME/.dotfiles"
 
 # How to open MIME-types from terminal
 export MAILCAPS=$DOTREPO/home/.mailcap
+
+# Use the dotfiles-repo config folder as XDG Base Directory
+export XDG_CONFIG_HOME=$DOTREPO/config
