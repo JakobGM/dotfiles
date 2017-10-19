@@ -52,5 +52,7 @@ alias slack='cd ~/dev/terminal-slack/ && node main.js'
 alias reddit='rtv --enable-media'
 
 
-# UNIX aliases
-alias ls='colorls'
+# Use exa as a replacement for ls
+alias ls='exa'
+alias la='exa -la'
+alias ll='exa -l'
