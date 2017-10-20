@@ -41,9 +41,6 @@ export DEFAULT_USER="jakobgm"
 # Use rustgrep for fzf, grep hidden files, but ignore .git folders
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-# Forces you to use aliases
-export YSU_HARDCORE=1
-
 # Set which filters that should be used by "enchancd"
 export ENHANCD_FILTER=fzy:fzf
 
