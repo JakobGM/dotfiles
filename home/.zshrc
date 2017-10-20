@@ -20,8 +20,10 @@ export ZPLUG_USE_CACHE=true
 
 # Check if zplug is installed
 if [[ ! -d $ZPLUG_HOME ]]; then
+  echo "Installing zplug..."
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
   source $ZPLUG_HOME/init.zsh && zplug update --self
+  echo "Zplug has been installed"
 fi
 
 # Load zplug packages from the following path
