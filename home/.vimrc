@@ -352,3 +352,6 @@ endif
 " - More intelligent indentation when hitting <Enter>
 " - Enable folding of indentation level
 autocmd FileType python,yaml BracelessEnable +indent +fold
+
+" Make Y yank the rest of the line, as you would expect it to
+nnoremap Y y$
