@@ -4,7 +4,6 @@ tap 'caskroom/cask'
 tap 'caskroom/fonts'
 
 cask '1password'
-cask 'anaconda'
 cask 'appcleaner'
 cask 'dropbox'
 cask 'flux'
