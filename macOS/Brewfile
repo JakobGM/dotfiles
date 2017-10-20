@@ -2,6 +2,7 @@
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/science'
+tap 'buo/cask-upgrade' # Update outdated cask packages with `brew cu`
 
 brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
 brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
