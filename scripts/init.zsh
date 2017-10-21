@@ -29,3 +29,6 @@ source "$DOTREPO/scripts/vim.zsh"
 
 echo $SEPERATOR
 source "$DOTREPO/scripts/ruby.zsh"
+
+echo $SEPERATOR
+source "$DOTREPO/scripts/git.zsh"
