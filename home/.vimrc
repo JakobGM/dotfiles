@@ -355,3 +355,6 @@ autocmd FileType python,yaml BracelessEnable +indent +fold
 
 " Make Y yank the rest of the line, as you would expect it to
 nnoremap Y y$
+
+" Instert a python debug breakpoint
+nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
