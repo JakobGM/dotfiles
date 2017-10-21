@@ -358,3 +358,6 @@ nnoremap Y y$
 
 " Instert a python debug breakpoint
 nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
+
+" Write to file
+nnoremap <Leader>w :w<CR>
