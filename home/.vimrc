@@ -323,7 +323,7 @@ let R_assign = 0
 
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <Leader>gr <Plug>GitGutterUndoHunk
+nmap <Leader>gu <Plug>GitGutterUndoHunk
 
 " Pytest mappings
 nmap <silent><LocalLeader>tf <Esc>:Pytest file<CR>
