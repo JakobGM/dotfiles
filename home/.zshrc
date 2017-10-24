@@ -49,9 +49,12 @@ zplug load
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd histdb-update-outcome
 
-# Sync the history database on every exit
 function zshexit() {
+    # Sync the history database on every exit
     histdb-sync
+
+    # Deactivate venv on exit
+    [ "$VIRTUAL_ENV" ] && deactivate
 }
 
 # This will find the most frequently issued command issued exactly in this directory,

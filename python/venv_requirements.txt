@@ -1,0 +1,4 @@
+neovim
+ipython
+python-language-server
+powerline-status

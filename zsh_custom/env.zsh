@@ -9,7 +9,10 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 export VIRTUALENVWRAPPER_PYTHON=python3
 export VIRTUALENV_PYTHON=python3
-source $DOTREPO/bin/virtualenvwrapper.sh
+export VIRTUALENVWRAPPER_WORKON_CD=1
+export VIRTUALENVWRAPPER_HOOK_DIR=$DOTREPO/python/virtualenvwrapper_hook_dir
+export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
+source "$(which virtualenvwrapper.sh)"
 
 # For python [https://coderwall.com/p/-k_93g/mac-os-x-valueerror-unknown-locale-utf-8-in-python]
 export LC_ALL=en_US.UTF-8
