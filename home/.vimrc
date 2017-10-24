@@ -369,3 +369,6 @@ nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
 
 " Write to file
 nnoremap <Leader>w :w<CR>
+
+" Do not need to show -- Insert --, as lightline handles it already
+set noshowmode
