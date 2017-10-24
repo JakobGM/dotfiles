@@ -1,2 +1,3 @@
 neovim
 python-language-server
+powerline-status
