@@ -22,3 +22,6 @@ config/*
 
 # Ignore vim session files
 Session.vim
+
+# Ignora command history for IPython
+home/.ipython/profile_default/history.sqlite
