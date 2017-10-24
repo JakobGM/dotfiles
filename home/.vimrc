@@ -34,7 +34,6 @@ Plug 'plasticboy/vim-markdown'                                          " Markdo
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
-Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           " AutoComplete for NeoVim
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
@@ -51,6 +50,15 @@ Plug 'vimjas/vim-python-pep8-indent'                                    " More P
 Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
+
+" Deoplete completion engine needs additional support plugins when not using NeoVim
+if has('nvim')
+  Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 call plug#end()
 
