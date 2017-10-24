@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-echo "\nSymlinking all dotfiles"
+echo "\nSymlinking all dotfiles\n"
 
 # Glob hidden files
 setopt glob_dots
@@ -8,9 +8,7 @@ setopt glob_dots
 # Symlink all home directory dotfiles
 ln -svf $DOTREPO/home/* $HOME
 
-# Symlink all ZSH_CUSTOM files
-ln -svf $DOTREPO/zsh_custom/* $HOME/.oh-my-zsh/custom
-
+echo
 # This only matches when there exists a symlink already, which also
 # points to the correct folder in the dotfile repo. NB! Not POSIX compliant
 # See: https://unix.stackexchange.com/questions/192294/
