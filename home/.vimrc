@@ -10,6 +10,7 @@ Plug 'alvan/vim-closetag'                                               " Autocl
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' } " Language server protocol support for neovim
 Plug 'chrisbra/Recover.vim'                                             " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
+Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
 Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
@@ -43,9 +44,9 @@ Plug 'tpope/vim-sensible'                                               " Sensib
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 Plug 'tweekmonster/braceless.vim'                                       " Binds python indented text objects to P, and jump with [[ [m [M
 Plug 'tweekmonster/django-plus.vim'                                     " Lots of Django related tweaks
-Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vim-pandoc/vim-pandoc'                                            " Plugin for pandoc supported document types
 Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Proper syntax highlighting for pandoc rendered documents, e.g. .Rmd files
+Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
