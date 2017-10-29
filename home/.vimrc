@@ -4,11 +4,11 @@ filetype off                  " required
 
 call plug#begin('~/.vim/plugged')
 
+Plug '907th/vim-auto-save'                                              " Autosave on LeaveInsert and Normal mode changes
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' } " Language server protocol support for neovim
-Plug 'chrisbra/Recover.vim'                                             " Better handling of swapfiles [https://github.com/chrisbra/Recover.vim]
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
@@ -373,3 +373,20 @@ nnoremap <Leader>w :w<CR>
 
 " Do not need to show -- Insert --, as lightline handles it already
 set noshowmode
+
+" [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
+" Enable autosave plugin
+let g:auto_save = 1
+
+" Only save in Normal mode periodically. If the value is changed to '1',
+" then changes are saved when you are in Insert mode too, as you type, but
+" I would say prefer not save in Insert mode
+let g:auto_save_in_insert_mode = 0
+
+" Silently autosave. If you disable this option by changing value to '0',
+" then in the vim status, it will display '(AutoSaved at <current time>)' all
+" the time, which might get annoying
+let g:auto_save_silent = 1
+
+" And now turn Vim swapfile off
+set noswapfile
