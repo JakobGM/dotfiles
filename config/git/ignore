@@ -33,6 +33,8 @@ Temporary Items
 .ropeproject/ 
 tags
 *.tmp
+home/.vim/undodir/*
+home/.vim/plugged/*
 
 
 
