@@ -344,6 +344,9 @@ nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
 " Write to file
 nmap <Leader>w <Esc>:w<CR>
 
+" Quit file
+nmap <Leader>q <Esc>:q<CR>
+
 "" Language server protocol settings
 " Required for operations modifying multiple buffers like rename.
 set hidden
