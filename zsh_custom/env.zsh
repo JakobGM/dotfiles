@@ -52,3 +52,6 @@ export MAILCAPS=$DOTREPO/home/.mailcap
 
 # Use the dotfiles-repo config folder as XDG Base Directory
 export XDG_CONFIG_HOME=$DOTREPO/config
+
+# Use the default browser to open urls from terminal
+export BROWSER=open

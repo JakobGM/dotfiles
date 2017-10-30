@@ -393,3 +393,22 @@ autocmd FileType magit let g:auto_save = 0
 
 " And now turn Vim swapfile off
 set noswapfile
+
+" Keybinding for visiting the GitHub page of the plugin defined on the current line
+autocmd FileType vim nnoremap <silent> gp :call OpenPluginHomepage()<CR>
+
+function! OpenPluginHomepage()
+  " Get line under cursor
+  let line = getline(".")
+
+  " Matches for instance Plug 'tpope/surround' -> tpope/surround
+  " Greedy match in order to not capture trailing comments
+  let plugin_name = '\w\+ \([''"]\)\(.\{-}\)\1'
+  let repository = matchlist(line, plugin_name)[2]
+
+  " Open the corresponding GitHub homepage with $BROWSER
+  " You need to set the BROWSER environment variable in order for this to work
+  " For MacOS, you can set the following for opening it in your default
+  " browser: 'export BROWSER=open'
+  silent exec "!$BROWSER https://github.com/".repository
+endfunction
