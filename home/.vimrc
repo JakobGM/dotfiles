@@ -376,7 +376,8 @@ set noshowmode
 
 " [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
 " Enable autosave plugin
-let g:auto_save = 1
+let autosave_blacklist = ['magit']
+autocmd FileType * if index(autosave_blacklist, &ft) < 0 | let g:auto_save = 1
 
 " Only save in Normal mode periodically. If the value is changed to '1',
 " then changes are saved when you are in Insert mode too, as you type, but
