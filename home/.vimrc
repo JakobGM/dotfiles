@@ -376,8 +376,7 @@ set noshowmode
 
 " [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
 " Enable autosave plugin
-let autosave_blacklist = ['magit']
-autocmd FileType * if index(autosave_blacklist, &ft) < 0 | let g:auto_save = 1
+let g:auto_save = 1
 
 " Only save in Normal mode periodically. If the value is changed to '1',
 " then changes are saved when you are in Insert mode too, as you type, but
@@ -388,6 +387,9 @@ let g:auto_save_in_insert_mode = 0
 " then in the vim status, it will display '(AutoSaved at <current time>)' all
 " the time, which might get annoying
 let g:auto_save_silent = 1
+
+" But disable autosave in Magit buffer, as that makes things difficult in commit mode
+autocmd FileType magit let g:auto_save = 0
 
 " And now turn Vim swapfile off
 set noswapfile
