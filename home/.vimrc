@@ -424,3 +424,12 @@ function! OpenPluginHomepage()
   " browser: 'export BROWSER=open'
   silent exec "!$BROWSER https://github.com/".repository
 endfunction
+
+" Hide cursorline in inactive window 
+augroup CrossHair
+  au!
+  au VimEnter * setlocal cursorline
+  au WinEnter * setlocal cursorline
+  au BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup end
