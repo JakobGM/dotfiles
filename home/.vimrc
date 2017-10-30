@@ -37,6 +37,7 @@ Plug 'ryanoasis/vim-devicons'                                           " For fi
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shinchu/lightline-gruvbox.vim'                                    " Gruvbox theme for the lightline statusline
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
+Plug 'takac/vim-hardtime'                                               " Prevent use of hjkl and other antipatterns
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-obsession'                                              " Record/save editor instances with :Obsess
@@ -433,3 +434,6 @@ augroup CrossHair
   au BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup end
+
+" Prevent vim antipatterns
+let g:hardtime_default_on = 1
