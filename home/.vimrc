@@ -35,6 +35,7 @@ Plug 'plasticboy/vim-markdown'                                          " Markdo
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
+Plug 'shinchu/lightline-gruvbox.vim'                                    " Gruvbox theme for the lightline statusline
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
@@ -75,6 +76,30 @@ call plug#end()
 "  scrolloff=1                          -  Always show at least one line above/below the cursor
 "  load matchit.vim                     -  Jump between matching tags with %
 "  backspace=2                          -  Delete over newlines, etc.
+
+" Lightline settings should be placed before setting the colorscheme
+" Settings for vim-devicons for lightline
+let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filetype': 'MyFiletype',
+      \   'fileformat': 'MyFileformat',
+      \   'gitbranch': 'fugitive#head'
+      \ }
+      \ }
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+endfunction
+
 
 "" Settings from 'A good .vimrc'
 " Use colorscheme used in pycharm [https://github.com/blueshirts/darcula]
@@ -296,22 +321,6 @@ endif
 if has('neomake')
   autocmd! BufWritePost * Neomake
 endif
-
-" Settings for vim-devicons for lightline
-let g:lightline = {
-      \ 'component_function': {
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \ }
-      \ }
-
-function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
 
 " Open Tagbar CTags with <F8>
 nmap <F8> :TagbarToggle<CR>
