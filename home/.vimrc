@@ -18,6 +18,7 @@ Plug 'ervandew/supertab'                                                " Use <T
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'gko/vim-coloresque'                                               " Highlight colors
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
+Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'jalvesaq/Nvim-R'                                                  " Plugin for all R-lang related functionality
 Plug 'jmcantrell/vim-virtualenv'                                        " Detection of python venv for :python and :!python
@@ -31,6 +32,7 @@ Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize
 Plug 'mhinz/vim-startify'                                               " Start screen for vim
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }             " Asynchronous linting and compiling
+Plug 'osyo-manga/vim-anzu'                                              " Display search position like (2/10) for n/N commands
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
@@ -84,12 +86,13 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified', 'search_status' ] ]
       \ },
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
-      \   'gitbranch': 'fugitive#head'
+      \   'gitbranch': 'fugitive#head',
+	  \   'search_status': 'anzu#search_status',
       \ }
       \ }
 
@@ -192,8 +195,8 @@ set smartcase
 " Move to first search occurence which matches
 set incsearch
 
-" Do not highlight search matches
-set nohlsearch
+" Highlight search matches
+set hlsearch
 
 " Don't let the filetype plugin insert newlines automatically
 " This can be set on a filetype basis manually instead
@@ -437,3 +440,16 @@ augroup end
 
 " Prevent vim antipatterns
 let g:hardtime_default_on = 1
+
+" is.vim integration with vim-anzu
+map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+
+" vim-anzu keymappings
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+
+" clear status
+nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
