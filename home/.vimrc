@@ -441,6 +441,9 @@ augroup end
 " Prevent vim antipatterns
 let g:hardtime_default_on = 1
 
+" Toggle hardtime with <Leader>ht
+map <Leader>ht :HardTimeToggle<CR>
+
 " is.vim integration with vim-anzu
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
