@@ -25,3 +25,6 @@ Session.vim
 
 # Ignora command history for IPython
 home/.ipython/profile_default/history.sqlite
+
+# Ignore swap file directory for vim
+home/.vim/undodir/*
