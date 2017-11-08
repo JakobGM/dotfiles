@@ -31,7 +31,7 @@ Plug 'majutsushi/tagbar'                                                " Browse
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
 Plug 'mhinz/vim-startify'                                               " Start screen for vim
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
-Plug 'neomake/neomake', { 'for': ['python', 'javascript'] }             " Asynchronous linting and compiling
+Plug 'neomake/neomake', { 'for': ['python', 'javascript', 'sh'] }       " Asynchronous linting and compiling
 Plug 'osyo-manga/vim-anzu'                                              " Display search position like (2/10) for n/N commands
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
