@@ -40,6 +40,7 @@ alias gp='git push'
 alias s='git status'
 alias ss='git status --staged'
 alias pip-sync="pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt"
+alias gpgdisable="git config commit.gpgsign false"
 
 
 # Application aliases
