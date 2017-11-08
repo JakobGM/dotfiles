@@ -327,10 +327,10 @@ if has('neomake')
 endif
 
 " Open Tagbar CTags with <F8>
-nmap <F8> :TagbarToggle<CR>
+nmap <Leader>b :TagbarToggle<CR>
 
 " Always open TagBar in supported files
-autocmd FileType * nested :call tagbar#autoopen(0)
+" autocmd FileType * nested :call tagbar#autoopen(0)
 
 " Do *not* replace _ with -> in R filetype
 let R_assign = 0
