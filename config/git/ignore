@@ -36,7 +36,8 @@ tags
 home/.vim/undodir/*
 home/.vim/plugged/*
 
-
+# Python stuff
+__pycache__
 
 # Created by https://www.gitignore.io/api/r,node,linux,macos,matlab,python,archlinuxpackages
 
