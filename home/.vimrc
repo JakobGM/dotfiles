@@ -459,3 +459,6 @@ nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
 " Press <Leader>bg in order to toggle light/dark background
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Map NERDTree to <Leader>n
+nnoremap <Leader>n :NERDTree<CR>
