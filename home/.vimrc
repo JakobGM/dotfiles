@@ -214,7 +214,7 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " Some experimenting with latency
-set norelativenumber
+" set norelativenumber
 set ttyfast
 set lazyredraw
 
@@ -462,3 +462,7 @@ map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR
 
 " Map NERDTree to <Leader>n
 nnoremap <Leader>n :NERDTree<CR>
+
+" Relative line numbering
+set number
+set relativenumber
