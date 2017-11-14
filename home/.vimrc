@@ -40,6 +40,7 @@ Plug 'scrooloose/nerdtree'                                              " File b
 Plug 'shinchu/lightline-gruvbox.vim'                                    " Gruvbox theme for the lightline statusline
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'takac/vim-hardtime'                                               " Prevent use of hjkl and other antipatterns
+Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-obsession'                                              " Record/save editor instances with :Obsess
@@ -95,7 +96,27 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
 	  \   'search_status': 'anzu#search_status',
-      \ }
+      \   'bufferinfo': 'lightline#buffer#bufferinfo',
+      \ },
+      \ 'tabline': {
+      \   'left': [ [ 'bufferinfo' ],
+      \             [ 'separator' ],
+      \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+      \   'right': [ [ 'close' ], ],
+      \ },
+      \ 'component_expand': {
+      \   'buffercurrent': 'lightline#buffer#buffercurrent',
+      \   'bufferbefore': 'lightline#buffer#bufferbefore',
+      \   'bufferafter': 'lightline#buffer#bufferafter',
+      \ },
+      \ 'component_type': {
+      \   'buffercurrent': 'tabsel',
+      \   'bufferbefore': 'raw',
+      \   'bufferafter': 'raw',
+      \ },
+      \ 'component': {
+      \   'separator': '',
+      \ },
       \ }
 
 function! MyFiletype()
@@ -105,6 +126,35 @@ endfunction
 function! MyFileformat()
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
+
+"""" lightline-buffer
+set showtabline=2  " always show tabline
+
+" lightline-buffer ui settings
+" replace these symbols with ascii characters if your environment does not support unicode
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20
 
 
 """ Colors
@@ -154,16 +204,6 @@ set formatoptions-=t
 " And use "," as the local leader key
 let maplocalleader = ","
 
-" Deactivate the use of the arrow keys, forcing the use of <jkhl>
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <up> <nop>
-
 " iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards.
 " Normal meta key mode disables keybinding of <M-whatever>. The solution is binding <M-eoa> to æøå instead.
 inoremap <M-e> æ
@@ -178,6 +218,10 @@ nmap <Leader>q <Esc>:q<CR>
 
 " Make Y yank the rest of the line, as you would expect it to
 nnoremap Y y$
+
+" Remap arrow keys to buffer switching
+nnoremap <Left> :bprev<CR>
+nnoremap <Right> :bnext<CR>
 
 " Press <Leader>bg in order to toggle light/dark background
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
