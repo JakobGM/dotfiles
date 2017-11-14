@@ -257,8 +257,8 @@ nnoremap <silent> <leader>T :BTags<CR>
 " All tags in project
 nnoremap <silent> <leader>t :Tags<CR>
 
-" Command history
-nnoremap <silent> <leader>: :History:<CR>
+" Command
+nnoremap <silent> <leader>: :Commands<CR>
 
 " All git commits
 nnoremap <silent> <leader>gl :Commits<CR>
