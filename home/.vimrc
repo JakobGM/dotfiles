@@ -272,6 +272,9 @@ nnoremap <silent> <leader>/ :Find<CR>
 " Search normal mode mappings
 nnoremap <silent> <leader><Esc> :Maps<CR>
 
+" Search helptags
+nnoremap <silent> <leader>h :Helptags<CR>
+
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
