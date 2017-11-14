@@ -1,4 +1,4 @@
-"" Plugins
+""" Plugins
 set nocompatible              " required (and sane)
 filetype off                  " required
 
@@ -80,6 +80,8 @@ call plug#end()
 "  load matchit.vim                     -  Jump between matching tags with %
 "  backspace=2                          -  Delete over newlines, etc.
 
+""" Statusline
+
 " Lightline settings should be placed before setting the colorscheme
 " Settings for vim-devicons for lightline
 let g:lightline = {
@@ -105,12 +107,21 @@ function! MyFileformat()
 endfunction
 
 
-"" Settings from 'A good .vimrc'
-" Use colorscheme used in pycharm [https://github.com/blueshirts/darcula]
-" or Solarized Dark (or Light) [https://github.com/altercation/vim-colors-solarized]
-" colorscheme darcula
+""" Colors
+
 colorscheme gruvbox
 set background=dark
+
+" Use 256 colors in gui_running mode
+if !has('gui_running')
+  set t_Co=256
+endif
+
+" Make sure that 256 colors are used
+set termguicolors
+
+
+""" Formatting
 
 " One tab in a file is shown as 4 spaces
 set tabstop=4
@@ -124,14 +135,73 @@ set shiftwidth=4
 " Tab is replaced by the spaces specified as above
 set expandtab
 
-" Show command in bottom bar
-set showcmd
+" When vim smartwraps overflowing text, the text on the new line is indented properly
+set breakindent
+
+" Don't let the filetype plugin insert newlines automatically
+" This can be set on a filetype basis manually instead
+set textwidth=0 wrapmargin=0
+
+" Do not let vim force line breaks when exceeding textwidth in insert mode
+set formatoptions-=t
+
+
+""" Keybindings
 
 " <Leader> is set to space
 :let mapleader=" "
 
 " And use "," as the local leader key
 let maplocalleader = ","
+
+" Deactivate the use of the arrow keys, forcing the use of <jkhl>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+inoremap <up> <nop>
+
+" iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards.
+" Normal meta key mode disables keybinding of <M-whatever>. The solution is binding <M-eoa> to æøå instead.
+inoremap <M-e> æ
+inoremap <M-o> ø
+inoremap <M-a> å
+
+" Write to file
+nmap <Leader>w <Esc>:w<CR>
+
+" Quit file
+nmap <Leader>q <Esc>:q<CR>
+
+" Make Y yank the rest of the line, as you would expect it to
+nnoremap Y y$
+
+" Press <Leader>bg in order to toggle light/dark background
+map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+
+" Keybinding for visiting the GitHub page of the plugin defined on the current line
+autocmd FileType vim nnoremap <silent> gp :call OpenPluginHomepage()<CR>
+function! OpenPluginHomepage()
+  " Get line under cursor
+  let line = getline(".")
+
+  " Matches for instance Plug 'tpope/surround' -> tpope/surround
+  " Greedy match in order to not capture trailing comments
+  let plugin_name = '\w\+ \([''"]\)\(.\{-}\)\1'
+  let repository = matchlist(line, plugin_name)[2]
+
+  " Open the corresponding GitHub homepage with $BROWSER
+  " You need to set the BROWSER environment variable in order for this to work
+  " For MacOS, you can set the following for opening it in your default
+  " browser: 'export BROWSER=open'
+  silent exec "!$BROWSER https://github.com/".repository
+endfunction
+
+
+""" Python
 
 " Proper indentation for python files
 au BufNewFile,BufRead *.py
@@ -160,31 +230,43 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 " Enable python highlighting
 let python_highlight_all=1
 
-" Hide .pyc files in nerdtree
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" Python path for current python project, used with Jedi-vim
+let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
+let g:python2_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim2/bin/python'
 
-" Open nerdtree with F6
-map <F6> :NERDTree<CR>
+" Instert a python debug breakpoint
+nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
 
-" When vim smartwraps overflowing text, the text on the new line is indented
-" properly
-set breakindent
 
-" Show hidden files in NERDTree
-let NERDTreeShowHidden=1
-
-" Deactivate the use of the arrow keys, forcing the use of <jkhl>
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-inoremap <up> <nop>
+""" Visual
 
 " Start scrolling when 3 lines from bottom of screen
 set scrolloff=3
+
+" Do not need to show -- Insert --, as lightline handles it already
+set noshowmode
+
+" Relative line numbering
+set number
+set relativenumber
+
+" Hide cursorline in inactive window 
+augroup CrossHair
+  au!
+  au VimEnter * setlocal cursorline
+  au WinEnter * setlocal cursorline
+  au BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup end
+
+" Show command in bottom bar
+set showcmd
+
+" Highlight current line
+set cursorline
+
+
+""" Searching
 
 " When searching ignore case
 set ignorecase            
@@ -198,38 +280,14 @@ set incsearch
 " Highlight search matches
 set hlsearch
 
-" Don't let the filetype plugin insert newlines automatically
-" This can be set on a filetype basis manually instead
-set textwidth=0 wrapmargin=0
 
-" Do not let vim force line breaks when exceeding textwidth in insert mode
-set formatoptions-=t
-
-" Need to set this in order to make :Limelight work with Darcula colorscheme
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Automatically enter :Limelight mode in Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+""" Performance
 
 " Some experimenting with latency
-" set norelativenumber
 set ttyfast
 set lazyredraw
 
-" Costy settings
-set cursorline
-
-" Python path for current python project, used with Jedi-vim
-let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
-let g:python2_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim2/bin/python'
-
-" Wrap function arguments
-nnoremap <silent> <leader>a :ArgWrap<CR>
-
-" Use trailing comma on last argument
-let g:argwrap_tail_comma = 1
+""" Behaviour
 
 " Open new splits to the right and below (feels more intuitive)
 set splitright
@@ -239,7 +297,65 @@ set splitbelow
 set undofile
 set undodir=~/.vim/undodir
 
-" FZF related settings
+" Neovim terminal commands
+if has('nvim')
+    " To map <Esc> to exit terminal-mode:
+    tnoremap <Esc> <C-\><C-n>
+
+    " To simulate |i_CTRL-R| in terminal-mode:
+    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+
+    " Window swithing like vim-tmux-navigator
+    tnoremap <C-h> <C-\><C-N><C-w>h
+    tnoremap <C-j> <C-\><C-N><C-w>j
+    tnoremap <C-k> <C-\><C-N><C-w>k
+    tnoremap <C-l> <C-\><C-N><C-w>l
+endif
+
+" Enable vim/tmux pane resizing with Alt-hjkl
+" let g:tmux_resizer_no_mappings = 0
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+" Turn Vim swapfile off
+set noswapfile
+
+
+""" Plugin settings
+
+"""" NERDTree
+" Hide .pyc files in nerdtree
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+" Open nerdtree with F6
+map <F6> :NERDTree<CR>
+
+" Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+" Map NERDTree to <Leader>n
+nnoremap <Leader>n :NERDTree<CR>
+
+
+"""" Limelight
+" Need to set this in order to make :Limelight work with Darcula colorscheme
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+
+"""" Goyo
+" Automatically enter :Limelight mode in Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+
+"""" ArgWrap
+" Wrap function arguments
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
+" Use trailing comma on last argument
+let g:argwrap_tail_comma = 1
+
+"""" fzf
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -287,57 +403,37 @@ nnoremap <silent> <leader>h :Helptags<CR>
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
-
-" Vimagit settings
+"""" Vimagit
 nnoremap <leader>gg :Magit<CR>
 nnoremap <leader>gp :! git push<CR>
-
-" Neovim terminal commands
-if has('nvim')
-    " To map <Esc> to exit terminal-mode:
-    tnoremap <Esc> <C-\><C-n>
-
-    " To simulate |i_CTRL-R| in terminal-mode:
-    tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-
-    " Window swithing like vim-tmux-navigator
-    tnoremap <C-h> <C-\><C-N><C-w>h
-    tnoremap <C-j> <C-\><C-N><C-w>j
-    tnoremap <C-k> <C-\><C-N><C-w>k
-    tnoremap <C-l> <C-\><C-N><C-w>l
-endif
-
-" Enable vim/tmux pane resizing with Alt-hjkl
-" let g:tmux_resizer_no_mappings = 0
-
-" Make sure that 256 colors are used
-set termguicolors
 
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
 
-" iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards.
-" Normal meta key mode disables keybinding of <M-whatever>. The solution is binding <M-eoa> to æøå instead.
-inoremap <M-e> æ
-inoremap <M-o> ø
-inoremap <M-a> å
+" Disable autosave in Magit buffer, as that makes things difficult in commit mode
+autocmd FileType magit let g:auto_save = 0
 
+
+"""" Deoplete
 " Use deoplete (AutoComplete for NeoVim)
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 endif
 
+"""" Neomake
 " Run Neomake every time the current file is saved
 if has('neomake')
   autocmd! BufWritePost * Neomake
 endif
 
+"""" Tagbar
 " Open Tagbar CTags with <F8>
 nmap <Leader>b :TagbarToggle<CR>
 
 " Always open TagBar in supported files
 " autocmd FileType * nested :call tagbar#autoopen(0)
 
+"""" Nvim-R
 " Do *not* replace _ with -> in R filetype
 let R_assign = 0
 
@@ -351,16 +447,7 @@ nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
 nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
 nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
 
-" Write to file
-nmap <Leader>w <Esc>:w<CR>
-
-" Quit file
-nmap <Leader>q <Esc>:q<CR>
-
-"" Language server protocol settings
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
+"""" LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
@@ -374,28 +461,13 @@ nnoremap <silent> <LocalLeader>K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> <LocalLeader>d :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>
 
-" Use 256 colors in gui_running mode
-if !has('gui_running')
-  set t_Co=256
-endif
-
+"""" Braceless
 " Enable use of the tweekmonster/braceless plugin
 " - More intelligent indentation when hitting <Enter>
 " - Enable folding of indentation level
 autocmd FileType python,yaml BracelessEnable +indent +fold
 
-" Make Y yank the rest of the line, as you would expect it to
-nnoremap Y y$
-
-" Instert a python debug breakpoint
-nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
-
-" Write to file
-nnoremap <Leader>w :w<CR>
-
-" Do not need to show -- Insert --, as lightline handles it already
-set noshowmode
-
+""" Autosave
 " [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
 " Enable autosave plugin
 let g:auto_save = 1
@@ -410,46 +482,14 @@ let g:auto_save_in_insert_mode = 0
 " the time, which might get annoying
 let g:auto_save_silent = 1
 
-" But disable autosave in Magit buffer, as that makes things difficult in commit mode
-autocmd FileType magit let g:auto_save = 0
-
-" And now turn Vim swapfile off
-set noswapfile
-
-" Keybinding for visiting the GitHub page of the plugin defined on the current line
-autocmd FileType vim nnoremap <silent> gp :call OpenPluginHomepage()<CR>
-
-function! OpenPluginHomepage()
-  " Get line under cursor
-  let line = getline(".")
-
-  " Matches for instance Plug 'tpope/surround' -> tpope/surround
-  " Greedy match in order to not capture trailing comments
-  let plugin_name = '\w\+ \([''"]\)\(.\{-}\)\1'
-  let repository = matchlist(line, plugin_name)[2]
-
-  " Open the corresponding GitHub homepage with $BROWSER
-  " You need to set the BROWSER environment variable in order for this to work
-  " For MacOS, you can set the following for opening it in your default
-  " browser: 'export BROWSER=open'
-  silent exec "!$BROWSER https://github.com/".repository
-endfunction
-
-" Hide cursorline in inactive window 
-augroup CrossHair
-  au!
-  au VimEnter * setlocal cursorline
-  au WinEnter * setlocal cursorline
-  au BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup end
-
+"""" HardTime
 " Prevent vim antipatterns
 let g:hardtime_default_on = 1
 
 " Toggle hardtime with <Leader>ht
 map <Leader>ht :HardTimeToggle<CR>
 
+"""" vim-anzu
 " is.vim integration with vim-anzu
 map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
@@ -463,12 +503,8 @@ nmap # <Plug>(anzu-sharp-with-echo)
 " clear status
 nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
-" Press <Leader>bg in order to toggle light/dark background
-map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
-" Map NERDTree to <Leader>n
-nnoremap <Leader>n :NERDTree<CR>
-
-" Relative line numbering
-set number
-set relativenumber
+""" Folding (open every fold with zR)
+"" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
+"" vim:fdm=expr:fdl=0
+"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
