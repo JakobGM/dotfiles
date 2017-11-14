@@ -269,6 +269,9 @@ nnoremap <silent> <leader>Gl :Commits<CR>
 " Grep content of all files
 nnoremap <silent> <leader>/ :Find<CR>
 
+" Search normal mode mappings
+nnoremap <silent> <leader><Esc> :Maps<CR>
+
 " --column: Show column number
 " --line-number: Show line number
 " --no-heading: Do not show file headings in results
