@@ -1,4 +1,4 @@
-" Vundle extension manager settings [https://realpython.com/blog/python/vim-and-python-a-match-made-in-heaven/#vim-extensions]
+"" Plugins
 set nocompatible              " required (and sane)
 filetype off                  " required
 
