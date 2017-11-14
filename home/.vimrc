@@ -37,7 +37,7 @@ Plug 'plasticboy/vim-markdown'                                          " Markdo
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
-Plug 'shinchu/lightline-gruvbox.vim'                                    " Gruvbox theme for the lightline statusline
+Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'takac/vim-hardtime'                                               " Prevent use of hjkl and other antipatterns
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
