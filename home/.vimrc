@@ -557,6 +557,12 @@ nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
 
+"""" echodoc
+" Enable function signature in cmdline
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'signature'
+
+
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
 "" vim:fdm=expr:fdl=0
