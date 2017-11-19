@@ -89,7 +89,7 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified', 'search_status' ] ]
+      \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status' ] ]
       \ },
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
@@ -97,6 +97,7 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
 	  \   'search_status': 'anzu#search_status',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
+      \   'virtualenv': 'virtualenv#statusline',
       \ },
       \ 'tabline': {
       \   'left': [ [ 'bufferinfo' ],
