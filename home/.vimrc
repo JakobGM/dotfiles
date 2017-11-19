@@ -366,9 +366,6 @@ set hidden
 " Turn Vim swapfile off
 set noswapfile
 
-" Do not show information window when autocompling
-set completeopt -= preview
-
 
 """ Plugin settings
 
@@ -470,6 +467,11 @@ endif
 
 " Prevent deoplete from leaving preview windows after completion
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Do not show completion numbers in cmdline
+if has("patch-7.4.314")
+  set shortmess+=c
+endif
 
 """" Neomake
 " Run Neomake every time the current file is saved
