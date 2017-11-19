@@ -366,6 +366,9 @@ set hidden
 " Turn Vim swapfile off
 set noswapfile
 
+" Do not show information window when autocompling
+set completeopt -= preview
+
 
 """ Plugin settings
 
@@ -464,6 +467,9 @@ autocmd FileType magit let g:auto_save = 0
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 endif
+
+" Prevent deoplete from leaving preview windows after completion
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 """" Neomake
 " Run Neomake every time the current file is saved
