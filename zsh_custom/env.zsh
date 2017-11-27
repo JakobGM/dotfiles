@@ -1,3 +1,6 @@
+# The most important env variable of them all
+export PATH=$PATH:/Users/jakobgm/.cargo/bin:/Library/Frameworks/Python.framework/Versions/3.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/X11/bin:/Applications/Postgres.app/Contents/Versions/latest/bin
+
 # For use with X11 forwarding on remote python interpreterns
 # export DISPLAY=localhost:10.0
 

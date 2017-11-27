@@ -54,6 +54,7 @@ alias matlab='cd /Applications/MATLAB_R*.app/bin; ./matlab -nodesktop -nosplash'
 alias slack='cd ~/dev/terminal-slack/ && node main.js'
 alias reddit='rtv --enable-media'
 alias ipython='python3 -m IPython'
+alias kitty='/Applications/kitty.app/Contents/MacOS/kitty --config $XDG_CONFIG_HOME/kitty/kitty.conf'
 
 
 # Use exa as a replacement for ls
