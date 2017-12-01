@@ -539,7 +539,7 @@ augroup END
 let g:lexical#spell = 1
 let g:lexical#thesaurus = ['$XDG_CONFIG_HOME/nvim/thesaurus/mthesaur.txt',]
 let g:lexical#dictionary = ['/usr/share/dict/words',]
-let g:lexical#spellfile = ['~/.vim/spell/en.utf-8.add',]
+let g:lexical#spellfile = ['$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add',]
 
 let g:lexical#spell_key = '<leader>ss'
 let g:lexical#thesaurus_key = '<leader>st'
