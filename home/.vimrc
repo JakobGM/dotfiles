@@ -315,6 +315,9 @@ set cursorline
 hi clear SpellBad
 highlight SpellBad cterm=underline ctermfg=red guifg=red
 
+" Hide fold numbering in left column
+set foldcolumn=0
+
 
 """ Searching
 
