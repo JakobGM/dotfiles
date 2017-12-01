@@ -35,6 +35,7 @@ Plug 'neomake/neomake', { 'for': ['python', 'javascript', 'sh'] }       " Asynch
 Plug 'osyo-manga/vim-anzu'                                              " Display search position like (2/10) for n/N commands
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
+Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
@@ -527,6 +528,22 @@ nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>
 " - More intelligent indentation when hitting <Enter>
 " - Enable folding of indentation level
 autocmd FileType python,yaml BracelessEnable +indent +fold
+
+""" vim-lexical
+
+augroup lexical
+  autocmd!
+  autocmd FileType markdown,mkd,rmd,text call lexical#init()
+augroup END
+
+let g:lexical#spell = 1
+let g:lexical#thesaurus = ['$XDG_CONFIG_HOME/nvim/thesaurus/mthesaur.txt',]
+let g:lexical#dictionary = ['/usr/share/dict/words',]
+let g:lexical#spellfile = ['~/.vim/spell/en.utf-8.add',]
+
+let g:lexical#spell_key = '<leader>ss'
+let g:lexical#thesaurus_key = '<leader>st'
+let g:lexical#dictionary_key = '<leader>sd'
 
 """ Autosave
 " [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
