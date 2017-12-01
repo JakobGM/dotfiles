@@ -310,6 +310,10 @@ set showcmd
 " Highlight current line
 set cursorline
 
+" Highlight spelling mistakes in red
+hi clear SpellBad
+highlight SpellBad cterm=underline ctermfg=red guifg=red
+
 
 """ Searching
 
