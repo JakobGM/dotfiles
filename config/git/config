@@ -24,3 +24,5 @@
     c = clone
     d = diff
     ds = diff --staged
+[gpg]
+    program = gpg

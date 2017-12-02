@@ -58,3 +58,6 @@ export XDG_CONFIG_HOME=$DOTREPO/config
 
 # Use the default browser to open urls from terminal
 export BROWSER=open
+
+# Fix lacking XDG_CONFIG_HOME support for gnupg
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"

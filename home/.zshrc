@@ -13,7 +13,7 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Install zplug zsh packages to the following path
-export ZPLUG_HOME=$HOME/.zplug
+export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug
 
 # Cache zplug plugins in order to improve zsh startup time
 export ZPLUG_USE_CACHE=true
@@ -31,16 +31,6 @@ export ZPLUG_LOADFILE=$HOME/.dotfiles/zsh_custom/packages.zplug
 
 # Source zplug package manager script
 source $ZPLUG_HOME/init.zsh
-
-# Install packages that have not been installed yet
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
-fi
 
 # Then, source plugins and add commands to $PATH
 zplug load

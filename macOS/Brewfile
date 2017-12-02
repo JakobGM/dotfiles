@@ -4,28 +4,31 @@ tap 'homebrew/bundle'
 tap 'homebrew/science'
 tap 'buo/cask-upgrade' # Update outdated cask packages with `brew cu`
 
-brew 'brycekahle/sudolikeaboss/sudolikeaboss'                                # 1Password plugin for iTerm2
-brew 'cloc'                                                                  # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
-brew 'exa'                                                                   # Use exa as a replacement for ls
-brew 'ghi'                                                                   # Manage GitHub issues with ghi
-brew 'coreutils'                                                             # Lot's of important terminal tools
-brew 'diff-so-fancy'                                                         # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
-brew 'feh'                                                                   # For opening images from terminal
-brew 'flake8'                                                                # Python linter for PEP8 standard
-brew 'fzy'                                                                   # Better matching algorithm than fzf
-brew 'git'                                                                   # Version control
-brew 'macvim', args: ['with-override-system-vim', 'env-std', 'with-python3']
-brew 'mobile-shell'                                                          # Mosh: the mobile shell
-brew 'mpv'                                                                   # For opening gifs/videos from terminal
-brew 'neovim'                                                                # Fork of vim, invoked with nvim
-brew 'r', args: ['with-openblas']                                            # Rlang interpreter
-brew 'reattach-to-user-namespace'                                            # Fix issues related to copy pasting in tmux on OS X
-brew 'ripgrep'                                                               # Faster/easier grep
-brew 'ruby'                                                                  # Ruby language for various gems
-brew 'shellcheck'                                                            # Shellscript linter
-brew 'sqlite3'                                                               # For use with zsh-histdb
-brew 'tldr'                                                                  # Example driven documentation of unix commands
-brew 'tmux'                                                                  # Terminal multiplexer
-brew 'tree'                                                                  # Quick overview of file hierarchy
-brew 'unrar'                                                                 # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
-brew 'wget'                                                                  # Recursive web content downloader
+brew 'brycekahle/sudolikeaboss/sudolikeaboss' # 1Password plugin for iTerm2
+brew 'cloc'                                   # Count the lines of code in a code repository [https://github.com/AlDanial/cloc]
+brew 'exa'                                    # Use exa as a replacement for ls
+brew 'ghi'                                    # Manage GitHub issues with ghi
+brew 'coreutils'                              # Lot's of important terminal tools
+brew 'diff-so-fancy'                          # https://github.com/so-fancy/diff-so-fancy/blob/master/readme.md
+brew 'flake8'                                 # Python linter for PEP8 standard
+brew 'fzy'                                    # Better matching algorithm than fzf
+brew 'git'                                    # Version control
+brew 'mobile-shell'                           # Mosh: the mobile shell
+brew 'neovim'                                 # Fork of vim, invoked with nvim
+brew 'r', args: ['with-openblas']             # Rlang interpreter
+brew 'reattach-to-user-namespace'             # Fix issues related to copy pasting in tmux on OS X
+brew 'ripgrep'                                # Faster/easier grep
+brew 'ruby'                                   # Ruby language for various gems
+brew 'shellcheck'                             # Shellscript linter
+brew 'sqlite3'                                # For use with zsh-histdb
+brew 'tldr'                                   # Example driven documentation of unix commands
+brew 'tmux'                                   # Terminal multiplexer
+brew 'tree'                                   # Quick overview of file hierarchy
+brew 'unrar'                                  # http://www.techradar.com/how-to/computing/apple/terminal-101-extracting-rar-files-1305669
+brew 'wget'                                   # Recursive web content downloader
+
+
+# GPG stuff from here: https://gist.github.com/bmhatfield/cc21ec0a3a2df963bffa3c1f884b676b
+brew 'gnupg2'
+brew 'gpg-agent'
+brew 'pinentry-mac'

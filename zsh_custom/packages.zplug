@@ -15,17 +15,9 @@ zplug "zsh-users/zsh-autosuggestions"
 # Highlighting in terminal
 zplug "zsh-users/zsh-syntax-highlighting"
 
-# Fuzzy finder
-zplug "jhawthorn/fzy"
-
 ## Oh-my-zsh plugins
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
-zplug "plugins/brew", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "plugins/docker", from:oh-my-zsh
-zplug "plugins/pip", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh # For enhanced vi-like functionality when pressing <Esc>
 
 # For faster, history based cd'ing using "z" instead
 zplug "plugins/z", from:oh-my-zsh
@@ -35,3 +27,6 @@ zplug "themes/agnoster", from:oh-my-zsh, as:theme
 
 # Store ZSH history in a SQLite3 database
 zplug "larkery/zsh-histdb", use:sqlite-history.zsh
+
+# For gpg signing git commits with keychain support
+zplug "plugins/gpg-agent", from:oh-my-zsh

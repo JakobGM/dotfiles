@@ -20,6 +20,7 @@ Plug 'gko/vim-coloresque'                                               " Highli
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
+Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
 Plug 'jalvesaq/Nvim-R'                                                  " Plugin for all R-lang related functionality
 Plug 'jmcantrell/vim-virtualenv'                                        " Detection of python venv for :python and :!python
 Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
@@ -38,7 +39,6 @@ Plug 'raimondi/delimitMate'                                             " Automa
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
-Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
 Plug 'takac/vim-hardtime'                                               " Prevent use of hjkl and other antipatterns
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
