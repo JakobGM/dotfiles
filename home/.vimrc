@@ -2,7 +2,7 @@
 set nocompatible              " required (and sane)
 filetype off                  " required
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug '907th/vim-auto-save'                                              " Autosave on LeaveInsert and Normal mode changes
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
@@ -33,6 +33,7 @@ Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize
 Plug 'mhinz/vim-startify'                                               " Start screen for vim
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'neomake/neomake', { 'for': ['python', 'javascript', 'sh'] }       " Asynchronous linting and compiling
+Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'osyo-manga/vim-anzu'                                              " Display search position like (2/10) for n/N commands
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.

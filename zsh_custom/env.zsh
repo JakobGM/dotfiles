@@ -61,3 +61,6 @@ export BROWSER=open
 
 # Fix lacking XDG_CONFIG_HOME support for gnupg
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+
+# Use neovim as a manpager
+export MANPAGER="nvim -c 'set ft=neoman' -"
