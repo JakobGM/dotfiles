@@ -22,13 +22,22 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # Set editor used by default by other programs, for instance tmuxinator
-export EDITOR=nvim
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  export VISUAL="nvr -cc tabedit --remote-wait +'set bufhidden=wipe'"
+else
+  export VISUAL="nvim"
+fi
+
+export EDITOR=$VISUAL
 
 # Add user binaries
 export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # Add linuxbrew paths [http://linuxbrew.sh/]
 export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+
+# Add pip --user installed packages
+export PATH=`python3 -c 'import site; print(site.USER_BASE)'`/bin":$PATH"
 
 # How to invoke the fzf command, especially in fzf.vim
     # --files: List files that would be searched but do not search

@@ -378,6 +378,12 @@ set noswapfile
 " Save valid words to file (used with :set spell)
 set spellfile=$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add
 
+" If nvim is opened within :terminal buffer, use existing nvim instance by using neovim-remote
+" See $DOTREPO/python/user_requirements.txt
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
+
 
 
 """ Plugin settings

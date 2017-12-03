@@ -42,9 +42,11 @@ alias pip-sync="\pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt
 alias pc='pip-compile'
 alias ps='pip-sync'
 alias gpgdisable="git config commit.gpgsign false"
+alias gpgenable="git config commit.gpgsign true"
 
 
 # Application aliases
+alias nvim='nvr --remote-wait-silent'
 alias n='nvim'
 alias nn='nvim .'
 alias v='vim'
@@ -60,3 +62,6 @@ alias kitty='/Applications/kitty.app/Contents/MacOS/kitty --config $XDG_CONFIG_H
 alias ls='exa'
 alias la='exa -la'
 alias ll='exa -l'
+
+# Unix aliases
+alias x='exit'
