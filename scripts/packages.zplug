@@ -21,11 +21,12 @@ zplug "plugins/command-not-found", from:oh-my-zsh
 # For faster, history based cd'ing using "z" instead
 zplug "plugins/z", from:oh-my-zsh
 
-# Load theme file
-zplug "themes/agnoster", from:oh-my-zsh, as:theme
-
 # Store ZSH history in a SQLite3 database
 zplug "larkery/zsh-histdb", use:sqlite-history.zsh
 
 # For gpg signing git commits with keychain support
 zplug "plugins/gpg-agent", from:oh-my-zsh
+
+# Load theme file
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme

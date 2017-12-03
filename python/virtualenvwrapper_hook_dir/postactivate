@@ -1,10 +1,10 @@
 #!/bin/zsh
 # This hook is sourced after every virtualenv is activated.
 
-# Show virtualenv on rhs. instead
-PS1="$_OLD_VIRTUAL_PS1"
-_OLD_RPROMPT="$RPROMPT"
-RPROMPT="%{${fg_bold[white]}%}(venv: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%} $RPROMPT"
+# Show virtualenv on rhs. instead (best used with agnoster theme)
+# PS1="$_OLD_VIRTUAL_PS1"
+# _OLD_RPROMPT="$RPROMPT"
+# RPROMPT="%{${fg_bold[white]}%}(venv: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%} $RPROMPT"
 
 # Rehash $PATH programs
 rehash
