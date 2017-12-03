@@ -14,7 +14,7 @@ export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug
 export ZPLUG_USE_CACHE=true
 
 # Load zplug packages from the following path
-export ZPLUG_LOADFILE="$DOTREPO/zsh_custom/packages.zplug"
+export ZPLUG_LOADFILE="$DOTREPO/scripts/packages.zplug"
 
 # Check if zplug is installed
 if [[ ! -d $ZPLUG_HOME ]]; then
@@ -36,10 +36,10 @@ zplug load
 
 # -------- SOURCE CUSTOM ZSH SCRIPTS ---------
 # Use dotfiles repository for custom zsh files
-ZSH_CUSTOM=$DOTREPO/zsh_custom
+AUTOLOAD="$DOTREPO/autoload"
 
-# Source all files in $ZSH_CUSTOM having file extension .zsh
-for file in $ZSH_CUSTOM/*.zsh; do
+# Source all files in $AUTOLOAD having file extension .zsh
+for file in $AUTOLOAD/*.zsh; do
     source "$file"
 done
 
