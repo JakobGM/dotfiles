@@ -1,6 +1,40 @@
+# ---------- SETUP ENVIRONMENT VARIABLES --------------
 # Where we have placed the repository with all dotfiles
 export DOTREPO=$HOME/.dotfiles
 
+source $DOTREPO/scripts/env.zsh
+
+
+
+# --------------- INSTALL ZPLUG ------------------
+# Install zplug zsh packages to the following path
+export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug
+
+# Cache zplug plugins in order to improve zsh startup time
+export ZPLUG_USE_CACHE=true
+
+# Load zplug packages from the following path
+export ZPLUG_LOADFILE="$DOTREPO/zsh_custom/packages.zplug"
+
+# Check if zplug is installed
+if [[ ! -d $ZPLUG_HOME ]]; then
+  echo "Installing zplug..."
+
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  source $ZPLUG_HOME/init.zsh && zplug update --self
+
+  echo "Zplug has been installed"
+fi
+
+# Source zplug package manager script
+source $ZPLUG_HOME/init.zsh
+
+# Then, source plugins and add commands to $PATH
+zplug load
+
+
+
+# -------- SOURCE CUSTOM ZSH SCRIPTS ---------
 # Use dotfiles repository for custom zsh files
 ZSH_CUSTOM=$DOTREPO/zsh_custom
 
@@ -11,51 +45,3 @@ done
 
 # Enable fzf related functionity, such as <C-r>
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Install zplug zsh packages to the following path
-export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug
-
-# Cache zplug plugins in order to improve zsh startup time
-export ZPLUG_USE_CACHE=true
-
-# Check if zplug is installed
-if [[ ! -d $ZPLUG_HOME ]]; then
-  echo "Installing zplug..."
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  source $ZPLUG_HOME/init.zsh && zplug update --self
-  echo "Zplug has been installed"
-fi
-
-# Load zplug packages from the following path
-export ZPLUG_LOADFILE=$HOME/.dotfiles/zsh_custom/packages.zplug
-
-# Source zplug package manager script
-source $ZPLUG_HOME/init.zsh
-
-# Then, source plugins and add commands to $PATH
-zplug load
-
-# Precmd hook in order to get correct timing information for 'zsh-histdb'
-autoload -Uz add-zsh-hook
-add-zsh-hook precmd histdb-update-outcome
-
-function zshexit() {
-    # Sync the history database on every exit
-    histdb-sync
-
-    # Deactivate venv on exit
-    [ "$VIRTUAL_ENV" ] && deactivate
-}
-
-# This will find the most frequently issued command issued exactly in this directory,
-# or if there are no matches it will find the most frequently issued command in any directory.
-_zsh_autosuggest_strategy_histdb_top() {
-    local query="select commands.argv from
-history left join commands on history.command_id = commands.rowid
-left join places on history.place_id = places.rowid
-where commands.argv LIKE '$(sql_escape $1)%'
-group by commands.argv
-order by places.dir != '$(sql_escape $PWD)', count(*) desc limit 1"
-    suggestion=$(_histdb_query "$query")
-}
-ZSH_AUTOSUGGEST_STRATEGY=histdb_top
