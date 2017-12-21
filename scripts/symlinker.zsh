@@ -1,4 +1,5 @@
 #!/bin/zsh
+export DOTREPO=$HOME/.dotfiles
 
 echo "\nSymlinking all dotfiles\n"
 
@@ -24,8 +25,11 @@ else
 
     if [[ $REPLY =~ ^[Yy]$ ]]
     then
-        # Keep backup of old $HOME/.config
-        mv $HOME/.config $HOME/.config.old
+	if [[ -d $HOME/.config ]]
+	then
+		# Keep backup of old $HOME/.config
+		mv $HOME/.config $HOME/.config.old
+	fi
 
         # Symlink .config to dotrepo, as not all applications respect $XDG_CONFIG_HOME
         ln -svf $DOTREPO/config $HOME/.config

@@ -4,8 +4,11 @@ gpip() {
 }
 
 # Use neovim as manpager in zsh
-source $XDG_CONFIG_HOME/nvim/plugged/neoman.vim/scripts/nman.zsh
-
+local NMAN="$XDG_CONFIG_HOME/nvim/plugged/neoman.vim/scripts/nman.zsh"
+if [[ -a $NMAN ]]
+then
+    source $NMAN
+fi
 
 # This will find the most frequently issued command issued exactly in this directory,
 # or if there are no matches it will find the most frequently issued command in any directory.
