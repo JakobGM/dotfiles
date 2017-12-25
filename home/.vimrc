@@ -278,8 +278,8 @@ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 let python_highlight_all=1
 
 " Python path for current python project, used with Jedi-vim
-let g:python3_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim3/bin/python'
-let g:python2_host_prog = '/Users/jakobgm/.virtualenvs/NeoVim2/bin/python'
+let g:python3_host_prog = '~/.virtualenvs/NeoVim3/bin/python'
+let g:python2_host_prog = '~/.virtualenvs/NeoVim2/bin/python'
 
 " Instert a python debug breakpoint
 nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
