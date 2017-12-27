@@ -26,5 +26,8 @@ fi
 # Set programmer-dvorak as the keyboard layout
 setxkbmap dvp
 
+# Swap caps lock and escape key
+setxkbmap -option caps:swapescape
+
 # Start the Xorg instance, with i3 as the TWM
 exec i3
