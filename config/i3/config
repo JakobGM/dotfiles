@@ -202,3 +202,6 @@ exec --no-startup-id albert
 
 # Start polybar, even on restart
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
+
+# Set wallpaper
+exec_always --no-startup-id feh --bg-scale $HOME/.config/wallpapers/main.jpg
