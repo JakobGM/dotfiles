@@ -29,5 +29,8 @@ setxkbmap dvp
 # Swap caps lock and escape key
 setxkbmap -option caps:swapescape
 
+# Key repeat delay / rate in ms
+xset r rate 200 25
+
 # Start the Xorg instance, with i3 as the TWM
 exec i3
