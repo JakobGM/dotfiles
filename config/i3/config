@@ -195,7 +195,7 @@ mode "$mode_gaps_outer" {
 exec --no-startup-id setxkbmap dvp
 
 # For use with albert
-exec --no-startup-id compton
+exec --no-startup-id compton --config $HOME/.config/compton/compton.conf
 
 # Autostart albert, the linux application launcher
 exec --no-startup-id albert
