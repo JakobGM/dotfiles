@@ -9,14 +9,14 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
-background-alt = #444
+background = #282828
+background-alt = #1d2021
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+primary = #d79921
+secondary = #98971a
+alert = #cc241d
 
 [bar/burma]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -50,7 +50,7 @@ font-2 = WunconSiji:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight volume xkeyboard memory cpu battery temperature date powermenu
+modules-right = filesystem xbacklight volume eth xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = left
 tray-padding = 2
@@ -77,10 +77,10 @@ blacklist-0 = num lock
 
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = #689d68
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = #689d68
 
 label-indicator-padding = 2
 label-indicator-margin = 1
@@ -93,7 +93,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#458588}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -171,7 +171,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = #98971a
 label = %percentage:2%%
 
 [module/memory]
@@ -179,7 +179,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = #98971a
 label = %percentage_used%%
 
 [module/wlan]
@@ -206,7 +206,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = 
+interface = eno0
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -232,7 +232,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = #d79921
 
 label = %date% %time%
 
@@ -297,7 +297,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = #98971a
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -318,9 +318,9 @@ expand-right = true
 format-spacing = 1
 
 label-open = 
-label-open-foreground = ${colors.secondary}
+label-open-foreground = #cc241d
 label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-close-foreground = #cc241d
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
