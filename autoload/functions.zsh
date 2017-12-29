@@ -35,3 +35,11 @@ function zshexit() {
     [ "$VIRTUAL_ENV" ] && deactivate
 }
 
+function fixsystemdboot() {
+    # Mount the EFI partition
+    mkdir -p /Volumes/EFI
+    mount /dev/disk0s1 /Volumes/EFI
+
+    # "Bless" the systemd boot loader
+    sudo bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/EFI/systemd/systemd-bootx64.efi --shortform
+}
