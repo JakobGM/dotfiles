@@ -17,6 +17,9 @@ pop-icon-theme-git
 # GTK theme
 pop-gtk-theme-git
 
+# Blurred lock screen with the command `lock`
+i3lock-fancy-git
+
 
 # --- Customisation ---
 # Keyboard layout
