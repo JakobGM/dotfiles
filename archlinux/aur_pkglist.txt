@@ -1,0 +1,17 @@
+# --- GUI ---
+# Tiling window manager
+i3-gaps
+
+# Terminal emulator
+alacritty-git
+
+# Status bar
+polybar
+
+# Font used by polybar
+siji-git
+
+
+# --- Customisation ---
+# Keyboard layout
+programmers-dvorak

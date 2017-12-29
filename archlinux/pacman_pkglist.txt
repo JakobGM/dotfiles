@@ -1,0 +1,88 @@
+# All packages that should be installed on all ArchLinux deployments
+
+# --- Text editing ---
+neovim
+
+
+# --- System stuff ---
+# All the base packages required by ArchLinux
+base
+
+# UEFI boot manager
+refind-efi
+
+# Intel microcode update
+intel-ucode
+
+# For building/compiling new packages
+base-devel
+
+# Video driver
+xf86-video-ati
+
+# Package manager for the AUR
+yaourt
+
+
+# --- Terminal tools ---
+# Shell
+zsh
+
+# Version control
+git
+
+# A "better" directory lister
+exa
+
+# Quick summarizer of terminal commands
+tldr
+
+# A fuzzy finder
+fzf
+
+# A faster version of grep
+ripgrep
+
+# For connecting to servers
+openssh
+
+
+# --- GUI ---
+# Window server (package group)
+xorg
+xorg-server
+
+# Xorg init tool (startx)
+xorg-init
+
+# OpenGL implementation
+mesa
+
+# Compositer (for transparent windows and so on)
+compton
+
+# Tiling window manager
+i3-gaps
+
+# Commonly used font
+ttf-dejavu
+
+# For setting wallpapers
+feh
+
+
+# --- Developer tools ---
+# Newest version of python 3.x.x
+python3
+
+# Python3 package manager
+python-pip
+
+# When building rust applications
+rustup
+
+
+# --- Desktop applications ---
+# Web browsers
+firefox
+qutebrowser
