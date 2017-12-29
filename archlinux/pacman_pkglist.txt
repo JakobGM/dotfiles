@@ -46,6 +46,9 @@ ripgrep
 # For connecting to servers
 openssh
 
+# File explorer
+ranger
+
 
 # --- GUI ---
 # Window server (package group)
@@ -69,6 +72,9 @@ ttf-dejavu
 
 # For setting wallpapers
 feh
+
+# For changing GTK theme
+lxappearance
 
 
 # --- Developer tools ---

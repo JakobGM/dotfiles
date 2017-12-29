@@ -11,6 +11,12 @@ polybar
 # Font used by polybar
 siji-git
 
+# Icon theme
+pop-icon-theme-git
+
+# GTK theme
+pop-gtk-theme-git
+
 
 # --- Customisation ---
 # Keyboard layout
