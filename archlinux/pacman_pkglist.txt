@@ -49,6 +49,9 @@ openssh
 # File explorer
 ranger
 
+# GitHub wrapper for the git client
+hub
+
 
 # --- GUI ---
 # Window server (package group)
