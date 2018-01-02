@@ -4,4 +4,4 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 printf "\nInstalling AUR packages\n"
-yaourt -S --needed --noconfirm $(cat $DIR/aur_pkglist.txt | egrep -v "^\s*(#|$)")
+yaourt -S --needed $(cat $DIR/aur_pkglist.txt | egrep -v "^\s*(#|$)")

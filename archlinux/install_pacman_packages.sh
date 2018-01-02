@@ -4,4 +4,4 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 printf "\nInstalling pacman packages\n"
-sudo pacman -Syu --needed --noconfirm $(cat $DIR/pacman_pkglist.txt | egrep -v "^\s*(#|$)")
+sudo pacman -Syu --needed $(cat $DIR/pacman_pkglist.txt | egrep -v "^\s*(#|$)")
