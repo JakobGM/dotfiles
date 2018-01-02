@@ -65,3 +65,6 @@ alias ll='exa -l'
 
 # Unix aliases
 alias x='exit'
+
+# ArchLinux aliases
+alias ie="i3-msg exit"
