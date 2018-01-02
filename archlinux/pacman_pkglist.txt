@@ -59,7 +59,7 @@ xorg
 xorg-server
 
 # Xorg init tool (startx)
-xorg-init
+xorg-xinit
 
 # OpenGL implementation
 mesa
