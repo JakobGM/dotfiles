@@ -41,7 +41,6 @@ Plug 'reedes/vim-lexical'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
-Plug 'takac/vim-hardtime'                                               " Prevent use of hjkl and other antipatterns
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
@@ -570,12 +569,6 @@ let g:auto_save_in_insert_mode = 0
 " the time, which might get annoying
 let g:auto_save_silent = 1
 
-"""" HardTime
-" Prevent vim antipatterns
-let g:hardtime_default_on = 1
-
-" Toggle hardtime with <Leader>ht
-map <Leader>ht :HardTimeToggle<CR>
 
 """" vim-anzu
 " is.vim integration with vim-anzu
