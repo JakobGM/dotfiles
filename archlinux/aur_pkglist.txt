@@ -24,3 +24,7 @@ i3lock-fancy-git
 # --- Customisation ---
 # Keyboard layout
 programmers-dvorak
+
+
+# --- Applications ---
+keybase-bin

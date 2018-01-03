@@ -43,3 +43,25 @@ function fixsystemdboot() {
     # "Bless" the systemd boot loader
     sudo bless --mount /Volumes/EFI --setBoot --file /Volumes/EFI/EFI/systemd/systemd-bootx64.efi --shortform
 }
+
+function setup_gpg_keys() {
+    # A function to setup GPG keys on a new system
+    local PRIVATE_KEY=/tmp/private.key
+
+    xdg-open "https://keybase.io/jakobgm"
+    vared -p "Have you copied your private PGP key to your system clipboard[Y/n]: " -c REPLY
+
+    if [[ ! $REPLY =~ ^[Yy]$ ]]
+    then
+        return 1
+    fi
+    xclip -o -sel clip > $PRIVATE_KEY
+
+    printf "--- Importing secret key ---\n"
+    gpg --allow-secret-key-import --import $PRIVATE_KEY
+
+    printf "\n--- Importing public key from keybase ---\n"
+    curl -Ls https://keybase.io/jakobgm/pgp_keys.asc | gpg --import
+
+    rm $PRIVATE_KEY
+}
