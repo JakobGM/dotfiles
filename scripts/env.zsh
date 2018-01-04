@@ -85,7 +85,12 @@ export TERMINAL=alacritty
 
 
 # --- Fix lacking XDG Home Directory support ---
+# TMUX
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+
+# iPython / Jupyter notebooks
+export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
 
 # --- System specific environment variables ---
