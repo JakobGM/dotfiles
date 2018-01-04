@@ -83,6 +83,11 @@ export PURE_PROMPT_SYMBOL=`echo "\uf054"`
 # Set default terminal
 export TERMINAL=alacritty
 
+
+# --- Fix lacking XDG Home Directory support ---
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
+
+
 # --- System specific environment variables ---
 local OS=$(uname -o)
 

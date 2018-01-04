@@ -12,6 +12,7 @@ alias zshconfig='vim $HOME/.zshrc'
 
 
 # Tmux aliases
+alias tmux="tmux -f \"$XDG_CONFIG_HOME/tmux/tmux.conf\""
 alias ta='tmux attach -t'
 alias tn='tmux new -s'
 alias tl='tmux ls'

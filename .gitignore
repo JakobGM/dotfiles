@@ -8,7 +8,7 @@
 autoload/local*.zsh
 
 # Ignore installed tmux plugins
-home/.tmux/*
+config/tmux/plugins
 
 # Ignore vim swap files
 *.swp
