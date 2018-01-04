@@ -58,6 +58,9 @@ ranger
 # GitHub wrapper for the git client
 hub
 
+# For PGP encryption and identification
+gnupg
+
 
 # --- GUI ---
 # Window server (package group)

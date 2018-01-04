@@ -66,7 +66,7 @@ export DOTREPO="$HOME/.dotfiles"
 export MAILCAPS=$DOTREPO/home/.mailcap
 
 # Use the dotfiles-repo config folder as XDG Base Directory
-export XDG_CONFIG_HOME=$DOTREPO/config
+export XDG_CONFIG_HOME="$DOTREPO/config"
 
 # Use the default browser to open urls from terminal
 export BROWSER=open
@@ -82,3 +82,11 @@ export PURE_PROMPT_SYMBOL=`echo "\uf054"`
 
 # Set default terminal
 export TERMINAL=alacritty
+
+# --- System specific environment variables ---
+local OS=$(uname -o)
+
+if [[ $OS == "GNU/Linux" ]]
+then
+    export BROWSER=xdg-open
+fi
