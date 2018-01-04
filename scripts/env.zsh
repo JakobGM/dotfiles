@@ -92,6 +92,9 @@ export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 
+# Xorg-server
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+
 
 # --- System specific environment variables ---
 local OS=$(uname -o)

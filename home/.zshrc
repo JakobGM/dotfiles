@@ -51,5 +51,5 @@ done
 # ----------- ARCHLINUX STUFF ---------------
 # If on ArchLinux, start the Xorg instance
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
+  exec xinit
 fi
