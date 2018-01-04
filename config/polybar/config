@@ -50,7 +50,7 @@ font-2 = WunconSiji:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight volume eth xkeyboard memory cpu battery temperature date powermenu
+modules-right = filesystem xbacklight volume wireless-network wired-network xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = left
 tray-padding = 2
@@ -182,9 +182,9 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #98971a
 label = %percentage_used%%
 
-[module/wlan]
+[module/wireless-network]
 type = internal/network
-interface = 
+interface = wlp4s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -204,7 +204,7 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
-[module/eth]
+[module/wired-network]
 type = internal/network
 interface = eno0
 interval = 3.0

@@ -23,6 +23,12 @@ xf86-video-ati
 # Package manager for the AUR
 yaourt
 
+# A network manager to handle wired and wifi connections
+networkmanager
+
+# And a system tray applet
+network-manager-applet
+
 
 # --- Terminal tools ---
 # Shell

@@ -60,6 +60,5 @@ pacman -S fzf ripgrep
 
 yaourt -S polybar siji-git
 
-yourt -S albert
 pacman -S openssh
 pacman -S feh

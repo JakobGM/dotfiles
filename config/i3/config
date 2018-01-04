@@ -206,14 +206,15 @@ exec --no-startup-id setxkbmap dvp
 # For use with albert
 exec --no-startup-id compton --config $HOME/.config/compton/compton.conf
 
-# Autostart albert, the linux application launcher
-exec --no-startup-id albert
-
 # Start polybar, even on restart
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
 
 # Set wallpaper
 exec_always --no-startup-id feh --bg-scale $HOME/.config/wallpapers/main.jpg
+
+# Show the network connection handled by NetworkManager in the system tray
+exec --no-startup-id nm-applet
+
 
 #######
 #THEME#
