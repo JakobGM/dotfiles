@@ -95,6 +95,8 @@ export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
 # Xorg-server
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
+# WakaTime
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
 # --- System specific environment variables ---
 local OS=$(uname -o)
