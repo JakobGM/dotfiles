@@ -85,6 +85,9 @@ feh
 # For changing GTK theme
 lxappearance
 
+# For desktop notifications
+dunst
+
 
 # --- Developer tools ---
 # Newest version of python 3.x.x
