@@ -65,3 +65,31 @@ function setup_gpg_keys() {
 
     rm $PRIVATE_KEY
 }
+
+
+# A command line utility for this dotrepo
+function jgm() {
+
+    case "$1" in
+        ip)
+            # Install pacman package(s)
+            $DOTREPO/archlinux/install_pacman_packages.sh
+            ;;
+        ap)
+            # Add pacman package(s)
+            $EDITOR $DOTREPO/archlinux/pacman_pkglist.txt
+            ;;
+        ia)
+            # Install AUR package(s)
+            $DOTREPO/archlinux/install_aur_packages.sh
+            ;;
+        aa)
+            # Add AUR package(s)
+            $EDITOR $DOTREPO/archlinux/aur_pkglist.txt
+            ;;
+        *)
+            echo "Unrecognized argument $1 for utility $0"
+            exit 1
+            ;;
+    esac
+}
