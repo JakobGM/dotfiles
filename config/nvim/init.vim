@@ -201,7 +201,7 @@ set formatoptions-=t
 """ Keybindings
 
 " <Leader> is set to space
-:let mapleader=" "
+let mapleader=" "
 
 " And use "," as the local leader key
 let maplocalleader = ","
