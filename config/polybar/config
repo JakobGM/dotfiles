@@ -43,8 +43,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = WunconSiji:pixelsize=10;1
 
 modules-left = i3
-modules-center = now_playing
-modules-right = filesystem xbacklight volume wireless-network wired-network xkeyboard memory cpu battery temperature date powermenu
+modules-center = volume now_playing
+modules-right = filesystem xbacklight wireless-network wired-network xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -88,7 +88,8 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#458588}%mountpoint%%{F-}: %percentage_used%%
+label-mounted = %{F#458588}%mountpoint%%{F-}: %total% (%percentage_used%%)
+label-mounted-underline = #458588
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
@@ -416,7 +417,7 @@ exec = "$WORKON_HOME/now_playing/bin/python $DOTREPO/archlinux/now_playing/now_p
 tail = true
 
 format = <label>
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground}
 
 label = %output:0:50%
