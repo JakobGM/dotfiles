@@ -26,3 +26,5 @@
     ds = diff --staged
 [gpg]
     program = gpg
+[credential]
+    helper = cache
