@@ -1,3 +1,7 @@
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "archlinux/now_playing"]
+	path = archlinux/now_playing
+	url = https://github.com/0nse/now_playing.git
+    ignore = dirty

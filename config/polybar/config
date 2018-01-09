@@ -43,7 +43,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = WunconSiji:pixelsize=10;1
 
 modules-left = i3
-modules-center = 
+modules-center = now_playing
 modules-right = filesystem xbacklight volume wireless-network wired-network xkeyboard memory cpu battery temperature date powermenu
 
 tray-position = right
@@ -407,3 +407,16 @@ margin-top = 5
 margin-bottom = 5
 
 ; vim:ft=dosini
+
+[module/now_playing]
+type = custom/script
+
+exec = "$WORKON_HOME/now_playing/bin/python $DOTREPO/archlinux/now_playing/now_playing.py"
+
+tail = true
+
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground}
+
+label = %output:0:50%
