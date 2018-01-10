@@ -3,3 +3,4 @@ ipython
 python-language-server
 powerline-status
 pip-tools
+virtualenvwrapper
