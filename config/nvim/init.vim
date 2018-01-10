@@ -4,7 +4,6 @@ filetype off                  " required
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
-Plug '907th/vim-auto-save'                                              " Autosave on LeaveInsert and Normal mode changes
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
@@ -482,9 +481,6 @@ nnoremap <leader>gp :! git push<CR>
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
 
-" Disable autosave in Magit buffer, as that makes things difficult in commit mode
-autocmd FileType magit let g:auto_save = 0
-
 
 """" Deoplete
 " Use deoplete autocompletion manager
@@ -565,21 +561,6 @@ let g:lexical#spellfile = ['$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add',]
 let g:lexical#spell_key = '<leader>ss'
 let g:lexical#thesaurus_key = '<leader>st'
 let g:lexical#dictionary_key = '<leader>sd'
-
-""" Autosave
-" [Source:](http://www.rushiagr.com/blog/2016/06/17/you-dont-need-vim-swap-files-and-how-to-get-rid-of-them/)
-" Enable autosave plugin
-let g:auto_save = 1
-
-" Only save in Normal mode periodically. If the value is changed to '1',
-" then changes are saved when you are in Insert mode too, as you type, but
-" I would say prefer not save in Insert mode
-let g:auto_save_in_insert_mode = 0
-
-" Silently autosave. If you disable this option by changing value to '0',
-" then in the vim status, it will display '(AutoSaved at <current time>)' all
-" the time, which might get annoying
-let g:auto_save_silent = 1
 
 
 """" vim-anzu
