@@ -8,7 +8,6 @@ Plug '907th/vim-auto-save'                                              " Autosa
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' } " Language server protocol support for neovim
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
@@ -66,6 +65,13 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+" Implementation of the Language Server Protocol for (Neo)vim
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 
 call plug#end()
 
@@ -371,7 +377,7 @@ endif
 " Enable vim/tmux pane resizing with Alt-hjkl
 " let g:tmux_resizer_no_mappings = 0
 
-" Required for operations modifying multiple buffers like rename.
+" Required for operations modifying multiple buffers like rename (used by nLSP)
 set hidden
 
 " Turn Vim swapfile off
@@ -481,10 +487,8 @@ autocmd FileType magit let g:auto_save = 0
 
 
 """" Deoplete
-" Use deoplete (AutoComplete for NeoVim)
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-endif
+" Use deoplete autocompletion manager
+let g:deoplete#enable_at_startup = 1
 
 " Prevent deoplete from leaving preview windows after completion
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -511,9 +515,14 @@ nmap <Leader>b :TagbarToggle<CR>
 " Do *not* replace _ with -> in R filetype
 let R_assign = 0
 
+"""" vim-gitgutter
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk
 nmap <Leader>gu <Plug>GitGutterUndoHunk
+
+" Jump between hunks
+nmap <Leader>gn <Plug>GitGutterNextHunk
+nmap <Leader>gN <Plug>GitGutterPrevHunk
 
 " Pytest mappings
 nmap <silent><LocalLeader>tf <Esc>:Pytest file<CR>
