@@ -39,7 +39,6 @@ alias gc='git commit'
 alias gp='git push'
 alias s='git status'
 alias ss='git status --staged'
-alias pip-sync="\pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt"
 alias pc='pip-compile'
 alias ps='pip-sync'
 alias gpgdisable="git config commit.gpgsign false"
@@ -55,9 +54,14 @@ alias vv='vim .'
 alias matlab='cd /Applications/MATLAB_R*.app/bin; ./matlab -nodesktop -nosplash'
 alias slack='cd ~/dev/terminal-slack/ && node main.js'
 alias reddit='rtv --enable-media'
-alias ipython='python3 -m IPython'
 alias kitty='/Applications/kitty.app/Contents/MacOS/kitty --config $XDG_CONFIG_HOME/kitty/kitty.conf'
 
+
+# Python aliases
+alias pytest='python3 -m pytest'
+alias ipython='python3 -m IPython'
+alias pip-sync="\pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt"
+alias w='workon'
 
 # Use exa as a replacement for ls
 alias ls='exa'
