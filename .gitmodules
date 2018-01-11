@@ -5,3 +5,6 @@
 	path = archlinux/now_playing
 	url = https://github.com/0nse/now_playing.git
     ignore = dirty
+[submodule "config/refind/themes"]
+	path = config/refind/themes
+	url = https://gitlab.com/realmain/rEFInd-sunset.git
