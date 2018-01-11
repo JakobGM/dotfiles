@@ -1,5 +1,5 @@
 [pycodestyle]
-ignore = D100,D101,D105,D107
+ignore = D100,D101,D105,D107,W292
 max-line-length = 80
 exclude = .git
 
@@ -15,9 +15,11 @@ exclude =
     dist
 max-complexity = 10
 ignore =
-	# D100: missing module docstrings
+	# D100: Missing module docstrings
 	D100,
+    # W292: Missing newline at end of file
+    W292,
     D107
 
 [pydocstyle]
-ignore = D100,D101,D102,D105,D107
+ignore = D100,D101,D102,D103,D105,D107,W292
