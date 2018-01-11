@@ -29,6 +29,9 @@ setxkbmap dvp
 # Swap caps lock and escape key
 setxkbmap -option caps:swapescape
 
+# Enable the use of AltGr+aoe to write åøæ
+setxkbmap -option lv3:ralt_switch 
+
 # Key repeat delay / rate in ms
 xset r rate 200 25
 
