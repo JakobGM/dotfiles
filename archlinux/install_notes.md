@@ -62,3 +62,8 @@ yaourt -S polybar siji-git
 
 pacman -S openssh
 pacman -S feh
+
+# Faster graceful shutdown time
+/etc/systemd/system.conf
+DefaultTimeoutStartSec=10s
+DefaultTimeoutStopSec=10s

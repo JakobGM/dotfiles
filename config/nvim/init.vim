@@ -252,6 +252,11 @@ function! OpenPluginHomepage()
 endfunction
 
 
+""" Commands
+" Write to the current file as sudo
+command W execute "w !sudo tee %"
+
+
 """ Python
 
 " Proper indentation for python files
