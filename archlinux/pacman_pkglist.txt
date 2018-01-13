@@ -94,9 +94,6 @@ dunst
 # A dmenu like program launcher
 rofi
 
-# Symlink rofi in place of dmenu
-rofi-dmenu
-
 
 # --- Developer tools ---
 # Newest version of python 3.x.x

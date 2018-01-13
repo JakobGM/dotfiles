@@ -20,6 +20,9 @@ pop-gtk-theme-git
 # Blurred lock screen with the command `lock`
 i3lock-fancy-git
 
+# Symlink rofi in place of dmenu
+rofi-dmenu
+
 
 # --- Customisation ---
 # Keyboard layout
