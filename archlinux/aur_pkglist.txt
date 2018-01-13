@@ -24,6 +24,11 @@ i3lock-fancy-git
 rofi-dmenu
 
 
+# --- Terminal ---
+# System information
+neofetch
+
+
 # --- Customisation ---
 # Keyboard layout
 programmers-dvorak

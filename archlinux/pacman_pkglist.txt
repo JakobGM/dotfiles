@@ -61,6 +61,12 @@ hub
 # For PGP encryption and identification
 gnupg
 
+# Check render speed of terminal
+cmatrix
+
+# System metrics
+gtop
+
 
 # --- GUI ---
 # Window server (package group)
