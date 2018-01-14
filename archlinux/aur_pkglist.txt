@@ -28,6 +28,9 @@ rofi-dmenu
 # System information
 neofetch
 
+# Generate ctags for project directories
+universal-ctags-git
+
 
 # --- Customisation ---
 # Keyboard layout
