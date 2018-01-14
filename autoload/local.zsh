@@ -1,0 +1,1 @@
+export HOSTNAME=hostname_of_this_computer
