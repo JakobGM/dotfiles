@@ -254,7 +254,7 @@ endfunction
 
 """ Commands
 " Write to the current file as sudo
-command W execute "w !sudo tee %"
+command! W execute "w !sudo tee %"
 
 
 """ Python
