@@ -27,6 +27,9 @@ zplug "larkery/zsh-histdb", use:sqlite-history.zsh
 # For gpg signing git commits with keychain support
 zplug "plugins/gpg-agent", from:oh-my-zsh
 
+# Track activity in terminal to wakatime.com
+zplug "wbinglee/zsh-wakatime", from:github
+
 # Load theme file
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
