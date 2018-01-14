@@ -43,6 +43,8 @@ alias pc='pip-compile'
 alias ps='pip-sync'
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
+alias gitlock='git update-index --assume-unchanged'
+alias gitunlock='git update-index --no-assume-unchanged'
 
 
 # Application aliases

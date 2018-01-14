@@ -7,6 +7,9 @@
 # Ignore local environment variables
 autoload/local*.zsh
 
+# Ignore secrets file
+autoload/secrets.zsh
+
 # Ignore installed tmux plugins
 config/tmux/plugins
 
