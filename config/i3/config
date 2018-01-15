@@ -158,8 +158,8 @@ bindsym $mod+Shift+Enter mode "resize"
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
-gaps outer 4
+gaps inner 8
+gaps outer 2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -172,6 +172,9 @@ smart_borders on
 
 # Remove border of windows
 new_window pixel 2
+
+# Toggle gaps mode
+bindsym $mod+g exec --no-startup-id "$DOTREPO/archlinux/toggle_i3_gaps.zsh"
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner

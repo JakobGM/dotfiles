@@ -100,6 +100,9 @@ dunst
 # A dmenu like program launcher
 rofi
 
+# JSON processor used by $DOTREPO/archlinux/toggle_i3_gaps.zsh
+jq
+
 
 # --- Developer tools ---
 # Newest version of python 3.x.x
