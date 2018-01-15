@@ -92,7 +92,7 @@ URxvt.color250: #d5c4a1
 *color15: #ebdbb2
 
 ! HiDPI support
-Xft.dpi: 180
+Xft.dpi: 96
 Xft.autohint: 0
 Xft.lcdfilter:  lcddefault
 Xft.hintstyle:  hintfull
