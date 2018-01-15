@@ -157,6 +157,9 @@ bindsym $mod+Shift+Enter mode "resize"
 ### settings for i3-gaps: ###
 #############################
 
+# i3-gaps requires disabling titlebars
+for_window [class="^.*"] border pixel 2
+
 # Set inner/outer gaps
 gaps inner 8
 gaps outer 2
@@ -217,7 +220,7 @@ mode "$mode_gaps_outer" {
 exec --no-startup-id setxkbmap dvp
 
 # For use with albert
-exec --no-startup-id compton --config $HOME/.config/compton/compton.conf
+exec_always --no-startup-id "compton -b --config $XDG_CONFIG_HOME/compton/compton.conf"
 
 # Start polybar, even on restart
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
@@ -249,16 +252,16 @@ set $white #ffffff
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
-#client.focused          $green $green $darkgray $purple $darkgray
-#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-#client.urgent           $red $red $white $red $red
-
-# blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-client.focused          $blue $blue $darkgray $purple $darkgray
+client.focused          $green $green $darkgray $purple $darkgray
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+# client.focused          $blue $blue $darkgray $purple $darkgray
+# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+# client.urgent           $red $red $white $red $red
 
 #end of window title bars & borders section
