@@ -17,9 +17,6 @@ intel-ucode
 # For building/compiling new packages
 base-devel
 
-# Video driver
-xf86-video-ati
-
 # Package manager for the AUR
 yaourt
 
@@ -102,6 +99,9 @@ rofi
 
 # JSON processor used by $DOTREPO/archlinux/toggle_i3_gaps.zsh
 jq
+
+# RSI prevention software
+rsibreak
 
 
 # --- Developer tools ---

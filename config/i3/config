@@ -238,6 +238,9 @@ exec_always --no-startup-id "mons --primary HDMI2 -e right"
 # Start the mons daemon in order to automatically start a display if it only detects one monitor
 exec --no-startup-id "mons -a"
 
+# RSI prevention software in system tray with break reminders
+exec_always --no-startup-id "$XDG_CONFIG_HOME/rsibreak/init.zsh"
+
 
 #######
 #THEME#
