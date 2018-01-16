@@ -235,8 +235,8 @@ exec --no-startup-id nm-applet
 # Assuming that the laptop screen is to the *right* of the primary display
 exec_always --no-startup-id "mons --primary HDMI2 -e right"
 
-# Start the mons daemon in order to automatically start a display if it only detects one monitor
-exec --no-startup-id "mons -a"
+# Initialize diplay(s) with mons
+exec_always --no-startup-id "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 
 # RSI prevention software in system tray with break reminders
 exec_always --no-startup-id "$XDG_CONFIG_HOME/rsibreak/init.zsh"
