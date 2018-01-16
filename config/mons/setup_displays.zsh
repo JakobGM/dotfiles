@@ -5,6 +5,7 @@ local INTERNAL_MONITOR='eDP1'
 local hdmi_connected=$(mons | grep "$EXTERNAL_MONITOR")
 local hdmi_enabled=$(mons | grep "$EXTERNAL_MONITOR    (enabled)")
 local internal_enabled=$(mons | grep "$INTERNAL_MONITOR    (enabled)")
+local duplicate_mode=$(mons | grep "Mode: duplicate")
 
 
 echo '-------------------------------'

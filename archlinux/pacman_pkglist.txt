@@ -103,6 +103,9 @@ jq
 # RSI prevention software
 rsibreak
 
+# Used by polybar in order to fetch wireless status
+wireless_tools
+
 
 # --- Developer tools ---
 # Newest version of python 3.x.x
