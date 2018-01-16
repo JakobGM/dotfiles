@@ -231,9 +231,9 @@ exec_always --no-startup-id "python3 $XDG_CONFIG_HOME/i3/background.py"
 # Show the network connection handled by NetworkManager in the system tray
 exec --no-startup-id nm-applet
 
-# Automatically connect to external monitor as primary display if it is connected to HDMI2
-# Assuming that the laptop screen is to the *right* of the primary display
-exec_always --no-startup-id "mons --primary HDMI2 -e right"
+# Start conky, a system monitor overlayed on the desktop wallpaper
+exec_always --no-startup-id "conky -c $XDG_CONFIG_HOME/conky/clock.conf"
+exec_always --no-startup-id "conky -c $XDG_CONFIG_HOME/conky/hardware.conf"
 
 # Initialize diplay(s) with mons
 exec_always --no-startup-id "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
