@@ -231,6 +231,13 @@ exec_always --no-startup-id "python3 $XDG_CONFIG_HOME/i3/background.py"
 # Show the network connection handled by NetworkManager in the system tray
 exec --no-startup-id nm-applet
 
+# Automatically connect to external monitor as primary display if it is connected to HDMI2
+# Assuming that the laptop screen is to the *right* of the primary display
+exec_always --no-startup-id "mons --primary HDMI2 -e right"
+
+# Start the mons daemon in order to automatically start a display if it only detects one monitor
+exec --no-startup-id "mons -a"
+
 
 #######
 #THEME#
