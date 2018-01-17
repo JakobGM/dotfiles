@@ -1,0 +1,20 @@
+[Event/end short break]
+Action=
+Execute=
+Logfile=
+Sound=
+TTS=
+
+[Event/short timer reset]
+Action=Logfile
+Execute=
+Logfile=file:///home/jakobgm/.config/rsibreak/rsibreak.log
+Sound=
+TTS=
+
+[Event/timers reset]
+Action=Logfile
+Execute=
+Logfile=file:///home/jakobgm/.dotfiles/config/rsibreak/rsibreak.log
+Sound=
+TTS=
