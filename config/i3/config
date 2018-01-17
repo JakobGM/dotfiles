@@ -229,7 +229,7 @@ exec_always --no-startup-id "compton -b --config $XDG_CONFIG_HOME/compton/compto
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
 
 # Set wallpaper
-exec_always --no-startup-id "python3 $XDG_CONFIG_HOME/i3/background.py"
+exec --no-startup-id "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/background.py"
 
 # Show the network connection handled by NetworkManager in the system tray
 exec --no-startup-id nm-applet

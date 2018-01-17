@@ -14,5 +14,8 @@ then
     pip install i3ipc fontawesome
     sudo pacman -Syu xorg-xprop
 
+    # Required by backgrounds.py script
+    pip install astral
+
     deactivate
 fi
