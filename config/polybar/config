@@ -169,7 +169,7 @@ label-mode-background = #e60053
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %icon%
+label-focused = [%index%]  %name%
 label-focused-foreground = #ffffff
 label-focused-background = #3f3f3f
 label-focused-underline = #fba922
@@ -180,7 +180,7 @@ label-focused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %icon%
+label-unfocused = [%index%]  %name%
 label-unfocused-padding = 2
 
 ; Available tokens:
@@ -188,7 +188,7 @@ label-unfocused-padding = 2
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %icon%
+label-visible = [%index%]  %name%
 label-visible-underline = #555555
 label-visible-padding = 4
 
@@ -416,7 +416,7 @@ margin-bottom = 5
 [module/now_playing]
 type = custom/script
 
-exec = "$WORKON_HOME/now_playing/bin/python $DOTREPO/archlinux/now_playing/now_playing.py"
+exec = "$WORKON_HOME/i3/bin/python $DOTREPO/archlinux/now_playing/now_playing.py"
 
 tail = true
 

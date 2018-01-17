@@ -40,3 +40,6 @@ home/.vim/plugged
 
 # Ignore ctag files
 tags
+
+# Ignore rsibreaks log
+config/rsibreak/rsibreak.log

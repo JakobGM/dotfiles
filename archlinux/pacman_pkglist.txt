@@ -106,6 +106,9 @@ rsibreak
 # Used by polybar in order to fetch wireless status
 wireless_tools
 
+# Used by i3scripts
+xorg-xprop
+
 
 # --- Developer tools ---
 # Newest version of python 3.x.x
