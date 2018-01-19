@@ -93,3 +93,8 @@ function jgm() {
             ;;
     esac
 }
+
+if type virtualenvwrapper.sh >/dev/null 2>/dev/null
+then
+    source "$(which virtualenvwrapper.sh)"
+fi
