@@ -125,3 +125,6 @@ rustup
 # Web browsers
 firefox
 qutebrowser
+
+# Filebrowser
+thunar
