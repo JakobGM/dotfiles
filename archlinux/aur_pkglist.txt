@@ -23,6 +23,9 @@ i3lock-fancy-git
 # Symlink rofi in place of dmenu
 rofi-dmenu
 
+# For taking and editing screenshots
+shutter
+
 
 # --- Terminal ---
 # System information
