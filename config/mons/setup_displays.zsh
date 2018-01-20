@@ -39,6 +39,7 @@ then
 else
     echo "External display $EXTERNAL_MONITOR not connected"
     echo "Only using internal monitor"
+    mons -o
 fi
 
 if [ $hdmi_connected != '' ]
