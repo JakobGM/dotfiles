@@ -14,7 +14,19 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $TERMINAL
+
+# Bind mod+t to a dropdown terminal
+exec --no-startup-id alacritty --title dropdown_terminal --dimensions 0 0
+for_window [instance="dropdown_terminal"] floating enable;
+for_window [instance="dropdown_terminal"] move to scratchpad; [instance="dropdown_terminal"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 1920px; move scratchpad
+bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
+
+# Bind mod+t to a dropdown terminal
+exec --no-startup-id alacritty --title dropdown_ipython --dimensions 0 0 -e ipython
+for_window [instance="dropdown_ipython"] floating enable;
+for_window [instance="dropdown_ipython"] move to scratchpad; [instance="dropdown_ipython"] scratchpad show; move position 0px 22px; resize shrink height 100px; resize grow width 1920px; move scratchpad
+bindsym $mod+p [instance="dropdown_ipython"] scratchpad show
 
 # kill focused window
 bindsym $mod+q kill
