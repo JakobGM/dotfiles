@@ -48,7 +48,6 @@ alias gitunlock='git update-index --no-assume-unchanged'
 
 
 # Application aliases
-alias nvim='nvr --remote-wait-silent'
 alias n='nvim'
 alias nn='nvim .'
 alias v='vim'

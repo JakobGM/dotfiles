@@ -396,6 +396,18 @@ if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 
+" Copy to system clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" Paste from system clipboard
+nnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
+nnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
+vnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
+vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
+
 
 
 """ Plugin settings
