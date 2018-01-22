@@ -255,6 +255,9 @@ endfunction
 " Open and close folds with Enter
 nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
 
+" Source vimrc config file
+nnoremap gsv :so $MYVIMRC<CR>
+
 
 """ Commands
 " Write to the current file as sudo
