@@ -7,6 +7,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
+Plug 'blueyed/vim-diminactive'                                          " Dim inactive panes
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
