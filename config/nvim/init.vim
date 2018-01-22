@@ -252,6 +252,9 @@ function! OpenPluginHomepage()
   silent exec "!$BROWSER https://github.com/".repository
 endfunction
 
+" Open and close folds with Enter
+nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
+
 
 """ Commands
 " Write to the current file as sudo
