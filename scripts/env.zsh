@@ -82,6 +82,10 @@ export PURE_PROMPT_SYMBOL=`echo "\uf054"`
 # Set default terminal
 export TERMINAL=alacritty
 
+# Fix weird GitHub/git error
+# "fatal: could not read Username for 'https://github.com': terminal prompts disabled"
+export GIT_TERMINAL_PROMPT=1
+
 
 # --- Fix lacking XDG Home Directory support ---
 # TMUX
