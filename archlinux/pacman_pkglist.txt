@@ -128,3 +128,6 @@ qutebrowser
 
 # Filebrowser
 thunar
+
+# Messenger app for several different platforms
+rambox-bin
