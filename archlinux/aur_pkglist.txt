@@ -43,3 +43,6 @@ programmers-dvorak
 # --- Applications ---
 keybase-bin
 spotify
+
+# Messenger app for several messaging services
+franz
