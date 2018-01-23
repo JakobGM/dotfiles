@@ -338,6 +338,12 @@ set foldcolumn=0
 " Do not wrap text at the end of the screen
 set nowrap
 
+" Disable line numbering in terminal buffer
+augroup TerminalStuff
+   au! " Clear old autocommands
+  autocmd TermOpen * setlocal nonumber norelativenumber
+augroup END
+
 
 """ Searching
 
