@@ -74,7 +74,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export MANPAGER="nvim -c 'set ft=neoman' -"
 
 # Set vimrc location
-export MYVIMRC="$XDG_CONFIG_HOME/init.vim"
+export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 
 # Use nerdfont arrow for pure prompt icon
 export PURE_PROMPT_SYMBOL=`echo "\uf054"`

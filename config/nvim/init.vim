@@ -339,10 +339,7 @@ set foldcolumn=0
 set nowrap
 
 " Disable line numbering in terminal buffer
-augroup TerminalStuff
-   au! " Clear old autocommands
-  autocmd TermOpen * setlocal nonumber norelativenumber
-augroup END
+au TermOpen * setlocal nonumber norelativenumber
 
 
 """ Searching
