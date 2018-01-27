@@ -4,3 +4,6 @@ python-language-server
 powerline-status
 pip-tools
 virtualenvwrapper
+pytest
+pytest-watchdog
+pdbpp
