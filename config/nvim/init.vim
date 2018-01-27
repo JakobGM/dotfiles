@@ -614,6 +614,10 @@ let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'signature'
 
 
+"""" vim-fugitive
+" Write to git staging area
+nnoremap <Leader>gw :Gw<CR>
+
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
 "" vim:fdm=expr:fdl=0
