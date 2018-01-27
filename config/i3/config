@@ -103,7 +103,7 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
 # Open new workspace
-bindsym $mod+n exec "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/new_workspace.py"
+bindsym $mod+n exec --no-startup-id "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/new_workspace.py"
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
@@ -142,7 +142,7 @@ bindsym Mod1+l exec --no-startup-id i3lock-fancy
 
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -246,7 +246,7 @@ exec_always --no-startup-id "compton -b --config $XDG_CONFIG_HOME/compton/compto
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
 
 # Set wallpaper
-exec --no-startup-id "$WORKON_HOME/solarity/bin/python3 $XDG_CONFIG_HOME/solarity/src/main.py"
+exec_always --no-startup-id "$WORKON_HOME/astrality/bin/python3 $XDG_CONFIG_HOME/astrality/src/astrality.py"
 
 # Show the network connection handled by NetworkManager in the system tray
 exec --no-startup-id nm-applet
