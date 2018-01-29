@@ -86,6 +86,9 @@ export TERMINAL=alacritty
 # "fatal: could not read Username for 'https://github.com': terminal prompts disabled"
 export GIT_TERMINAL_PROMPT=1
 
+# Log everything at debug level for astrality for development purposes
+export ASTRALITY_LOGGING_LEVEL=DEBUG
+
 
 # --- Fix lacking XDG Home Directory support ---
 # TMUX

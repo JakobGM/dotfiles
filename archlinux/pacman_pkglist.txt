@@ -120,6 +120,9 @@ python-pip
 # When building rust applications
 rustup
 
+# A filesystem watcher
+inotify-tools
+
 
 # --- Desktop applications ---
 # Web browsers

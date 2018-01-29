@@ -7,6 +7,7 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
+Plug 'auwsmit/vim-active-numbers'                                       " Only show line numbers on active panes
 Plug 'blueyed/vim-diminactive'                                          " Dim inactive panes
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
@@ -340,6 +341,10 @@ set nowrap
 
 " Disable line numbering in terminal buffer
 au TermOpen * setlocal nonumber norelativenumber
+
+" Only show line numbers on active panes
+let g:active_number = 1
+let g:active_relativenumber = 1
 
 
 """ Searching
