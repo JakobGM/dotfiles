@@ -26,7 +26,7 @@ Plug 'jmcantrell/vim-virtualenv'                                        " Detect
 Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
-Plug 'justinmk/vim-sneak'                                               " Move to 2 character combinations with sXY, and navigate with ; and ,
+Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'majutsushi/tagbar'                                                " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
@@ -581,7 +581,7 @@ nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>
 " - Enable folding of indentation level
 autocmd FileType python,yaml BracelessEnable +indent +fold
 
-""" vim-lexical
+"""" vim-lexical
 
 augroup lexical
   autocmd!
@@ -596,6 +596,10 @@ let g:lexical#spellfile = ['$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add',]
 let g:lexical#spell_key = '<leader>ss'
 let g:lexical#thesaurus_key = '<leader>st'
 let g:lexical#dictionary_key = '<leader>sd'
+
+
+"""" vim-sneak
+let g:sneak#label = 1
 
 
 """" vim-anzu
