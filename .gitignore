@@ -26,7 +26,6 @@ config/QtProject.conf
 config/Rambox
 config/Rambox
 config/Thunar
-config/astrality
 config/autostart
 config/configstore
 config/dconf

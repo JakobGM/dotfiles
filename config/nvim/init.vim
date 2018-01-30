@@ -7,7 +7,6 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
 Plug 'alvan/vim-closetag'                                               " Autoclose html tags
-Plug 'auwsmit/vim-active-numbers'                                       " Only show line numbers on active panes
 Plug 'blueyed/vim-diminactive'                                          " Dim inactive panes
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
@@ -41,6 +40,7 @@ Plug 'reedes/vim-lexical'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
+Plug 'takac/vim-hardtime'                                               " Disable use of repeated motions to learn use of vim-sneak
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
@@ -626,6 +626,11 @@ let g:echodoc#type = 'signature'
 """" vim-fugitive
 " Write to git staging area
 nnoremap <Leader>gw :Gw<CR>
+
+
+""" vim-hardtime
+let g:hardtime_default_on = 1
+
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
