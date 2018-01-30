@@ -16,19 +16,28 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
 
-# Bind mod+t to a dropdown terminal
-exec_always --no-startup-id kill $(pgrep -f dropdown_terminal)
-exec_always --no-startup-id alacritty --title dropdown_terminal --dimensions 0 0
-for_window [instance="dropdown_terminal"] floating enable;
-for_window [instance="dropdown_terminal"] move to scratchpad; [instance="dropdown_terminal"] scratchpad show; move position 0px 22px; resize shrink height 300px; resize grow width 1920px; move scratchpad
-bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
+# ----------------------- Scratchpad settings ----------------------- 
 
-# Bind mod+t to a dropdown terminal
-exec_always --no-startup-id kill $(pgrep -f dropdown_ipython)
-exec_always --no-startup-id alacritty --title dropdown_ipython --dimensions 0 0 -e ipython
+# Start all the scratchpad instances if they are not already running
+exec_always "$DOTREPO/archlinux/scratchpads.zsh"
+
+# Enable floating mode for these scratchpads
+for_window [instance="dropdown_terminal"] floating enable;
 for_window [instance="dropdown_ipython"] floating enable;
-for_window [instance="dropdown_ipython"] move to scratchpad; [instance="dropdown_ipython"] scratchpad show; move position 0px 22px; resize shrink height 100px; resize grow width 1920px; move scratchpad
+
+# Move the instances to the scratchpad
+for_window [instance="dropdown_terminal"] move to scratchpad;
+for_window [instance="dropdown_ipython"] move to scratchpad;
+
+# Resize the windows so they fit on the upper half of the tiling area
+for_window [instance="dropdown_terminal"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1820px; move scratchpad;
+for_window [instance="dropdown_ipython"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1820px; move scratchpad;
+
+# Keybind the toggling of the scratchpad area
+bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
 bindsym $mod+p [instance="dropdown_ipython"] scratchpad show
+
+# ------------------------------------------------------------------- 
 
 # kill focused window
 bindsym $mod+q kill
