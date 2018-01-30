@@ -21,7 +21,40 @@ home/.vim/bundle/*
 
 # Ignore superflous .config files, as a lot of it is automatically generated boilderplate
 # These files need to be added with the -f flag when using `git add`
-config/*
+config/Franz
+config/QtProject.conf
+config/Rambox
+config/Rambox
+config/Thunar
+config/astrality
+config/autostart
+config/configstore
+config/dconf
+config/gconf
+config/gnupg
+config/gpick
+config/gtk*
+config/hub
+config/inkscape
+config/jupyter/history.sqlite
+config/jupyter/profile_default/history.sqlite
+config/mimeapps.list
+config/neofetch
+config/nvim/plugged
+config/nvim/undodir
+config/nvim/.netrwhist
+config/nvim/spell/en.utf-8.sug
+config/nvim/spell/en.utf-8.spl
+config/nvim/spell/en.utf-8.add.spl
+config/okularrc
+config/qutebrowser
+config/spotify
+config/wakatime/.wakatime.data
+config/wakatime/.wakatime.db
+config/wakatime/.wakatime.log
+config/xfce4
+config/zplug
+home/.ssh/known_hosts
 
 # Ignore vim session files
 Session.vim
