@@ -44,13 +44,10 @@ export PATH=`python3 -c 'import site; print(site.USER_BASE)'`/bin":$PATH"
     # --hidden: Search hidden files and folders
     # --follow: Follow symlinks
     # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --smart-case --files --hidden --follow --glob "!.git/*"'
 
 # Setting default username such that it doesn´t always state it in the terminal
 export DEFAULT_USER="jakobgm"
-
-# Use rustgrep for fzf, grep hidden files, but ignore .git folders
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 # Set which filters that should be used by "enchancd"
 export ENHANCD_FILTER=fzy:fzf
