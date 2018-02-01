@@ -346,6 +346,9 @@ au TermOpen * setlocal nonumber norelativenumber
 let g:active_number = 1
 let g:active_relativenumber = 1
 
+" Show live substitution results when using :s
+set inccommand=nosplit
+
 
 """ Searching
 

@@ -19,7 +19,7 @@ bindsym $mod+Return exec $TERMINAL
 # ----------------------- Scratchpad settings ----------------------- 
 
 # Start all the scratchpad instances if they are not already running
-exec_always "$DOTREPO/archlinux/scratchpads.zsh"
+exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
 
 # Enable floating mode for these scratchpads
 for_window [instance="dropdown_terminal"] floating enable;
