@@ -7,3 +7,4 @@ virtualenvwrapper
 pytest
 pytest-watchdog
 pdbpp
+isort

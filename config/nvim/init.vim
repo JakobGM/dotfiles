@@ -14,6 +14,7 @@ Plug 'danro/rename.vim'                                                 " Enable
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
 Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
+Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'gko/vim-coloresque'                                               " Highlight colors
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
@@ -633,6 +634,10 @@ nnoremap <Leader>gw :Gw<CR>
 
 """ vim-hardtime
 let g:hardtime_default_on = 1
+
+
+""" vim-isort
+let g:vim_isort_python_version = 'python3'
 
 
 """ Folding (open every fold with zR)
