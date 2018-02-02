@@ -98,7 +98,9 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status' ] ]
+      \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
+      \             ['gutentags'],
+      \           ]
       \ },
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
@@ -107,6 +109,7 @@ let g:lightline = {
 	  \   'search_status': 'anzu#search_status',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
       \   'virtualenv': 'virtualenv#statusline',
+      \   'gutentags': 'gutentags#statusline',
       \ },
       \ 'tabline': {
       \   'left': [ [ 'bufferinfo' ],
@@ -524,6 +527,9 @@ nnoremap <leader>gp :! git push<CR>
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
 
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
+
 
 """" Deoplete
 " Use deoplete autocompletion manager
@@ -642,6 +648,10 @@ let g:hardtime_default_on = 1
 
 """ vim-isort
 let g:vim_isort_python_version = 'python3'
+
+
+""" vim-gutentags
+let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
 
 
 """ Folding (open every fold with zR)
