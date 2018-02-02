@@ -99,7 +99,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
-      \             ['gutentags'],
+      \             [ 'gutentags' ],
       \           ]
       \ },
       \ 'component_function': {
@@ -280,7 +280,6 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
     \ set colorcolumn=80 |
-    \ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 
 
 " Proper indentation for Web development
@@ -303,7 +302,7 @@ let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
 
 " Instert a python debug breakpoint
-nnoremap <LocalLeader>td oimport pdb;pdb.set_trace()<Esc>
+nnoremap <LocalLeader>td oimport ipdb;ipdb.set_trace()<Esc>
 
 
 """ Visual
@@ -585,9 +584,19 @@ let g:LanguageClient_serverCommands = {
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
-nnoremap <silent> <LocalLeader>K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> <LocalLeader>d :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <LocalLeader>r :call LanguageClient_textDocument_rename()<CR>
+" Show documentation for method
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" Go to definition
+nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+" Rename identifier
+nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
+
+" Use LanguageClient for gq formatting
+set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+" Use fzf for multiple entries selection
+let g:LanguageClient_selectionUI = 'fzf'
+
 
 """" Braceless
 " Enable use of the tweekmonster/braceless plugin
@@ -652,6 +661,12 @@ let g:vim_isort_python_version = 'python3'
 
 """ vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
+
+
+"" Things to get better at when using vim
+"      - Actively use LanguageClient for programming, including K, Space+d,
+"        Space+r.
+
 
 
 """ Folding (open every fold with zR)
