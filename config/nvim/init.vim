@@ -1,3 +1,5 @@
+" INFO: Show all content hidden by the folds by pressing zR
+
 """ Plugins
 set nocompatible              " required (and sane)
 filetype off                  " required
@@ -6,13 +8,11 @@ call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
-Plug 'alvan/vim-closetag'                                               " Autoclose html tags
 Plug 'blueyed/vim-diminactive'                                          " Dim inactive panes
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
-Plug 'edkolev/tmuxline.vim'                                             " Colortheme for tmux powerline, using vim colorschemes
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
 Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
@@ -21,8 +21,6 @@ Plug 'godlygeek/tabular'                                                " :Tab /
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
-Plug 'jalvesaq/Nvim-R'                                                  " Plugin for all R-lang related functionality
-Plug 'jmcantrell/vim-virtualenv'                                        " Detection of python venv for :python and :!python
 Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
@@ -30,32 +28,24 @@ Plug 'justinmk/vim-sneak'                                               " Two le
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'majutsushi/tagbar'                                                " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
-Plug 'mhinz/vim-startify'                                               " Start screen for vim
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
-Plug 'neomake/neomake', { 'for': ['python', 'javascript', 'sh'] }       " Asynchronous linting and compiling
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
-Plug 'osyo-manga/vim-anzu'                                              " Display search position like (2/10) for n/N commands
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
-Plug 'raimondi/delimitMate'                                             " Automatic closing of quotes, paranthesis, etc.
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
-Plug 'shougo/echodoc.vim'                                               " Showing function signature and inline doc
+Plug 'shougo/echodoc.vim'                                               " Show function signature help
 Plug 'takac/vim-hardtime'                                               " Disable use of repeated motions to learn use of vim-sneak
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
-Plug 'tpope/vim-obsession'                                              " Record/save editor instances with :Obsess
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
-Plug 'tweekmonster/braceless.vim'                                       " Binds python indented text objects to P, and jump with [[ [m [M
-Plug 'tweekmonster/django-plus.vim'                                     " Lots of Django related tweaks
 Plug 'vim-pandoc/vim-pandoc'                                            " Plugin for pandoc supported document types
 Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Proper syntax highlighting for pandoc rendered documents, e.g. .Rmd files
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
-Plug 'w0rp/ale', { 'for': ['r', 'rmd'] }                                " Neomake does not support Lintr
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
 
@@ -146,7 +136,7 @@ set showtabline=2  " always show tabline
 
 " lightline-buffer ui settings
 " replace these symbols with ascii characters if your environment does not support unicode
-let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_logo = ' '
 let g:lightline_buffer_readonly_icon = ''
 let g:lightline_buffer_modified_icon = '✭'
 let g:lightline_buffer_git_icon = ' '
@@ -202,7 +192,6 @@ set expandtab
 set breakindent
 
 " Don't let the filetype plugin insert newlines automatically
-" This can be set on a filetype basis manually instead
 set textwidth=0 wrapmargin=0
 
 " Do not let vim force line breaks when exceeding textwidth in insert mode
@@ -263,10 +252,12 @@ nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
 " Source vimrc config file
 nnoremap gsv :so $MYVIMRC<CR>
 
+" Clear search highlighting
+nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
 """ Commands
 " Write to the current file as sudo
-command! W execute "w !sudo tee %"
+cmap w!! w !sudo tee > /dev/null %
 
 
 """ Python
@@ -302,7 +293,7 @@ let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
 
 " Instert a python debug breakpoint
-nnoremap <LocalLeader>td oimport ipdb;ipdb.set_trace()<Esc>
+nnoremap <LocalLeader>d oimport ipdb;ipdb.set_trace()<Esc>
 
 
 """ Visual
@@ -317,17 +308,8 @@ set noshowmode
 set number
 set relativenumber
 
-" Hide cursorline in inactive window 
-augroup CrossHair
-  au!
-  au VimEnter * setlocal cursorline
-  au WinEnter * setlocal cursorline
-  au BufWinEnter * setlocal cursorline
-  au WinLeave * setlocal nocursorline
-augroup end
-
-" Show command in bottom bar
-set showcmd
+" Do not show command in bottom bar
+set noshowcmd
 
 " Highlight current line
 set cursorline
@@ -345,12 +327,17 @@ set nowrap
 " Disable line numbering in terminal buffer
 au TermOpen * setlocal nonumber norelativenumber
 
-" Only show line numbers on active panes
-let g:active_number = 1
-let g:active_relativenumber = 1
-
 " Show live substitution results when using :s
 set inccommand=nosplit
+
+" Hide cursorline in inactive window 
+augroup CrossHair
+  au!
+  au VimEnter * setlocal cursorline
+  au WinEnter * setlocal cursorline
+  au BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup end
 
 
 """ Searching
@@ -371,12 +358,16 @@ set hlsearch
 """ Performance
 
 " Some experimenting with latency
+
+" Only used in vim
 set ttyfast
+
+" Do not redraw screens during macros, etc.
 set lazyredraw
 
 """ Behaviour
 
-" Open new splits to the right and below (feels more intuitive)
+" Open new splits to the right and below (feels more natural)
 set splitright
 set splitbelow
 
@@ -454,16 +445,6 @@ let NERDTreeShowHidden=1
 nnoremap <Leader>n :NERDTree<CR>
 
 
-"""" Limelight
-" Need to set this in order to make :Limelight work with Darcula colorscheme
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-"""" Goyo
-" Automatically enter :Limelight mode in Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
 """" ArgWrap
 " Wrap function arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -496,7 +477,7 @@ nnoremap <silent> <leader>: :Commands<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 
 " All git commits in current buffer
-nnoremap <silent> <leader>Gl :Commits<CR>
+nnoremap <silent> <leader>gL :Commits<CR>
 
 " Grep content of all files
 nnoremap <silent> <leader>/ :Find<CR>
@@ -517,7 +498,7 @@ nnoremap <silent> <leader>h :Helptags<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 """" Vimagit
 nnoremap <leader>gg :Magit<CR>
@@ -538,26 +519,13 @@ let g:deoplete#enable_at_startup = 1
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Do not show completion numbers in cmdline
-if has("patch-7.4.314")
-  set shortmess+=c
-endif
+set shortmess+=c
 
-"""" Neomake
-" Run Neomake every time the current file is saved
-if has('neomake')
-  autocmd! BufWritePost * Neomake
-endif
 
 """" Tagbar
 " Open Tagbar CTags with <F8>
-nmap <Leader>b :TagbarToggle<CR>
+nmap <Leader>tb :TagbarToggle<CR>
 
-" Always open TagBar in supported files
-" autocmd FileType * nested :call tagbar#autoopen(0)
-
-"""" Nvim-R
-" Do *not* replace _ with -> in R filetype
-let R_assign = 0
 
 """" vim-gitgutter
 " Hunk-add and hunk-revert for chunk staging
@@ -567,12 +535,14 @@ nmap <Leader>gu <Plug>GitGutterUndoHunk
 " Jump between hunks
 nmap <Leader>gn <Plug>GitGutterNextHunk
 nmap <Leader>gN <Plug>GitGutterPrevHunk
+nmap <C-n> <Plug>GitGutterNextHunk
+nmap <C-p> <Plug>GitGutterPrevHunk
 
 " Pytest mappings
-nmap <silent><LocalLeader>tf <Esc>:Pytest file<CR>
-nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
-nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
-nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
+nmap <silent><LocalLeader>f <Esc>:Pytest file<CR>
+nmap <silent><LocalLeader>c <Esc>:Pytest class<CR>
+nmap <silent><LocalLeader>m <Esc>:Pytest method<CR>
+nmap <silent><LocalLeader>p <Esc>:Pytest project<CR>
 
 """" LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
@@ -586,8 +556,10 @@ let g:LanguageClient_autoStart = 1
 
 " Show documentation for method
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+
 " Go to definition
 nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
+
 " Rename identifier
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
 
@@ -597,12 +569,6 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 " Use fzf for multiple entries selection
 let g:LanguageClient_selectionUI = 'fzf'
 
-
-"""" Braceless
-" Enable use of the tweekmonster/braceless plugin
-" - More intelligent indentation when hitting <Enter>
-" - Enable folding of indentation level
-autocmd FileType python,yaml BracelessEnable +indent +fold
 
 """" vim-lexical
 
@@ -622,28 +588,15 @@ let g:lexical#dictionary_key = '<leader>sd'
 
 
 """" vim-sneak
+" Use vim-sneak as a lightweight vim-easymotion replacement
+" Press s{char}{char} or use z in motions
 let g:sneak#label = 1
-
-
-"""" vim-anzu
-" is.vim integration with vim-anzu
-map n <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
-
-" vim-anzu keymappings
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-
-" clear status
-nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
 
 """" echodoc
 " Enable function signature in cmdline
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'signature'
+let g:echodoc#type = 'echo'
 
 
 """" vim-fugitive
@@ -652,6 +605,7 @@ nnoremap <Leader>gw :Gw<CR>
 
 
 """ vim-hardtime
+" Disable repeated use of hjkl
 let g:hardtime_default_on = 1
 
 
