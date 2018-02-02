@@ -431,6 +431,10 @@ vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
 iabbrev vuale value
 iabbrev vaule value
 
+" Make < > shifts keep selection
+vnoremap < <gv
+vnoremap > >gv
+
 
 """ Plugin settings
 
