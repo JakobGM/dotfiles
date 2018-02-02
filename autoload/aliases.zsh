@@ -45,7 +45,7 @@ alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
 alias gitlock='git update-index --assume-unchanged'
 alias gitunlock='git update-index --no-assume-unchanged'
-
+alias resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i "
 
 # Application aliases
 alias n='nvim'

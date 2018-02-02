@@ -7,5 +7,11 @@ fi
 
 if ! pgrep -f dropdown_ipython > /dev/null
 then
-    alacritty --title dropdown_ipython -e ipython --dimensions 0 0
+    alacritty --dimensions 0 0 --title dropdown_ipython -e ipython
+fi
+
+# Try to start dropdown_ipython again if it panics on startup (for some reason)
+if ! pgrep -f dropdown_ipython > /dev/null
+then
+    alacritty --dimensions 0 0 --title dropdown_ipython -e ipython
 fi

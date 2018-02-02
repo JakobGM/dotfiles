@@ -86,6 +86,10 @@ export GIT_TERMINAL_PROMPT=1
 # Log everything at debug level for astrality for development purposes
 export ASTRALITY_LOGGING_LEVEL=DEBUG
 
+# Allaw global packages install with npm -g without use of sudo
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
+
 
 # --- Fix lacking XDG Home Directory support ---
 # TMUX

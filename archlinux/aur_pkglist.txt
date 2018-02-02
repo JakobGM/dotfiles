@@ -34,6 +34,9 @@ neofetch
 # Generate ctags for project directories
 universal-ctags-git
 
+# GnuPG v2
+gnupg
+
 
 # --- Customisation ---
 # Keyboard layout
