@@ -255,6 +255,10 @@ nnoremap gsv :so $MYVIMRC<CR>
 " Clear search highlighting
 nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
+" Make use of backspace in normal mode, with functionality as expected
+nnoremap <silent> <backspace> X
+
+
 """ Commands
 " Write to the current file as sudo
 cmap w!! w !sudo tee > /dev/null %
