@@ -64,6 +64,9 @@ alias ipython='python3 -m IPython'
 alias pip-sync="\pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt"
 alias w='workon'
 
+# Start documentation server (Sphinx)
+alias ds='sphinx-autobuild . _build --host 192.168.1.225'
+
 # Use exa as a replacement for ls
 alias ls='exa'
 alias la='exa -la'
