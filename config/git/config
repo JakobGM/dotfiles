@@ -28,3 +28,6 @@
     program = gpg
 [credential]
     helper = cache
+[push]
+    gpgSign = true
+    followTags = true
