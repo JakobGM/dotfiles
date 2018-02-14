@@ -9,6 +9,8 @@
 	browser = firefox
 [commit]
 	gpgsign = true
+[tag]
+    gpgsign = true
 [diff]
 	tool = vimdiff
 [difftool]
@@ -29,5 +31,7 @@
 [credential]
     helper = cache
 [push]
-    gpgSign = true
+    gpgSign = if-asked
     followTags = true
+[receive]
+    advertisePushOptions = true
