@@ -542,8 +542,10 @@ nmap <Leader>gN <Plug>GitGutterPrevHunk
 nmap <C-n> <Plug>GitGutterNextHunk
 nmap <C-p> <Plug>GitGutterPrevHunk
 
+"""" vim-pytest
 " Pytest mappings
-nmap <silent><LocalLeader>f <Esc>:Pytest file<CR>
+nmap <silent><LocalLeader>F <Esc>:Pytest file<CR>
+nmap <silent><LocalLeader>f <Esc>:Pytest function<CR>
 nmap <silent><LocalLeader>c <Esc>:Pytest class<CR>
 nmap <silent><LocalLeader>m <Esc>:Pytest method<CR>
 nmap <silent><LocalLeader>p <Esc>:Pytest project<CR>
@@ -608,16 +610,16 @@ let g:echodoc#type = 'echo'
 nnoremap <Leader>gw :Gw<CR>
 
 
-""" vim-hardtime
+"""" vim-hardtime
 " Disable repeated use of hjkl
 let g:hardtime_default_on = 1
 
 
-""" vim-isort
+"""" vim-isort
 let g:vim_isort_python_version = 'python3'
 
 
-""" vim-gutentags
+"""" vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
 
 
