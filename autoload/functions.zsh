@@ -21,7 +21,7 @@ group by commands.argv
 order by places.dir != '$(sql_escape $PWD)', count(*) desc limit 1"
     suggestion=$(_histdb_query "$query")
 }
-ZSH_AUTOSUGGEST_STRATEGY=histdb_top
+# ZSH_AUTOSUGGEST_STRATEGY=histdb_top
 
 # Precmd hook in order to get correct timing information for 'zsh-histdb'
 autoload -Uz add-zsh-hook

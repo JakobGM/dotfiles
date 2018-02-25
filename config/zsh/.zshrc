@@ -6,6 +6,20 @@ source $DOTREPO/scripts/env.zsh
 
 
 
+# ---------------- ZSH OPTIONS -------------------
+# Use temporary file and copy on completion (history)
+setopt hist_save_by_copy
+
+# Let parallel zsh instances write to history
+setopt inc_append_history
+
+# Share history between running sessions
+setopt share_history
+
+# Ignore duplicate history
+setopt hist_ignore_dups
+
+
 # --------------- INSTALL ZPLUG ------------------
 # Install zplug zsh packages to the following path
 export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug

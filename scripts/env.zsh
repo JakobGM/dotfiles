@@ -61,6 +61,9 @@ export MAILCAPS=$DOTREPO/home/.mailcap
 # Use the dotfiles-repo config folder as XDG Base Directory
 export XDG_CONFIG_HOME="$DOTREPO/config"
 
+# Application data directory
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # Use the default browser to open urls from terminal
 export BROWSER=open
 
@@ -105,6 +108,7 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
+
 # --- System specific environment variables ---
 local OS=$(uname -o)
 
@@ -113,7 +117,14 @@ then
     export BROWSER=xdg-open
 fi
 
+
 # --- HiDPI support in ArchLinux ---
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 export GDK_SCALE=1
 export GDK_DPI_SCALE=1
+
+
+# --- ZSH environment variables ---
+export HISTFILE="$XDG_DATA_HOME/zsh/history"
+export HISTSIZE=1000000
+export HISTSAVE=1000000
