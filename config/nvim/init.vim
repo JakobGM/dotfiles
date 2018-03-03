@@ -552,6 +552,7 @@ nmap <silent><LocalLeader>p <Esc>:Pytest project<CR>
 
 """" LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie', '--lsp'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
     \ 'python' : ['pyls']
