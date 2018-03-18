@@ -25,11 +25,14 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
+Plug 'leafgarland/typescript-vim'                                       " Typescript syntax and ft detection
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'majutsushi/tagbar'                                                " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
+Plug 'mxw/vim-jsx'                                                      " JSX syntax highlighting
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
+Plug 'pangloss/vim-javascript'                                          " Javascript syntax highlighting and indentation
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
@@ -276,12 +279,6 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set colorcolumn=80 |
 
-
-" Proper indentation for Web development
-au BufNewFile,BufRead *.js, *.html, *.css
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
 
 " Define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -554,7 +551,9 @@ nmap <silent><LocalLeader>p <Esc>:Pytest project<CR>
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['/opt/javascript-typescript-langserver/lib/language-server-stdio.js'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'typescript': ['javascript-typescript-stdio'],
     \ 'python' : ['pyls']
     \ }
 
