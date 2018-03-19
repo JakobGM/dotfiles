@@ -98,3 +98,12 @@ if type virtualenvwrapper.sh >/dev/null 2>/dev/null
 then
     source "$(which virtualenvwrapper.sh)"
 fi
+
+# Directory watcher
+function dirwatch() {
+	inotifywait -m /path -e create -e moved_to |
+	while read path action file; do
+		echo "The file '$file' appeared in directory '$path' via '$action'"
+		# do something with the file
+	done
+}
