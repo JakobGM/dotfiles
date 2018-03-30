@@ -13,6 +13,7 @@ Plug 'christoomey/vim-tmux-navigator'                                   " Naviga
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
+Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
 Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
