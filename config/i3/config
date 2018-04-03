@@ -43,6 +43,9 @@ bindsym $mod+d [instance="zeal"] scratchpad show
 
 # ------------------------------------------------------------------- 
 
+# Prevent floating windows going offscreen
+floating_maximum_size 1820 x 900
+
 # kill focused window
 bindsym $mod+q kill
 
