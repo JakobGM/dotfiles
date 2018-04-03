@@ -27,6 +27,7 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
+Plug 'kabbamine/zeavim.vim'                                             " For Zeal keybindings from vim
 Plug 'leafgarland/typescript-vim'                                       " Typescript syntax and ft detection
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'majutsushi/tagbar'                                                " Browse/display CTags
@@ -623,6 +624,21 @@ let g:vim_isort_python_version = 'python3'
 
 """" vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
+
+
+"""" zeavim.vim
+nmap <leader>z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>Zeavim
+vmap <leader>z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVVisSelection
+nmap gz :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVOperator
+nmap <leader>Z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVKeyDocset
+
+let g:zv_keep_focus = 0
+let g:zv_file_types = {
+            \   'help'                : 'vim',
+            \   'javascript'          : 'javascript,nodejs',
+            \   'python'              : 'python_3',
+            \   '\v^(G|g)ulpfile\.js' : 'gulp,javascript,nodejs',
+            \ }
 
 
 "" Things to get better at when using vim
