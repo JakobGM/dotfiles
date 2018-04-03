@@ -34,7 +34,7 @@ for_window [instance="zeal"] move to scratchpad;
 # Resize the windows so they fit on the upper half of the tiling area
 for_window [instance="dropdown_terminal"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1820px; move scratchpad;
 for_window [instance="dropdown_ipython"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1820px; move scratchpad;
-for_window [instance="zeal"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1820px; move scratchpad;
+for_window [instance="zeal"] scratchpad show; move position 10px 30px; resize shrink width 10000px; resize shrink height 10000px; resize grow height 450px; resize grow width 1139px; move scratchpad;
 
 # Keybind the toggling of the scratchpad area
 bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
