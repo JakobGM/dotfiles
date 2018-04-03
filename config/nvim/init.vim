@@ -15,6 +15,7 @@ Plug 'danro/rename.vim'                                                 " Enable
 Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
 Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
+Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'gko/vim-coloresque'                                               " Highlight colors
