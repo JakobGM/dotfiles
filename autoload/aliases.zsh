@@ -55,7 +55,7 @@ alias vv='vim .'
 alias matlab='cd /Applications/MATLAB_R*.app/bin; ./matlab -nodesktop -nosplash'
 alias slack="TERM='linux' $DOTREPO/bin/slack-term -config $XDG_CONFIG_HOME/slack-term/slack-term.json"
 alias reddit='rtv --enable-media'
-alias kitty='/Applications/kitty.app/Contents/MacOS/kitty --config $XDG_CONFIG_HOME/kitty/kitty.conf'
+# alias kitty='/Applications/kitty.app/Contents/MacOS/kitty --config $XDG_CONFIG_HOME/kitty/kitty.conf'
 
 
 # Python aliases
