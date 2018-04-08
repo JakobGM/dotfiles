@@ -557,20 +557,31 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'python' : ['pyls']
+    \ 'python' : ['pyls'],
+    \ 'sh': ['bash-language-server', 'start']
     \ }
 
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
 " Show documentation for method
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <Leader>K :call LanguageClient_textDocument_hover()<CR>
 
 " Go to definition
 nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
 
 " Rename identifier
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
+
+" Search symbols in current buffer
+nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
+
+" Show a list of all references to identifier under cursor
+" Does not seem to work for python-language-server
+nnoremap <silent> <Leader>R :call LanguageClient_textDocument_references()<CR>
+
+" Format the entire buffer
+nnoremap <silent> <Leader>F :call LanguageClient_textDocument_formatting()<CR>
 
 " Use LanguageClient for gq formatting
 set formatexpr=LanguageClient_textDocument_rangeFormatting()
