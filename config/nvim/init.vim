@@ -35,6 +35,7 @@ Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'mxw/vim-jsx'                                                      " JSX syntax highlighting
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
+Plug 'nvie/vim-flake8'                                                  " Run flake8 and populate quickfix list
 Plug 'pangloss/vim-javascript'                                          " Javascript syntax highlighting and indentation
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
@@ -650,6 +651,11 @@ let g:zv_file_types = {
             \   'python'              : 'python_3',
             \   '\v^(G|g)ulpfile\.js' : 'gulp,javascript,nodejs',
             \ }
+
+
+"""" vim-flake8
+" Automatically run flake8 on-write for *.py files
+autocmd BufWritePost *.py call Flake8()
 
 
 "" Things to get better at when using vim
