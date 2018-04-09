@@ -79,3 +79,6 @@ tags
 
 # Ignore rsibreaks log
 config/rsibreak/rsibreak.log
+
+# Ignore compilations of polybar
+config/polybar/config
