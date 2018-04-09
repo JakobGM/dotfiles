@@ -18,6 +18,7 @@ Plug 'ervandew/supertab'                                                " Use <T
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
+Plug 'francoiscabrol/ranger.vim'                                        " Ranger file explorer integration
 Plug 'gko/vim-coloresque'                                               " Highlight colors
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
@@ -38,6 +39,7 @@ Plug 'nhooyr/neoman.vim'                                                " Using 
 Plug 'nvie/vim-flake8'                                                  " Run flake8 and populate quickfix list
 Plug 'pangloss/vim-javascript'                                          " Javascript syntax highlighting and indentation
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
+Plug 'rbgrouleff/bclose.vim'                                            " Dependency of 'francoiscabrol/bclose.vim'
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
@@ -659,6 +661,17 @@ let g:zv_file_types = {
 """" vim-flake8
 " Automatically run flake8 on-write for *.py files
 autocmd BufWritePost *.py call Flake8()
+
+
+"""" ranger.vim
+" Disable default keybindings
+let g:ranger_map_keys = 0
+
+" Open ranger window at worknig directory
+nnoremap <Leader>f :RangerWorkingDirectory<CR>
+
+" Open ranger at the current file
+nnoremap <Leader>F :Ranger<CR>
 
 
 "" Things to get better at when using vim
