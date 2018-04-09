@@ -666,6 +666,11 @@ autocmd BufWritePost *.py call Flake8()
 "        Space+r.
 
 
+"""" vim-pandoc
+" Disable automatically changing current directory to .rst file parent folder
+" (ugh!)
+let g:pandoc#modules#disabled = ["chdir"]
+
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
