@@ -80,7 +80,7 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 export PURE_PROMPT_SYMBOL=`echo "\uf054"`
 
 # Set default terminal
-export TERMINAL=alacritty
+export TERMINAL=kitty
 
 # Fix weird GitHub/git error
 # "fatal: could not read Username for 'https://github.com': terminal prompts disabled"
