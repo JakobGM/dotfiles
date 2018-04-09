@@ -85,3 +85,7 @@ config/polybar/config
 
 # Ignore API-token of slack-term
 config/slack-term/slack-term.json
+
+# Ignore all python artifacts
+**/*.pyc
+**/__pycache__/*
