@@ -265,6 +265,9 @@ nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 " Make use of backspace in normal mode, with functionality as expected
 nnoremap <silent> <backspace> X
 
+" Bind enter to next item in quickfix list
+nnoremap <silent> <CR> :cn<CR>
+
 
 """ Commands
 " Write to the current file as sudo
