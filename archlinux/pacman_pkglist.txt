@@ -52,6 +52,12 @@ openssh
 # File explorer
 ranger
 
+# For syntax highlighting in ranger
+highlight
+
+# For image preview in ranger
+w3m
+
 # GitHub wrapper for the git client
 hub
 

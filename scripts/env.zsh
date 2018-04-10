@@ -108,6 +108,9 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 
+# Prevent ranger from reading default configurations twice
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
 
 # --- System specific environment variables ---
 local OS=$(uname -o)
