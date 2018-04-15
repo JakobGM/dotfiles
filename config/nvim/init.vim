@@ -268,7 +268,13 @@ nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 nnoremap <silent> <backspace> X
 
 " Bind enter to next item in quickfix list
-nnoremap <silent> <CR> :cn<CR>
+" Mnemonic: "go quickfix"
+nnoremap <silent> gq :cn<CR>
+nnoremap <silent> gQ :cp<CR>
+
+" Redraw syntax highlighting when color disappears
+" Mnemonic: "go source syntax"
+nnoremap gss :syntax sync fromstart<CR>
 
 
 """ Commands
