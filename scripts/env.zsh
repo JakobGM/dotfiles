@@ -49,8 +49,13 @@ export FZF_DEFAULT_COMMAND='rg --smart-case --files --hidden --follow --glob "!.
 # Setting default username such that it doesn´t always state it in the terminal
 export DEFAULT_USER="jakobgm"
 
-# Set which filters that should be used by "enchancd"
-export ENHANCD_FILTER=fzy:fzf
+# ENHANCD settings
+export ENHANCD_FILTER=fzf
+export ENHANCD_DIR="$XDG_CONFIG_HOME/enhancd"
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_DISABLE_DOT=1
+export ENHANCD_HOOK_AFTER_CD='ls -l'
+export ENHANCD_USE_FUZZY_MATCH=1
 
 # This variable should point directly to the dotfiles repository root
 export DOTREPO="$HOME/.dotfiles"

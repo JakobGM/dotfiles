@@ -33,3 +33,6 @@ zplug "wbinglee/zsh-wakatime", from:github
 # Load theme file
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+# Fuzzy searchable cd command
+zplug "b4b4r07/enhancd", use:init.sh
