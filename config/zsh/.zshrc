@@ -19,6 +19,9 @@ setopt share_history
 # Ignore duplicate history
 setopt hist_ignore_dups
 
+# Allow interactive comments directly in interpreter
+setopt interactivecomments
+
 
 # --------------- INSTALL ZPLUG ------------------
 # Install zplug zsh packages to the following path
