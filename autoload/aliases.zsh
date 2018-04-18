@@ -77,6 +77,10 @@ alias ll='exa -l'
 
 # Unix aliases
 alias x='exit'
+alias ..='cd ../'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # ArchLinux aliases
 alias ie="i3-msg exit"
