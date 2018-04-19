@@ -57,7 +57,10 @@ config/wakatime/.wakatime.db
 config/wakatime/.wakatime.log
 config/xfce4
 config/zplug
-home/.ssh/known_hosts
+
+# SSH ignores
+home/.ssh
+!home/.ssh/config
 
 # Ignore vim session files
 Session.vim
