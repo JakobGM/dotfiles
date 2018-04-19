@@ -63,6 +63,10 @@ done
 # Enable fzf related functionity, such as <C-r>
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Autocompletions for Hub git wrapper
+fpath=(~/.zsh/completions $fpath) 
+autoload -U compinit && compinit
+
 
 
 # ----------- ARCHLINUX STUFF ---------------

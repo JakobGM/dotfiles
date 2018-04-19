@@ -33,18 +33,19 @@ alias zeus='mosh jakobgm@zeus.orakel.ntnu.no'
 
 
 # Git aliases
-alias g='git'
-alias gA='git add -A'
-alias gc='git commit'
-alias gp='git push --follow-tags'
-alias s='git status'
-alias ss='git status --staged'
+eval "$(hub alias -s)"
+alias g="git"
+alias gA="git add -A"
+alias gc="git commit"
+alias gp="git push --follow-tags"
+alias s="git status"
+alias ss="git status --staged"
 alias pc='pip-compile'
 alias ps='pip-sync'
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
-alias gitlock='git update-index --assume-unchanged'
-alias gitunlock='git update-index --no-assume-unchanged'
+alias gitlock="git update-index --assume-unchanged"
+alias gitunlock="git update-index --no-assume-unchanged"
 alias resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i "
 
 # Application aliases
