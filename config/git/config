@@ -4,7 +4,7 @@
     signingkey = 8ED3F2AA6368045B
 [core]
     editor = nvim
-    excludesfile = $XDG_CONFIG_HOME/git/ignore
+    excludesfile = ~/.config/git/ignore
     pager = "diff-so-fancy | less --tabs=4 -RFX"
 [web]
     browser = firefox
