@@ -456,6 +456,13 @@ vnoremap > >gv
 " Do not show preview window when completing items
 set completeopt-=preview
 
+" Enable spellchecking in natural language files
+autocmd BufRead,BufNewFile *.md,*.rst,*.txt setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=en_us
+
+" Use word completion when spelling is enabled
+set complete+=kspell
+
 
 """ Plugin settings
 
