@@ -311,6 +311,9 @@ let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
 " Instert a python debug breakpoint
 nnoremap <LocalLeader>d oimport ipdb;ipdb.set_trace()<Esc>
 
+" Open right vertical help window
+cnoreabbrev H vert bo h
+
 
 """ Visual
 
