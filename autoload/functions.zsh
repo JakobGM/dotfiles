@@ -112,3 +112,10 @@ function dirwatch() {
 function github_ssh() {
     git remote set-url origin git@github.com:$1/$2.git
 }
+
+# Run sphinx docserver on internal ip adress
+function internal_ds() {
+    INTERNAL_IP=$(ip addr show | rg -o "inet (.+)/.+global.+" -r '$1')
+    firefox $INTERNAL_IP:8000
+    sphinx-autobuild . _build --host $INTERNAL_IP
+}
