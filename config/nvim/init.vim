@@ -16,7 +16,6 @@ Plug 'editorconfig/editorconfig-vim'                                    " Respec
 Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
 Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
-Plug 'fisadev/vim-isort'                                                " Add :Isort command, or visual block mode ctrl+i
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'francoiscabrol/ranger.vim'                                        " Ranger file explorer integration
 Plug 'gko/vim-coloresque'                                               " Highlight colors
@@ -36,11 +35,12 @@ Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'mxw/vim-jsx'                                                      " JSX syntax highlighting
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
-Plug 'nvie/vim-flake8'                                                  " Run flake8 and populate quickfix list
 Plug 'pangloss/vim-javascript'                                          " Javascript syntax highlighting and indentation
 Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
+Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
 Plug 'rbgrouleff/bclose.vim'                                            " Dependency of 'francoiscabrol/bclose.vim'
 Plug 'reedes/vim-lexical'                                               " Better spellchecking
+Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/echodoc.vim'                                               " Show function signature help
@@ -57,6 +57,7 @@ Plug 'vim-python/python-syntax'                                         " Better
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
+Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 " Deoplete completion engine needs additional support plugins when not using NeoVim
 if has('nvim')
@@ -267,10 +268,15 @@ nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 " Make use of backspace in normal mode, with functionality as expected
 nnoremap <silent> <backspace> X
 
-" Bind enter to next item in quickfix list
+" Bind g(q|Q) to next item in quickfix list
 " Mnemonic: "go quickfix"
 nnoremap <silent> gq :cn<CR>
 nnoremap <silent> gQ :cp<CR>
+
+" Bind g(l|L) to next item in location list
+" Mnemonic: "go location"
+nnoremap <silent> gl :ll<CR>
+nnoremap <silent> gL :ll<CR>
 
 " Redraw syntax highlighting when color disappears
 " Mnemonic: "go source syntax"
@@ -447,6 +453,9 @@ iabbrev vaule value
 vnoremap < <gv
 vnoremap > >gv
 
+" Do not show preview window when completing items
+set completeopt-=preview
+
 
 """ Plugin settings
 
@@ -532,6 +541,8 @@ let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 
 """" Deoplete
 " Use deoplete autocompletion manager
+" Disabled while waiting for this issue to be resolved:
+" https://github.com/python-mode/python-mode/issues/748
 let g:deoplete#enable_at_startup = 1
 
 " Prevent deoplete from leaving preview windows after completion
@@ -632,6 +643,7 @@ let g:sneak#label = 1
 " Enable function signature in cmdline
 let g:echodoc#enable_at_startup = 1
 let g:echodoc#type = 'echo'
+let g:echodoc#enable_force_overwrite = 0  " NB! Setting to 1 causes flicker
 
 
 """" vim-fugitive
@@ -642,10 +654,6 @@ nnoremap <Leader>gw :Gw<CR>
 """" vim-hardtime
 " Disable repeated use of hjkl
 let g:hardtime_default_on = 1
-
-
-"""" vim-isort
-let g:vim_isort_python_version = 'python3'
 
 
 """" vim-gutentags
@@ -669,7 +677,7 @@ let g:zv_file_types = {
 
 """" vim-flake8
 " Automatically run flake8 on-write for *.py files
-autocmd BufWritePost *.py call Flake8()
+" autocmd BufWritePost *.py call Flake8()
 
 
 """" ranger.vim
@@ -682,6 +690,129 @@ nnoremap <Leader>f :RangerWorkingDirectory<CR>
 " Open ranger at the current file
 nnoremap <Leader>F :Ranger<CR>
 
+
+"""" python-mode
+" Common functionality
+let g:pymode = 1
+let g:pymode_warnings = 1
+let g:pymode_paths = []
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 80
+let g:pymode_options_colorcolumn = 1
+let g:pymode_quickfix_minheight = 1
+let g:pymode_quickfix_maxheight = 1
+
+" Python version
+let g:pymode_python = 'python3'
+
+" Python indentation
+let g:pymode_indent = 1
+
+" Python folding
+let g:pymode_folding = 0
+
+" Vim motion
+" [[    Jump to previous class or function (normal, visual, operator modes)
+" ]]    Jump to next class or function  (normal, visual, operator modes)
+" [M    Jump to previous class or method (normal, visual, operator modes)
+" ]M    Jump to next class or method (normal, visual, operator modes)
+" aC    Select a class. Ex: vaC, daC, yaC, caC (normal, operator modes)
+" iC    Select inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
+" aM    Select a function or method. Ex: vaM, daM, yaM, caM (normal, operator modes)
+" iM    Select inner function or method. Ex: viM, diM, yiM, ciM (normal, operator modes)
+let g:pymode_motion = 1
+
+" Show documentation
+let g:pymode_doc = 1
+let g:pymode_doc_bind = '<LocalLeader>K'
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+let g:pymode_virtualenv_path = $VIRTUAL_ENV
+
+" Run code
+let g:pymode_run = 1
+let g:pymode_run_bind = '<LocalLeader>r'
+
+" Breakpoints
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_bind = '<LocalLeader>b'
+let g:pymode_breakpoint_cmd = ''
+
+" Code checking
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_unmodified = 0
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_message = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_ignore = []
+let g:pymode_lint_select = []
+let g:pymode_lint_sort = []
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_signs = 1
+
+" Rope support
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_autoimport_import_after_complete = 1
+let g:pymode_rope_project_root = ""
+let g:pymode_rope_ropefolder='.ropeproject'
+let g:pymode_rope_show_doc_bind = '<LocalLeader>D'
+let g:pymode_rope_regenerate_on_write = 1
+
+" Completion
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
+let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'pathlib.Path']
+let g:pymode_rope_autoimport_import_after_complete = 1
+
+" Find definition
+let g:pymode_rope_goto_definition_bind = '<LocalLeader>d'
+let g:pymode_rope_goto_definition_cmd = 'new'
+
+" Refactoring
+let g:pymode_rope_rename_bind = '<LocalLeader>r'
+let g:pymode_rope_rename_module_bind = '<LocalLeader>R'
+
+" Imports
+let g:pymode_rope_organize_imports_bind = '<LocalLeader>I'
+let g:pymode_rope_autoimport_bind = '<LocalLeader>i'
+let g:pymode_rope_module_to_package_bind = '<C-c>r1p'
+let g:pymode_rope_extract_method_bind = '<C-c>rm'
+let g:pymode_rope_extract_variable_bind = '<C-c>rl'
+let g:pymode_rope_use_function_bind = '<C-c>ru'
+let g:pymode_rope_move_bind = '<C-c>rv'
+let g:pymode_rope_change_signature_bind = '<LocalLeader>s'
+
+" Undo/Redo changes
+nnoremap <LocalLeader>pu :PymodeRopeUndo<CR>
+nnoremap <LocalLeader>pr :PymodeRopeRedo<CR>
+
+" Syntax
+let g:pymode_syntax = 1
+let g:pymode_syntax_slow_sync = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 0
+let g:pymode_syntax_highlight_async_await = g:pymode_syntax_all
+let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+let g:pymode_syntax_string_formatting = g:pymode_syntax_all
+let g:pymode_syntax_string_format = g:pymode_syntax_all
+let g:pymode_syntax_string_templates = g:pymode_syntax_all
+let g:pymode_syntax_doctests = g:pymode_syntax_all
+
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+let g:pymode_syntax_docstrings = g:pymode_syntax_all
 
 "" Things to get better at when using vim
 "      - Actively use LanguageClient for programming, including K, Space+d,
