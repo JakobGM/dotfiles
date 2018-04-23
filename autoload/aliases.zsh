@@ -64,6 +64,7 @@ alias pytest='python3 -m pytest'
 alias ipython='python3 -m IPython'
 alias pip-sync="\pip-sync $DOTREPO/python/venv_requirements.txt requirements.txt"
 alias w='workon'
+alias pt='ptw -- -vv -x --failed-first'
 
 # Django aliases
 alias da='django-admin'
