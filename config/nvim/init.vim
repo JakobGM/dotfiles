@@ -7,18 +7,12 @@ filetype off                  " required
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
-Plug 'alfredodeza/pytest.vim'                                           " :Pytest class/method/function/file/project
-Plug 'blueyed/vim-diminactive'                                          " Dim inactive panes
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
-Plug 'editorconfig/editorconfig-vim'                                    " Respect .editorconfig configurations
 Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
-Plug 'ervandew/supertab'                                                " Use <Tab> for autocompletion
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
-Plug 'francoiscabrol/ranger.vim'                                        " Ranger file explorer integration
-Plug 'gko/vim-coloresque'                                               " Highlight colors
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
@@ -27,36 +21,23 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
-Plug 'kabbamine/zeavim.vim'                                             " For Zeal keybindings from vim
-Plug 'leafgarland/typescript-vim'                                       " Typescript syntax and ft detection
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
-Plug 'majutsushi/tagbar'                                                " Browse/display CTags
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
-Plug 'mxw/vim-jsx'                                                      " JSX syntax highlighting
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
-Plug 'pangloss/vim-javascript'                                          " Javascript syntax highlighting and indentation
-Plug 'plasticboy/vim-markdown'                                          " Markdown syntax
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
-Plug 'rbgrouleff/bclose.vim'                                            " Dependency of 'francoiscabrol/bclose.vim'
-Plug 'reedes/vim-lexical'                                               " Better spellchecking
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
-Plug 'scrooloose/nerdtree'                                              " File browsing
 Plug 'shougo/echodoc.vim'                                               " Show function signature help
-Plug 'takac/vim-hardtime'                                               " Disable use of repeated motions to learn use of vim-sneak
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
-Plug 'vim-pandoc/vim-pandoc'                                            " Plugin for pandoc supported document types
-Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Proper syntax highlighting for pandoc rendered documents, e.g. .Rmd files
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
-Plug 'wincent/scalpel'                                                  " Use :Scalpel to rename variables
 Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 " Deoplete completion engine needs additional support plugins when not using NeoVim
@@ -314,17 +295,14 @@ let python_highlight_all=1
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
 
-" Instert a python debug breakpoint
-nnoremap <LocalLeader>d oimport ipdb;ipdb.set_trace()<Esc>
-
 " Open right vertical help window
 cnoreabbrev H vert bo h
 
 
 """ Visual
 
-" Start scrolling when 3 lines from bottom of screen
-set scrolloff=3
+" Start scrolling when 7 lines from bottom of screen
+set scrolloff=7
 
 " Do not need to show -- Insert --, as lightline handles it already
 set noshowmode
@@ -466,20 +444,6 @@ set complete+=kspell
 
 """ Plugin settings
 
-"""" NERDTree
-" Hide .pyc files in nerdtree
-let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
-
-" Open nerdtree with F6
-map <F6> :NERDTree<CR>
-
-" Show hidden files in NERDTree
-let NERDTreeShowHidden=1
-
-" Map NERDTree to <Leader>n
-nnoremap <Leader>n :NERDTree<CR>
-
-
 """" ArgWrap
 " Wrap function arguments
 nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -559,11 +523,6 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set shortmess+=c
 
 
-"""" Tagbar
-" Open Tagbar CTags with <F8>
-nmap <Leader>tb :TagbarToggle<CR>
-
-
 """" vim-gitgutter
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk
@@ -575,21 +534,11 @@ nmap <Leader>gN <Plug>GitGutterPrevHunk
 nmap <C-n> <Plug>GitGutterNextHunk
 nmap <C-p> <Plug>GitGutterPrevHunk
 
-"""" vim-pytest
-" Pytest mappings
-nmap <silent><LocalLeader>F <Esc>:Pytest file<CR>
-nmap <silent><LocalLeader>f <Esc>:Pytest function<CR>
-nmap <silent><LocalLeader>c <Esc>:Pytest class<CR>
-nmap <silent><LocalLeader>m <Esc>:Pytest method<CR>
-nmap <silent><LocalLeader>p <Esc>:Pytest project<CR>
 
 """" LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
     \ 'python' : ['pyls'],
     \ 'sh': ['bash-language-server', 'start']
     \ }
@@ -623,23 +572,6 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 let g:LanguageClient_selectionUI = 'fzf'
 
 
-"""" vim-lexical
-
-augroup lexical
-  autocmd!
-  autocmd FileType markdown,mkd,rmd,text call lexical#init()
-augroup END
-
-let g:lexical#spell = 1
-let g:lexical#thesaurus = ['$XDG_CONFIG_HOME/nvim/thesaurus/mthesaur.txt',]
-let g:lexical#dictionary = ['/usr/share/dict/words',]
-let g:lexical#spellfile = ['$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add',]
-
-let g:lexical#spell_key = '<leader>ss'
-let g:lexical#thesaurus_key = '<leader>st'
-let g:lexical#dictionary_key = '<leader>sd'
-
-
 """" vim-sneak
 " Use vim-sneak as a lightweight vim-easymotion replacement
 " Press s{char}{char} or use z in motions
@@ -658,44 +590,8 @@ let g:echodoc#enable_force_overwrite = 0  " NB! Setting to 1 causes flicker
 nnoremap <Leader>gw :Gw<CR>
 
 
-"""" vim-hardtime
-" Disable repeated use of hjkl
-let g:hardtime_default_on = 1
-
-
 """" vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
-
-
-"""" zeavim.vim
-nmap <leader>z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>Zeavim
-vmap <leader>z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVVisSelection
-nmap gz :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVOperator
-nmap <leader>Z :!i3-msg --quiet '[instance="zeal"] scratchpad show'<CR> <Plug>ZVKeyDocset
-
-let g:zv_keep_focus = 0
-let g:zv_file_types = {
-            \   'help'                : 'vim',
-            \   'javascript'          : 'javascript,nodejs',
-            \   'python'              : 'python_3',
-            \   '\v^(G|g)ulpfile\.js' : 'gulp,javascript,nodejs',
-            \ }
-
-
-"""" vim-flake8
-" Automatically run flake8 on-write for *.py files
-" autocmd BufWritePost *.py call Flake8()
-
-
-"""" ranger.vim
-" Disable default keybindings
-let g:ranger_map_keys = 0
-
-" Open ranger window at worknig directory
-nnoremap <Leader>f :RangerWorkingDirectory<CR>
-
-" Open ranger at the current file
-nnoremap <Leader>F :Ranger<CR>
 
 
 """" python-mode
@@ -754,7 +650,7 @@ let g:pymode_lint_unmodified = 0
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = []
+let g:pymode_lint_ignore = ['W504']
 let g:pymode_lint_select = []
 let g:pymode_lint_sort = []
 let g:pymode_lint_cwindow = 1
@@ -773,7 +669,7 @@ let g:pymode_rope_regenerate_on_write = 1
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 let g:pymode_rope_completion_bind = '<C-Space>'
-let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport = 0
 let g:pymode_rope_autoimport_modules = ['os', 'shutil', 'datetime', 'pathlib.Path']
 let g:pymode_rope_autoimport_import_after_complete = 1
 
@@ -824,13 +720,6 @@ let g:pymode_syntax_docstrings = g:pymode_syntax_all
 "" Things to get better at when using vim
 "      - Actively use LanguageClient for programming, including K, Space+d,
 "        Space+r.
-
-
-"""" vim-pandoc
-" Disable automatically changing current directory to .rst file parent folder
-" (ugh!)
-let g:pandoc#modules#disabled = ["chdir"]
-
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
