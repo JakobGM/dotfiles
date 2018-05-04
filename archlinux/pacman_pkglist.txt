@@ -18,7 +18,7 @@ intel-ucode
 base-devel
 
 # Package manager for the AUR
-yaourt
+yay
 
 # A network manager to handle wired and wifi connections
 networkmanager
