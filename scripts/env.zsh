@@ -116,6 +116,9 @@ export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
 # Prevent ranger from reading default configurations twice
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+# Weechat IRC client
+export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+
 
 # --- System specific environment variables ---
 local OS=$(uname -o)
