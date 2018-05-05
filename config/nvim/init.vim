@@ -624,6 +624,7 @@ let g:pymode_folding = 0
 " iC    Select inner class. Ex: viC, diC, yiC, ciC (normal, operator modes)
 " aM    Select a function or method. Ex: vaM, daM, yaM, caM (normal, operator modes)
 " iM    Select inner function or method. Ex: viM, diM, yiM, ciM (normal, operator modes)
+set magic " Required for pymode_motion
 let g:pymode_motion = 1
 
 " Show documentation
