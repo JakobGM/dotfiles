@@ -113,3 +113,4 @@ config/transmission/
 config/vlc/
 home/.emacs.d/
 home/.fonts/.uuid
+config/zsh/.zcompdump
