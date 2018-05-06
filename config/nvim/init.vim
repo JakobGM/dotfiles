@@ -346,6 +346,9 @@ augroup end
 " Show directory hierarchy in netrw
 let g:netrw_liststyle = 3
 
+" Remove directory banner in netrw
+let g:netrw_banner = 0
+
 
 """ Searching
 
