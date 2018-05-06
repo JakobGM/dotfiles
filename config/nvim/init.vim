@@ -517,6 +517,9 @@ let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 " https://github.com/python-mode/python-mode/issues/748
 let g:deoplete#enable_at_startup = 1
 
+" Use smartcase.
+call deoplete#custom#option('smart_case', v:true)
+
 " Prevent deoplete from leaving preview windows after completion
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
