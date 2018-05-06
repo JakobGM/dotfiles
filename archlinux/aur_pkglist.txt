@@ -1,3 +1,13 @@
+# --- System stuff ---
+# Touchpad gestures
+libinput-gestures
+
+# Manage xrandr
+mons
+
+# Auto mount usb disks
+udisksvm
+
 # --- GUI ---
 # Tiling window manager
 i3-gaps
@@ -7,9 +17,6 @@ alacritty-git
 
 # Status bar
 polybar
-
-# Font used by polybar
-siji-git
 
 # Icon theme
 pop-icon-theme-git
@@ -23,20 +30,28 @@ i3lock-fancy-git
 # Symlink rofi in place of dmenu
 rofi-dmenu
 
-# For taking and editing screenshots
-shutter
+# Font collection
+nerd-fonts-complete
+
+# Manage audio outputs
+pavucontrol-gtk2
 
 
 # --- Terminal ---
-# System information
-neofetch
-
 # Generate ctags for project directories
 universal-ctags-git
 
 # GnuPG v2
 gnupg
 
+# For picking out file paths from stdout
+fpp-git
+
+# Package manager for the AUR
+yay
+
+# Mass move file objects
+mmv
 
 # --- Customisation ---
 # Keyboard layout
@@ -44,8 +59,22 @@ programmers-dvorak
 
 
 # --- Applications ---
+# For managing secrets
 keybase-bin
+
+# Music streamer
 spotify
 
 # Messenger app for several messaging services
 franz
+
+# Fonts for steam
+steam-fonts
+
+
+# --- Development ---
+# API exploration tool
+postman-bin
+
+# Python IDE
+pycharm-professional

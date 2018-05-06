@@ -9,10 +9,10 @@ printf "\nInstalling AUR packages\n"
 for package in $(cat $DIR/aur_pkglist.txt | egrep -v "^\s*(#|$)")
 do
     # Check if the package can be found in the registry
-    if [[ $(yaourt -Ss -q $package | egrep ^${package}$) ]]
+    if [[ $(yay -Ss -q $package | egrep ^${package}$) ]]
     then
         printf "\n------------------------- Installing $package -------------------------"
-        yaourt -S --needed $package
+        yay -S --needed $package
     else
         echo -e "\033[0;31mCould not find the package '$package'!"
         exit 1
