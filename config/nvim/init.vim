@@ -350,6 +350,9 @@ let g:netrw_liststyle = 3
 " Remove directory banner in netrw
 let g:netrw_banner = 0
 
+" Automatically place help buffer in vertical split layout
+au BufEnter */doc/* if &filetype=='help' | wincmd L | endif
+
 
 """ Searching
 
