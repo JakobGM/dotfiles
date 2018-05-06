@@ -33,6 +33,7 @@ Plug 'taohex/lightline-buffer'                                          " Buffer
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
+Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
