@@ -14,6 +14,7 @@ Plug 'danro/rename.vim'                                                 " Enable
 Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
+Plug 'francoiscabrol/ranger.vim'                                        " Use ranger as file explorer
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
@@ -27,6 +28,7 @@ Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
+Plug 'rbgrouleff/bclose.vim'                                            " Dependency of ranger.vim
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'shougo/echodoc.vim'                                               " Show function signature help
@@ -764,6 +766,13 @@ nmap <silent><LocalLeader>Tp <Esc>:Pytest project looponfail<CR>
 nmap <silent><LocalLeader>tn <Esc>:Pytest next<CR>
 nmap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
 nmap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
+
+
+"""" ranger.vim
+let g:ranger_map_keys = 0
+map <Leader>f :RangerWorkingDirectoryNewTab<CR>
+map <Leader>F :Ranger<CR>
+let g:ranger_replace_netrw = 1
 
 
 "" Things to get better at when using vim
