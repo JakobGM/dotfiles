@@ -7,6 +7,7 @@ filetype off                  " required
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
+Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
@@ -740,6 +741,27 @@ let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
 let g:pymode_syntax_builtin_types = g:pymode_syntax_all
 let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
 let g:pymode_syntax_docstrings = g:pymode_syntax_all
+
+
+"""" pytest.vim
+" Test specific construct
+nmap <silent><LocalLeader>tf <Esc>:Pytest function<CR>
+nmap <silent><LocalLeader>tF <Esc>:Pytest file<CR>
+nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
+nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
+nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
+
+" Test with looponfail
+nmap <silent><LocalLeader>Tf <Esc>:Pytest function looponfail<CR>
+nmap <silent><LocalLeader>TF <Esc>:Pytest file looponfail<CR>
+nmap <silent><LocalLeader>Tc <Esc>:Pytest class looponfail<CR>
+nmap <silent><LocalLeader>Tm <Esc>:Pytest method looponfail<CR>
+nmap <silent><LocalLeader>Tp <Esc>:Pytest project looponfail<CR>
+
+nmap <silent><LocalLeader>tn <Esc>:Pytest next<CR>
+nmap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
+nmap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
+
 
 "" Things to get better at when using vim
 "      - Actively use LanguageClient for programming, including K, Space+d,
