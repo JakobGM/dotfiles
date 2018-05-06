@@ -654,7 +654,7 @@ let g:pymode_virtualenv_path = $VIRTUAL_ENV
 
 " Run code
 let g:pymode_run = 1
-let g:pymode_run_bind = '<LocalLeader>r'
+let g:pymode_run_bind = '<LocalLeader>x'
 
 " Breakpoints
 let g:pymode_breakpoint = 1
