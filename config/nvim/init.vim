@@ -343,6 +343,9 @@ augroup CrossHair
   au WinLeave * setlocal nocursorline
 augroup end
 
+" Show directory hierarchy in netrw
+let g:netrw_liststyle = 3
+
 
 """ Searching
 
