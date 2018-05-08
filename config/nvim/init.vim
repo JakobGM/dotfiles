@@ -705,7 +705,7 @@ let g:pymode_rope_autoimport_import_after_complete = 1
 
 " Find definition
 let g:pymode_rope_goto_definition_bind = '<LocalLeader>d'
-let g:pymode_rope_goto_definition_cmd = 'new'
+let g:pymode_rope_goto_definition_cmd = 'e'
 
 " Refactoring
 let g:pymode_rope_rename_bind = '<LocalLeader>r'
