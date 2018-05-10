@@ -24,6 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy 
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
+Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
 Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
