@@ -615,6 +615,33 @@ set formatexpr=LanguageClient_textDocument_rangeFormatting()
 " Use fzf for multiple entries selection
 let g:LanguageClient_selectionUI = 'fzf'
 
+let g:LanguageClient_diagnosticsDisplay = {
+            \    1: {
+            \        "name": "Error",
+            \        "texthl": "ALEError",
+            \        "signText": "",
+            \        "signTexthl": "ALEErrorSign",
+            \    },
+            \    2: {
+            \        "name": "Warning",
+            \        "texthl": "ALEWarning",
+            \        "signText": "",
+            \        "signTexthl": "ALEWarningSign",
+            \    },
+            \    3: {
+            \        "name": "Information",
+            \        "texthl": "ALEInfo",
+            \        "signText": "",
+            \        "signTexthl": "ALEInfoSign",
+            \    },
+            \    4: {
+            \        "name": "Hint",
+            \        "texthl": "ALEInfo",
+            \        "signText": "H",
+            \        "signTexthl": "ALEInfoSign",
+            \    },
+            \}
+
 
 """" vim-sneak
 " Use vim-sneak as a lightweight vim-easymotion replacement
