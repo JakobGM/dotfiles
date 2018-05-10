@@ -25,7 +25,6 @@ Plug 'junegunn/fzf.vim'                                                 " Asynch
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
-Plug 'melonmanchan/vim-tmux-resizer'                                    " Resize vim/tmux panes with Alt-hjkl
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
@@ -406,9 +405,6 @@ if has('nvim')
     tnoremap <C-k> <C-\><C-N><C-w>k
     tnoremap <C-l> <C-\><C-N><C-w>l
 endif
-
-" Enable vim/tmux pane resizing with Alt-hjkl
-" let g:tmux_resizer_no_mappings = 0
 
 " Required for operations modifying multiple buffers like rename (used by nLSP)
 set hidden
