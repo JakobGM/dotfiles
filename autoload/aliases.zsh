@@ -10,6 +10,7 @@ alias zshconfig='vim $HOME/.zshrc'
 
 # Git aliases
 eval "$(hub alias -s)"
+alias g="git"
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
 alias gitlock="git update-index --assume-unchanged"
