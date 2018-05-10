@@ -355,9 +355,6 @@ let g:netrw_banner = 0
 " Automatically place help buffer in vertical split layout
 au BufEnter */doc/* if &filetype=='help' | wincmd L | endif
 
-" Do not use separate background color in sign column
-highlight SignColumn guibg=bg
-
 
 """ Searching
 
@@ -565,6 +562,21 @@ nmap <Leader>gn <Plug>GitGutterNextHunk
 nmap <Leader>gN <Plug>GitGutterPrevHunk
 nmap <C-n> <Plug>GitGutterNextHunk
 nmap <C-p> <Plug>GitGutterPrevHunk
+
+" Update sign column every quarter second
+set updatetime=250
+
+" Do not use separate background color in sign column
+let g:gitgutter_override_sign_column_highlight = 1
+highlight SignColumn guibg=bg
+highlight SignColumn ctermbg=bg
+
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = ''
+let g:gitgutter_sign_modified = ''
+let g:gitgutter_sign_removed = ''
+let g:gitgutter_sign_removed_first_line = ''
+let g:gitgutter_sign_modified_removed = ''
 
 
 """" LanguageClient-neovim
