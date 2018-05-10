@@ -355,6 +355,9 @@ let g:netrw_banner = 0
 " Automatically place help buffer in vertical split layout
 au BufEnter */doc/* if &filetype=='help' | wincmd L | endif
 
+" Do not use separate background color in sign column
+highlight SignColumn guibg=bg
+
 
 """ Searching
 
