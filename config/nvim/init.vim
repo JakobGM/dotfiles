@@ -772,7 +772,7 @@ nmap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
 let g:ranger_map_keys = 0
 map <Leader>f :RangerWorkingDirectoryNewTab<CR>
 map <Leader>F :Ranger<CR>
-let g:ranger_replace_netrw = 1
+let g:ranger_replace_netrw = 0
 
 
 "" Things to get better at when using vim
