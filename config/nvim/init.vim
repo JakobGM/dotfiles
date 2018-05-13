@@ -24,6 +24,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy 
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
+Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
@@ -84,7 +85,7 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
-      \             [ 'gutentags' ],
+      \             [ 'gutentags', 'tagbar'],
       \           ]
       \ },
       \ 'component_function': {
@@ -114,6 +115,7 @@ let g:lightline = {
       \ },
       \ 'component': {
       \   'separator': '',
+      \   'tagbar': '%{tagbar#currenttag("%s", "", "f")}',
       \ },
       \ }
 
@@ -812,6 +814,33 @@ let g:ranger_map_keys = 0
 map <Leader>f :RangerWorkingDirectoryNewTab<CR>
 map <Leader>F :Ranger<CR>
 let g:ranger_replace_netrw = 0
+
+
+"""" tagbar
+" Toggle the Tagbar sidesplit with gt
+nnoremap <silent>gt <Esc>:TagbarToggle<CR>
+
+" Opten Tagbar to the left
+let g:tagbar_left = 0
+
+" Sort tags according to their location in the source file
+let g:tagbar_sort = 0
+
+" Only use on space for indent, saving horizontal real estate
+let g:tagbar_indent = 1
+
+" Do not show public/private icons, as it is somewhat irrelevant in python
+let g:tagbar_show_visibility = 0
+
+" Use fontawesome chevrons for hierarchy icons
+let g:tagbar_iconchars = ['', '']
+
+" Use underlined, bold, green for current tag
+highlight TagbarHighlight guifg=#b8bb26
+highlight TagbarHighlight gui=bold,underline
+
+" Always open Tagbar on startup
+autocmd VimEnter * nested :TagbarOpen
 
 
 "" Things to get better at when using vim
