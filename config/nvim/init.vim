@@ -83,11 +83,14 @@ call plug#end()
 let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
-      \             [ 'gutentags', 'tagbar'],
-      \           ]
-      \ },
+      \   'left':  [ [ 'mode', 'paste' ],
+      \              [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
+      \              [ 'gutentags', 'tagbar'],
+      \            ],
+      \   'right': [ [ ],
+      \              [ 'percent' ],
+      \              [ 'filetype' ] ]
+      \   },
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
