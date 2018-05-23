@@ -1,7 +1,6 @@
 " INFO: Show all content hidden by the folds by pressing zR
 
 """ Plugins
-set nocompatible              " required (and sane)
 filetype off                  " required
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
@@ -123,11 +122,11 @@ let g:lightline = {
       \ },
       \ }
 
-function! MyFiletype()
+function! MyFiletype() abort
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
-function! MyFileformat()
+function! MyFileformat() abort
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
@@ -163,6 +162,29 @@ let g:lightline_buffer_reservelen = 20
 
 """ Colors
 
+" Custom highlighting
+function! MyHighlights() abort
+    " Define BadWhitespace before using in a match
+    highlight BadWhitespace ctermbg=red guibg=darkred
+
+    " Highlight spelling mistakes in red
+    highlight SpellBad cterm=underline ctermfg=red guifg=red
+
+    " Do not use separate background color in sign column
+    let g:gitgutter_override_sign_column_highlight = 1
+    highlight SignColumn guibg=bg
+    highlight SignColumn ctermbg=bg
+
+    " Use underlined, bold, green for current tag
+    highlight TagbarHighlight guifg=#b8bb26
+    highlight TagbarHighlight gui=bold,underline
+endfunction
+
+augroup MyColors
+    autocmd!
+    autocmd ColorScheme * call MyHighlights()
+augroup END
+
 colorscheme gruvbox
 set background=dark
 
@@ -177,13 +199,13 @@ set termguicolors
 
 """ Formatting
 
-" One tab in a file is shown as 4 spaces
-set tabstop=4
+" Display \t as 8 visual spaces (recommended setting)
+set tabstop=8
 
-" One tab inserts 4 spaces
+" Pressing tab during editing operations inserts 4 spaces
 set softtabstop=4
 
-" One <tab> equals 4 <space> is the best standard setting
+" Number of spaces used for each step of an (auto)indent action, e.g. '>>'.
 set shiftwidth=4
 
 " Tab is replaced by the spaces specified as above
@@ -214,10 +236,10 @@ inoremap <M-o> ø
 inoremap <M-a> å
 
 " Write to file
-nmap <Leader>w <Esc>:w<CR>
+nnoremap <Leader>w <Esc>:w<CR>
 
 " Quit file
-nmap <Leader>q <Esc>:q<CR>
+nnoremap <Leader>q <Esc>:q<CR>
 
 " Make Y yank the rest of the line, as you would expect it to
 nnoremap Y y$
@@ -230,8 +252,12 @@ nnoremap <Right> :bnext<CR>
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Keybinding for visiting the GitHub page of the plugin defined on the current line
-autocmd FileType vim nnoremap <silent> gp :call OpenPluginHomepage()<CR>
-function! OpenPluginHomepage()
+augroup Vimrc
+    autocmd!
+    autocmd FileType vim nnoremap <silent> gp :call OpenPluginHomepage()<CR>
+augroup END
+
+function! OpenPluginHomepage() abort
   " Get line under cursor
   let line = getline(".")
 
@@ -254,7 +280,7 @@ nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
 nnoremap gsv :so $MYVIMRC<CR>
 
 " Clear search highlighting
-nmap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
+nnoremap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
 " Make use of backspace in normal mode, with functionality as expected
 nnoremap <silent> <backspace> X
@@ -283,14 +309,8 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Proper indentation for python files
 au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set autoindent |
     \ set fileformat=unix |
     \ set colorcolumn=80 |
-
 
 " Define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -326,10 +346,6 @@ set noshowcmd
 
 " Highlight current line
 set cursorline
-
-" Highlight spelling mistakes in red
-hi clear SpellBad
-highlight SpellBad cterm=underline ctermfg=red guifg=red
 
 " Hide fold numbering in left column
 set foldcolumn=0
@@ -451,8 +467,11 @@ vnoremap > >gv
 set completeopt-=preview
 
 " Enable spellchecking in natural language files
-autocmd BufRead,BufNewFile *.md,*.rst,*.txt setlocal spell spelllang=en_us
-autocmd FileType gitcommit setlocal spell spelllang=en_us
+augroup NaturalLanguage
+    autocmd!
+    autocmd BufRead,BufNewFile *.md,*.rst,*.txt setlocal spell spelllang=en_us
+    autocmd FileType gitcommit setlocal spell spelllang=en_us
+augroup END
 
 " Use word completion when spelling is enabled
 set complete+=kspell
@@ -568,11 +587,6 @@ nmap <C-p> <Plug>GitGutterPrevHunk
 
 " Update sign column every quarter second
 set updatetime=250
-
-" Do not use separate background color in sign column
-let g:gitgutter_override_sign_column_highlight = 1
-highlight SignColumn guibg=bg
-highlight SignColumn ctermbg=bg
 
 " Use fontawesome icons as signs
 let g:gitgutter_sign_added = ''
@@ -795,22 +809,22 @@ let g:pymode_syntax_docstrings = g:pymode_syntax_all
 
 """" pytest.vim
 " Test specific construct
-nmap <silent><LocalLeader>tf <Esc>:Pytest function<CR>
-nmap <silent><LocalLeader>tF <Esc>:Pytest file<CR>
-nmap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
-nmap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
-nmap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
+nnoremap <silent><LocalLeader>tf <Esc>:Pytest function<CR>
+nnoremap <silent><LocalLeader>tF <Esc>:Pytest file<CR>
+nnoremap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
+nnoremap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
+nnoremap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
 
 " Test with looponfail
-nmap <silent><LocalLeader>Tf <Esc>:Pytest function looponfail<CR>
-nmap <silent><LocalLeader>TF <Esc>:Pytest file looponfail<CR>
-nmap <silent><LocalLeader>Tc <Esc>:Pytest class looponfail<CR>
-nmap <silent><LocalLeader>Tm <Esc>:Pytest method looponfail<CR>
-nmap <silent><LocalLeader>Tp <Esc>:Pytest project looponfail<CR>
+nnoremap <silent><LocalLeader>Tf <Esc>:Pytest function looponfail<CR>
+nnoremap <silent><LocalLeader>TF <Esc>:Pytest file looponfail<CR>
+nnoremap <silent><LocalLeader>Tc <Esc>:Pytest class looponfail<CR>
+nnoremap <silent><LocalLeader>Tm <Esc>:Pytest method looponfail<CR>
+nnoremap <silent><LocalLeader>Tp <Esc>:Pytest project looponfail<CR>
 
-nmap <silent><LocalLeader>tn <Esc>:Pytest next<CR>
-nmap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
-nmap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
+nnoremap <silent><LocalLeader>tn <Esc>:Pytest next<CR>
+nnoremap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
+nnoremap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
 
 
 """" ranger.vim
@@ -839,12 +853,11 @@ let g:tagbar_show_visibility = 0
 " Use fontawesome chevrons for hierarchy icons
 let g:tagbar_iconchars = ['', '']
 
-" Use underlined, bold, green for current tag
-highlight TagbarHighlight guifg=#b8bb26
-highlight TagbarHighlight gui=bold,underline
-
 " Always open Tagbar on startup
-autocmd VimEnter * nested :TagbarOpen
+augroup Startup
+    autocmd!
+    autocmd VimEnter * nested :TagbarOpen
+augroup END
 
 
 """" coveragepy.vim
