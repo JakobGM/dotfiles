@@ -136,9 +136,9 @@ set showtabline=2  " always show tabline
 
 " lightline-buffer ui settings
 " replace these symbols with ascii characters if your environment does not support unicode
-let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_logo = ' '
 let g:lightline_buffer_readonly_icon = ''
-let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_modified_icon = ''
 let g:lightline_buffer_git_icon = ' '
 let g:lightline_buffer_ellipsis_icon = '..'
 let g:lightline_buffer_expand_left_icon = '◀ '
