@@ -7,6 +7,7 @@ filetype off                  " required
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
+Plug 'alfredodeza/coveragepy.vim'                                       " Show coverage status in gutter
 Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
@@ -844,6 +845,12 @@ highlight TagbarHighlight gui=bold,underline
 
 " Always open Tagbar on startup
 autocmd VimEnter * nested :TagbarOpen
+
+
+"""" coveragepy.vim
+let g:coveragepy_uncovered_sign = ''
+nnoremap <silent>gcR <Esc>:Coveragepy report<CR>
+nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
 
 
 "" Things to get better at when using vim
