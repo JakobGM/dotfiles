@@ -189,6 +189,9 @@ function! MyHighlights() abort
     " Use underlined, bold, green for current tag
     highlight TagbarHighlight guifg=#b8bb26
     highlight TagbarHighlight gui=bold,underline
+
+    " Highlight search results in bold green
+    highlight Search guibg=guibg guifg=#b8bb26 gui=bold,underline cterm=bold,underline
 endfunction
 
 augroup MyColors
