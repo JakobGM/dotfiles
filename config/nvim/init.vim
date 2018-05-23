@@ -237,7 +237,7 @@ set formatoptions-=t
 " <Leader> is set to space
 let mapleader=" "
 
-" And use "," as the local leader key
+" And use ',' as the local leader key
 let maplocalleader = ","
 
 " iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards.
@@ -293,7 +293,7 @@ nnoremap gsv :so $MYVIMRC<CR>
 " Clear search highlighting
 nnoremap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 
-" Make use of backspace in normal mode, with functionality as expected
+" Make use of backspace in normal mode
 nnoremap <silent> <backspace> X
 
 " Bind g(q|Q) to next item in quickfix list
@@ -323,9 +323,6 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set colorcolumn=80 |
 
-" Define BadWhitespace before using in a match
-highlight BadWhitespace ctermbg=red guibg=darkred
-
 " Flag unnecessary whitespace in python files
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -335,9 +332,6 @@ let python_highlight_all=1
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
-
-" Open right vertical help window
-cnoreabbrev H vert bo h
 
 
 """ Visual
@@ -455,16 +449,16 @@ if has('nvim')
 endif
 
 " Copy to system clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
+vnoremap  <leader>y  "*y
+vnoremap  <leader>Y  "*yg_
+nnoremap  <leader>y  "*y
+nnoremap  <leader>yy  "*yy
 
 " Paste from system clipboard
-nnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
-nnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
-vnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
-vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
+nnoremap <leader>p :set paste<CR> "*p :set nopaste<CR>
+nnoremap <leader>P :set paste<CR> "*P :set nopaste<CR>
+vnoremap <leader>p :set paste<CR> "*p :set nopaste<CR>
+vnoremap <leader>P :set paste<CR> "*P :set nopaste<CR>
 
 " Fix common typing mistakes
 iabbrev vuale value
@@ -486,6 +480,9 @@ augroup END
 
 " Use word completion when spelling is enabled
 set complete+=kspell
+
+" Open right vertical help window
+cnoreabbrev H vert bo h
 
 
 """ Plugin settings
@@ -560,6 +557,8 @@ let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 " Use deoplete autocompletion manager
 " Disabled while waiting for this issue to be resolved:
 " https://github.com/python-mode/python-mode/issues/748
+" Actually, this has now been enabled as I now use
+" deoplete-jedi, until this issue gets resolved
 let g:deoplete#enable_at_startup = 1
 
 " Use smartcase.
@@ -876,10 +875,6 @@ let g:coveragepy_uncovered_sign = ''
 nnoremap <silent>gcR <Esc>:Coveragepy report<CR>
 nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
 
-
-"" Things to get better at when using vim
-"      - Actively use LanguageClient for programming, including K, Space+d,
-"        Space+r.
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
