@@ -5,45 +5,56 @@ filetype off                  " required
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
+" Git
 Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
+Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
+Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
+
+" Python
 Plug 'alfredodeza/coveragepy.vim'                                       " Show coverage status in gutter
 Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
+Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
+Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
+Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
+Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
+
+" Navigation
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
-Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
-Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
-Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'francoiscabrol/ranger.vim'                                        " Use ranger as file explorer
-Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
-Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
-Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
-Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
-Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
 Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
-Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
-Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
-Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
-Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
-Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
-Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
 Plug 'rbgrouleff/bclose.vim'                                            " Dependency of ranger.vim
-Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
+Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
+
+" Editing
+Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
+Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
+Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
+Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
+Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
+Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
+
+" Visual
+Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
+Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
+Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
+Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
+Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
+Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'shougo/echodoc.vim'                                               " Show function signature help
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
-Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
-Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
+
+" Behaviour/tools
+Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
+Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
+Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
-Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
-Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
-Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
-Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
-Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 " Deoplete completion engine needs additional support plugins when not using NeoVim
 if has('nvim')
