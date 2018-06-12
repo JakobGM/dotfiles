@@ -114,3 +114,5 @@ config/vlc/
 home/.emacs.d/
 home/.fonts/.uuid
 config/zsh/.zcompdump
+config/kitty/kitty.conf
+modules/jakobgm/
