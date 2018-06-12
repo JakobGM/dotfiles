@@ -1,0 +1,50 @@
+astrality:
+    # If hot_reload_config is enabled, modifications to this file automatically
+    # runs:
+    #       1) exit actions from the old configuration
+    #       2) startup actions from the new configuration
+    # Requires restart if enabled
+    hot_reload_config: true
+
+    # You can delay astrality on startup. The delay is given in seconds.
+    startup_delay: 0
+
+
+modules:
+    # Modules can require successfull shell commands (non-zero exit codes) in
+    # order to be enabled. You can specify the timeout for such checks, given
+    # in seconds.
+    requires_timeout: 1
+
+    # Astrality can wait for shell commands to complete in their specified
+    # order. You can set the number of seconds Astrality waits for the shell
+    # commands to exit.
+    run_timeout: 0
+
+    # Modified templates can be automatically recompiled. This also includes
+    # files that have been copied to a target destination.
+    reprocess_modified_files: true
+
+    # There are two possible ways to define modules. Either in this file, as
+    # shown further below, or in separate external module directories within the
+    # following specified directory, relatively interpreted as:
+    # $ASTRALITY_CONFIG_HOME/modules
+    modules_directory: modules
+
+    # You enable modules by specifying the <name> of each module.
+    # Modules defined in <modules_directory>/<subdirectory>/config.yml are
+    # enabled by writing name: <subdirectory>::<name>
+    #
+    # '*' enables all modules in this file, '*::*' enables all modules defined
+    # in subdirectories of <modules_directory>.
+    enabled_modules:
+        # Module defined in this file
+        - name: polybar::*
+        - name: terminals
+
+        # All modules defined in <modules_directory>/solar_desktop/config.yml
+        - name: solar_desktop::*
+
+        # Module defined at https://github.com/jakobgm/color-schemes.astrality
+        - name: github::jakobgm/color-schemes.astrality
+          autoupdate: true  # Fetch new color schemes as they are added

@@ -95,8 +95,14 @@ export GIT_TERMINAL_PROMPT=1
 export ASTRALITY_LOGGING_LEVEL=DEBUG
 
 # Allaw global packages install with npm -g without use of sudo
-PATH="$HOME/.node_modules/bin:$PATH"
+export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
+# Make the dotfiles repository the home for Astrality
+export ASTRALITY_CONFIG_HOME=$DOTREPO
+
+# Add ruby gems to path
+export PATH="$HOME/.gem/ruby/2.5.0/bin:${PATH}"
 
 
 # --- Fix lacking XDG Home Directory support ---

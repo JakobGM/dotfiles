@@ -61,30 +61,30 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: FuraCode Nerd Font # should be "Menlo" or something on macOS.
+    family: {{ fonts.1.name }} # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: FuraCode Nerd Font # should be "Menlo" or something on macOS.
+    family: {{ fonts.1.name }} # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: FuraCode Nerd Font # should be "Menlo" or something on macOS.
+    family: {{ fonts.1.name }} # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 14
+  size: {{ fonts.terminal.size }}
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     # Some weird padding bug on ArchLinux requires offsetting the font size
-    x: -14
+    x: -{{ fonts.terminal.size }}
     y: 0.0
 
   # Glyph offset determines the locations of the glyphs within their cells with
@@ -110,46 +110,46 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    background: '0x282828'
-    foreground: '0xfbf1c7'
+    background: '0x{{ colors.background.1 }}'
+    foreground: '0x{{ colors.foreground.1 }}'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0xbdae93'
-    cursor: '0x665c54'
+    text: '0x{{ colors.foreground.4 }}'
+    cursor: '0x{{ colors.background.4 }}'
 
   # Normal colors
   normal:
-    black:   '0x282828'
-    red:     '0xcc241d'
-    green:   '0x98971a'
-    yellow:  '0xd79921'
-    blue:    '0x458588'
-    magenta: '0xb16286'
-    cyan:    '0x689d6a'
-    white:   '0xa89984'
+    black:   '0x{{ colors.normal.black }}'
+    red:     '0x{{ colors.normal.red }}'
+    green:   '0x{{ colors.normal.green }}'
+    yellow:  '0x{{ colors.normal.yellow }}'
+    blue:    '0x{{ colors.normal.blue }}'
+    magenta: '0x{{ colors.normal.magenta or colors.normal.purple }}'
+    cyan:    '0x{{ colors.normal.cyan or colors.normal.blue }}'
+    white:   '0x{{ colors.normal.white }}'
 
   # Bright colors
   bright:
-    black:   '0x928374'
-    red:     '0xfb4934'
-    green:   '0xb8bb26'
-    yellow:  '0xfabd2f'
-    blue:    '0x83a598'
-    magenta: '0xd3869b'
-    cyan:    '0x8ec07c'
-    white:   '0xebdbb2'
+    black:   '0x{{ colors.bright.black }}'
+    red:     '0x{{ colors.bright.red }}'
+    green:   '0x{{ colors.bright.green }}'
+    yellow:  '0x{{ colors.bright.yellow }}'
+    blue:    '0x{{ colors.bright.blue }}'
+    magenta: '0x{{ colors.bright.magenta or colors.bright.purple }}'
+    cyan:    '0x{{ colors.bright.cyan or colors.bright.blue }}'
+    white:   '0x{{ colors.bright.white }}'
 
   # Dim colors (Optional)
   # dim:
-    # black:   '0x282828'
-    # red:     '0xcc241d'
-    # green:   '0x98971a'
-    # yellow:  '0xd79921'
-    # blue:    '0x458588'
-    # magenta: '0xb16286'
-    # cyan:    '0x689d6a'
-    # white:   '0xa89984'
+    # black:   '0x{{ colors.normal.black }}'
+    # red:     '0x{{ colors.normal.red }}'
+    # green:   '0x{{ colors.normal.green }}'
+    # yellow:  '0x{{ colors.normal.yellow }}'
+    # blue:    '0x{{ colors.normal.blue }}'
+    # magenta: '0x{{ colors.normal.magenta or colors.normal.purple }}'
+    # cyan:    '0x{{ colors.normal.cyan or colors.normal.blue }}'
+    # white:   '0x{{ colors.normal.white }}'
 
 
 # Visual Bell
