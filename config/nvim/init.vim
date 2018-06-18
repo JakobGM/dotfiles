@@ -49,6 +49,7 @@ Plug 'shougo/echodoc.vim'                                               " Show f
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 
 " Behaviour/tools
+Plug 'kassio/neoterm'                                                   " Terminal buffer wrapper
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
@@ -877,6 +878,15 @@ augroup END
 let g:coveragepy_uncovered_sign = ''
 nnoremap <silent>gcR <Esc>:Coveragepy report<CR>
 nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
+
+
+"""" neoterm
+" Open and close persistent terminal buffer on bottom right with: Alt + t
+noremap <M-t> <Esc>:botright Ttoggle<CR>
+tmap <M-t> <Esc>:botright Ttoggle<CR>
+
+" Automatically move to insert mode in newly opened terminal buffer
+let g:neoterm_autoinsert = 1
 
 
 """ Folding (open every fold with zR)
