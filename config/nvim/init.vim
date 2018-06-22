@@ -853,7 +853,7 @@ let g:ranger_replace_netrw = 0
 " Toggle the Tagbar sidesplit with gt
 nnoremap <silent>gt <Esc>:TagbarToggle<CR>
 
-" Opten Tagbar to the left
+" Opten Tagbar to the right
 let g:tagbar_left = 0
 
 " Sort tags according to their location in the source file
@@ -869,10 +869,11 @@ let g:tagbar_show_visibility = 0
 let g:tagbar_iconchars = ['', '']
 
 " Always open Tagbar on startup
-augroup Startup
-    autocmd!
-    autocmd VimEnter * nested :TagbarOpen
-augroup END
+" Left here in case I would want to enable it at some point
+" augroup Startup
+"     autocmd!
+"     autocmd VimEnter * nested :TagbarOpen
+" augroup END
 
 
 """" coveragepy.vim
