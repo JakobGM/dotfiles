@@ -45,6 +45,7 @@ Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbo
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
+Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
 Plug 'shougo/echodoc.vim'                                               " Show function signature help
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 
