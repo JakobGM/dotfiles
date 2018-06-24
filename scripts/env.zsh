@@ -10,7 +10,7 @@ export PIP_REQUIRE_VIRTUALENV=true  # But there are some global packages that ar
 # Virtual Environment
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
-export VIRTUALENVWRAPPER_PYTHON=python3
+export VIRTUALENVWRAPPER_PYTHON=$WORKON_HOME/virtualenvwrapper/bin/python
 export VIRTUALENV_PYTHON=python3
 export VIRTUALENVWRAPPER_WORKON_CD=1
 export VIRTUALENVWRAPPER_HOOK_DIR=$DOTREPO/python/virtualenvwrapper_hook_dir
