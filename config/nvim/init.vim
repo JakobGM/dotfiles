@@ -384,6 +384,10 @@ let g:netrw_liststyle = 3
 " Remove directory banner in netrw
 let g:netrw_banner = 0
 
+" Prevent duplicate netrw buffers (bug caused by vinegar)
+" See: https://codeyarns.com/2015/02/02/cannot-close-buffer-of-netrw-in-vim/
+autocmd FileType netrw setl bufhidden=wipe
+
 " Automatically place help buffer in vertical split layout
 au BufEnter */doc/* if &filetype=='help' | wincmd L | endif
 
