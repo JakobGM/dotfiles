@@ -9,7 +9,7 @@ fi
 if ! pgrep -f dropdown_ipython > /dev/null
 then
     # alacritty --dimensions 0 0 --title dropdown_ipython -e ipython
-    kitty --title dropdown_ipython --name dropdown_ipython --directory $WORKON_HOME/astrality ipython
+    kitty --title dropdown_ipython --name dropdown_ipython --directory $PROJECT_HOME/cloud $WORKON_HOME/otovo/bin/python -m IPython
 fi
 
 if ! pgrep -f zeal > /dev/null
