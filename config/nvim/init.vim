@@ -315,6 +315,9 @@ nnoremap <silent> gL :ll<CR>
 " Mnemonic: "go source syntax"
 nnoremap gss :syntax sync fromstart<CR>
 
+" Open vertical split with Space + v
+nnoremap <silent> <Leader>v :vsplit<CR>
+
 
 """ Commands
 " Write to the current file as sudo
