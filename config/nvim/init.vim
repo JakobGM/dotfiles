@@ -339,7 +339,7 @@ let python_highlight_all=1
 
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
-let g:python2_host_prog = $HOME.'~/.virtualenvs/NeoVim2/bin/python'
+let g:python2_host_prog = $HOME.'/.virtualenvs/NeoVim2/bin/python'
 
 
 """ Visual
