@@ -7,6 +7,7 @@ alias dnsflush='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flus
 
 # Misc aliases
 alias zshconfig='vim $HOME/.zshrc'
+alias ssh='TERM=xterm-256colors ssh'
 
 # Git aliases
 eval "$(hub alias -s)"
