@@ -898,6 +898,11 @@ tmap <M-t> <Esc>:botright Ttoggle<CR>
 let g:neoterm_autoinsert = 1
 
 
+"""" vim-rhubarb
+" Open current line on GitHub
+nnoremap <Leader>gh V:Gbrowse<CR>
+
+
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
 "" vim:fdm=expr:fdl=0
