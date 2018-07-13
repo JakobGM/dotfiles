@@ -145,3 +145,9 @@ export GDK_DPI_SCALE=1
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
 export HISTSIZE=1000000
 export HISTSAVE=1000000
+
+
+# --- Docker ---
+# Use local.yml as default docker-compose file
+# This makes the -f local.yml flag redundant
+export COMPOSE_FILE=local.yml
