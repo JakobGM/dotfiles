@@ -36,3 +36,7 @@ zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 # Fuzzy searchable cd command
 zplug "b4b4r07/enhancd", use:init.sh
+
+# Docker completion scripts
+zplug 'plugins/docker', from:oh-my-zsh
+zplug 'plugins/docker-compose', from:oh-my-zsh
