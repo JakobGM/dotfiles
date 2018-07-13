@@ -151,3 +151,6 @@ export HISTSAVE=1000000
 # Use local.yml as default docker-compose file
 # This makes the -f local.yml flag redundant
 export COMPOSE_FILE=local.yml
+
+# git-secret configuration
+export SECRETS_GPG_COMMAND='gpg2'
