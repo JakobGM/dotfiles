@@ -623,6 +623,8 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'python' : ['pyls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'sh': ['bash-language-server', 'start']
     \ }
 
@@ -891,8 +893,8 @@ nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
 
 """" neoterm
 " Open and close persistent terminal buffer on bottom right with: Alt + t
-noremap <M-t> <Esc>:botright Ttoggle<CR>
-tmap <M-t> <Esc>:botright Ttoggle<CR>
+noremap <silent><M-t> <Esc>:botright Ttoggle<CR>
+tmap <silent><M-t> <Esc>:botright Ttoggle<CR>
 
 " Automatically move to insert mode in newly opened terminal buffer
 let g:neoterm_autoinsert = 1
