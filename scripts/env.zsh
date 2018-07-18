@@ -20,6 +20,12 @@ export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# The name of the python (mk)project which is currently the main project
+export MAIN_PYTHON_PROJECT='cloud'
+
+# Always use ptipython in shell_plus django-admin command
+export SHELL_PLUS='ptipython'
+
 # Set editor used by default by other programs, for instance tmuxinator
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   export VISUAL="nvr -cc tabedit --remote-wait +'set bufhidden=wipe'"
