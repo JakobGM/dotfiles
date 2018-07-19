@@ -646,7 +646,7 @@ nnoremap <silent> <Leader>R :call LanguageClient_textDocument_references()<CR>
 nnoremap <silent> <Leader>F :call LanguageClient_textDocument_formatting()<CR>
 
 " Use LanguageClient for gq formatting
-set formatexpr=LanguageClient_textDocument_rangeFormatting()
+set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
 
 " Use fzf for multiple entries selection
 let g:LanguageClient_selectionUI = 'fzf'
