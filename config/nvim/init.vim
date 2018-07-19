@@ -308,8 +308,8 @@ nnoremap <silent> gQ :cp<CR>
 
 " Bind g(l|L) to next item in location list
 " Mnemonic: "go location"
-nnoremap <silent> gl :ll<CR>
-nnoremap <silent> gL :ll<CR>
+nnoremap <silent> <Leader>l :lne<CR>
+nnoremap <silent> <Leader>L :lp<CR>
 
 " Redraw syntax highlighting when color disappears
 " Mnemonic: "go source syntax"
