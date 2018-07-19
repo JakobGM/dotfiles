@@ -757,17 +757,17 @@ let g:pymode_breakpoint_bind = '<LocalLeader>b'
 let g:pymode_breakpoint_cmd = ''
 
 " Code checking
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 1
+let g:pymode_lint = 0
+let g:pymode_lint_on_write = 0
 let g:pymode_lint_unmodified = 0
 let g:pymode_lint_on_fly = 0
-let g:pymode_lint_message = 1
+let g:pymode_lint_message = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ['W504']
 let g:pymode_lint_select = []
 let g:pymode_lint_sort = []
-let g:pymode_lint_cwindow = 1
-let g:pymode_lint_signs = 1
+let g:pymode_lint_cwindow = 0
+let g:pymode_lint_signs = 0
 
 " Gutter lint symbols
 let g:pymode_lint_todo_symbol = ''
