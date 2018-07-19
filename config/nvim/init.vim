@@ -632,6 +632,9 @@ nnoremap <silent> <Leader>K :call LanguageClient_textDocument_hover()<CR>
 " Go to definition
 nnoremap <silent> <Leader>d :call LanguageClient_textDocument_definition()<CR>
 
+" Show short type and doc information
+nnoremap <silent> <Leader>D :call LanguageClient_textDocument_hover()<CR>
+
 " Rename identifier
 nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
 
