@@ -712,11 +712,11 @@ let g:pymode = 1
 let g:pymode_warnings = 1
 let g:pymode_paths = []
 let g:pymode_trim_whitespaces = 1
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 80
+let g:pymode_options = 0
+let g:pymode_options_max_line_length = 79
 let g:pymode_options_colorcolumn = 1
-let g:pymode_quickfix_minheight = 1
-let g:pymode_quickfix_maxheight = 1
+let g:pymode_quickfix_minheight = 0
+let g:pymode_quickfix_maxheight = 0
 
 " Python version
 let g:pymode_python = 'python3'
@@ -741,7 +741,7 @@ let g:pymode_motion = 1
 
 " Show documentation
 let g:pymode_doc = 1
-let g:pymode_doc_bind = '<LocalLeader>K'
+let g:pymode_doc_bind = 'K'
 
 " Support virtualenv
 let g:pymode_virtualenv = 1
@@ -768,6 +768,14 @@ let g:pymode_lint_select = []
 let g:pymode_lint_sort = []
 let g:pymode_lint_cwindow = 1
 let g:pymode_lint_signs = 1
+
+" Gutter lint symbols
+let g:pymode_lint_todo_symbol = ''
+let g:pymode_lint_comment_symbol = ''
+let g:pymode_lint_visual_symbol = ''
+let g:pymode_lint_error_symbol = ''
+let g:pymode_lint_info_symbol = ''
+let g:pymode_lint_pyflakes_symbol = ''
 
 " Rope support
 let g:pymode_rope = 1
@@ -813,22 +821,22 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_slow_sync = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_print_as_function = 0
-let g:pymode_syntax_highlight_async_await = g:pymode_syntax_all
-let g:pymode_syntax_highlight_equal_operator = g:pymode_syntax_all
-let g:pymode_syntax_highlight_stars_operator = g:pymode_syntax_all
-let g:pymode_syntax_highlight_self = g:pymode_syntax_all
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_syntax_highlight_async_await = 1
+let g:pymode_syntax_highlight_equal_operator = 1
+let g:pymode_syntax_highlight_stars_operator = 1
+let g:pymode_syntax_highlight_self = 1
+let g:pymode_syntax_indent_errors = 1
+let g:pymode_syntax_space_errors = 1
 
-let g:pymode_syntax_string_formatting = g:pymode_syntax_all
-let g:pymode_syntax_string_format = g:pymode_syntax_all
-let g:pymode_syntax_string_templates = g:pymode_syntax_all
-let g:pymode_syntax_doctests = g:pymode_syntax_all
+let g:pymode_syntax_string_formatting = 1
+let g:pymode_syntax_string_format = 1
+let g:pymode_syntax_string_templates = 1
+let g:pymode_syntax_doctests = 1
 
-let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
-let g:pymode_syntax_builtin_types = g:pymode_syntax_all
-let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
-let g:pymode_syntax_docstrings = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs = 1
+let g:pymode_syntax_builtin_types = 1
+let g:pymode_syntax_highlight_exceptions = 1
+let g:pymode_syntax_docstrings = 1
 
 
 """" pytest.vim
