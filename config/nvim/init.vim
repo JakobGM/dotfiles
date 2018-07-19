@@ -254,9 +254,6 @@ inoremap <M-a> å
 " Write to file
 nnoremap <Leader>w <Esc>:w<CR>
 
-" Quit file
-nnoremap <Leader>q <Esc>:q<CR>
-
 " Make Y yank the rest of the line, as you would expect it to
 nnoremap Y y$
 
@@ -302,9 +299,9 @@ nnoremap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
 nnoremap <silent> <backspace> X
 
 " Bind g(q|Q) to next item in quickfix list
-" Mnemonic: "go quickfix"
-nnoremap <silent> gq :cn<CR>
-nnoremap <silent> gQ :cp<CR>
+" Mnemonic: "See position of keys on keyboard, including q for quickfix"
+nnoremap <silent> <Leader>q :cn<CR>
+nnoremap <silent> <Leader>o :cp<CR>
 
 " Bind g(l|L) to next item in location list
 " Mnemonic: "go location"
