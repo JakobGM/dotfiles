@@ -601,8 +601,6 @@ nmap <Leader>gu <Plug>GitGutterUndoHunk
 " Jump between hunks
 nmap <Leader>gn <Plug>GitGutterNextHunk
 nmap <Leader>gN <Plug>GitGutterPrevHunk
-nmap <C-n> <Plug>GitGutterNextHunk
-nmap <C-p> <Plug>GitGutterPrevHunk
 
 " Update sign column every quarter second
 set updatetime=250
