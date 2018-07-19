@@ -678,6 +678,9 @@ let g:LanguageClient_diagnosticsDisplay = {
             \    },
             \}
 
+" Never use preview window on hover, only echo to cmdline
+let g:LanguageClient_hoverPreview = 'Never'
+
 
 """" vim-sneak
 " Use vim-sneak as a lightweight vim-easymotion replacement
