@@ -108,7 +108,7 @@ let g:lightline = {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
-	  \   'search_status': 'anzu#search_status',
+      \   'search_status': 'anzu#search_status',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
       \   'virtualenv': 'virtualenv#statusline',
       \   'gutentags': 'gutentags#statusline',

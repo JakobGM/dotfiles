@@ -29,6 +29,7 @@ alias pytest='python3 -m pytest'
 alias ipython='python3 -m IPython'
 alias w='workon'
 alias pt='ptw -- -vv -x --failed-first'
+alias prs='python manage.py runserver'
 
 # Start documentation server (Sphinx)
 alias ds='sphinx-autobuild . _build --host 192.168.1.225'
