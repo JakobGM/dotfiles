@@ -16,7 +16,6 @@ Plug 'alfredodeza/pytest.vim'                                           " Run py
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
-Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
@@ -59,14 +58,9 @@ Plug 'tpope/vim-repeat'                                                 " Add re
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
-" Deoplete completion engine needs additional support plugins when not using NeoVim
-if has('nvim')
-  Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" Auto-completion
+Plug 'ncm2/ncm2'                                                        " Completion manager
+Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 
 " Implementation of the Language Server Protocol for (Neo)vim
 Plug 'autozimu/LanguageClient-neovim', {
@@ -74,6 +68,17 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
+
+" --- Alternative deoplete config (currently experimenting with ncm2) ---
+" Deoplete completion engine needs additional support plugins when not using NeoVim
+" if has('nvim')
+"   Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
+" Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 call plug#end()
 
@@ -563,35 +568,38 @@ let g:magit_discard_untracked_do_delete=1
 let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 
 
-"""" Deoplete
+
+"""" Deoplete 
+" --- deprecated for experiment with ncm2/ncm2 ---
+
 " Use deoplete autocompletion manager
 " Disabled while waiting for this issue to be resolved:
 " https://github.com/python-mode/python-mode/issues/748
 " Actually, this has now been enabled as I now use
 " deoplete-jedi, until this issue gets resolved
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
-" Use smartcase.
-call deoplete#custom#option('smart_case', v:true)
+" " Use smartcase.
+" call deoplete#custom#option('smart_case', v:true)
 
-" Do not show completion numbers in cmdline
-set shortmess+=c
+" " Do not show completion numbers in cmdline
+" set shortmess+=c
 
-" Always prefer jedi completion
-call deoplete#custom#source('jedi', 'rank', 9999)
+" " Always prefer jedi completion
+" call deoplete#custom#source('jedi', 'rank', 9999)
 
-" Set completion sources for specific filetypes
-call deoplete#custom#option('ignore_sources', {
-        \ 'python': ['LanguageClient', 'tag'],
-        \})
+" " Set completion sources for specific filetypes
+" call deoplete#custom#option('ignore_sources', {
+"         \ 'python': ['LanguageClient', 'tag'],
+"         \})
 
-call deoplete#custom#option('sources', {
-        \ 'python': ['jedi'],
-        \})
+" call deoplete#custom#option('sources', {
+"         \ 'python': ['jedi'],
+"         \})
 
-" Undo completion with backspace
-inoremap <expr><BS>
-\ deoplete#smart_close_popup()."\<C-h>"
+" " Undo completion with backspace
+" inoremap <expr><BS>
+" \ deoplete#smart_close_popup()."\<C-h>"
 
 
 """" vim-gitgutter
