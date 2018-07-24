@@ -36,7 +36,7 @@ Plug 'godlygeek/tabular'                                                " :Tab /
 Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
-Plug 'vim-pandoc/vim-pandoc'                                            " Adds syntax highlighting for LaTeX, rst, and markdown
+Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                     " Syntax highlighting for markdown documents
 
 " Visual
 Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
@@ -918,6 +918,11 @@ let g:neoterm_autoinsert = 1
 """" vim-rhubarb
 " Open current line on GitHub
 nnoremap <Leader>gh V:Gbrowse<CR>
+
+
+"""" vim-markdown
+" Disable folding in markdown files
+let g:vim_markdown_folding_disabled = 1
 
 
 """ Folding (open every fold with zR)
