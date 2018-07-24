@@ -685,6 +685,11 @@ let g:LanguageClient_diagnosticsDisplay = {
 " Never use preview window on hover, only echo to cmdline
 let g:LanguageClient_hoverPreview = 'Never'
 
+" Uncomment for debugging LanguageClient-neovim
+" inoremap <silent> <c-q> <esc>:<c-u>q!<cr>
+" let g:LanguageClient_loggingFile = '/tmp/lc.log'
+" let g:LanguageClient_loggingLevel = 'DEBUG'
+
 
 """" vim-sneak
 " Use vim-sneak as a lightweight vim-easymotion replacement
