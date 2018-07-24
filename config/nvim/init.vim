@@ -61,6 +61,17 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 " Auto-completion
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
+Plug 'ncm2/ncm2-match-highlight'                                        " Show partial matches with bold text
+Plug 'ncm2/ncm2-ultisnips'                                              " Use snippets as completion source with enter key
+Plug 'sirver/ultisnips'                                                 " Snippets implementation for nvim
+Plug 'honza/vim-snippets'                                               " Snippet files for various programming languages
+Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
+Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
+Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
+Plug 'ncm2/ncm2-jedi'                                                   " Jedi-completion for filetype=python
+Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
+Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
+
 
 " Implementation of the Language Server Protocol for (Neo)vim
 Plug 'autozimu/LanguageClient-neovim', {
@@ -931,6 +942,61 @@ nnoremap <Leader>gh V:Gbrowse<CR>
 """" vim-markdown
 " Disable folding in markdown files
 let g:vim_markdown_folding_disabled = 1
+
+
+"""" ncm2
+" Enable completion for all filetypes
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" Tweak insert mode completion
+"   noinsert: Do not insert text before accepting the completion
+"   menuone: Use the popup menu even if there is only one match
+"   noselect: Do not select a match in the menu, force manual selection
+set completeopt=noinsert,menuone,noselect
+
+" Do not show in-completion-menu messages, e.g. 'match 1 of 2'
+set shortmess+=c
+
+" Escape completion with ctrl+c
+inoremap <c-c> <ESC>
+
+" Select completion items with Tab and Shift+Tab
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+
+"""" UltiSnips
+" c-tab c-a for moving in snippet
+imap <expr> <c-u> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)", 'm')
+smap <c-u> <Plug>(ultisnips_expand)
+let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-tab>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-a>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+
+"""" ncm2-match-highlight
+" Show partial matches in completion menu with bold text
+let g:ncm2#match_highlight = 'sans-serif-bold'
+
+
+"""" ncm2-ultisnippets
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
+
+"""" ncm2-cssomni
+call ncm2#register_source({'name' : 'css',
+            \ 'priority': 9, 
+            \ 'subscope_enable': 1,
+            \ 'scope': ['css', 'scss', 'less'],
+            \ 'mark': 'css',
+            \ 'word_pattern': '[\w\-]+',
+            \ 'complete_pattern': ':\s*',
+            \ 'on_complete': ['ncm2#on_complete#omni',
+            \               'csscomplete#CompleteCSS'],
+\ })
 
 
 """ Folding (open every fold with zR)
