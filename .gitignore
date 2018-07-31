@@ -121,8 +121,16 @@ config/transmission/
 config/vlc/
 config/weechat/aspell.conf
 config/weechat/python/autoload/aspell.conf
+config/weechat/script/plugins.xml.gz
 config/weechat/weechat.log
 config/zsh/.zcompdump
 home/.emacs.d/
 home/.fonts/.uuid
 modules/jakobgm/
+config/htop/htoprc
+config/weechat/scripts/plugins.xml.gz
+config/mono.addins
+config/weechat/tcl.conf
+config/google-chrome
+config/menus/applications-merged/xdg-desktop-menu-dummy.menu
+config/Pinta/
