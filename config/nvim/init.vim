@@ -806,11 +806,12 @@ let g:pymode_lint_pyflakes_symbol = ''
 " Rope support
 let g:pymode_rope = 1
 let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_autoimport_import_after_complete = 1
+let g:pymode_rope_autoimport_import_after_complete = 0
 let g:pymode_rope_project_root = ""
 let g:pymode_rope_ropefolder='.ropeproject'
 let g:pymode_rope_show_doc_bind = '<LocalLeader>D'
-let g:pymode_rope_regenerate_on_write = 1
+let g:pymode_rope_regenerate_on_write = 0
+nnoremap gr :PymodeRopeRegenerate<CR>
 
 " Completion
 let g:pymode_rope_completion = 0
