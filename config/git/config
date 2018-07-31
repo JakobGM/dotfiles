@@ -35,9 +35,13 @@
     program = gpg
 [credential]
     helper = cache
+[pull]
+    rebase = true
 [push]
     gpgSign = if-asked
     followTags = true
+[rebase]
+    autostash = true
 [receive]
     advertisePushOptions = true
 [color]
