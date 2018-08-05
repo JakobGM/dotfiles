@@ -38,6 +38,7 @@
 [pull]
     rebase = true
 [push]
+    default = current
     gpgSign = if-asked
     followTags = true
 [rebase]
