@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-source $(which virtualenvwrapper.sh)
+pyenv virtualenvwrapper
 workon otovo
 alias shell='python manage.py shell_plus --ipython'
 shell

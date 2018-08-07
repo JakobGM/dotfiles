@@ -67,6 +67,9 @@ done
 fpath=(~/.zsh/completions $fpath) 
 autoload -U compinit && compinit
 
+# Path modifications which need to be sourced last
+source $DOTREPO/scripts/paths.zsh
+
 
 
 # ----------- ARCHLINUX STUFF ---------------

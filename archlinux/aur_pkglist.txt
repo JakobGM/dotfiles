@@ -78,3 +78,12 @@ postman-bin
 
 # Python IDE
 pycharm-professional
+
+# Python version switcher
+pyenv
+
+# Manage virtualenvs with pyenv
+python-virtualenv
+
+# Use pyenv with virtualenvwrapper
+pyenv-virtualenvwrapper

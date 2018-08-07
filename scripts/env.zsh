@@ -26,6 +26,14 @@ export MAIN_PYTHON_PROJECT='cloud'
 # Always use ptipython in shell_plus django-admin command
 export SHELL_PLUS='ptipython'
 
+# --- pyenv ---
+# Location of pyenv AUR installation
+export PYENV_ROOT="/opt/pyenv"
+
+# Use pyenv instead of virtualenv in virtualenvwrapper
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+
+
 # Set editor used by default by other programs, for instance tmuxinator
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
   export VISUAL="nvr -cc tabedit --remote-wait +'set bufhidden=wipe'"
