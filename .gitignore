@@ -135,3 +135,4 @@ config/google-chrome
 config/menus/applications-merged/xdg-desktop-menu-dummy.menu
 config/Pinta/
 config/.op/config
+config/.op/
