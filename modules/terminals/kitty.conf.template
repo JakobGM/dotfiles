@@ -93,7 +93,7 @@ visual_bell_duration 0.1
 enable_audio_bell no
 
 # The modifier keys to press when clicking with the mouse on URLs to open the URL
-open_url_modifiers ctrl+shift
+open_url_modifiers ctrl
 open_url_with default
 
 # Choose whether to use the system implementation of wcwidth() (used to
