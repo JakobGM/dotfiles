@@ -316,12 +316,12 @@ label = %date% %time%
 type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+format-muted-prefix = " "
+format-muted-foreground = #{{ colors.foreground.4 }}
+label-muted = muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #{{ colors.primary.1 }}
