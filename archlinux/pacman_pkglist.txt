@@ -195,6 +195,10 @@ whois
 # Documentation viewer
 zeal
 
+# Command-line JSON processor
+# Used in $DOTREPO/archlinux/toggle_i3_gaps.zsh
+jq
+
 
 # --- Desktop applications ---
 # Web browsers
