@@ -18,6 +18,7 @@ alias gitlock="git update-index --assume-unchanged"
 alias gitunlock="git update-index --no-assume-unchanged"
 alias resign="git rebase --exec 'git commit --amend --no-edit -n -S' -i "
 alias ds='diff-so-fancy'
+alias ud="kitty +kitten diff"
 
 # Application aliases
 alias n='nvim'

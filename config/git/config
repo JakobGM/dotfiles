@@ -13,9 +13,11 @@
 [tag]
     gpgsign = true
 [diff]
-    tool = vimdiff
+    tool = kitty
+    guitool = kitty.gui
 [difftool]
     prompt = false
+    trustExitCode = true
 [github]
     user = jakobgm
 [alias]
@@ -25,6 +27,7 @@
     c = checkout
     cl = clone
     d = diff
+    ud = difftool --no-symlinks --dir-diff
     ds = diff --staged
     l = log
     p = push
@@ -59,3 +62,7 @@
     old = "red bold"
     new = "green bold"
     whitespace = "red reverse"
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitty kitty +kitten diff $LOCAL $REMOTE
