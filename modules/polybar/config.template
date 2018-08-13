@@ -313,7 +313,7 @@ format-underline = #{{ colors.primary.3 }}
 label = %date% %time% 
 
 [module/volume]
-type = internal/volume
+type = internal/alsa
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
@@ -377,8 +377,8 @@ format-underline = #{{ colors.primary.1 }}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature%
-label-warn = %temperature%
+label = %temperature-c%
+label-warn = %temperature-c%
 label-warn-foreground = #${{ colors.primary.red }}
 
 ramp-0 = 
