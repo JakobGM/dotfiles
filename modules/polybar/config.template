@@ -171,7 +171,7 @@ label-mode-background = #{{ colors.primary.3 }}
 ;   %index%
 ;   %output%
 ; Default: %icon%  %name%
-label-focused = %index%|  %name%
+label-focused = %index% %name%
 label-focused-foreground = #{{ colors.foreground.2 }}
 label-focused-background = #{{ colors.background.2 }}
 label-focused-underline = #{{ colors.primary.3 }}
@@ -182,7 +182,7 @@ label-focused-padding = 1
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-unfocused = %index%|  %name%
+label-unfocused = %index% %name%
 label-unfocused-foreground = #{{ colors.foreground.5 }}
 label-unfocused-padding = 1
 
@@ -191,7 +191,7 @@ label-unfocused-padding = 1
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-visible = %index%|  %name%
+label-visible = %index% %name%
 label-visible-underline = #{{ colors.normal.gray }}
 label-visible-padding = 1
 
@@ -200,10 +200,12 @@ label-visible-padding = 1
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = %index%|  %name%
+label-urgent = %index% %name%
 label-urgent-foreground = #{{ colors.foreground.1 }}
 label-urgent-background = #{{ colors.normal.red }}
 label-urgent-padding = 1
+
+; label-separator = |
 
 [module/mpd]
 type = internal/mpd
