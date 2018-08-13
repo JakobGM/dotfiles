@@ -182,7 +182,7 @@ map ctrl+shift+,        move_tab_backward
 # commands to run when using new_tab.
 
 # Miscellaneous
-map ctrl+shift+equal    increase_font_size
-map ctrl+shift+minus    decrease_font_size
+map ctrl+shift+plus      increase_font_size
+map ctrl+shift+minus     decrease_font_size
 map ctrl+shift+backspace restore_font_size
-map ctrl+shift+f11      toggle_fullscreen
+map ctrl+shift+f11       toggle_fullscreen
