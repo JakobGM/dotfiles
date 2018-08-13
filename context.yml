@@ -59,7 +59,7 @@ fonts:
         size: 8
 
     2:
-        name: FuraCode Nerd Font Mono
+        name: Fira Code
         size: 8
 
     3:
@@ -69,7 +69,7 @@ fonts:
     # We also add some configurations which are specific for some application
     # types.
     terminal:
-        size: 14
+        size: 13
 
     status_bar:
         size: 12
