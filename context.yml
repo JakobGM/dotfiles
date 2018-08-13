@@ -10,10 +10,12 @@ host:
         primary:
             handle: HDMI2
             dpi: 96
+            status_bar_font_size: 8
 
         secondary:
             handle: eDP1
             dpi: 96
+            status_bar_font_size: 14
 
 
     interfaces:
@@ -66,8 +68,6 @@ fonts:
         name: RobotoMono Nerd Font
         size: 8
 
-    # We also add some configurations which are specific for some application
-    # types.
     terminal:
         size: 13
 

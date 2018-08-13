@@ -11,7 +11,7 @@ alert = #{{ colors.normal.red }}
 monitor = {{ display.handle }}
 ; monitor = eDP1
 width = 100%
-height = {{ (fonts.status_bar.size * 2.5) | int }}
+height = {{ (display.status_bar_font_size * 2.5) | int }}
 ;offset-x = 1%
 ;offset-y = 1%
 
@@ -42,8 +42,8 @@ module-margin-right = 2
 
 ; font-0 = fixed:pixelsize=10;1
 ; font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-0 = {{ fonts.1.name }}:pixelsize={{ fonts.status_bar.size }};1
-font-1 = {{ fonts.2.name }}:pixelsize={{ fonts.status_bar.size }};1
+font-0 = {{ fonts.1.name }}:pixelsize={{ display.status_bar_font_size }};1
+font-1 = {{ fonts.2.name }}:pixelsize={{ display.status_bar_font_size }};1
 
 modules-left = i3
 modules-center = xbacklight volume now_playing
