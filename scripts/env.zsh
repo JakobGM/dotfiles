@@ -33,6 +33,9 @@ export PYENV_ROOT="/opt/pyenv"
 # Use pyenv instead of virtualenv in virtualenvwrapper
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
+# https://github.com/sindresorhus/pure/issues/423
+unset VIRTUAL_ENV_DISABLE_PROMPT
+
 
 # Set editor used by default by other programs, for instance tmuxinator
 if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
