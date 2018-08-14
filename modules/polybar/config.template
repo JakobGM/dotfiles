@@ -263,7 +263,7 @@ type = internal/network
 interface = {{ host.interfaces.wlan.handle }}
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <ramp-signal> %{A1:nm-connection-editor:}<label-connected>%{A}
 format-connected-underline = #{{ colors.primary.2 }}
 label-connected = %essid%
 
