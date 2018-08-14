@@ -273,11 +273,11 @@ format-disconnected-underline = ${colors.alert}
 label-disconnected = "  %ifname% disconnected "
 label-disconnected-foreground = ${colors.alert}
 
-ramp-signal-0 = " "
-ramp-signal-1 = " "
-ramp-signal-2 = " "
-ramp-signal-3 = " "
-ramp-signal-4 = " "
+ramp-signal-0 = "%{u#{{ colors.normal.red }}} "
+ramp-signal-1 = "%{u#{{ colors.normal.orange }}} "
+ramp-signal-2 = "%{u#{{ colors.normal.blue }}} "
+ramp-signal-3 = "%{u#{{ colors.normal.cyan }}} "
+ramp-signal-4 = "%{u#{{ colors.normal.green }}} "
 ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/wired-network]
