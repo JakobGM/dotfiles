@@ -1,0 +1,9 @@
+firefox:
+    requires:
+        installed: 'firefox'
+
+    symlink:
+        - content: 'profiles.ini'
+          target: '~/.mozilla/firefox/profiles.ini'
+        - content: 'userChrome.css'
+          target: '~/.mozilla/firefox/jakobgm.default/chrome/userChrome.css'

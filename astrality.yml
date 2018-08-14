@@ -48,3 +48,4 @@ modules:
         # Module defined at https://github.com/jakobgm/color-schemes.astrality
         - name: github::jakobgm/color-schemes.astrality
           autoupdate: true  # Fetch new color schemes as they are added
+        - name: browsers::firefox
