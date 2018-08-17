@@ -8,8 +8,9 @@ polybar:
 
         run:
             - shell: killall -q polybar
-            - shell: polybar --config={config.template} --reload HDMI2
-            - shell: polybar --config={config.template} --reload eDP1
+            {% for display in host.displays.values() %}
+            - shell: polybar --config={config.template} --reload {{ display.handle }}
+            {% endfor %}
 
     on_modified:
         modules/polybar/config.template:

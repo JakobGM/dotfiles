@@ -8,14 +8,19 @@ host:
         # the primary screen by running:
         #     polybar --config {modules/polybar/config.template} HDMI2
         primary:
+            handle: DP1
+            dpi: 96
+            status_bar_font_size: 9
+
+        secondary:
             handle: HDMI2
             dpi: 96
             status_bar_font_size: 8
 
-        secondary:
+        tertiary:
             handle: eDP1
             dpi: 96
-            status_bar_font_size: 14
+            status_bar_font_size: 12
 
 
     interfaces:
