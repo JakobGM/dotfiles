@@ -636,10 +636,11 @@ let g:gitgutter_sign_modified_removed = ''
 """" LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie', '--lsp'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python' : ['pyls'],
+    \ 'html': ['html-languageserver', '--stdio'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'python' : ['pyls'],
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'sh': ['bash-language-server', 'start']
     \ }
 
