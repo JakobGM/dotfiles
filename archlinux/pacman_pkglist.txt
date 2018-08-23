@@ -199,6 +199,15 @@ zeal
 # Used in $DOTREPO/archlinux/toggle_i3_gaps.zsh
 jq
 
+# R-lang
+r
+
+# Compile external R-packages
+gcc-fortran
+
+# Compile TeX documents
+texlive-most
+
 
 # --- Desktop applications ---
 # Web browsers

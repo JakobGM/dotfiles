@@ -87,3 +87,6 @@ python-virtualenv
 
 # Use pyenv with virtualenvwrapper
 pyenv-virtualenvwrapper
+
+# For RMarkdown compilation
+pandoc-bin

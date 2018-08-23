@@ -17,6 +17,12 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 
+" R-lang
+Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
+Plug 'vim-pandoc/vim-pandoc'                                            " Integration with the pandoc document converter
+Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Syntax for pandoc supported filetypes
+Plug 'vim-pandoc/vim-rmarkdown'                                         " RMarkdown support
+
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
