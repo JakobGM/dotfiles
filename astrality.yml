@@ -49,3 +49,7 @@ modules:
         - name: github::jakobgm/color-schemes.astrality
           autoupdate: true  # Fetch new color schemes as they are added
         - name: browsers::firefox
+
+        # Module containing secret context values
+        - name: github::jakobgm/secrets.astrality
+          autoupdate: true
