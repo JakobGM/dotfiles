@@ -80,6 +80,14 @@ fonts:
         size: 12
 
 
+urls:
+    calendar: 'calendar.google.com'
+
+
+programs:
+    browser: 'firefox'
+
+
 color_schemes_config:
     # These are context values used by the GitHub module:
     # github.com/jakobgm/color-schemes.astrality

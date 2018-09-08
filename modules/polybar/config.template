@@ -306,7 +306,7 @@ date-alt = " Week %V"
 time = "%H:%M"
 time-alt = "%H:%M"
 
-format-prefix = " "
+format-prefix = "%{A1:{{ programs.browser }} {{ urls.calendar }}:}  %{A}"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #{{ colors.primary.3 }}
 
