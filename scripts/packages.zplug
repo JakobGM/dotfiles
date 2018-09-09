@@ -6,9 +6,6 @@ zplug "zsh-users/zsh-history-substring-search"
 # Homebrew completions
 zplug "zsh-users/zsh-completions"
 
-# Reminds you of unused aliases
-zplug "MichaelAquilina/zsh-you-should-use"
-
 # Fish like autocompletions
 zplug "zsh-users/zsh-autosuggestions"
 
