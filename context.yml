@@ -74,7 +74,7 @@ fonts:
         size: 8
 
     terminal:
-        size: 13
+        size: 11
 
     status_bar:
         size: 12
