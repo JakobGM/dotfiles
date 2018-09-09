@@ -2,22 +2,29 @@
 
 if ! pgrep -f dropdown_terminal > /dev/null
 then
-    # alacritty --title dropdown_terminal --dimensions 0 0
-    kitty --title dropdown_terminal --name dropdown_terminal
-fi
-
-while ! pgrep -f dropdown_ipython > /dev/null
-do
+    echo 'Starting dropdown terminal'
     kitty \
-        --title dropdown_ipython \
-        --name dropdown_ipython \
-        --directory $PROJECT_HOME/cloud \
-        --instance-group ipython \
-        $DOTREPO/archlinux/ipython.zsh
-    sleep 5
-done
+        --title dropdown_terminal \
+        --name dropdown_terminal \
+        --override initial_window_width=1920 \
+        --override initial_window_height=1080 &
+fi
 
 if ! pgrep -f zeal > /dev/null
 then
-    zeal
+    echo 'Starting dropdown documentation browser'
+    zeal &
+fi
+
+if ! pgrep -f dropdown_ipython > /dev/null
+then
+    echo 'Starting dropdown python REPL terminal'
+    kitty \
+        --title dropdown_ipython \
+        --name dropdown_ipython \
+        --override initial_window_width=1920 \
+        --override initial_window_height=1080 \
+        --directory $PROJECT_HOME/cloud \
+        --instance-group ipython \
+        $DOTREPO/archlinux/ipython.zsh &
 fi
