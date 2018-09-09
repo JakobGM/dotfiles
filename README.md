@@ -26,5 +26,3 @@ git clone https://github.com/JakobGM/dotfiles.git ~/.dotfiles
 ```
 
 This symlinks the most common configuration files into your home folder.
-
-It also places the program `jgm` into your path, which allows you to install additional components.
