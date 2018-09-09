@@ -67,15 +67,6 @@ function setup_gpg_keys() {
 }
 
 
-# Directory watcher
-function dirwatch() {
-	inotifywait -m /path -e create -e moved_to |
-	while read path action file; do
-		echo "The file '$file' appeared in directory '$path' via '$action'"
-		# do something with the file
-	done
-}
-
 # Change git repo to use SSH instead
 function github_ssh() {
     git remote set-url origin git@github.com:$1/$2.git
