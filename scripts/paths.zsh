@@ -10,7 +10,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 
   # Setup virtualenvwrapper commands
   # PS: This also installs virtualenvwrapper if missing
-  source ~/.local/bin/virtualenvwrapper.sh
+  source ~/.local/bin/virtualenvwrapper_lazy.sh
   # pyenv virtualenvwrapper
   export VIRTUALENV_PYTHON="$(pyenv which python3)"
 fi
