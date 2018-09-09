@@ -7,6 +7,9 @@ source $DOTREPO/scripts/env.zsh
 
 
 # ---------------- ZSH OPTIONS -------------------
+# Record timestamp of command in HISTFILE
+setopt extended_history
+
 # Use temporary file and copy on completion (history)
 setopt hist_save_by_copy
 
@@ -19,8 +22,14 @@ setopt share_history
 # Ignore duplicate history
 setopt hist_ignore_dups
 
+# Delete duplicates first when HISTFILE size exceeds HISTSIZE (in memory)
+setopt hist_expire_dups_first
+
 # Allow interactive comments directly in interpreter
 setopt interactivecomments
+
+# Don't save commands that start with space
+setopt hist_ignore_space
 
 
 # --------------- INSTALL ZPLUG ------------------

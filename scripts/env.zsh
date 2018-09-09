@@ -159,9 +159,14 @@ export GDK_DPI_SCALE=1
 
 
 # --- ZSH environment variables ---
+# Where to save ZSH command history
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
+
+# The maximum number of history events to save in the history file (on disk)
+export SAVEHIST=1000000
+
+# The maximum number of events stored in the internal history list (in memory)
 export HISTSIZE=1000000
-export HISTSAVE=1000000
 
 
 # --- Docker ---
