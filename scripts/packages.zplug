@@ -12,9 +12,6 @@ zplug "zsh-users/zsh-autosuggestions"
 # Highlighting in terminal
 zplug "zsh-users/zsh-syntax-highlighting"
 
-## Oh-my-zsh plugins
-zplug "plugins/command-not-found", from:oh-my-zsh
-
 # For faster, history based cd'ing using "z" instead
 zplug "plugins/z", from:oh-my-zsh
 
