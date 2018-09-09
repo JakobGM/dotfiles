@@ -90,7 +90,7 @@ repaint_delay    10
 input_delay 3
 
 #bell
-visual_bell_duration 0.1
+visual_bell_duration 0
 enable_audio_bell no
 
 # The modifier keys to press when clicking with the mouse on URLs to open the URL
