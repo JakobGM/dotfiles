@@ -73,7 +73,7 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Autocompletions for Hub git wrapper
-fpath=(~/.zsh/completions $fpath) 
+fpath=(~/.dotfiles/home/.zsh/completions $fpath) 
 autoload -U compinit && compinit
 
 # Path modifications which need to be sourced last
