@@ -300,7 +300,7 @@ format-disconnected =
 type = internal/date
 interval = 5
 
-date = "%e.%b"
+date = " %e.%b"
 date-alt = " Week %V"
 
 time = "%H:%M"
