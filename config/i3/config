@@ -38,6 +38,10 @@ bindsym $mod+d [instance="zeal"] scratchpad show
 
 # ------------------------------------------------------------------- 
 
+# --- Vim Anywhere ---
+for_window [instance="vimanywhere"] floating enable
+bindsym $mod+Shift+v [instance="vimanywhere"] scratchpad show; exec vimanywhere;
+
 # Prevent floating windows going offscreen
 floating_maximum_size 1820 x 900
 
