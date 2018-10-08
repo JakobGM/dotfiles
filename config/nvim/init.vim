@@ -13,6 +13,7 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 " Python
 Plug 'alfredodeza/coveragepy.vim'                                       " Show coverage status in gutter
 Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
+Plug 'ambv/black'                                                       " Python code formatter
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
@@ -1005,6 +1006,20 @@ call ncm2#register_source({'name' : 'css',
             \ 'on_complete': ['ncm2#on_complete#omni',
             \               'csscomplete#CompleteCSS'],
 \ })
+
+
+"""" black
+" Skip bytecode verification
+let g:black_fast = 1
+
+" Width of code before it gets wrapped
+let g:black_linelength = 88
+
+" Do not change my precious single quote strings!
+let g:black_skip_string_normalization = 1
+
+" Virtual environment path used to run black
+let g:black_virtualenv = '~/.virtualenvs/black'
 
 
 """ Folding (open every fold with zR)
