@@ -1,3 +1,6 @@
+# Ignore project specific vim settings
+.exrc
+
 # Automatically created by GitHub for Mac
 # To make edits, delete these initial comments, or else your changes may be lost!
 

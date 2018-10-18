@@ -517,6 +517,11 @@ set complete+=kspell
 " Open right vertical help window
 cnoreabbrev H vert bo h
 
+" Source .exrc files in project directories for project-specific vim settings
+set exrc
+" Only allow sourcing of unsafe commands if such files are owned by my user
+set secure
+
 
 """ Plugin settings
 
