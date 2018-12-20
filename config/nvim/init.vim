@@ -732,7 +732,7 @@ let g:sneak#label = 1
 """" echodoc
 " Enable function signature in cmdline
 let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'echo'
+let g:echodoc#type = 'virtual'
 let g:echodoc#enable_force_overwrite = 0  " NB! Setting to 1 causes flicker
 
 
