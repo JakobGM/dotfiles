@@ -1018,7 +1018,7 @@ call ncm2#register_source({'name' : 'css',
 let g:black_fast = 1
 
 " Width of code before it gets wrapped
-let g:black_linelength = 88
+let g:black_linelength = 80
 
 " Do not change my precious single quote strings!
 let g:black_skip_string_normalization = 1
