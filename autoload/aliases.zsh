@@ -50,3 +50,6 @@ alias .....='cd ../../../..'
 
 # ArchLinux aliases
 alias ie="i3-msg exit"
+
+# Server stuff
+alias mount_do='sudo sshfs jakobgm@178.62.205.92:/ /mnt/cobalt -o IdentityFile=/home/jakobgm/.ssh/id_rsa,allow_other'
