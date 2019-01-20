@@ -61,6 +61,7 @@ Plug 'kassio/neoterm'                                                   " Termin
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
+Plug 'svermeulen/vim-yoink'                                             " Cycle through paste history with <C-p/n>
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
@@ -1025,6 +1026,16 @@ let g:black_skip_string_normalization = 1
 
 " Virtual environment path used to run black
 let g:black_virtualenv = '~/.virtualenvs/black'
+
+
+"""" vim-yoink
+" Cycle through yank history after paste
+nmap <c-n> <plug>(YoinkPostPasteSwapBack)
+nmap <c-p> <plug>(YoinkPostPasteSwapForward)
+
+" Tell vim-yoink when we paste something
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
 
 
 """ Folding (open every fold with zR)
