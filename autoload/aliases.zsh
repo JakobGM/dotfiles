@@ -10,7 +10,9 @@ alias zshconfig='vim $HOME/.zshrc'
 alias ssh='TERM=xterm-256colors ssh'
 
 # Git aliases
-eval "$(hub alias -s)"
+if which hub > /dev/null 2>&1; then
+    eval "$(hub alias -s)"
+fi
 alias g="git"
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
@@ -37,9 +39,11 @@ alias prs='python manage.py runserver'
 alias ds='sphinx-autobuild . _build --host 192.168.1.225'
 
 # Use exa as a replacement for ls
-alias ls='exa'
-alias la='exa -la'
-alias ll='exa -l'
+if which exa > /dev/null 2>&1; then
+    alias ls='exa'
+    alias la='exa -la'
+    alias ll='exa -l'
+fi
 
 # Unix aliases
 alias x='exit'
