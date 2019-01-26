@@ -101,6 +101,9 @@ export MYVIMRC="$XDG_CONFIG_HOME/nvim/init.vim"
 # Use nerdfont arrow for pure prompt icon
 export PURE_PROMPT_SYMBOL=`echo "\uf054"`
 
+# Show letter N in normal mode
+export PURE_PROMPT_VICMD_SYMBOL="N"
+
 # Set default terminal
 export TERMINAL=kitty
 
