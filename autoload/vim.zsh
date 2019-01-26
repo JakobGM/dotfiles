@@ -15,8 +15,8 @@ zmodload zsh/zle
 autoload -U colors && colors
 
 # Change prompt icon + color based on insert/normal vim mode in prompt
-export PURE_PROMPT_SYMBOL="%{$fg[blue]%}❯%{$reset_color%}"
-export PURE_PROMPT_VICMD_SYMBOL="%{$fg[green]%}❮%{$reset_color%}"
+export PURE_PROMPT_SYMBOL="[I] ❯"
+export PURE_PROMPT_VICMD_SYMBOL="[N] ❮"
 
 # By default, we have insert mode shown on right hand side
 export RPROMPT="%{$fg[blue]%}[INSERT]%{$reset_color%}"
