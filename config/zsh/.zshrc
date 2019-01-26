@@ -31,15 +31,6 @@ setopt interactivecomments
 # Don't save commands that start with space
 setopt hist_ignore_space
 
-# Use vim editing mode in terminal [escape to enter normal mode]
-bindkey -v
-
-# Reduce repsonse time of escape key to 0.1 seconds
-export KEYTIMEOUT=1
-
-# Make back key work as expected after exiting normal mode
-bindkey "^?" backward-delete-char
-
 
 # --------------- INSTALL ZPLUG ------------------
 # Install zplug zsh packages to the following path
