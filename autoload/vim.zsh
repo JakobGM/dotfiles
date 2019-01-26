@@ -21,6 +21,9 @@ export PURE_PROMPT_VICMD_SYMBOL="%{$fg[green]%}❮%{$reset_color%}"
 # By default, we have insert mode shown on right hand side
 export RPROMPT="%{$fg[blue]%}[INSERT]%{$reset_color%}"
 
+# And also a beam as the cursor
+echo -ne '\e[5 q'
+
 # Callback for vim mode change
 function zle-keymap-select () {
     # Invoke Pure as super function
@@ -30,9 +33,15 @@ function zle-keymap-select () {
         if [ $KEYMAP = vicmd ]; then
             # Command mode
             export RPROMPT="%{$fg[green]%}[NORMAL]%{$reset_color%}"
+
+            # Set block cursor
+            echo -ne '\e[1 q'
         else
             # Insert mode
             export RPROMPT="%{$fg[blue]%}[INSERT]%{$reset_color%}"
+
+            # Set beam cursor
+            echo -ne '\e[5 q'
         fi
     fi
 
@@ -44,7 +53,4 @@ function zle-keymap-select () {
 zle -N zle-keymap-select
 
 # Reduce 
-export KEYTIMEOUT=1
-
-# Reduce repsonse time of escape key to 0.1 seconds
 export KEYTIMEOUT=1
