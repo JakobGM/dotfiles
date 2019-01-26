@@ -22,12 +22,6 @@ echo $SEPERATOR
 source "$DOTREPO/scripts/symlinker.zsh"
 
 echo $SEPERATOR
-source "$DOTREPO/scripts/system_packages.zsh"
-
-echo $SEPERATOR
-source "$DOTREPO/scripts/vim.zsh"
-
-echo $SEPERATOR
 source "$DOTREPO/scripts/ruby.zsh"
 
 echo $SEPERATOR
