@@ -1,4 +1,7 @@
 # -------- Setup for vim functionality in ZSH --------
+# Resources:
+# Adding Vi To Your Zsh: https://dougblack.io/words/zsh-vi-mode.html
+# Pure by Sindre Sørhus: https://github.com/sindresorhus/pure
 
 # Use vim editing mode in terminal [escape to enter normal mode]
 bindkey -v
@@ -52,5 +55,5 @@ function zle-keymap-select () {
 # Bind the callback
 zle -N zle-keymap-select
 
-# Reduce 
+# Reduce latency when pressing <Esc>
 export KEYTIMEOUT=1
