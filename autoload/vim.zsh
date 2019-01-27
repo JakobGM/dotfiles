@@ -47,8 +47,10 @@ function zle-keymap-select () {
         fi
     fi
 
-    # Refresh prompt and call Pure super function
-    prompt_pure_update_vim_prompt_widget
+    if typeset -f prompt_pure_update_vim_prompt_widget > /dev/null; then
+        # Refresh prompt and call Pure super function
+        prompt_pure_update_vim_prompt_widget
+    fi
 }
 
 # Bind the callback
