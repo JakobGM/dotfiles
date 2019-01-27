@@ -31,7 +31,7 @@ echo -ne '\e[5 q'
 # Callback for vim mode change
 function zle-keymap-select () {
     # Only supported in these terminals
-    if [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "xterm-kitty" ]; then
+    if [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "screen-256color" ]; then
         if [ $KEYMAP = vicmd ]; then
             # Command mode
             export RPROMPT="%{$fg[green]%}[NORMAL]%{$reset_color%}"
