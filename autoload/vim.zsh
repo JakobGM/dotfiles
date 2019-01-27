@@ -18,6 +18,7 @@ zmodload zsh/zle
 autoload -U colors && colors
 
 # Change prompt icon + color based on insert/normal vim mode in prompt
+# Will have no effect if you don't use pure as your ZSH theme
 export PURE_PROMPT_SYMBOL="[I] ❯"
 export PURE_PROMPT_VICMD_SYMBOL="[N] ❮"
 
@@ -29,8 +30,6 @@ echo -ne '\e[5 q'
 
 # Callback for vim mode change
 function zle-keymap-select () {
-    # Invoke Pure as super function
-
     # Only supported in these terminals
     if [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "xterm-kitty" ]; then
         if [ $KEYMAP = vicmd ]; then
