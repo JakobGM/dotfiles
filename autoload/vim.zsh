@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # -------- Setup for vim functionality in ZSH --------
 # Resources:
 # Adding Vi To Your Zsh: https://dougblack.io/words/zsh-vi-mode.html
