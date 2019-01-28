@@ -1038,6 +1038,12 @@ nmap p <plug>(YoinkPaste_p)
 nmap P <plug>(YoinkPaste_P)
 
 
+"""" Nvim-R
+" Disable replacing underscore with '->'
+let R_assign_map = '<M-->'
+let R_assign = 0
+
+
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
 "" vim:fdm=expr:fdl=0
