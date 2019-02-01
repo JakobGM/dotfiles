@@ -1043,6 +1043,14 @@ nmap P <plug>(YoinkPaste_P)
 let R_assign_map = '<M-->'
 let R_assign = 0
 
+"""" vim-pandoc-syntax
+" Disable fancy mathematics rendering
+let g:pandoc#syntax#conceal#use = 0
+
+"""" vim-pandoc
+" Disable folding of sections
+let g:pandoc#modules#disabled = ["folding"]
+
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
