@@ -1048,8 +1048,8 @@ let R_assign = 0
 let g:pandoc#syntax#conceal#use = 0
 
 """" vim-pandoc
-" Disable folding of sections
-let g:pandoc#modules#disabled = ["folding"]
+" Disable folding of sections and automatic directory change
+let g:pandoc#modules#disabled = ["folding", "chdir"]
 
 
 """ Folding (open every fold with zR)
