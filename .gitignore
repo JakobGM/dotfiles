@@ -119,10 +119,7 @@ config/rsibreak.kmessagebox.lock
 config/silentcast_presets
 config/transmission/
 config/vlc/
-config/weechat/aspell.conf
-config/weechat/python/autoload/aspell.conf
-config/weechat/script/plugins.xml.gz
-config/weechat/weechat.log
+config/weechat/
 config/zsh/.zcompdump
 home/.emacs.d/
 home/.fonts/.uuid
@@ -136,3 +133,20 @@ config/menus/applications-merged/xdg-desktop-menu-dummy.menu
 config/Pinta/
 config/.op/config
 config/.op/
+config/RStudio/desktop.ini
+config/Zeal/Zeal.conf
+config/weechat/irc.conf
+config/Code - OSS/
+config/Code/
+config/StarUML/
+config/direnv/
+config/filezilla/
+config/kitty/cached.json
+modules/secrets/context.yml
+config/urlwatch/
+config/sublime-merge/
+config/remmina/
+config/qBittorrent/
+config/packrat/
+config/jupyter/lab/workspaces/
+config/i3/i3scripts

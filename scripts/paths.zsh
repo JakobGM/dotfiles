@@ -24,3 +24,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
   # pyenv virtualenvwrapper
   export VIRTUALENV_PYTHON="/opt/pyenv/versions/3.6.6/bin/python3"
 fi
+
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

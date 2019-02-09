@@ -29,6 +29,7 @@ alias nn='nvim .'
 # Open these filetypes directly in terminal text editor when "executed"
 alias -s {py,html,js,yml,yaml,md,rst,txt,conf,zsh,sh}=$EDITOR
 
+
 # Python aliases
 alias pytest='python3 -m pytest'
 alias ipython='python3 -m IPython'
