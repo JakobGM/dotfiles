@@ -28,24 +28,19 @@ Plug 'vim-pandoc/vim-rmarkdown'                                         " RMarkd
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
 Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth scroll animation instead of jump
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
-Plug 'francoiscabrol/ranger.vim'                                        " Use ranger as file explorer
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
-Plug 'justinmk/vim-sneak'                                               " Two letter search with s{char}{char} and motions with {action}z{char}{char}, and navigate with ; and ,
-Plug 'rbgrouleff/bclose.vim'                                            " Dependency of ranger.vim
 Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 
 " Editing
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
-Plug 'matze/vim-move'                                                   " Move selection up and down with <A-k|j>
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
-Plug 'plasticboy/vim-markdown', {'for': 'markdown'}                     " Syntax highlighting for markdown documents
 
 " Visual
-Plug 'elzr/vim-json'                                                    " Better syntax highlighting for JSON files
+Plug 'elzr/vim-json', {'for': 'json'}                                   " Better syntax highlighting for JSON files
 Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
@@ -53,15 +48,12 @@ Plug 'majutsushi/tagbar'                                                " Open t
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
-Plug 'shougo/echodoc.vim'                                               " Show function signature help
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 
 " Behaviour/tools
-Plug 'kassio/neoterm'                                                   " Terminal buffer wrapper
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
-Plug 'svermeulen/vim-yoink'                                             " Cycle through paste history with <C-p/n>
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
@@ -70,9 +62,6 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 Plug 'ncm2/ncm2-match-highlight'                                        " Show partial matches with bold text
-Plug 'ncm2/ncm2-ultisnips'                                              " Use snippets as completion source with enter key
-Plug 'sirver/ultisnips'                                                 " Snippets implementation for nvim
-Plug 'honza/vim-snippets'                                               " Snippet files for various programming languages
 Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
@@ -724,19 +713,6 @@ let g:LanguageClient_hoverPreview = 'Never'
 " let g:LanguageClient_loggingLevel = 'DEBUG'
 
 
-"""" vim-sneak
-" Use vim-sneak as a lightweight vim-easymotion replacement
-" Press s{char}{char} or use z in motions
-let g:sneak#label = 1
-
-
-"""" echodoc
-" Enable function signature in cmdline
-let g:echodoc#enable_at_startup = 1
-let g:echodoc#type = 'virtual'
-let g:echodoc#enable_force_overwrite = 0  " NB! Setting to 1 causes flicker
-
-
 """" vim-fugitive
 " Write to git staging area
 nnoremap <Leader>gw :Gw<CR>
@@ -900,13 +876,6 @@ nnoremap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
 nnoremap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
 
 
-"""" ranger.vim
-let g:ranger_map_keys = 0
-map <Leader>f :RangerWorkingDirectoryNewTab<CR>
-map <Leader>F :Ranger<CR>
-let g:ranger_replace_netrw = 0
-
-
 """" tagbar
 " Toggle the Tagbar sidesplit with gt
 nnoremap <silent>gt <Esc>:TagbarToggle<CR>
@@ -940,23 +909,9 @@ nnoremap <silent>gcR <Esc>:Coveragepy report<CR>
 nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
 
 
-"""" neoterm
-" Open and close persistent terminal buffer on bottom right with: Alt + t
-noremap <silent><M-t> <Esc>:botright Ttoggle<CR>
-tmap <silent><M-t> <Esc>:botright Ttoggle<CR>
-
-" Automatically move to insert mode in newly opened terminal buffer
-let g:neoterm_autoinsert = 1
-
-
 """" vim-rhubarb
 " Open current line on GitHub
 nnoremap <Leader>gh V:Gbrowse<CR>
-
-
-"""" vim-markdown
-" Disable folding in markdown files
-let g:vim_markdown_folding_disabled = 1
 
 
 """" ncm2
@@ -973,21 +928,11 @@ set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 
 " Escape completion with ctrl+c
-inoremap <c-c> <ESC>
+inoremap <C-c> <ESC>
 
 " Select completion items with Tab and Shift+Tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-
-"""" UltiSnips
-" c-tab c-a for moving in snippet
-imap <expr> <c-u> ncm2_ultisnips#expand_or("\<Plug>(ultisnips_expand)", 'm')
-smap <c-u> <Plug>(ultisnips_expand)
-let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger	= "<c-tab>"
-let g:UltiSnipsJumpBackwardTrigger	= "<c-a>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
 
 
 """" ncm2-match-highlight
@@ -1026,16 +971,6 @@ let g:black_skip_string_normalization = 1
 
 " Virtual environment path used to run black
 let g:black_virtualenv = '~/.virtualenvs/black'
-
-
-"""" vim-yoink
-" Cycle through yank history after paste
-nmap <c-n> <plug>(YoinkPostPasteSwapBack)
-nmap <c-p> <plug>(YoinkPostPasteSwapForward)
-
-" Tell vim-yoink when we paste something
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
 
 
 """" Nvim-R
