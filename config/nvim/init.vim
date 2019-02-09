@@ -112,7 +112,6 @@ let g:lightline = {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
-      \   'search_status': 'anzu#search_status',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
       \   'virtualenv': 'virtualenv#statusline',
       \   'gutentags': 'gutentags#statusline',
@@ -296,7 +295,7 @@ nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
 nnoremap gsv :so $MYVIMRC<CR>
 
 " Clear search highlighting
-nnoremap <Esc><Esc> :noh<CR> <Plug>(anzu-clear-search-status)
+nnoremap <Esc><Esc> :noh<CR>
 
 " Make use of backspace in normal mode
 nnoremap <silent> <backspace> X
@@ -330,16 +329,22 @@ cmap w!! w !sudo tee > /dev/null %
 au BufNewFile,BufRead *.py
     \ set fileformat=unix |
     \ set colorcolumn=80 |
+    \ set softtabstop=4  " Pressing tab during editing operations inserts 4 spaces |
+    \ set shiftwidth=4  " Number of spaces used for each step of an (auto)indent action, e.g. '>>'. |
+    \ let python_highlight_all=1  " Enable python highlighting
 
 " Flag unnecessary whitespace in python files
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-" Enable python highlighting
-let python_highlight_all=1
-
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'/.virtualenvs/NeoVim2/bin/python'
+
+
+""" htmldjango
+au FileType htmldjango
+    \ set shiftwidth = 2 |
+    \ set softtabstop = 2
 
 
 """ Visual
@@ -454,23 +459,17 @@ set noswapfile
 " Save valid words to file (used with :set spell)
 set spellfile=$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add
 
-" If nvim is opened within :terminal buffer, use existing nvim instance by using neovim-remote
-" See $DOTREPO/python/user_requirements.txt
-if has('nvim')
-  let $VISUAL = 'nvr -cc split --remote-wait'
-endif
-
 " Copy to system clipboard
-vnoremap  <leader>y  "*y
-vnoremap  <leader>Y  "*yg_
-nnoremap  <leader>y  "*y
-nnoremap  <leader>yy  "*yy
+vnoremap  <leader>y  "+y
+vnoremap  <leader>Y  "+yg$
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
 
 " Paste from system clipboard
-nnoremap <leader>p :set paste<CR> "*p :set nopaste<CR>
-nnoremap <leader>P :set paste<CR> "*P :set nopaste<CR>
-vnoremap <leader>p :set paste<CR> "*p :set nopaste<CR>
-vnoremap <leader>P :set paste<CR> "*P :set nopaste<CR>
+nnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
+nnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
+vnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
+vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
 
 " Fix common typing mistakes
 iabbrev vuale value
@@ -498,6 +497,7 @@ cnoreabbrev H vert bo h
 
 " Source .exrc files in project directories for project-specific vim settings
 set exrc
+
 " Only allow sourcing of unsafe commands if such files are owned by my user
 set secure
 
@@ -545,7 +545,7 @@ nnoremap <silent> <leader>/ :Find<CR>
 nnoremap <silent> <leader><Esc> :Maps<CR>
 
 " Search helptags
-nnoremap <silent> <leader>h :Helptags<CR>
+nnoremap <silent> <leader>H :Helptags<CR>
 
 " --column: Show column number
 " --line-number: Show line number
@@ -835,7 +835,7 @@ nnoremap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
 " Toggle the Tagbar sidesplit with gt
 nnoremap <silent>gt <Esc>:TagbarToggle<CR>
 
-" Opten Tagbar to the right
+" Open Tagbar to the right
 let g:tagbar_left = 0
 
 " Sort tags according to their location in the source file
@@ -849,13 +849,6 @@ let g:tagbar_show_visibility = 0
 
 " Use fontawesome chevrons for hierarchy icons
 let g:tagbar_iconchars = ['', '']
-
-" Always open Tagbar on startup
-" Left here in case I would want to enable it at some point
-" augroup Startup
-"     autocmd!
-"     autocmd VimEnter * nested :TagbarOpen
-" augroup END
 
 
 """" coveragepy.vim
