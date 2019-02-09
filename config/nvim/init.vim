@@ -580,40 +580,6 @@ let g:magit_discard_untracked_do_delete=1
 let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 
 
-
-"""" Deoplete 
-" --- deprecated for experiment with ncm2/ncm2 ---
-
-" Use deoplete autocompletion manager
-" Disabled while waiting for this issue to be resolved:
-" https://github.com/python-mode/python-mode/issues/748
-" Actually, this has now been enabled as I now use
-" deoplete-jedi, until this issue gets resolved
-" let g:deoplete#enable_at_startup = 1
-
-" " Use smartcase.
-" call deoplete#custom#option('smart_case', v:true)
-
-" " Do not show completion numbers in cmdline
-" set shortmess+=c
-
-" " Always prefer jedi completion
-" call deoplete#custom#source('jedi', 'rank', 9999)
-
-" " Set completion sources for specific filetypes
-" call deoplete#custom#option('ignore_sources', {
-"         \ 'python': ['LanguageClient', 'tag'],
-"         \})
-
-" call deoplete#custom#option('sources', {
-"         \ 'python': ['jedi'],
-"         \})
-
-" " Undo completion with backspace
-" inoremap <expr><BS>
-" \ deoplete#smart_close_popup()."\<C-h>"
-
-
 """" vim-gitgutter
 " Hunk-add and hunk-revert for chunk staging
 nmap <Leader>ga <Plug>GitGutterStageHunk
