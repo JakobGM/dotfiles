@@ -291,13 +291,18 @@ function! OpenPluginHomepage() abort
   " Matches for instance Plug 'tpope/surround' -> tpope/surround
   " Greedy match in order to not capture trailing comments
   let plugin_name = '\w\+ \([''"]\)\(.\{-}\)\1'
-  let repository = matchlist(line, plugin_name)[2]
 
-  " Open the corresponding GitHub homepage with $BROWSER
-  " You need to set the BROWSER environment variable in order for this to work
-  " For MacOS, you can set the following for opening it in your default
-  " browser: 'export BROWSER=open'
-  silent exec "!$BROWSER https://github.com/".repository
+  try
+    let repository = matchlist(line, plugin_name)[2]
+
+    " Open the corresponding GitHub homepage with $BROWSER
+    " You need to set the BROWSER environment variable in order for this to work
+    " For MacOS, you can set the following for opening it in your default
+    " browser: 'export BROWSER=open'
+    silent exec "!$BROWSER https://github.com/".repository
+  catch /.*/
+    echo 'No match for "<user>/<repository>" on this line!'
+  endtry
 endfunction
 
 " Open and close folds with Enter
