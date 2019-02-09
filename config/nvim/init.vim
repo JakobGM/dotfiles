@@ -61,13 +61,14 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 
 " Auto-completion
 Plug 'ncm2/ncm2'                                                        " Completion manager
-Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
-Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
-Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
-Plug 'ncm2/ncm2-jedi'                                                   " Jedi-completion for filetype=python
-Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
 Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
+Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
+Plug 'ncm2/ncm2-jedi'                                                   " Jedi-completion for filetype=python
+Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
+Plug 'ncm2/ncm2-path'                                                   " Filepath completion
+Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
+Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 
 
 " Implementation of the Language Server Protocol for (Neo)vim
