@@ -60,6 +60,7 @@ Plug 'tpope/vim-sensible'                                               " Sensib
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
+Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
 Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
@@ -68,7 +69,6 @@ Plug 'ncm2/ncm2-jedi'                                                   " Jedi-c
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-path'                                                   " Filepath completion
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
-Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 
 
 " Implementation of the Language Server Protocol for (Neo)vim
@@ -77,17 +77,6 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 
-
-" --- Alternative deoplete config (currently experimenting with ncm2) ---
-" Deoplete completion engine needs additional support plugins when not using NeoVim
-" if has('nvim')
-"   Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-" Plug 'zchee/deoplete-jedi'                                              " Use jedi as completion source for deoplete
 
 call plug#end()
 
@@ -900,12 +889,6 @@ inoremap <C-c> <ESC>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-
-"""" ncm2-ultisnippets
-" Press enter key to trigger snippet expansion
-" The parameters are the same as `:help feedkeys()`
-" inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
-inoremap <silent> <expr> <CR> ((pumvisible() && empty(v:completed_item)) ?  "\<c-y>\<cr>" : (!empty(v:completed_item) ? ncm2_ultisnips#expand_or("", 'n') : "\<CR>" ))
 
 """" ncm2-cssomni
 call ncm2#register_source({'name' : 'css',
