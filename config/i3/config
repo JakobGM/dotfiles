@@ -306,3 +306,4 @@ client.urgent           $red $red $white $red $red
 # client.urgent           $red $red $white $red $red
 
 #end of window title bars & borders section
+# vim:ft=i3config
