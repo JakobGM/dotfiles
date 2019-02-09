@@ -231,12 +231,6 @@ set termguicolors
 " Display \t as 8 visual spaces (recommended setting)
 set tabstop=8
 
-" Pressing tab during editing operations inserts 4 spaces
-set softtabstop=4
-
-" Number of spaces used for each step of an (auto)indent action, e.g. '>>'.
-set shiftwidth=4
-
 " Tab is replaced by the spaces specified as above
 set expandtab
 
