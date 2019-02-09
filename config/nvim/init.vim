@@ -61,7 +61,6 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 " Auto-completion
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
-Plug 'ncm2/ncm2-match-highlight'                                        " Show partial matches with bold text
 Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
@@ -938,11 +937,6 @@ inoremap <C-c> <ESC>
 " Select completion items with Tab and Shift+Tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-
-"""" ncm2-match-highlight
-" Show partial matches in completion menu with bold text
-let g:ncm2#match_highlight = 'sans-serif-bold'
 
 
 """" ncm2-ultisnippets
