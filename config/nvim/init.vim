@@ -15,6 +15,7 @@ Plug 'alfredodeza/coveragepy.vim'                                       " Show c
 Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
 Plug 'ambv/black'                                                       " Python code formatter
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
+Plug 'tweekmonster/django-plus.vim'                                     " Better django specific support
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
 
