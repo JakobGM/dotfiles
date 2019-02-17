@@ -63,7 +63,7 @@ autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
 "
 " Visual
 "
-set theme gruvbox
+set theme dark
 
 "
 " Behaviour
