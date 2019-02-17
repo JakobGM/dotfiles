@@ -1,7 +1,10 @@
 /*
  * Do not remove the @namespace line -- it's required for correct functioning
  */
-@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* set default namespace to XUL */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/* set default namespace to XUL */
 
 /*
  * Auto-hide the URL-bar and bookmarks bar, show on hover or focus
@@ -34,28 +37,31 @@
 }
 
 #toolbar-menubar {
-  margin-top: 0px !important; /* This is usually 0, but under Win7 can be given an extra 1px when not maximized */
+  margin-top: 0px !important;
+  /* This is usually 0, but under Win7 can be given an extra 1px when not maximized */
 }
 
 /* Undo add of 4px extra margin on top of the tabs toolbar on Windows 7. */
+
 /* Note: @media -moz-os-version does not work in userChrome.css (https://bugzilla.mozilla.org/show_bug.cgi?id=1418963) */
+
 :root[sizemode="normal"][chromehidden~="menubar"] #TabsToolbar,
 :root[sizemode="normal"] #toolbar-menubar[autohide="true"][inactive] + #TabsToolbar {
   padding-top: var(--space-above-tabbar) !important;
 }
 
-#nav-bar, #PersonalToolbar {
-	/* Otherwise spacers will not count as hover-able areas */
-    -moz-window-dragging: default;
+#nav-bar,
+#PersonalToolbar {
+  /* Otherwise spacers will not count as hover-able areas */
+  -moz-window-dragging: default;
 }
 
-:root:not([customizing]) #nav-bar
-{
+:root:not([customizing]) #nav-bar {
   overflow-y: hidden;
-  max-height:0;
-  min-height:0 !important;
-  padding-top:0 !important;
-  padding-bottom:0 !important;
+  max-height: 0;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   opacity: 0;
 }
 
@@ -79,6 +85,7 @@
 }
 
 /* If the bookmarks bar is turned on, auto-hide that too */
+
 :root:not([customizing]) #PersonalToolbar {
   max-height: 0 !important;
   min-height: 0.1px !important;
@@ -93,7 +100,8 @@
 }
 
 /* Lightweight Theme Support */
-:root:-moz-lwtheme #nav-bar, 
+
+:root:-moz-lwtheme #nav-bar,
 :root:-moz-lwtheme #PersonalToolbar {
   background-color: var(--lwt-accent-color) !important;
   background-image: var(--lwt-header-image), var(--lwt-additional-images) !important;
@@ -102,15 +110,17 @@
 }
 
 #main-window[sizemode="normal"]:-moz-lwtheme #nav-bar {
-    background-position-y: calc(-2px - var(--tabbar-height)) !important;
+  background-position-y: calc(-2px - var(--tabbar-height)) !important;
 }
+
 #main-window[sizemode="normal"]:-moz-lwtheme #PersonalToolbar {
-    background-position-y: calc(-2px - var(--tabbar-height) - var(--nav-bar-height)) !important;
+  background-position-y: calc(-2px - var(--tabbar-height) - var(--nav-bar-height)) !important;
 }
 
 #main-window[sizemode="maximized"]:-moz-lwtheme #nav-bar {
-    background-position-y: calc(-8px - var(--tabbar-height)) !important;
+  background-position-y: calc(-8px - var(--tabbar-height)) !important;
 }
+
 #main-window[sizemode="maximized"]:-moz-lwtheme #PersonalToolbar {
     background-position-y: calc(-8px - var(--tabbar-height) - var(--nav-bar-height)) !important;
 }
