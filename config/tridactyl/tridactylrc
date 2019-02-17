@@ -1,0 +1,103 @@
+" NB: If you want "vim-like" behaviour where removing a line from 
+" here makes the setting disappear, uncomment the line below.
+
+sanitise tridactyllocal tridactylsync
+
+"
+" Binds
+"
+
+"Open editor with ctrl + {i,h}
+bind --mode=insert <C-h> editor
+bind --mode=insert <C-i> editor
+
+" Toggle {Reddit, HN} comments with ;c
+bind ;c hint -c [class*="expand"],[class="togg"]
+
+" GitHub pull request checkout command to clipboard (only works if you're a collaborator or above)
+bind yp composite js document.getElementById("clone-help-step-1").textContent.replace("git checkout -b", "git checkout -B").replace("git pull ", "git fetch ") + "git reset --hard " + document.getElementById("clone-help-step-1").textContent.split(" ")[3].replace("-","/") | yank
+
+" Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+
+" I like wikiwand but I don't like the way it changes URLs
+" bindurl wikiwand.com yy composite js document.location.href.replace("wikiwand.com/en","wikipedia.org/wiki") | clipboard yank
+" bindurl bb b.mvn.no
+
+" Make gu take you back to subreddit from comments
+bindurl reddit.com gu urlparent 4
+
+" Only hint search results on Google
+bindurl www.google.com f hint -Jc .rc > .r > a
+bindurl www.google.com F composite hint -Jpipe .rc>.r>a href | tabopen | buffer #
+
+" Allow Ctrl-a to select all in the commandline
+unbind --mode=ex <C-a>
+
+" Let Ctrl-c to copy in the commandline
+unbind --mode=ex <C-c>
+
+" Handy multiwindow/multitasking binds
+bind gd tabdetach
+bind gD composite tabduplicate | tabdetach
+
+
+"
+" Misc settings
+"
+
+" Make Tridactyl work on more sites at the expense of some security
+set csp clobber
+" Make Tridactyl work on addons.mozilla.org
+fixamo_quiet
+
+"
+" URL redirects
+" 
+
+" New reddit is bad
+autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+" Mosquito nets won't make themselves
+autocmd DocStart www.amazon.co.uk js tri.excmds.urlmodify("-t", "www", "smile")
+
+"
+" Visual
+"
+set theme gruvbox
+
+"
+" Behaviour
+"
+
+" Google search
+set searchurls.g https://www.google.com/search?q=%s
+
+" Google image search
+set searchurls.gi https://www.google.com/search?q=%s&tbm=isch
+
+" DuckDuckGo
+set searchurls.d https://duckduckgo.com/?q=%s
+
+" GitHub
+set searchurls.gh https://github.com/search?utf8=✓&q=%s
+
+" WikiPedia
+set searchurls.w https://en.wikipedia.org/wiki/Special:Search/%s
+
+" Reddit
+set searchurls.r https://old.reddit.com/r/%s
+
+" Change tabs with {<,>}
+bind < tabprev
+bind > tabnext
+
+" Prevent delay caused by default keybindings changing tab positions
+unbind <<
+unbind >>
+
+" Reduce scroll distance from 10 to 2
+bind j scrollline 2
+bind k scrollline -2
+
+
+" vim: set filetype=vim:
