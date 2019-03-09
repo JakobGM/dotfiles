@@ -16,6 +16,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
 
+# Restart astrality
+bindsym $mod+Shift+a exec --no-startup-id "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
+
 # ----------------------- Scratchpad settings ----------------------- 
 
 # Start all the scratchpad instances if they are not already running
