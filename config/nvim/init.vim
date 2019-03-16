@@ -534,7 +534,7 @@ nnoremap <silent> <leader>/ :Find<CR>
 nnoremap <silent> <leader><Esc> :Maps<CR>
 
 " Search helptags
-nnoremap <silent> <leader>H :Helptags<CR>
+nnoremap <silent> <leader>hh :Helptags<CR>
 
 " --column: Show column number
 " --line-number: Show line number
