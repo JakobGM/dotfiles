@@ -293,9 +293,6 @@ nnoremap gsv :so $MYVIMRC<CR>
 " Clear search highlighting
 nnoremap <Esc><Esc> :noh<CR>
 
-" Make use of backspace in normal mode
-nnoremap <silent> <backspace> X
-
 " Bind g(q|Q) to next item in quickfix list
 " Mnemonic: "See position of keys on keyboard, including q for quickfix"
 nnoremap <silent> <Leader>q :cn<CR>
