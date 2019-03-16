@@ -40,7 +40,6 @@ Plug 'tpope/vim-surround'                                               " Adds t
 
 " Visual
 Plug 'elzr/vim-json', {'for': 'json'}                                   " Better syntax highlighting for JSON files
-Plug 'haya14busa/is.vim'                                                " Remove highlighting after search and toggl searches with <Ctrl>jk
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
