@@ -20,7 +20,6 @@ Plug 'vimjas/vim-python-pep8-indent'                                    " More P
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
 Plug 'vim-pandoc/vim-pandoc'                                            " Integration with the pandoc document converter
 Plug 'vim-pandoc/vim-pandoc-syntax'                                     " Syntax for pandoc supported filetypes
-Plug 'vim-pandoc/vim-rmarkdown'                                         " RMarkdown support
 
 " Navigation
 Plug 'christoomey/vim-tmux-navigator'                                   " Navigate between tmux and vim with <C>+jkhl
@@ -56,7 +55,8 @@ Plug 'tpope/vim-sensible'                                               " Sensib
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
-Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
+Plug 'gaalcaras/ncm-R'                                                  " Rlang completion
+Plug 'lervag/vimtex'                                                    " LaTeX completion
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
 Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
@@ -64,6 +64,7 @@ Plug 'ncm2/ncm2-html-subscope'                                          " Detect
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-path'                                                   " Filepath completion
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
+Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 
 
 " Implementation of the Language Server Protocol for (Neo)vim
@@ -741,6 +742,13 @@ let R_assign = 0
 
 " Enable the use of library(colorout) for colorized R terminals
 let R_in_buffer = 1
+
+" R output is highlighted with current colorscheme
+let g:rout_follow_colorscheme = 1
+
+" R commands in R output are highlighted
+let g:Rout_more_colors = 1
+
 
 """" vim-pandoc-syntax
 " Disable fancy mathematics rendering
