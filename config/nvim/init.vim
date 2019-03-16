@@ -915,6 +915,9 @@ let g:black_virtualenv = '~/.virtualenvs/black'
 let R_assign_map = '<M-->'
 let R_assign = 0
 
+" Enable the use of library(colorout) for colorized R terminals
+let R_in_buffer = 1
+
 """" vim-pandoc-syntax
 " Disable fancy mathematics rendering
 let g:pandoc#syntax#conceal#use = 0
