@@ -878,10 +878,6 @@ set shortmess+=c
 " Escape completion with ctrl+c
 inoremap <C-c> <ESC>
 
-" Select completion items with Tab and Shift+Tab
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 
 """" ncm2-cssomni
 call ncm2#register_source({'name' : 'css',
