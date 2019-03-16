@@ -11,7 +11,6 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
 Plug 'ambv/black'                                                       " Python code formatter
 Plug 'tweekmonster/django-plus.vim'                                     " Better django specific support
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
@@ -664,26 +663,6 @@ nnoremap <Leader>gw :Gw<CR>
 
 """" vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
-
-
-"""" pytest.vim
-" Test specific construct
-nnoremap <silent><LocalLeader>tf <Esc>:Pytest function<CR>
-nnoremap <silent><LocalLeader>tF <Esc>:Pytest file<CR>
-nnoremap <silent><LocalLeader>tc <Esc>:Pytest class<CR>
-nnoremap <silent><LocalLeader>tm <Esc>:Pytest method<CR>
-nnoremap <silent><LocalLeader>tp <Esc>:Pytest project<CR>
-
-" Test with looponfail
-nnoremap <silent><LocalLeader>Tf <Esc>:Pytest function looponfail<CR>
-nnoremap <silent><LocalLeader>TF <Esc>:Pytest file looponfail<CR>
-nnoremap <silent><LocalLeader>Tc <Esc>:Pytest class looponfail<CR>
-nnoremap <silent><LocalLeader>Tm <Esc>:Pytest method looponfail<CR>
-nnoremap <silent><LocalLeader>Tp <Esc>:Pytest project looponfail<CR>
-
-nnoremap <silent><LocalLeader>tn <Esc>:Pytest next<CR>
-nnoremap <silent><LocalLeader>tN <Esc>:Pytest previous<CR>
-nnoremap <silent><LocalLeader>ts <Esc>:Pytest session<CR>
 
 
 """" tagbar
