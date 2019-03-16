@@ -464,10 +464,6 @@ nnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
 vnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
 vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
 
-" Fix common typing mistakes
-iabbrev vuale value
-iabbrev vaule value
-
 " Make < > shifts keep selection
 vnoremap < <gv
 vnoremap > >gv
