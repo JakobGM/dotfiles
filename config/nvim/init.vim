@@ -63,7 +63,6 @@ Plug 'ncm2/ncm2'                                                        " Comple
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
 Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
 Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
-Plug 'ncm2/ncm2-jedi'                                                   " Jedi-completion for filetype=python
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-path'                                                   " Filepath completion
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
