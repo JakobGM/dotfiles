@@ -11,7 +11,6 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'alfredodeza/coveragepy.vim'                                       " Show coverage status in gutter
 Plug 'alfredodeza/pytest.vim'                                           " Run py.test with :Pytest
 Plug 'ambv/black'                                                       " Python code formatter
 Plug 'python-mode/python-mode', { 'branch': 'develop' }                 " Python IDE functionality
@@ -849,12 +848,6 @@ let g:tagbar_show_visibility = 0
 
 " Use fontawesome chevrons for hierarchy icons
 let g:tagbar_iconchars = ['', '']
-
-
-"""" coveragepy.vim
-let g:coveragepy_uncovered_sign = ''
-nnoremap <silent>gcR <Esc>:Coveragepy report<CR>
-nnoremap <silent>gcr <Esc>:Coveragepy refresh<CR>
 
 
 """" vim-rhubarb
