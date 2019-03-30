@@ -1,10 +1,38 @@
 extends tex, r
 
-snippet >
-%>%
+snippet > "Pipe operator" i
+ %>%
 $0
+endsnippet
+
+snippet < "Assignment" i
+ <- $0
 endsnippet
 
 snippet vec
 ${1:var} <- c(${0:${VISUAL:/ /, /g}})
+endsnippet
+
+snippet $$
+\begin{equation*}
+  $1
+\end{equation*}
+$0
+endsnippet
+
+snippet f
+\frac{$1}{$2} $0
+endsnippet
+
+snippet int
+\int_{$1}^{$2} $0
+endsnippet
+
+snippet (
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+
+snippet gg
+ggplot(aes(x = $1, y = $2)) +
+$0
 endsnippet
