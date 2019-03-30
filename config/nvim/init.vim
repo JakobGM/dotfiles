@@ -56,6 +56,7 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 
 " Auto-completion
 Plug 'gaalcaras/ncm-R'                                                  " Rlang completion
+Plug 'honza/vim-snippets'                                               " Gives a whole lot of UltiSnips prebuilt snippets
 Plug 'lervag/vimtex'                                                    " LaTeX completion
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
@@ -65,7 +66,7 @@ Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced
 Plug 'ncm2/ncm2-path'                                                   " Filepath completion
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
 Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
-
+Plug 'sirver/ultisnips'                                                 " For inserting snippets
 
 " Implementation of the Language Server Protocol for (Neo)vim
 Plug 'autozimu/LanguageClient-neovim', {
@@ -758,6 +759,20 @@ let g:pandoc#syntax#conceal#use = 0
 " Disable folding of sections and automatic directory change
 let g:pandoc#modules#disabled = ["folding", "chdir"]
 
+
+"""" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+let g:UltiSnipsSnippetsDir="$XDG_CONFIG_HOME/nvim/UltiSnips"
+let g:UltiSnipsEditSplit="vertical"
+nnoremap <Leader>us :UltiSnipsEdit<CR>
+
+
+"""" vim-polyglot
+" Prevent conflict with vimtex
+let g:polyglot_disabled = ['latex']
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
