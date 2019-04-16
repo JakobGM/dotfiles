@@ -196,8 +196,8 @@ bindsym $mod+Shift+Enter mode "resize"
 for_window [class="^.*"] border pixel 2
 
 # Set inner/outer gaps
-gaps inner 8
-gaps outer 2
+# gaps inner 8
+# gaps outer 2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
