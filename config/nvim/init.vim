@@ -65,6 +65,7 @@ Plug 'ncm2/ncm2-html-subscope'                                          " Detect
 Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
 Plug 'ncm2/ncm2-path'                                                   " Filepath completion
 Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
+Plug 'ncm2/ncm2-ultisnips'
 Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
 Plug 'sirver/ultisnips'                                                 " For inserting snippets
 
@@ -677,7 +678,7 @@ let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
 
 """" tagbar
 " Toggle the Tagbar sidesplit with gt
-nnoremap <silent>gt <Esc>:TagbarToggle<CR>
+" nnoremap <silent><Leader>gt <Esc>:TagbarToggle<CR>
 
 " Open Tagbar to the right
 let g:tagbar_left = 0
@@ -728,6 +729,12 @@ call ncm2#register_source({'name' : 'css',
             \ 'on_complete': ['ncm2#on_complete#omni',
             \               'csscomplete#CompleteCSS'],
 \ })
+
+
+"""" ncm2-ultisnips
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 
 """" black
