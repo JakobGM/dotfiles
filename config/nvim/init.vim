@@ -754,6 +754,14 @@ let g:rout_follow_colorscheme = 1
 " R commands in R output are highlighted
 let g:Rout_more_colors = 1
 
+" Enable SyncTeX support
+let R_synctex = 1
+
+" Uncomment if you want to use tmux + kitty for R REPL
+" let R_in_buffer = 0
+" let R_in_buffer = 0
+" let R_term = 'kitty'
+" let R_term_cmd = 'kitty --title Nvim-R --name Nvim-R --instance-group Nvim-R'
 
 """" vim-pandoc-syntax
 " Disable fancy mathematics rendering
