@@ -14,9 +14,9 @@ ${1:var} <- c(${0:${VISUAL:/ /, /g}})
 endsnippet
 
 snippet $$
-\begin{equation*}
-  $1
-\end{equation*}
+\begin{${1:equation}*}
+  $2
+\end{$1*}
 $0
 endsnippet
 
@@ -25,7 +25,7 @@ snippet f
 endsnippet
 
 snippet int
-\int_{$1}^{$2} $0
+\int \limits_{$1}^{$2} $0
 endsnippet
 
 snippet (
@@ -35,4 +35,18 @@ endsnippet
 snippet gg
 ggplot(aes(x = $1, y = $2)) +
 $0
+endsnippet
+
+snippet sum
+\sum \limits_{$1}^{$2} $0
+endsnippet
+
+snippet prod
+\prod \limits_{$1}^{$2} $0
+endsnippet
+
+snippet while
+while ($1) {
+  $0
+}
 endsnippet
