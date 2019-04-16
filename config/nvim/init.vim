@@ -312,6 +312,14 @@ nnoremap gss :syntax sync fromstart<CR>
 nnoremap <silent> <Leader>v :vsplit<CR>
 
 
+function! EditFiltetypeConfig() abort
+  let filepath = $XDG_CONFIG_HOME . '/nvim/ftplugin/' . &filetype . '.vim'
+  execute 'vsp ' . filepath
+endfunction
+
+nnoremap <Leader>ft :call EditFiltetypeConfig()<CR>
+
+
 """ Commands
 " Write to the current file as sudo
 cmap w!! w !sudo tee > /dev/null %
