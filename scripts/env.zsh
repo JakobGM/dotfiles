@@ -173,3 +173,5 @@ export COMPOSE_FILE=local.yml
 
 # git-secret configuration
 export SECRETS_GPG_COMMAND='gpg2'
+
+export R_PDFVIEWER='zathura'
