@@ -53,3 +53,8 @@ function internal_ds() {
     firefox $INTERNAL_IP:8000
     sphinx-autobuild . _build --host $INTERNAL_IP
 }
+
+# Copy file to folk.ntnu.no/jakobgm
+function folk() {
+    scp ${1} jakobgm@login.ansatt.ntnu.no:public_html
+}
