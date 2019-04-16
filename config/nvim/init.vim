@@ -774,6 +774,30 @@ nnoremap <Leader>us :UltiSnipsEdit<CR>
 " Prevent conflict with vimtex
 let g:polyglot_disabled = ['latex']
 
+
+"""" vimtex
+" Start vim client server for backwards search from PDF file
+if empty(v:servername) && exists('*remote_startserver')
+  call remote_startserver('VIM')
+endif
+
+let g:vimtex_compiler_latexmk = {
+    \ 'backend' : 'nvim',
+    \ 'background' : 1,
+    \ 'build_dir' : '',
+    \ 'callback' : 1,
+    \ 'continuous' : 1,
+    \ 'executable' : 'latexmk',
+    \ 'options' : [
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
+let g:vimtex_view_method = 'zathura'
+
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
 "" vim:fdm=expr:fdl=0
