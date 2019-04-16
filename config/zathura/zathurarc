@@ -1,0 +1,2 @@
+# Copy text to clipboard
+set selection-clipboard clipboard
