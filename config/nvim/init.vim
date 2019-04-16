@@ -328,17 +328,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 """ Python
 
-" Proper indentation for python files
-au BufNewFile,BufRead *.py
-    \ set fileformat=unix |
-    \ set colorcolumn=80 |
-    \ set softtabstop=4  " Pressing tab during editing operations inserts 4 spaces |
-    \ set shiftwidth=4  " Number of spaces used for each step of an (auto)indent action, e.g. '>>'. |
-    \ let python_highlight_all=1  " Enable python highlighting
-
-" Flag unnecessary whitespace in python files
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
 let g:python2_host_prog = $HOME.'/.virtualenvs/NeoVim2/bin/python'
