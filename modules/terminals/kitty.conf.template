@@ -187,3 +187,6 @@ map ctrl+shift+plus      increase_font_size
 map ctrl+shift+minus     decrease_font_size
 map ctrl+shift+=         restore_font_size
 map ctrl+shift+f11       toggle_fullscreen
+
+# Allow remote control of terminals
+allow_remote_control true
