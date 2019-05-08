@@ -15,6 +15,7 @@ Plug 'ambv/black'                                                       " Python
 Plug 'tweekmonster/django-plus.vim'                                     " Better django specific support
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
+Plug 'jpalardy/vim-slime', {'for': 'python'}
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -809,6 +810,17 @@ let g:vimtex_compiler_latexmk = {
     \}
 
 let g:vimtex_view_method = 'zathura'
+
+
+"""" vim-slime
+let g:slime_python_ipython = 1
+let g:slime_target = "kitty"
+let g:slime_no_mappings = 1
+let g:slime_kitty_filetype_socket = 1
+xmap <CR> <Plug>SlimeRegionSend
+nmap <CR> <Plug>SlimeParagraphSend
+nmap <c-c>v <Plug>SlimeConfig
+
 
 """ Folding (open every fold with zR)
 "" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
