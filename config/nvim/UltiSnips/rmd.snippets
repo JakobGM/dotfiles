@@ -50,3 +50,13 @@ while ($1) {
   $0
 }
 endsnippet
+
+snippet inv "Inverse" i
+^{-1}$0
+endsnippet
+
+snippet ans "Create answer"
+<button type="button" class="btn btn-success btn-sm" onclick="showAnswer('$1')">Show answer</button><div class="answer" id="$1">
+$0
+</div>
+endsnippet
