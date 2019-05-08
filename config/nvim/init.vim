@@ -39,7 +39,7 @@ Plug 'tpope/vim-surround'                                               " Adds t
 " Visual
 Plug 'elzr/vim-json', {'for': 'json'}                                   " Better syntax highlighting for JSON files
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
-Plug 'jakobgm/lightline-gruvbox.vim', { 'branch': 'patch-1' }           " Gruvbox theme for the lightline statusline
+Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
