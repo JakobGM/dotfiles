@@ -26,5 +26,8 @@ then
         --override initial_window_height=1080 \
         --directory $PROJECT_HOME/cloud \
         --instance-group ipython \
+        --hold \
+        -o allow_remote_control=yes \
+        --listen-on unix:/tmp/kitty_python \
         $DOTREPO/archlinux/ipython.zsh &
 fi
