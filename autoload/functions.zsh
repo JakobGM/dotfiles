@@ -58,3 +58,12 @@ function internal_ds() {
 function folk() {
     scp ${1} jakobgm@login.ansatt.ntnu.no:public_html
 }
+
+# Convert video file to web optimized GIF
+function convert2gif() {
+    # Remove file suffix for output file designation
+    output=${${1}%.*}
+
+    # Set FPS = 15, color depth = 32, and use the entire file
+    gifcurry_cli -i $1 -o $output -f 15 -c 32 -s 0 -d 10000
+}
