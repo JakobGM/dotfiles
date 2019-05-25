@@ -662,6 +662,10 @@ let g:LanguageClient_hoverPreview = 'Never'
 nnoremap <Leader>gw :Gw<CR>
 
 
+""" vim-rhubarb
+nnoremap <Leader>gb :Gblame<CR>
+
+
 """" vim-gutentags
 let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
 
