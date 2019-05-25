@@ -110,6 +110,9 @@ bindsym $mod+space focus mode_toggle
 # focus the parent container
 bindsym $mod+a focus parent
 
+# Move window to center of screen
+bindsym $mod+c move position center
+
 # focus the child container
 #bindsym $mod+d focus child
 
