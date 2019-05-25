@@ -10,10 +10,10 @@ then
         --override initial_window_height=1080 &
 fi
 
-if ! pgrep -f zeal > /dev/null
+if ! pgrep -f devdocs-desktop > /dev/null
 then
     echo 'Starting dropdown documentation browser'
-    zeal &
+    devdocs-desktop &
 fi
 
 if ! pgrep -f dropdown_ipython > /dev/null

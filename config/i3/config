@@ -27,12 +27,12 @@ exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
 # Enable floating mode for these scratchpads
 for_window [instance="dropdown_terminal"] floating enable, move to scratchpad
 for_window [instance="dropdown_ipython"] floating enable, move to scratchpad
-for_window [instance="zeal"] floating enable, move to scratchpad
+for_window [instance="devdocs-desktop"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
 
 # Keybind the toggling of the scratchpad area
 bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
 bindsym $mod+p [instance="dropdown_ipython"] scratchpad show
-bindsym $mod+d [instance="zeal"] scratchpad show
+bindsym $mod+d [instance="devdocs-desktop"] scratchpad show
 
 # ------------------------------------------------------------------- 
 
@@ -41,7 +41,7 @@ for_window [instance="vimanywhere"] floating enable
 bindsym $mod+Shift+v [instance="vimanywhere"] scratchpad show; exec vimanywhere
 
 # Prevent floating windows going offscreen
-floating_maximum_size 1820 x 900
+floating_maximum_size 1920 x 1080
 
 # kill focused window
 bindsym $mod+q kill
