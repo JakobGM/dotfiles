@@ -25,14 +25,9 @@ bindsym $mod+Shift+a exec --no-startup-id "$WORKON_HOME/astrality/bin/python3 $P
 exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
 
 # Enable floating mode for these scratchpads
-for_window [instance="dropdown_terminal"] floating enable;
-for_window [instance="dropdown_ipython"] floating enable;
-for_window [instance="zeal"] floating enable;
-
-# Move the instances to the scratchpad
-for_window [instance="dropdown_terminal"] move to scratchpad;
-for_window [instance="dropdown_ipython"] move to scratchpad;
-for_window [instance="zeal"] move to scratchpad;
+for_window [instance="dropdown_terminal"] floating enable, move to scratchpad
+for_window [instance="dropdown_ipython"] floating enable, move to scratchpad
+for_window [instance="zeal"] floating enable, move to scratchpad
 
 # Keybind the toggling of the scratchpad area
 bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
@@ -43,7 +38,7 @@ bindsym $mod+d [instance="zeal"] scratchpad show
 
 # --- Vim Anywhere ---
 for_window [instance="vimanywhere"] floating enable
-bindsym $mod+Shift+v [instance="vimanywhere"] scratchpad show; exec vimanywhere;
+bindsym $mod+Shift+v [instance="vimanywhere"] scratchpad show; exec vimanywhere
 
 # Prevent floating windows going offscreen
 floating_maximum_size 1820 x 900
@@ -113,9 +108,6 @@ bindsym $mod+a focus parent
 # Move window to center of screen
 bindsym $mod+c move position center
 
-# focus the child container
-#bindsym $mod+d focus child
-
 
 # --- Workspace related keybindings ---
 
@@ -158,10 +150,6 @@ bindsym $mod+Shift+r restart
 
 # --- Super key keybindings ---
 
-# lock screen
-bindsym Mod1+l exec --no-startup-id i3lock-fancy
-
-
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -198,15 +186,6 @@ bindsym $mod+Shift+Enter mode "resize"
 # i3-gaps requires disabling titlebars
 for_window [class="^.*"] border pixel 2
 
-# Set inner/outer gaps
-# gaps inner 8
-# gaps outer 2
-
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
@@ -214,48 +193,8 @@ smart_borders on
 # Remove border of windows
 new_window pixel 2
 
-# Toggle gaps mode
-bindsym $mod+g exec --no-startup-id "$DOTREPO/archlinux/toggle_i3_gaps.zsh"
-
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 1
-        bindsym minus gaps inner current minus 1
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 1
-        bindsym Shift+minus gaps inner all minus 1
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 1
-        bindsym minus gaps outer current minus 1
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 1
-        bindsym Shift+minus gaps outer all minus 1
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
 # Initialize diplay(s) with mons
-exec_always --no-startup-id "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
+exec --no-startup-id "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 
 # Use programmer-dvorak keybindings
 exec --no-startup-id setxkbmap dvp
@@ -266,14 +205,8 @@ exec_always --no-startup-id "compton -b --config $XDG_CONFIG_HOME/compton/compto
 # Start polybar, even on restart
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
 
-# Set wallpaper
+# Start astrality
 exec_always --no-startup-id "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
-
-# Show the network connection handled by NetworkManager in the system tray
-exec --no-startup-id nm-applet
-
-# RSI prevention software in system tray with break reminders
-exec_always --no-startup-id "$XDG_CONFIG_HOME/rsibreak/init.zsh"
 
 # Automatically rename workspaces in i3
 exec_always --no-startup-id "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/autoname_workspaces.py &"
@@ -303,13 +236,6 @@ client.focused          $green $green $darkgray $purple $darkgray
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red
-
-# blue gruvbox
-# class                 border|backgr|text|indicator|child_border
-# client.focused          $blue $blue $darkgray $purple $darkgray
-# client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
-# client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
-# client.urgent           $red $red $white $red $red
 
 #end of window title bars & borders section
 # vim:ft=i3config
