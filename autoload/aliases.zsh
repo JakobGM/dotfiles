@@ -50,6 +50,7 @@ fi
 
 # Unix aliases
 alias x='exit'
+alias c='clear'
 alias ..='cd ../'
 alias ...='cd ../..'
 alias ....='cd ../../..'
