@@ -738,8 +738,8 @@ let g:black_fast = 1
 " Width of code before it gets wrapped
 let g:black_linelength = 80
 
-" Do not change my precious single quote strings!
-let g:black_skip_string_normalization = 1
+" Normalize all strings to use double quotes
+let g:black_skip_string_normalization = 0
 
 " Virtual environment path used to run black
 let g:black_virtualenv = '~/.virtualenvs/black'
