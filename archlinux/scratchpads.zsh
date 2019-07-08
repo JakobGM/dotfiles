@@ -24,7 +24,7 @@ then
         --name dropdown_ipython \
         --override initial_window_width=1920 \
         --override initial_window_height=1080 \
-        --directory $PROJECT_HOME/cloud \
+        --directory $PROJECT_HOME/sunmapper \
         --instance-group ipython \
         --hold \
         -o allow_remote_control=yes \
