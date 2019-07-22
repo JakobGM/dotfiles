@@ -655,6 +655,7 @@ let g:LanguageClient_hoverPreview = 'Never'
 " inoremap <silent> <c-q> <esc>:<c-u>q!<cr>
 " let g:LanguageClient_loggingFile = '/tmp/lc.log'
 " let g:LanguageClient_loggingLevel = 'DEBUG'
+let g:LanguageClient_settingsPath = expand('~/.config/nvim/settings.json')
 
 
 """" vim-fugitive
