@@ -35,6 +35,7 @@
     s = status
     r = rebase
     pr = !"pr() { git fetch origin pull/$1/head:pr-$1; }; pr"
+    f = commit --fixup
 [gpg]
     program = gpg
 [credential]
