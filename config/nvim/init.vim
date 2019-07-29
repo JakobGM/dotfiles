@@ -181,6 +181,8 @@ let g:lightline_buffer_reservelen = 20
 function! MyHighlights() abort
     " Define BadWhitespace before using in a match
     highlight BadWhitespace ctermbg=red guibg=darkred
+    highlight LSPError ctermfg=237 guifg=#504925
+    highlight LSPTodo ctermfg=237 guifg=#504925
 
     " Highlight spelling mistakes in red
     highlight SpellBad cterm=underline ctermfg=red guifg=red
@@ -624,27 +626,31 @@ let g:LanguageClient_selectionUI = 'fzf'
 let g:LanguageClient_diagnosticsDisplay = {
             \    1: {
             \        "name": "Error",
-            \        "texthl": "ALEError",
+            \        "texthl": "none",
             \        "signText": "",
             \        "signTexthl": "ALEErrorSign",
+            \        "virtualTexthl": "LSPError",
             \    },
             \    2: {
             \        "name": "Warning",
-            \        "texthl": "ALEWarning",
+            \        "texthl": "none",
             \        "signText": "",
             \        "signTexthl": "ALEWarningSign",
+            \        "virtualTexthl": "LSPTodo",
             \    },
             \    3: {
             \        "name": "Information",
-            \        "texthl": "ALEInfo",
+            \        "texthl": "none",
             \        "signText": "",
             \        "signTexthl": "ALEInfoSign",
+            \        "virtualTexthl": "LSPTodo",
             \    },
             \    4: {
             \        "name": "Hint",
-            \        "texthl": "ALEInfo",
+            \        "texthl": "none",
             \        "signText": "H",
             \        "signTexthl": "ALEInfoSign",
+            \        "virtualTexthl": "LSPTodo",
             \    },
             \}
 
