@@ -48,7 +48,6 @@ Plug 'sheerun/vim-polyglot'                                             " Add sy
 Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 
 " Behaviour/tools
-Plug 'ludovicchabant/vim-gutentags'                                     " Automatically create ctag files
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
@@ -101,7 +100,7 @@ let g:lightline = {
       \ 'active': {
       \   'left':  [ [ 'mode', 'paste' ],
       \              [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
-      \              [ 'gutentags', 'tagbar'],
+      \              [ 'tagbar'],
       \            ],
       \   'right': [ [ ],
       \              [ 'percent' ],
@@ -113,7 +112,6 @@ let g:lightline = {
       \   'gitbranch': 'fugitive#head',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
       \   'virtualenv': 'virtualenv#statusline',
-      \   'gutentags': 'gutentags#statusline',
       \ },
       \ 'tabline': {
       \   'left': [ [ 'bufferinfo' ],
@@ -550,15 +548,15 @@ nnoremap <silent> <leader>hh :Helptags<CR>
 " --color: Search color options
 command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --kinds-python=cfmIix --languages=python,R,JavaScript --machinable=no --with-list-header=yes'
+
 """" Vimagit
 nnoremap <leader>gg :Magit<CR>
 nnoremap <leader>gp :! git push<CR>
 
 " Enable deletion of untracked files in Magit
 let g:magit_discard_untracked_do_delete=1
-
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache'
 
 
 """" vim-gitgutter
@@ -667,10 +665,6 @@ nnoremap <Leader>gw :Gw<CR>
 
 """ vim-rhubarb
 nnoremap <Leader>gb :Gblame<CR>
-
-
-"""" vim-gutentags
-let g:gutentags_ctags_exclude = ['.mypy_cache', '@.gitignore']
 
 
 """" tagbar
