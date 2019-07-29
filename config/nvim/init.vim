@@ -596,29 +596,25 @@ let g:LanguageClient_serverCommands = {
 let g:LanguageClient_autoStart = 1
 
 " Show documentation for method
-nnoremap <silent> <Leader>K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <Leader>K :call LanguageClient#textDocument_hover()<CR>
 
 " Go to definition
 nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
 
 " Show short type and doc information
-nnoremap <silent> <Leader>D :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> <Leader>D :call LanguageClient#textDocument_hover()<CR>
 
 " Rename identifier
-nnoremap <silent> <Leader>r :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
 
 " Search symbols in current buffer
-nnoremap <silent> <Leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
 
 " Show a list of all references to identifier under cursor
 " Does not seem to work for python-language-server
-nnoremap <silent> <Leader>R :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> <Leader>R :call LanguageClient#textDocument_references()<CR>
 
-" Format the entire buffer
-nnoremap <silent> <Leader>F :call LanguageClient_textDocument_formatting()<CR>
-
-" Use LanguageClient for gq formatting
-set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+nnoremap <leader>a :call LanguageClient_contextMenu()<CR>
 
 " Use fzf for multiple entries selection
 let g:LanguageClient_selectionUI = 'fzf'
