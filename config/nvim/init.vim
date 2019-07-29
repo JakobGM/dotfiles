@@ -546,7 +546,13 @@ nnoremap <silent> <leader>hh :Helptags<CR>
 " --follow: Follow symlinks
 " --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 " --color: Search color options
-command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+command! -bang -nargs=* Find
+  \ call fzf#vim#grep(
+  \   'rg --line-number --no-heading --fixed-strings --smart-case --hidden --follow --glob "!.git/*" --color=always '.shellescape(<q-args>),
+  \   1,
+  \   fzf#vim#with_preview({'options': '--delimiter : --nth 2..'}, 'right:50%'),
+  \   <bang>0
+  \ )
 
 " [Tags] Command to generate tags file
 let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --kinds-python=cfmIix --languages=python,R,JavaScript --machinable=no --with-list-header=yes'
