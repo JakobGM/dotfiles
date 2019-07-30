@@ -618,8 +618,6 @@ nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentSymbol()<C
 " Does not seem to work for python-language-server
 nnoremap <silent> <Leader>R :call LanguageClient#textDocument_references()<CR>
 
-nnoremap <leader>a :call LanguageClient_contextMenu()<CR>
-
 " Use fzf for multiple entries selection
 let g:LanguageClient_selectionUI = 'fzf'
 
