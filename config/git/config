@@ -48,6 +48,7 @@
     followTags = true
 [rebase]
     autostash = true
+    autosquash = true
 [receive]
     advertisePushOptions = true
 [color]
