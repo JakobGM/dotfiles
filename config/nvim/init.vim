@@ -287,6 +287,20 @@ function! OpenPluginHomepage() abort
   endtry
 endfunction
 
+nnoremap <silent> <Leader>gf :call PutFixupCommandInPasteBoard()<CR>
+
+function! PutFixupCommandInPasteBoard() abort
+  let filepath = expand('%:p')
+  let line_number = line('.')
+  let sha1_hash = system(
+    \ 'git blame ' .
+    \ '-L ' . line_number . ',' . line_number . 
+    \ ' --porcelain ' . filepath . 
+    \ ' | xargs | cut -f 1 -d " "'
+    \ )
+  execute 'normal! :Gcommit --fixup ' . sha1_hash
+endfunction
+
 " Open and close folds with Enter
 nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
 
