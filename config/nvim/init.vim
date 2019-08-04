@@ -192,6 +192,11 @@ function! MyHighlights() abort
 
     " Highlight search results in bold green
     highlight Search guibg=guibg guifg=#b8bb26 gui=bold,underline cterm=bold,underline
+
+    highlight DiffAdd cterm=bold ctermfg=142 ctermbg=235 gui=NONE guifg=#b8bb26 guibg=#3c3c25
+    highlight DiffChange cterm=bold ctermfg=108 ctermbg=235 gui=NONE guifg=#8ec07c guibg=#383228
+    highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
+    highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
 endfunction
 
 augroup MyColors
