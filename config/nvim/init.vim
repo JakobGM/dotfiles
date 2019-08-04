@@ -1,5 +1,3 @@
-" INFO: Show all content hidden by the folds by pressing zR
-
 """ Plugins
 filetype off                  " required
 
@@ -846,9 +844,3 @@ nmap <c-c>v <Plug>SlimeConfig
 """" vim-accordion
 " Automatically enter accordion mode with more than 3 vertical splits
 autocmd VimEnter * AccordionAll 3
-
-
-""" Folding (open every fold with zR)
-"" [.vimrc folding with 2+ ""](https://vi.stackexchange.com/a/3820)
-"" vim:fdm=expr:fdl=0
-"" vim:fde=getline(v\:lnum)=~'^""'?'>'.(matchend(getline(v\:lnum),'""*')-2)\:'='
