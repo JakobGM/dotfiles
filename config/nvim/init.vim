@@ -28,6 +28,7 @@ Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
+Plug 'mattboehm/vim-accordion'                                          " Start split accordion mode with :AccordionAll <size>
 Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 
 " Editing
@@ -840,6 +841,11 @@ let g:slime_kitty_filetype_socket = 1
 xmap <CR> <Plug>SlimeRegionSend
 nmap <CR> <Plug>SlimeParagraphSend
 nmap <c-c>v <Plug>SlimeConfig
+
+
+"""" vim-accordion
+" Automatically enter accordion mode with more than 3 vertical splits
+autocmd VimEnter * AccordionAll 3
 
 
 """ Folding (open every fold with zR)
