@@ -101,8 +101,7 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left':  [ [ 'mode', 'paste' ],
-      \              [ 'gitbranch', 'readonly', 'virtualenv', 'relativepath', 'modified', 'search_status'],
-      \              [ 'tagbar'],
+      \              [ 'readonly', 'relativepath', 'modified' ],
       \            ],
       \   'right': [ [ ],
       \              [ 'percent' ],
@@ -113,13 +112,10 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
-      \   'virtualenv': 'virtualenv#statusline',
       \ },
       \ 'tabline': {
-      \   'left': [ [ 'bufferinfo' ],
-      \             [ 'separator' ],
-      \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
-      \   'right': [ [ 'close' ], ],
+      \   'left': [ [ 'tabs' ] ],
+      \   'right': [ [ 'tagbar', 'gitbranch' ] ],
       \ },
       \ 'component_expand': {
       \   'buffercurrent': 'lightline#buffer#buffercurrent',
@@ -256,8 +252,12 @@ nnoremap <Leader>w <Esc>:w<CR>
 nnoremap Y y$
 
 " Remap arrow keys to buffer switching
-nnoremap <Left> :bprev<CR>
-nnoremap <Right> :bnext<CR>
+nnoremap <Left> :tabprevious<CR>
+nnoremap <Right> :tabnext<CR>
+
+" Remap shift + arrow keys to open new tabs
+nnoremap <S-Left> :0tabnew<CR>
+nnoremap <S-Right> :$tabnew<CR>
 
 " Press <Leader>bg in order to toggle light/dark background
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>
