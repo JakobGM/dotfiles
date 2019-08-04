@@ -48,9 +48,9 @@ alias ds='sphinx-autobuild . _build --host 192.168.1.225'
 
 # Use exa as a replacement for ls
 if command_exists exa; then
-    alias ls='exa'
-    alias la='exa -la'
-    alias ll='exa -l'
+    alias ls='exa --group-directories-first'
+    alias la='exa -la --group-directories-first'
+    alias ll='exa -l --group-directories-first'
 else
     alias la='ls -la'
     alias ll='ls -l'
