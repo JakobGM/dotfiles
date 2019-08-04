@@ -15,7 +15,7 @@ Plug 'ambv/black'                                                       " Python
 Plug 'tweekmonster/django-plus.vim'                                     " Better django specific support
 Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
 Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
-Plug 'jpalardy/vim-slime', {'for': 'python'}
+Plug 'jakobgm/vim-slime', {'for': 'python'}
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
