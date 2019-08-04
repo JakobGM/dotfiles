@@ -34,6 +34,7 @@ Plug 'tpope/vim-rhubarb'                                                " Open G
 Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
+Plug 'peterrincker/vim-argumentative'                                   " Shifting arguments with <, and >,
 Plug 'tpope/vim-commentary'                                             " Adds comment action with 'gc'
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 
