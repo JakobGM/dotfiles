@@ -58,6 +58,7 @@ Plug 'wakatime/vim-wakatime'                                            " Automa
 Plug 'gaalcaras/ncm-R'                                                  " Rlang completion
 Plug 'honza/vim-snippets'                                               " Gives a whole lot of UltiSnips prebuilt snippets
 Plug 'lervag/vimtex'                                                    " LaTeX completion
+Plug 'ludovicchabant/vim-gutentags'                                     " Automatically generate ctags on write
 Plug 'ncm2/ncm2'                                                        " Completion manager
 Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
 Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
@@ -578,7 +579,13 @@ command! -bang -nargs=* Find
   \ )
 
 " [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --kinds-python=cfmIix --languages=python,R,JavaScript --machinable=no --with-list-header=yes'
+let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --kinds-python=cfmIix --languages=python,R,JavaScript'
+
+
+"""" vim-gutentags
+" Exclude file patterns
+let g:gutentags_ctags_exclude = [ ".mypy_cache", "@.gitignore" ]
+let g:gutentags_ctags_extra_args = [ "--kinds-python=cfmIix", "--languages=python,R,JavaScript" ]
 
 """" Vimagit
 nnoremap <leader>gg :Magit<CR>
