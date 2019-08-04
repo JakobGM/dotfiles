@@ -1,5 +1,4 @@
 {
-    "pyls.configurationSources": ["flake8"],
     "pyls.plugins.autopep8.enabled": true,
     "pyls.plugins.mccabe.enabled": true,
     "pyls.plugins.papf.enabled": true,
