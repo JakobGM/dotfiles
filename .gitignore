@@ -151,3 +151,15 @@ config/packrat/
 config/jupyter/lab/workspaces/
 config/i3/i3scripts
 config/kitty/cached.json
+config/NextGIS/
+config/Signal/
+config/TabNine/
+config/chromium/
+config/devdocs-desktop/
+config/ghb/
+config/green-recorder/
+config/icedtea-web/
+config/kitty/cached.json
+config/kitty/
+config/menus/
+.gitignore
