@@ -1,5 +1,5 @@
 [pycodestyle]
-ignore = D100,D101,D105,D107,W292
+ignore = D100,D101,D105,D107,W292,W503
 max-line-length = 80
 exclude = .git
 
@@ -19,7 +19,8 @@ ignore =
 	D100,
     # W292: Missing newline at end of file
     W292,
-    D107
+    D107,
+    W503
 
 [pydocstyle]
 ignore = D100,D101,D102,D103,D105,D107,W292
