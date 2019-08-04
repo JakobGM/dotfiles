@@ -1,3 +1,6 @@
+# Don't track personal pre-commit config files
+.pre-commit-config.yaml
+
 # Ignore project specific vim settings
 .exrc
 
