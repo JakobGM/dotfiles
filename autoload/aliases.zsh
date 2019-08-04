@@ -1,4 +1,12 @@
 #!/bin/zsh
+# Check if the given command is available for gradual degradation purposes
+function command_exists() {
+    if ! hash "${1}" &>/dev/null
+    then
+        return 1
+    fi
+    return 0
+}
 
 # MacOS aliases
 alias cask='brew cask'
@@ -39,10 +47,13 @@ alias prs='python manage.py runserver'
 alias ds='sphinx-autobuild . _build --host 192.168.1.225'
 
 # Use exa as a replacement for ls
-if which exa > /dev/null 2>&1; then
+if command_exists exa; then
     alias ls='exa'
     alias la='exa -la'
     alias ll='exa -l'
+else
+    alias la='ls -la'
+    alias ll='ls -l'
 fi
 
 # Unix aliases
@@ -63,3 +74,5 @@ alias mount_uranium='sudo sshfs jakobgm@167.99.220.138:/ /mnt/uranium -o Identit
 # Enable/disable terminal line wraps
 alias wrapoff='tput rmam'
 alias wrapon='tput smam'
+
+if command_exists bat; then alias cat=bat; fi
