@@ -89,7 +89,6 @@ fi
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakobgm/.netlify/helper/path.zsh.inc'; fi
-source /home/jakobgm/.netlify/helper/path.zsh.inc
 
 # Miniconda3
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
