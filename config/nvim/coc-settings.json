@@ -1,0 +1,18 @@
+{
+  "coc.preferences.jumpCommand": "vsplit",
+
+  "git.changedSign.text": "",
+  "git.addedSign.text": "",
+  "git.removedSign.text": "",
+  "git.topRemovedSign.text": "",
+  "git.changeRemovedSign.text": "",
+
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
+
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "$XDG_CONFIG_HOME/nvim/UltiSnips"
+  ]
+}

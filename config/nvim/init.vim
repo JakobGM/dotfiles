@@ -4,7 +4,6 @@ filetype off                  " required
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
 " Git
-Plug 'airblade/vim-gitgutter'                                           " Show git diff in number column
 Plug 'jreybert/vimagit'                                                 " Modal git editing with <leader>g
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
@@ -30,7 +29,7 @@ Plug 'mattboehm/vim-accordion'                                          " Start 
 Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 
 " Editing
-Plug 'danro/rename.vim'                                                 " Enables :rename <new_name>
+Plug 'danro/rename.vim'                                                 " Enables :Rename <new_name>
 Plug 'fooSoft/vim-argwrap'                                              " Wrap function arguments with <leader>a
 Plug 'godlygeek/tabular'                                                " :Tab /<repexp> in order to allign
 Plug 'peterrincker/vim-argumentative'                                   " Shifting arguments with <, and >,
@@ -49,33 +48,18 @@ Plug 'taohex/lightline-buffer'                                          " Buffer
 
 " Behaviour/tools
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
+Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
 Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
-Plug 'gaalcaras/ncm-R'                                                  " Rlang completion
 Plug 'honza/vim-snippets'                                               " Gives a whole lot of UltiSnips prebuilt snippets
 Plug 'lervag/vimtex'                                                    " LaTeX completion
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically generate ctags on write
-Plug 'ncm2/ncm2'                                                        " Completion manager
-Plug 'ncm2/ncm2-bufword'                                                " Completion words from current buffer
-Plug 'ncm2/ncm2-cssomni'                                                " Wrap css omnifunc for ncm2 with one singule function call
-Plug 'ncm2/ncm2-html-subscope'                                          " Detect javascript/css subscope from html code 
-Plug 'ncm2/ncm2-markdown-subscope'                                      " Fenced code block detection in markdown files for ncm2 
-Plug 'ncm2/ncm2-path'                                                   " Filepath completion
-Plug 'ncm2/ncm2-tern', {'do': 'npm install'}                            " Javascript completion
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'roxma/nvim-yarp'                                                  " Dependency of ncm2/ncm2
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Autocompletion framework
 Plug 'sirver/ultisnips'                                                 " For inserting snippets
-
-" Implementation of the Language Server Protocol for (Neo)vim
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 
 call plug#end()
 
@@ -158,7 +142,7 @@ let g:lightline_buffer_active_buffer_right_icon = ''
 let g:lightline_buffer_separator_icon = '  '
 
 " lightline-buffer function settings
-let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_show_bufnr = 0
 let g:lightline_buffer_rotate = 0
 let g:lightline_buffer_fname_mod = ':t'
 let g:lightline_buffer_excludes = ['vimfiler']
@@ -176,14 +160,11 @@ let g:lightline_buffer_reservelen = 20
 function! MyHighlights() abort
     " Define BadWhitespace before using in a match
     highlight BadWhitespace ctermbg=red guibg=darkred
-    highlight LSPError ctermfg=237 guifg=#504925
-    highlight LSPTodo ctermfg=237 guifg=#665c54
 
     " Highlight spelling mistakes in red
     highlight SpellBad cterm=underline ctermfg=red guifg=red
 
     " Do not use separate background color in sign column
-    let g:gitgutter_override_sign_column_highlight = 1
     highlight SignColumn guibg=bg
     highlight SignColumn ctermbg=bg
 
@@ -199,9 +180,6 @@ function! MyHighlights() abort
     highlight DiffChange cterm=bold ctermfg=108 ctermbg=235 gui=NONE guifg=#8ec07c guibg=#383228
     highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
     highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
-
-    " Use background color for linting warning symbols in gutter
-    highlight ALEWarningSign guifg=#665c54 guibg=bg
 endfunction
 
 augroup MyColors
@@ -595,103 +573,6 @@ nnoremap <leader>gp :! git push<CR>
 let g:magit_discard_untracked_do_delete=1
 
 
-"""" vim-gitgutter
-" Hunk-add and hunk-revert for chunk staging
-nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <Leader>gu <Plug>GitGutterUndoHunk
-
-" Jump between hunks
-nmap <Leader>gn <Plug>GitGutterNextHunk
-nmap <Leader>gN <Plug>GitGutterPrevHunk
-
-" Update sign column every quarter second
-set updatetime=250
-
-" Use fontawesome icons as signs
-let g:gitgutter_sign_added = ''
-let g:gitgutter_sign_modified = ''
-let g:gitgutter_sign_removed = ''
-let g:gitgutter_sign_removed_first_line = ''
-let g:gitgutter_sign_modified_removed = ''
-
-
-"""" LanguageClient-neovim
-let g:LanguageClient_serverCommands = {
-    \ 'haskell': ['hie', '--lsp'],
-    \ 'html': ['html-languageserver', '--stdio'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'python' : ['pyls'],
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'sh': ['bash-language-server', 'start']
-    \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" Show documentation for method
-nnoremap <silent> <Leader>K :call LanguageClient#textDocument_hover()<CR>
-
-" Go to definition
-nnoremap <silent> <Leader>d :call LanguageClient#textDocument_definition({'gotoCmd': 'vsplit'})<CR>
-
-" Show short type and doc information
-nnoremap <silent> <Leader>D :call LanguageClient#textDocument_hover()<CR>
-
-" Rename identifier
-nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
-
-" Search symbols in current buffer
-nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
-
-" Show a list of all references to identifier under cursor
-" Does not seem to work for python-language-server
-nnoremap <silent> <Leader>R :call LanguageClient#textDocument_references()<CR>
-
-" Use fzf for multiple entries selection
-let g:LanguageClient_selectionUI = 'fzf'
-
-let g:LanguageClient_diagnosticsDisplay = {
-            \    1: {
-            \        "name": "Error",
-            \        "texthl": "none",
-            \        "signText": "",
-            \        "signTexthl": "ALEErrorSign",
-            \        "virtualTexthl": "LSPError",
-            \    },
-            \    2: {
-            \        "name": "Warning",
-            \        "texthl": "none",
-            \        "signText": "",
-            \        "signTexthl": "ALEWarningSign",
-            \        "virtualTexthl": "LSPTodo",
-            \    },
-            \    3: {
-            \        "name": "Information",
-            \        "texthl": "none",
-            \        "signText": "",
-            \        "signTexthl": "ALEInfoSign",
-            \        "virtualTexthl": "LSPTodo",
-            \    },
-            \    4: {
-            \        "name": "Hint",
-            \        "texthl": "none",
-            \        "signText": "H",
-            \        "signTexthl": "ALEInfoSign",
-            \        "virtualTexthl": "LSPTodo",
-            \    },
-            \}
-
-" Never use preview window on hover, only echo to cmdline
-let g:LanguageClient_hoverPreview = 'Never'
-
-" Uncomment for debugging LanguageClient-neovim
-" inoremap <silent> <c-q> <esc>:<c-u>q!<cr>
-" let g:LanguageClient_loggingFile = '/tmp/lc.log'
-" let g:LanguageClient_loggingLevel = 'DEBUG'
-let g:LanguageClient_settingsPath = expand('~/.config/nvim/settings.json')
-
-
 """" vim-fugitive
 " Write to git staging area
 nnoremap <Leader>gw :Gw<CR>
@@ -724,42 +605,6 @@ let g:tagbar_iconchars = ['', '']
 """" vim-rhubarb
 " Open current line on GitHub
 nnoremap <Leader>gh V:Gbrowse<CR>
-
-
-"""" ncm2
-" Enable completion for all filetypes
-autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" Tweak insert mode completion
-"   noinsert: Do not insert text before accepting the completion
-"   menuone: Use the popup menu even if there is only one match
-"   noselect: Do not select a match in the menu, force manual selection
-set completeopt=noinsert,menuone,noselect
-
-" Do not show in-completion-menu messages, e.g. 'match 1 of 2'
-set shortmess+=c
-
-" Escape completion with ctrl+c
-inoremap <C-c> <ESC>
-
-
-"""" ncm2-cssomni
-call ncm2#register_source({'name' : 'css',
-            \ 'priority': 9, 
-            \ 'subscope_enable': 1,
-            \ 'scope': ['css', 'scss', 'less'],
-            \ 'mark': 'css',
-            \ 'word_pattern': '[\w\-]+',
-            \ 'complete_pattern': ':\s*',
-            \ 'on_complete': ['ncm2#on_complete#omni',
-            \               'csscomplete#CompleteCSS'],
-\ })
-
-
-"""" ncm2-ultisnips
-" Press enter key to trigger snippet expansion
-" The parameters are the same as `:help feedkeys()`
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 
 """" black
@@ -809,10 +654,9 @@ let g:pandoc#modules#disabled = ["folding", "chdir"]
 
 
 """" UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+" Prevent conflict with coc.nvim
+let g:UltiSnipsExpandTrigger=""
+
 let g:UltiSnipsSnippetsDir="$XDG_CONFIG_HOME/nvim/UltiSnips"
 let g:UltiSnipsEditSplit="vertical"
 nnoremap <Leader>us :UltiSnipsEdit<CR>
@@ -860,3 +704,161 @@ nmap <c-c>v <Plug>SlimeConfig
 """" vim-accordion
 " Automatically enter accordion mode with more than 3 vertical splits
 autocmd VimEnter * AccordionAll 3
+
+
+"""" coc.nvim
+" Extensions need to be installed at first startup
+" :CocInstall coc-json coc-python coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp coc-tabnine
+
+" Tweak insert mode completion
+"   noinsert: Do not insert text before accepting the completion
+"   menuone: Use the popup menu even if there is only one match
+"   noselect: Do not select a match in the menu, force manual selection
+set completeopt=noinsert,menuone,noselect
+
+" Do not show in-completion-menu messages, e.g. 'match 1 of 2'
+set shortmess+=c
+
+" Escape completion with ctrl+c
+inoremap <C-c> <ESC>
+
+" Update sign column every quarter second
+set updatetime=300
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Navigate diagnostics
+nmap <silent> <Leader>en <Plug>(coc-diagnostic-prev)
+nmap <silent> <Leader>eN <Plug>(coc-diagnostic-next)
+
+" Go to definition
+nmap <silent> <Leader>d <Plug>(coc-definition)
+
+" Remap keys for gotos
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> <Leader>R <Plug>(coc-references)
+
+" Use K and <Leader>K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent><Leader>K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>r <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python, coc-yank
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <Leader>cd :<C-u>CocList diagnostics<cr>
+
+" Manage extensions
+nnoremap <silent> <Leader>ce :<C-u>CocList extensions<cr>
+
+" Show commands
+nnoremap <silent> <Leader>ce :<C-u>CocList commands<cr>
+
+" Find symbol of current document
+nnoremap <silent> <Leader>S :<C-u>CocList outline<cr>
+
+" Search workspace symbols
+nnoremap <silent> <Leader>s :<C-u>CocList -I symbols<cr>
+
+" Do default action for next item.
+nnoremap <silent> <Leader>cj :<C-u>CocNext<CR>
+
+" Do default action for previous item.
+nnoremap <silent> <Leader>ck :<C-u>CocPrev<CR>
+
+" Resume latest coc list
+nnoremap <silent> <Leader>cl :<C-u>CocListResume<CR>
+
+
+"""" coc-snippets
+" Use tab for snippets and trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
+"""" coc-git
+" Navigate chunks of current buffer
+nmap <Leader>gN <Plug>(coc-git-prevchunk)
+nmap <Leader>gn <Plug>(coc-git-nextchunk)
+
+" Hunk-add and hunk-revert for chunk staging
+nmap <silent><Leader>ga :w<CR>:CocCommand git.chunkStage<CR>
+nmap <silent><Leader>gu :CocCommand git.chunkUndo<CR>
+
+" Show chunk diff at current position
+nmap <Leader>gd <Plug>(coc-git-chunkinfo)
+
+" Show commit contains current position
+nmap <Leader>gc <Plug>(coc-git-commit)
+
+
+"""" coc-yank
+nnoremap <silent><Leader>y :<C-u>CocList -A --normal yank<cr>
+
+
+"""" git-messenger
+let g:git_messenger_no_default_mappings = v:true
+nmap <Leader>gm <Plug>(git-messenger)

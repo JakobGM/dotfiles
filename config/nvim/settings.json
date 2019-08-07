@@ -1,9 +1,0 @@
-{
-    "pyls.plugins.autopep8.enabled": true,
-    "pyls.plugins.mccabe.enabled": true,
-    "pyls.plugins.papf.enabled": true,
-    "pyls.plugins.pycodestyle.enabled": true,
-    "pyls.plugins.pydocstyle.enabled": true,
-    "pyls.plugins.pyflakes.enabled": true,
-    "pyls.plugins.rope.enabled": true
-}
