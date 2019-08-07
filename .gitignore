@@ -163,3 +163,4 @@ config/kitty/cached.json
 config/kitty/
 config/menus/
 .gitignore
+config/coc/commands

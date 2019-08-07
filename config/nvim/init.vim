@@ -9,10 +9,6 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 
 " Python
 Plug 'ambv/black'                                                       " Python code formatter
-Plug 'tweekmonster/django-plus.vim'                                     " Better django specific support
-Plug 'vim-python/python-syntax'                                         " Better syntax highlighting for python
-Plug 'vimjas/vim-python-pep8-indent'                                    " More PEP8 compliant python indentation
-Plug 'jakobgm/vim-slime', {'for': 'python'}
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -37,7 +33,6 @@ Plug 'tpope/vim-commentary'                                             " Adds c
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 
 " Visual
-Plug 'elzr/vim-json', {'for': 'json'}                                   " Better syntax highlighting for JSON files
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
@@ -55,11 +50,9 @@ Plug 'tpope/vim-sensible'                                               " Sensib
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
-Plug 'honza/vim-snippets'                                               " Gives a whole lot of UltiSnips prebuilt snippets
 Plug 'lervag/vimtex'                                                    " LaTeX completion
 Plug 'ludovicchabant/vim-gutentags'                                     " Automatically generate ctags on write
 Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Autocompletion framework
-Plug 'sirver/ultisnips'                                                 " For inserting snippets
 
 call plug#end()
 
@@ -95,10 +88,11 @@ let g:lightline = {
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
+      \   'cocstatus': 'coc#status',
       \ },
       \ 'tabline': {
       \   'left': [ [ 'tabs' ] ],
-      \   'right': [ [ 'tagbar', 'gitbranch' ] ],
+      \   'right': [ [ 'cocstatus', 'tagbar', 'gitbranch' ] ],
       \ },
       \ 'component_expand': {
       \   'buffercurrent': 'lightline#buffer#buffercurrent',
@@ -123,6 +117,9 @@ endfunction
 function! MyFileformat() abort
   return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
+
+" Use auocmd to force lightline update when coc.nvim status changes.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 
 """" lightline-buffer
@@ -289,9 +286,6 @@ function! PutFixupCommandInPasteBoard() abort
   execute 'normal! :Gcommit --fixup ' . sha1_hash
 endfunction
 
-" Open and close folds with Enter
-nnoremap <expr> <cr>   foldlevel(line('.'))  ? "za" : "\<cr>"
-
 " Source vimrc config file
 nnoremap gsv :so $MYVIMRC<CR>
 
@@ -333,7 +327,6 @@ cmap w!! w !sudo tee > /dev/null %
 
 " Python path for current python project, used with Jedi-vim
 let g:python3_host_prog = $HOME.'/.virtualenvs/NeoVim3/bin/python'
-let g:python2_host_prog = $HOME.'/.virtualenvs/NeoVim2/bin/python'
 
 
 """ htmldjango
@@ -491,6 +484,9 @@ set exrc
 
 " Only allow sourcing of unsafe commands if such files are owned by my user
 set secure
+
+" Prefer python3 when both can be used
+set pyx=3
 
 
 """ Plugin settings
@@ -653,18 +649,9 @@ let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#modules#disabled = ["folding", "chdir"]
 
 
-"""" UltiSnips
-" Prevent conflict with coc.nvim
-let g:UltiSnipsExpandTrigger=""
-
-let g:UltiSnipsSnippetsDir="$XDG_CONFIG_HOME/nvim/UltiSnips"
-let g:UltiSnipsEditSplit="vertical"
-nnoremap <Leader>us :UltiSnipsEdit<CR>
-
-
 """" vim-polyglot
-" Prevent conflict with vimtex
-let g:polyglot_disabled = ['latex']
+" Prevent conflict with vimtex and coc.nvim
+let g:polyglot_disabled = ['latex', 'python']
 
 
 """" vimtex
@@ -691,16 +678,6 @@ let g:vimtex_compiler_latexmk = {
 let g:vimtex_view_method = 'zathura'
 
 
-"""" vim-slime
-let g:slime_python_ipython = 1
-let g:slime_target = "kitty"
-let g:slime_no_mappings = 1
-let g:slime_kitty_filetype_socket = 1
-xmap <CR> <Plug>SlimeRegionSend
-nmap <CR> <Plug>SlimeParagraphSend
-nmap <c-c>v <Plug>SlimeConfig
-
-
 """" vim-accordion
 " Automatically enter accordion mode with more than 3 vertical splits
 autocmd VimEnter * AccordionAll 3
@@ -708,13 +685,17 @@ autocmd VimEnter * AccordionAll 3
 
 """" coc.nvim
 " Extensions need to be installed at first startup
-" :CocInstall coc-json coc-python coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp coc-tabnine
+" :CocInstall coc-json coc-python coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp
 
 " Tweak insert mode completion
 "   noinsert: Do not insert text before accepting the completion
 "   menuone: Use the popup menu even if there is only one match
 "   noselect: Do not select a match in the menu, force manual selection
 set completeopt=noinsert,menuone,noselect
+
+" Snippet expand and additional edit feature of LSP requires confirm
+" completion to work.
+set confirm
 
 " Do not show in-completion-menu messages, e.g. 'match 1 of 2'
 set shortmess+=c
@@ -837,6 +818,9 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
+
+" Edit UltiSnips snippets for the current file
+nnoremap <Leader>us :CocCommand snippets.editSnippets<CR>
 
 
 """" coc-git

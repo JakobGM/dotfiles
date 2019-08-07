@@ -10,16 +10,49 @@
   "diagnostic.infoSign": "",
   "diagnostic.warningSign": "",
   "diagnostic.errorSign": "",
+  "diagnostic.checkCurrentLine": true,
 
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "$XDG_CONFIG_HOME/nvim/UltiSnips"
-  ],
+  "snippets.userSnippetsDirectory": "~/.dotfiles/config/nvim/UltiSnips",
+  "snippets.ultisnips.directories": ["UltiSnips"],
 
-  "python.jediEnabled": false,
+  "python.jediEnabled": true,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length=80"],
   "python.linting.pydocstyleEnabled": true,
   "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": false
+  "python.linting.pylintEnabled": false,
+  "python.venvPath": "~/.virtualenvs",
+  "python.workspaceSymbols.tagFilePath": "${workspaceFolder}/tags",
+  "python.workspaceSymbols.rebuildOnFileSave": false,
+
+  "suggest.preferCompleteThanJumpPlaceholder": false,
+  "suggest.timeout": 5000,
+  "suggest.echodocSupport": true,
+  "suggest.completionItemKindLabels": {
+    "keyword": "",
+    "variable": "",
+    "value": "",
+    "operator": "Ψ",
+    "function": "ƒ",
+    "reference": "渚",
+    "constant": "",
+    "method": "",
+    "struct": "פּ",
+    "class": "",
+    "interface": "",
+    "text": "",
+    "enum": "",
+    "enumMember": "",
+    "module": "",
+    "color": "",
+    "property": "",
+    "field": "料",
+    "unit": "",
+    "event": "鬒",
+    "file": "",
+    "folder": "",
+    "snippet": "",
+    "typeParameter": "",
+    "default": ""
+  }
 }
