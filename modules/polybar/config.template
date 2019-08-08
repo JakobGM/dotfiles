@@ -80,7 +80,7 @@ format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = #{{ colors.primary.2 }}
 
-label-layout = %layout%
+label-layout = %{A1:~/.config/polybar/switch_kbmap.sh:}%layout%%{A}
 label-layout-underline = #{{ colors.primary.2 }}
 
 label-indicator-padding = 2
