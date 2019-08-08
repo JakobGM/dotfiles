@@ -34,12 +34,10 @@ Plug 'tpope/vim-surround'                                               " Adds t
 
 " Visual
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
-Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
-Plug 'taohex/lightline-buffer'                                          " Buffer-bar plugin for lightline
 
 " Behaviour/tools
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
@@ -77,22 +75,25 @@ let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left':  [ [ 'mode', 'paste' ],
-      \              [ 'readonly', 'relativepath', 'modified' ],
+      \              [ 'readonly', 'relativepath', 'percent', 'modified' ],
       \            ],
       \   'right': [ [ ],
-      \              [ 'percent' ],
-      \              [ 'filetype' ] ]
+      \              [ 'filetype' ],
+      \              [ 'tagbar' ] ]
       \   },
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
       \   'gitbranch': 'fugitive#head',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
-      \   'cocstatus': 'coc#status',
+      \ },
+      \ 'tab': {
+      \   'active': [ 'filename', 'modified' ],
+      \   'inactive': [ 'filename', 'modified' ],
       \ },
       \ 'tabline': {
       \   'left': [ [ 'tabs' ] ],
-      \   'right': [ [ 'cocstatus', 'tagbar', 'gitbranch' ] ],
+      \   'right': [ [ 'gitbranch' ] ],
       \ },
       \ 'component_expand': {
       \   'buffercurrent': 'lightline#buffer#buffercurrent',
