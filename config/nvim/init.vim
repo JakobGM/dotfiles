@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 
 " Python
 Plug 'ambv/black'                                                       " Python code formatter
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -178,6 +179,16 @@ function! MyHighlights() abort
     highlight DiffChange cterm=bold ctermfg=108 ctermbg=235 gui=NONE guifg=#8ec07c guibg=#383228
     highlight DiffText cterm=NONE ctermfg=214 ctermbg=235 gui=NONE guifg=#fabd2f guibg=#483D28
     highlight DiffDelete cterm=bold ctermfg=167 ctermbg=235 gui=NONE guifg=#fb4934 guibg=#372827
+
+    " Use Gruvbox colors for python semshi semantic highlighter
+    hi semshiGlobal          ctermfg=167 guifg=#fb4934
+    hi semshiImported        ctermfg=214 guifg=#fabd2f cterm=bold gui=bold
+    hi semshiParameter       ctermfg=142  guifg=#98971a
+    hi semshiParameterUnused ctermfg=106 guifg=#665c54
+    hi semshiBuiltin         ctermfg=208 guifg=#fe8019
+    hi semshiAttribute       ctermfg=108  guifg=fg
+    hi semshiSelf            ctermfg=109 guifg=#85a598
+    hi semshiSelected        ctermfg=231 guifg=#ffffff ctermbg=161 guibg=#d7005f
 endfunction
 
 augroup MyColors
@@ -847,3 +858,13 @@ nnoremap <silent><Leader>y :<C-u>CocList -A --normal yank<cr>
 """" git-messenger
 let g:git_messenger_no_default_mappings = v:true
 nmap <Leader>gm <Plug>(git-messenger)
+
+
+" List of highlight groups not to highlight.
+let g:semshi#excluded_hl_groups = [ 'local', 'attribute', 'free', 'unresolved' ]
+
+" Mark selected nodes (those with the same name and scope as the one under the cursor).
+let g:semshi#mark_selected_nodes = 0
+
+" Show a sign in the sign column if a syntax error occurred.
+let g:semshi#error_sign = v:false
