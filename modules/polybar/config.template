@@ -94,7 +94,7 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#{{ colors.primary.2 }}}%mountpoint%%{F-}: %total% (%percentage_used%%)
+label-mounted = %{A1:gksu filelight:}%{F#{{ colors.primary.2 }}}%mountpoint%%{F-}: %total% (%percentage_used%%)%{A}
 label-mounted-underline = #{{ colors.primary.2 }}
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
