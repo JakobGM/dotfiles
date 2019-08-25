@@ -1,28 +1,24 @@
 # Add modifications to PATH environment variable
 
+# Location of pyenv AUR installation
+export PYENV_ROOT="/opt/pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
 if command -v pyenv 1>/dev/null 2>&1; then
-
-  # Lazyload the pyenv binary
-  function pyenv() {
-      # Remove the function definition
-      unfunction "$0"
-
-      # Add pyenv shims and autocompletion
-      eval "$(pyenv init -)"
-
-      # Add auto-activation of virtualenvs
-      eval "$(pyenv virtualenv-init -)"
-
-      # Execute the command that was intended
-      $0 "$@"
-  }
-
-  # Setup virtualenvwrapper commands
-  # PS: This also installs virtualenvwrapper if missing
-  source ~/.local/bin/virtualenvwrapper_lazy.sh
-  # pyenv virtualenvwrapper
-  export VIRTUALENV_PYTHON="/opt/pyenv/versions/3.6.6/bin/python3"
+  eval "$(pyenv init -)"
+else
+  echo "Pyenv dependency is missing. Virtualenvwrapper disabled as a result..." >&2
 fi
 
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+if which pyenv-virtualenv-init > /dev/null; then 
+  eval "$(pyenv virtualenv-init -)"
+else
+  echo "Dependency pyenv-virtualenv missing..." >&2
+fi
+
+if which pyenv-sh-virtualenvwrapper > /dev/null; then 
+  export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+  pyenv virtualenvwrapper_lazy
+else
+  echo "Dependency pyenv-virtualenvwrapper missing..." >&2
+fi
