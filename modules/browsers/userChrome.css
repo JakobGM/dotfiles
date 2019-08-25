@@ -132,3 +132,9 @@ statuspanel[type="overLink"],
   right: 0;
   display: inline;
 }
+
+/* Remove bottom margin from top menu bar */
+
+#navigator-toolbox {
+  border-bottom: none !important;
+}
