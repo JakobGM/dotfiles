@@ -75,4 +75,7 @@ alias mount_uranium='sudo sshfs jakobgm@167.99.220.138:/ /mnt/uranium -o Identit
 alias wrapoff='tput rmam'
 alias wrapon='tput smam'
 
+# Cat image to terminal using kitty terminal
+alias icat="kitty +kitten icat"
+
 if command_exists bat; then alias cat=bat; fi

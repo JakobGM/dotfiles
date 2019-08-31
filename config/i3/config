@@ -19,6 +19,9 @@ bindsym $mod+Return exec $TERMINAL
 # Restart astrality
 bindsym $mod+Shift+a exec --no-startup-id "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
+# Screenshot area selection
+bindsym --release $mod+Shift+s exec "$XDG_CONFIG_HOME/i3/screenshot.sh"
+
 # ----------------------- Scratchpad settings ----------------------- 
 
 # Start all the scratchpad instances if they are not already running
@@ -90,11 +93,6 @@ bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
-bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

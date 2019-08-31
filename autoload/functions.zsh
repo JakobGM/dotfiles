@@ -67,3 +67,13 @@ function convert2gif() {
     # Set FPS = 15, color depth = 32, and use the entire file
     gifcurry_cli -i $1 -o $output -f 15 -c 32 -s 0 -d 10000
 }
+
+# Copy newest screenshot to current directory with correct filename extension
+# Usage: cpss my_custom_screenshot_name
+function cpss() {
+    newest_screenshot=$(\ls -td ~/Screenshots/* | head -n1)
+    extension="${newest_screenshot##*.}"
+    new_path="${1}.${extension}"
+    echo "cp ${newest_screenshot} -> ${new_path}"
+    cp ${newest_screenshot} ${new_path}
+}
