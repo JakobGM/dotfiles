@@ -92,3 +92,7 @@ if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakob
 
 # Miniconda3
 [ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+# Dirty hack to unset VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--no-site-packages"
+# Can't find out where this is set at the moment.
+unset VIRTUALENVWRAPPER_VIRTUALENV_ARGS
