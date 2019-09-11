@@ -1,5 +1,0 @@
-# Facebook messenger
-fb-messenger-cli
-
-# Natural language prose linter
-textlint
