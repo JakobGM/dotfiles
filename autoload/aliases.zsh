@@ -15,7 +15,6 @@ alias dnsflush='dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flus
 
 # Misc aliases
 alias zshconfig='vim $HOME/.zshrc'
-alias ssh='TERM=xterm-256colors ssh'
 
 # Git aliases
 if which hub > /dev/null 2>&1; then
@@ -79,3 +78,7 @@ alias wrapon='tput smam'
 alias icat="kitty +kitten icat"
 
 if command_exists bat; then alias cat=bat; fi
+
+# Project thesis aliases
+alias gold_mount='sudo sshfs -o allow_other,IdentityFile=/home/jakobgm/.ssh/id_rsa jakobgm@singsaker.asuscomm.com:/ /mnt/gold -p 2469'
+alias gold_jupyter='ssh -p 2469 -N -L 8888:localhost:8888 jakobgm@singsaker.asuscomm.com -i ~/.ssh/id_rsa -o "IdentitiesOnly=yes"'
