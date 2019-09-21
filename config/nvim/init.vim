@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 
 " Python
 Plug 'ambv/black'                                                       " Python code formatter
+Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 
 " R-lang
@@ -868,3 +869,28 @@ let g:semshi#mark_selected_nodes = 0
 
 " Show a sign in the sign column if a syntax error occurred.
 let g:semshi#error_sign = v:false
+
+
+"""" vim-slime
+" Put temporary paste file in temporary directory
+let g:slime_paste_file = "/tmp/.slime_paste"
+
+" Use kitty terminal as the target environment
+let g:slime_target = "kitty"
+
+" Use the second kitty window as default
+let g:slime_default_config = {"window_id": "2"}
+
+" Use %cpaste magic in python files
+let g:slime_python_ipython = 1
+
+" Send visual selection
+vmap <CR> <Plug>SlimeRegionSend
+
+" Send current line and move one line down
+nmap <CR> :<c-u>call slime#send_lines(v:count1)<cr>j
+
+" Modifications made to vim-slime (kept for posterity)
+" Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
+  " call system("kitty @ --to unix:@slime send-text --from-file " . g:slime_paste_file)
+  " call system("kitty -o allow_remote_control=yes --listen-on=unix:@slime --detach")
