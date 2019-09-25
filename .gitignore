@@ -94,6 +94,7 @@ config/slack-term/slack-term.json
 **/__pycache__/*
 
 # Tail gitignore added by vimagit
+config/coc/*
 bin/charm
 config/GitKraken/
 config/Gitter/
@@ -162,5 +163,8 @@ config/icedtea-web/
 config/kitty/cached.json
 config/kitty/
 config/menus/
-.gitignore
 config/coc/commands
+config/pavucontrol.ini
+config/Mailspring/
+config/pgcli
+config/supertuxkart
