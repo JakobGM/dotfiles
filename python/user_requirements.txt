@@ -1,2 +1,0 @@
-neovim-remote
-python-language-server

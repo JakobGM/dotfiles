@@ -1,9 +1,0 @@
-neovim
-ipython
-python-language-server
-powerline-status
-pip-tools
-pytest
-pytest-watchdog
-pdbpp
-isort
