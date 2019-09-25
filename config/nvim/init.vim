@@ -566,13 +566,13 @@ command! -bang -nargs=* Find
   \ )
 
 " [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --kinds-python=cfmIix --languages=python,R,JavaScript'
+let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --exclude=node_modules --kinds-python=cfmIix --languages=python'
 
 
 """" vim-gutentags
 " Exclude file patterns
-let g:gutentags_ctags_exclude = [ ".mypy_cache", "@.gitignore" ]
-let g:gutentags_ctags_extra_args = [ "--kinds-python=cfmIix", "--languages=python,R,JavaScript" ]
+let g:gutentags_ctags_exclude = [ ".mypy_cache", "@.gitignore", "node_modules" ]
+let g:gutentags_ctags_extra_args = [ "--kinds-python=cfmIix", "--languages=python" ]
 
 """" Vimagit
 nnoremap <leader>gg :Magit<CR>
