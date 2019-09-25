@@ -106,6 +106,9 @@ bindsym $mod+a focus parent
 # Move window to center of screen
 bindsym $mod+c move position center
 
+# Lock screen
+bindsym $mod+shift+x exec betterlockscreen -l dim
+
 
 # --- Workspace related keybindings ---
 
