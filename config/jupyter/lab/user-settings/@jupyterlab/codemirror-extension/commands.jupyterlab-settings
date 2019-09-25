@@ -5,10 +5,11 @@
     // ************************************************
 
     // Key Map
-    // [missing schema description]
+    // Configures the keymap to use
     "keyMap": "vim",
 
     // Theme
-    // [missing schema description]
+    // CSS file defining the corresponding
+    // .cm-s-[name] styles is loaded
     "theme": "default"
 }
