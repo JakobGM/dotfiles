@@ -105,5 +105,9 @@ unbind >>
 bind j scrollline 2
 bind k scrollline -2
 
+" Disable tridactyl on local development websites
+blacklistadd 127.0.0.1
+blacklistadd localhost
+
 
 " vim: set filetype=vim:
