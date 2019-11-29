@@ -44,10 +44,11 @@ Plug 'sheerun/vim-polyglot'                                             " Add sy
 " Behaviour/tools
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
-Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
+" Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
+Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 
 " Auto-completion
 Plug 'lervag/vimtex'                                                    " LaTeX completion
@@ -889,6 +890,24 @@ vmap <CR> <Plug>SlimeRegionSend
 
 " Send current line and move one line down
 nmap <CR> :<c-u>call slime#send_lines(v:count1)<cr>j
+
+
+"""" Neomake
+"Run neomake
+nnoremap <Leader>m :Neomake<CR>
+
+" Automatically open Neomake list when it is populated
+" let g:neomake_open_list = 2
+
+" Use same icons as coc-settings.json
+let g:neomake_warning_sign = {
+  \ 'text': '',
+  \ 'texthl': 'WarningMsg',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '',
+  \ 'texthl': 'ErrorMsg',
+  \ }
 
 " Modifications made to vim-slime (kept for posterity)
 " Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
