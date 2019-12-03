@@ -331,6 +331,9 @@ endfunction
 
 nnoremap <Leader>ft :call EditFiltetypeConfig()<CR>
 
+" Switch to alternative file, most often the previous buffer
+nnoremap <CR> :b#<CR>
+
 
 """ Commands
 " Write to the current file as sudo
@@ -886,10 +889,10 @@ let g:slime_default_config = {"window_id": "2"}
 let g:slime_python_ipython = 1
 
 " Send visual selection
-vmap <CR> <Plug>SlimeRegionSend
+vnoremap <CR> <Plug>SlimeRegionSend
 
 " Send current line and move one line down
-nmap <CR> :<c-u>call slime#send_lines(v:count1)<cr>j
+" nmap <CR> :<c-u>call slime#send_lines(v:count1)<cr>j
 
 
 """" Neomake
