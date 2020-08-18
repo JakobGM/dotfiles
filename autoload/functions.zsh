@@ -77,3 +77,11 @@ function cpss() {
     echo "cp ${newest_screenshot} -> ${new_path}"
     cp ${newest_screenshot} ${new_path}
 }
+
+# Sync the current directory with another directory
+function syncdir {
+  watchexec \
+    --verbose \
+    --ignore 'tags.*' \
+    'for path in ${WATCHEXEC_WRITTEN_PATH//:/ }; do cp .$path '"${1%/}"'/$(realpath --relative-to=$PWD .$path); done'
+}
