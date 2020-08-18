@@ -31,11 +31,13 @@ exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
 for_window [instance="dropdown_terminal"] floating enable, move to scratchpad
 for_window [instance="dropdown_ipython"] floating enable, move to scratchpad
 for_window [instance="devdocs-desktop"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
+for_window [title="^Slack"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
 
 # Keybind the toggling of the scratchpad area
 bindsym $mod+t [instance="dropdown_terminal"] scratchpad show
 bindsym $mod+p [instance="dropdown_ipython"] scratchpad show
 bindsym $mod+d [instance="devdocs-desktop"] scratchpad show
+bindsym $mod+s [title="^Slack"] scratchpad show
 
 # ------------------------------------------------------------------- 
 
@@ -85,11 +87,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+s split v
-
-# split in vertical orientation
-bindsym $mod+v split h
+# Toggle between vertical and horizontal container splits
+bindsym $mod+v split toggle
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
