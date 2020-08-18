@@ -6,8 +6,8 @@ then
     kitty \
         --title dropdown_terminal \
         --name dropdown_terminal \
-        --override initial_window_width=1920 \
-        --override initial_window_height=1080 &
+        --override initial_window_width=1600 \
+        --override initial_window_height=720 &
 fi
 
 if ! pgrep -f devdocs-desktop > /dev/null
@@ -22,8 +22,8 @@ then
     kitty \
         --title dropdown_ipython \
         --name dropdown_ipython \
-        --override initial_window_width=1920 \
-        --override initial_window_height=1080 \
+        --override initial_window_width=1600 \
+        --override initial_window_height=720 \
         --directory $PROJECT_HOME/sunmapper \
         --instance-group ipython \
         --hold \
