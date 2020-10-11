@@ -8,7 +8,7 @@ augroup PythonColorColumn
 autocmd!
   " When a Python file is read or the text changes in normal or insert mode,
   " draw a column marking the maximum line length if a line exceeds this length
-  autocmd BufRead,TextChanged *.py call ShowColumnIfLineTooLong(80)
+  autocmd BufRead,TextChanged *.py call ShowColumnIfLineTooLong(88)
 augroup END
 
 " Color the column marking the lengthLimit when the longest line in the file
@@ -24,3 +24,6 @@ function! ShowColumnIfLineTooLong(lengthLimit)
     set colorcolumn=""
   endif
 endfunction
+
+" Automatically execute black on write
+autocmd BufWritePre *.py silent execute ':Black'

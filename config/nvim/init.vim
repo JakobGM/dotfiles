@@ -8,7 +8,7 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'ambv/black'                                                       " Python code formatter
+Plug 'psf/black', { 'branch': 'stable' }                                " Python code formatter
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 
@@ -625,7 +625,7 @@ nnoremap <Leader>gh V:Gbrowse<CR>
 let g:black_fast = 1
 
 " Width of code before it gets wrapped
-let g:black_linelength = 80
+let g:black_linelength = 88
 
 " Normalize all strings to use double quotes
 let g:black_skip_string_normalization = 0
