@@ -39,7 +39,7 @@ Plug 'tpope/vim-surround'                                               " Adds t
 " Visual
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
-Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
+Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
 Plug 'thalesmello/lkml.vim'                                             " Syntax highlighting for LookML code
