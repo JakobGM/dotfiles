@@ -8,7 +8,7 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'psf/black', { 'branch': 'stable' }                                " Python code formatter
+Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 
