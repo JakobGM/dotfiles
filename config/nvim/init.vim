@@ -692,6 +692,9 @@ let g:vimtex_compiler_latexmk = {
 
 let g:vimtex_view_method = 'zathura'
 
+" Enable vimtex for all .tex files
+let g:tex_flavor = 'latex'
+
 
 """" vim-accordion
 " Automatically enter accordion mode with more than 3 vertical splits
