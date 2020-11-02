@@ -309,10 +309,9 @@ nnoremap gsv :so $MYVIMRC<CR>
 " Clear search highlighting
 nnoremap <Esc><Esc> :noh<CR>
 
-" Bind g(q|Q) to next item in quickfix list
-" Mnemonic: "See position of keys on keyboard, including q for quickfix"
-nnoremap <silent> <Leader>q :cn<CR>
-nnoremap <silent> <Leader>o :cp<CR>
+" Navigate between diagnostic items in signcolumn
+nmap <silent> <Leader>q <Plug>(coc-diagnostic-next)
+nmap <silent> <Leader>Q <Plug>(coc-diagnostic-prev)
 
 " Bind g(l|L) to next item in location list
 " Mnemonic: "go location"
