@@ -8,9 +8,10 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
+Plug 'fisadev/vim-isort'                                                " Automatically import python modules
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
+Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -911,6 +912,9 @@ let g:neomake_error_sign = {
   \ 'text': '',
   \ 'texthl': 'ErrorMsg',
   \ }
+
+"""" vim-isort
+let g:vim_isort_map = '<C-i>'
 
 " Modifications made to vim-slime (kept for posterity)
 " Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
