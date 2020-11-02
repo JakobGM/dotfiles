@@ -42,6 +42,7 @@ Plug 'majutsushi/tagbar'                                                " Open t
 Plug 'morhetz/gruvbox'                                                  " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
+Plug 'thalesmello/lkml.vim'                                             " Syntax highlighting for LookML code
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
