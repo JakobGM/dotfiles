@@ -1,5 +1,6 @@
 """ Plugins
 filetype off                  " required
+let g:polyglot_disabled = ['latex', 'python']
 
 call plug#begin('$XDG_CONFIG_HOME/nvim/plugged')
 
@@ -665,11 +666,6 @@ let g:pandoc#syntax#conceal#use = 0
 """" vim-pandoc
 " Disable folding of sections and automatic directory change
 let g:pandoc#modules#disabled = ["folding", "chdir"]
-
-
-"""" vim-polyglot
-" Prevent conflict with vimtex and coc.nvim
-let g:polyglot_disabled = ['latex', 'python']
 
 
 """" vimtex
