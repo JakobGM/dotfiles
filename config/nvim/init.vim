@@ -44,13 +44,13 @@ Plug 'ryanoasis/vim-devicons'                                           " For fi
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
 
 " Behaviour/tools
+Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
+Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
-" Plug 'romainl/vim-qf'                                                   " Automatically close quickfix windows that become orphaned
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
-Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 
 " Auto-completion
 Plug 'lervag/vimtex'                                                    " LaTeX completion
