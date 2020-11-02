@@ -619,7 +619,8 @@ let g:tagbar_iconchars = ['', '']
 
 """" vim-rhubarb
 " Open current line on GitHub
-nnoremap <Leader>gh V:Gbrowse<CR>
+nnoremap <Leader>gh :Gbrowse!<CR>:Gbrowse<CR>
+vnoremap <Leader>gh :GBrowse!<CR>gv:Gbrowse<CR>
 
 
 """" black
