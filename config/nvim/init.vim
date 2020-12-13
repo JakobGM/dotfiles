@@ -291,6 +291,17 @@ endfunction
 
 nnoremap <silent> <Leader>gf :call PutFixupCommandInPasteBoard()<CR>
 
+function! ConstructGithubMarkdownLink() abort
+  " Paste the following markdown into the pasteboard:
+  " [ClassName.method_name()](<github_line_link>)
+  let tagname = tagbar#currenttag("%s", "", "f")
+  let url = split(execute(".Gbrowse!"))[5]
+  let markdown = "[" . tagname . "](" . url . ")"
+  let @+ = markdown
+endfunction
+
+nnoremap <silent> <Leader>md :call ConstructGithubMarkdownLink()<CR>
+
 function! PutFixupCommandInPasteBoard() abort
   let filepath = expand('%:p')
   let line_number = line('.')
