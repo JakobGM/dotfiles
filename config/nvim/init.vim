@@ -25,7 +25,6 @@ Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
-Plug 'mattboehm/vim-accordion'                                          " Start split accordion mode with :AccordionAll <size>
 Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
 
 " Editing
@@ -705,11 +704,6 @@ let g:vimtex_view_method = 'zathura'
 
 " Enable vimtex for all .tex files
 let g:tex_flavor = 'latex'
-
-
-"""" vim-accordion
-" Automatically enter accordion mode with more than 3 vertical splits
-autocmd VimEnter * AccordionAll 3
 
 
 """" coc.nvim
