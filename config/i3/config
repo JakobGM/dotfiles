@@ -59,9 +59,6 @@ bindsym $mod+q kill
 # Start rofi in program launcher mode
 bindsym $mod+r exec --no-startup-id rofi -show run
 
-# Start rofi in window focuser mode
-bindsym $mod+w exec --no-startup-id rofi -show window
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
