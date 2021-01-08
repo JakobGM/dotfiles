@@ -203,7 +203,7 @@ exec --no-startup-id "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 exec --no-startup-id setxkbmap dvp
 
 # For use with albert
-exec_always --no-startup-id "compton -b --config $XDG_CONFIG_HOME/compton/compton.conf"
+exec_always --no-startup-id "picom -b --config $XDG_CONFIG_HOME/picom/picom.conf"
 
 # Start polybar, even on restart
 exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
