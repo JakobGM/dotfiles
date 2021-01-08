@@ -79,6 +79,8 @@ home/.vim/plugged
 
 # Ignore ctag files
 tags
+tags.lock
+tags.temp
 
 # Ignore rsibreaks log
 config/rsibreak/rsibreak.log
