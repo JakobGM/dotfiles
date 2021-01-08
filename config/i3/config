@@ -41,6 +41,9 @@ bindsym $mod+w [floating] move to scratchpad
 
 # ------------------------------------------------------------------- 
 
+# --- Emoji picker ---
+bindsym $mod+e exec --no-startup-id emote
+
 # Prevent floating windows going offscreen
 floating_maximum_size 1920 x 1080
 
