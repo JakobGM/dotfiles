@@ -24,12 +24,9 @@ terminals:
     # Kitty: https://github.com/kovidgoyal/kitty
 
     requires:
-        - installed: 'alacritty'
         - installed: 'kitty'
 
     compile:
-        - content: modules/terminals/alacritty.yml.template
-          target: {{ env.XDG_CONFIG_HOME }}/alacritty/alacritty.yml
         - content: modules/terminals/kitty.conf.template
           target: {{ env.XDG_CONFIG_HOME }}/kitty/kitty.conf
         - content: modules/terminals/diff.conf.template
