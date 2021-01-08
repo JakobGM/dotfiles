@@ -104,6 +104,9 @@ bindsym $mod+c move position center
 # Lock screen
 bindsym $mod+shift+x exec betterlockscreen -l dim
 
+# Printscreen selection tool
+exec_always --no-startup-id flameshot
+bindsym Print exec flameshot gui
 
 # --- Workspace related keybindings ---
 
