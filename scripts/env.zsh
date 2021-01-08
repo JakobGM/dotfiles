@@ -154,12 +154,6 @@ export SAVEHIST=1000000
 # The maximum number of events stored in the internal history list (in memory)
 export HISTSIZE=1000000
 
-
-# --- Docker ---
-# Use local.yml as default docker-compose file
-# This makes the -f local.yml flag redundant
-export COMPOSE_FILE=local.yml
-
 # git-secret configuration
 export SECRETS_GPG_COMMAND='gpg2'
 
