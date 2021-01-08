@@ -41,10 +41,6 @@ bindsym $mod+w [floating] move to scratchpad
 
 # ------------------------------------------------------------------- 
 
-# --- Vim Anywhere ---
-for_window [instance="vimanywhere"] floating enable
-bindsym $mod+Shift+v [instance="vimanywhere"] scratchpad show; exec vimanywhere
-
 # Prevent floating windows going offscreen
 floating_maximum_size 1920 x 1080
 
