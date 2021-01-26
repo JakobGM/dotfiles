@@ -36,15 +36,17 @@ Plug 'tpope/vim-commentary'                                             " Adds c
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 
 " Visual
+Plug 'glench/vim-jinja2-syntax'                                         " Better support for Jinja2 syntax
+Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
-Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
 Plug 'thalesmello/lkml.vim'                                             " Syntax highlighting for LookML code
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
+Plug 'ivanovyordan/dbt.vim'                                             " Syntax highlighting and support for dbt projects (JinjaSQL)
 Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
