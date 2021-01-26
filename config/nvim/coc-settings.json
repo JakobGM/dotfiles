@@ -1,5 +1,5 @@
 {
-  "coc.preferences.jumpCommand": "vsplit",
+  "coc.preferences.jumpCommand": "drop",
 
   "git.changedSign.text": "",
   "git.addedSign.text": "",
