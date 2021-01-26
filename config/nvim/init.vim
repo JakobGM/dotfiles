@@ -922,6 +922,14 @@ let g:neomake_error_sign = {
 """" vim-isort
 let g:vim_isort_map = '<C-i>'
 
+
+"""" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
 " Modifications made to vim-slime (kept for posterity)
 " Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
   " call system("kitty @ --to unix:@slime send-text --from-file " . g:slime_paste_file)
