@@ -170,3 +170,4 @@ config/pavucontrol.ini
 config/Mailspring/
 config/pgcli
 config/supertuxkart
+config/git/gitk
