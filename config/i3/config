@@ -28,6 +28,7 @@ exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
 for_window [instance="dropdown_terminal"] floating enable, move to scratchpad
 for_window [instance="dropdown_ipython"] floating enable, move to scratchpad
 for_window [instance="devdocs-desktop"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
+for_window [class="Caprine" instance="caprine"] floating enable, move to scratchpad
 for_window [class="Slack" instance="slack"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
 for_window [class="Spotify" instance="spotify"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
 
@@ -37,6 +38,7 @@ bindsym $mod+p [instance="dropdown_ipython"] scratchpad show
 bindsym $mod+d [instance="devdocs-desktop"] scratchpad show
 bindsym $mod+s [class="Slack" instance="slack"] scratchpad show
 bindsym $mod+m [class="Spotify" instance="spotify"] scratchpad show
+bindsym $mod+Shift+m [class="Caprine" instance="caprine"] scratchpad show
 bindsym $mod+w [floating] move to scratchpad
 
 # ------------------------------------------------------------------- 
