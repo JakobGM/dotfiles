@@ -1,1 +1,0 @@
-export HOSTNAME=astat
