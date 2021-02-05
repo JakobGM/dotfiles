@@ -4,6 +4,7 @@ if ! pgrep -f dropdown_terminal > /dev/null
 then
     echo 'Starting dropdown terminal'
     kitty \
+        --class dropdown_terminal \
         --title dropdown_terminal \
         --name dropdown_terminal \
         --override initial_window_width=1600 \
@@ -20,6 +21,7 @@ if ! pgrep -f dropdown_ipython > /dev/null
 then
     echo 'Starting dropdown python REPL terminal'
     kitty \
+        --class dropdown_ipython \
         --title dropdown_ipython \
         --name dropdown_ipython \
         --override initial_window_width=1600 \

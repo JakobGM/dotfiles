@@ -1,0 +1,87 @@
+{
+  "layer": "top",
+    "modules-left": ["custom/arch","sway/workspaces", "sway/mode"],
+    "modules-center": ["tray"],
+    "modules-right": ["idle_inhibitor" ,"pulseaudio", "network", "custom/keyboard_layout" ,"battery", "clock", "custom/disturb_on", "custom/disturb_off"],
+    "height": 25,
+    "sway/window": {
+      "max-length": 50
+    },
+    "clock": {
+      "format-alt": "{:%a, %d. %b  %H:%M}"
+    },
+    "tray": {
+      "icon-size": 15,
+      "spacing": 10
+    },
+    "custom/keyboard_layout": {
+      "format": " {}",
+      "exec": "keyboard_layout_monitor",
+      "on-click": "keyboard_layout_switcher"
+    },
+    "network": {
+      "interface": "wlp2s0",
+      "format": "{ifname}",
+      "format-wifi": " {essid}",
+      "format-ethernet": " {ifname} ",
+      "format-disconnected": "",
+      "tooltip-format": "{ifname}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "eth {ifname} ",
+      "tooltip-format-disconnected": "Disconnected",
+      "max-length": 50
+    },
+    "network": {
+      "interface": "*",
+      "format": "{ifname}",
+      "format-wifi": " {essid}",
+      "format-ethernet": " {ifname} ",
+      "format-disconnected": "",
+      "tooltip-format": "{ifname}",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "eth {ifname}",
+      "tooltip-format-disconnected": "Disconnected",
+      "max-length": 50
+    },
+    "idle_inhibitor": {
+      "format": "{icon}",
+      "format-icons": {
+        "activated": "",
+        "deactivated": ""
+      }
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": "",
+      "format-icons": {
+        "headphones": "",
+        "default": ["", ""]
+      },
+      "scroll-step": 1,
+      "on-click": "pavucontrol"
+    },
+    "battery": {
+      "bat": "BAT0",
+      "interval": 60,
+      "states": {
+        "good": 80,
+        "warning": 50,
+        "critical": 35
+      },
+      "format": "{icon} {capacity}%",
+      "format-icons": ["", ""],
+      "max-length": 25
+    },
+    "custom/arch": {
+      "format": ""
+    },
+    "custom/disturb_on":{
+      "format": "-",
+      "on-click":"makoctl set invisible=1"
+    },
+    "custom/disturb_off":{
+      "format": "+",
+      "on-click":"makoctl set invisible=0"
+    }
+}
+
