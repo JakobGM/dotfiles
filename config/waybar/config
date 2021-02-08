@@ -3,7 +3,7 @@
     "modules-left": ["custom/arch","sway/workspaces", "sway/mode"],
     "modules-center": ["tray"],
     "modules-right": ["idle_inhibitor" ,"pulseaudio", "network", "custom/keyboard_layout" ,"battery", "clock", "custom/disturb_on", "custom/disturb_off"],
-    "height": 25,
+    "height": 20,
     "sway/window": {
       "max-length": 50
     },
@@ -73,7 +73,7 @@
       "max-length": 25
     },
     "custom/arch": {
-      "format": ""
+      "format": ""
     },
     "custom/disturb_on":{
       "format": "-",
