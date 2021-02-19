@@ -201,7 +201,7 @@ exec_always "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astr
 exec_always "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/autoname_workspaces.py &"
 
 # Start service for managing notifications
-exec "dunst"
+exec mako
 
 
 #######

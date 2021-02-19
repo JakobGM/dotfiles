@@ -1,0 +1,16 @@
+max-visible=1
+anchor=top-right
+font=FuraCode Mono
+
+icons=1
+markup=1
+
+padding=5
+
+background-color=#689d6a
+progress-color=#ebdbb2
+text-color=#1d2021
+
+border-color=#ebdbb2
+border-size=5
+border-radius=2
