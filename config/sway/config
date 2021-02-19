@@ -192,7 +192,7 @@ exec setxkbmap dvp
 exec_always "picom -b --config $XDG_CONFIG_HOME/picom/picom.conf"
 
 # Start polybar, even on restart
-exec_always waybar
+exec waybar
 
 # Start astrality
 exec_always "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
