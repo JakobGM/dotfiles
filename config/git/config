@@ -39,9 +39,12 @@
     mt = mergetool
 [gpg]
     program = gpg
+# The first line resets the list of helpers so we can check Netlify's first.
 [credential]
-    helper = netlify
-    helper = cache
+  helper = ""
+[credential]
+  helper = netlify
+  helper = cache
 [pull]
     rebase = true
 [push]
@@ -76,7 +79,7 @@
 [mergetool "nvim"]
     cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
     clean = git-lfs clean -- %f
     smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
