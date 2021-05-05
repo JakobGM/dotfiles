@@ -221,7 +221,7 @@ label-song-maxlen = 25
 label-song-ellipsis = true
 
 [module/xbacklight]
-type = internal/backlight
+type = internal/xbacklight
 
 ; Use the following command to list available cards:
 ; $ ls -1 /sys/class/backlight/
@@ -240,7 +240,7 @@ card = intel_backlight
 enable-scroll = true
 
 format = <label> <bar>
-label = BL
+label = ﯦ
 
 bar-width = 10
 bar-indicator = |
