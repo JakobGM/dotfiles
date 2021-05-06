@@ -10,6 +10,7 @@
 #nav-bar:focus-within,
 #nav-bar:active {
     height: auto !important;
+    overflow: visible !important;
 }
 
 #TabsToolbar-customization-target { /* Navigation Toolbar */
