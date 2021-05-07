@@ -39,7 +39,7 @@ bindsym $mod+d [instance="devdocs-desktop"] scratchpad show
 bindsym $mod+s [class="Slack" instance="slack"] scratchpad show
 bindsym $mod+m [class="Spotify" instance="spotify"] scratchpad show
 bindsym $mod+Shift+m [class="Caprine" instance="caprine"] scratchpad show
-bindsym $mod+w [floating] move to scratchpad
+bindsym $mod+w [floating con_id="__focused__"] move to scratchpad
 
 # ------------------------------------------------------------------- 
 
