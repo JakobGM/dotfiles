@@ -42,6 +42,10 @@ alias pt='ptw -- -vv -x --failed-first'
 alias pd='ptw -- --reuse-db --failed-first -x -vv'
 alias prs='python manage.py runserver'
 
+# Docker aliases
+alias dcu='docker-compose up'
+alias k='kubectl'
+
 # Start documentation server (Sphinx)
 alias ds='sphinx-autobuild . _build --host 192.168.1.225'
 
