@@ -2,7 +2,7 @@
 
 * {
   /*--tab-corner-rounding: 5px;*/
-  --animation-speed: 0.4s;
+  --animation-speed: 0.0s;
   --button-corner-rounding: 30px;
   --urlbar-container-height: 40px !important;
   --urlbar-min-height: 30px !important;
@@ -70,16 +70,16 @@ tab:not(:active) .tab-background {
   transition: background-color var(--animation-speed) !important;
 }
 :root:not([customizing]) :hover > .tabbrowser-tab:not(:hover) {
-  transition: blur, ease 0.5s !important;
+  transition: blur, ease 0.0s !important;
 }
 
 :root:not([customizing]) :not(:hover) > .tabbrowser-tab {
-  transition: blur, ease 0.2s !important;
+  transition: blur, ease 0.0s !important;
 }
 
 #tabbrowser-tabs .tab-label-container[customizing] {
   color: transparent;
-  transition: ease 0.5s;
+  transition: ease 0.0s;
   transition-delay: 3s;
 }
 
@@ -478,8 +478,8 @@ tree,
   transition-delay: 1s;
   filter: alpha(opacity=0);
   opacity: 0;
-  transition: visibility, ease 0.5s, margin-top, ease 0.5s, opacity, ease 0.5s,
-    rotate, ease 0.4s !important;
+  transition: visibility, ease 0.0s, margin-top, ease 0.0s, opacity, ease 0.0s,
+    rotate, ease 0.0s !important;
 }
 #tabs-newtab-button{
   padding: 0.75rem 0.2rem 0.2rem 0.2rem !important;
