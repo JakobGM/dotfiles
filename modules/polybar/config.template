@@ -49,7 +49,7 @@ modules-left = i3
 modules-center = xbacklight volume now_playing
 modules-right = github wireless-network filesystem wired-network xkeyboard memory cpu temperature battery date
 
-; tray-position = right
+tray-position = center
 ; tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
