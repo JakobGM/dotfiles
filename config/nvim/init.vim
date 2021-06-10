@@ -37,6 +37,7 @@ Plug 'tpope/vim-surround'                                               " Adds t
 
 " Visual
 Plug 'glench/vim-jinja2-syntax'                                         " Better support for Jinja2 syntax
+Plug 'lepture/vim-jinja'                                                " Works well in combination with previous plugin
 Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
