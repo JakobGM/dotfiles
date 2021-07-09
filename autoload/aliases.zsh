@@ -36,7 +36,6 @@ alias nn='nvim .'
 
 # Python aliases
 alias pytest='python3 -m pytest'
-alias ipython='python3 -m IPython'
 alias w='workon'
 alias pt='ptw -- -vv -x --failed-first'
 alias pd='ptw -- --reuse-db --failed-first -x -vv'
