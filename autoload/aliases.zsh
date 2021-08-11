@@ -85,3 +85,6 @@ if command_exists bat; then alias cat=bat; fi
 # Project thesis aliases
 alias gold_mount='sudo sshfs -o allow_other,IdentityFile=/home/jakobgm/.ssh/id_rsa jakobgm@singsaker.asuscomm.com:/ /mnt/gold -p 2469'
 alias gold_jupyter='ssh -p 2469 -N -L 8888:localhost:8888 jakobgm@singsaker.asuscomm.com -i ~/.ssh/id_rsa -o "IdentitiesOnly=yes"'
+
+# Oda aliases
+alias klipy="~/oda/klipy/.venv/bin/python -m klipy"
