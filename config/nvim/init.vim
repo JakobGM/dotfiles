@@ -9,7 +9,6 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'fisadev/vim-isort'                                                " Automatically import python modules
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
@@ -711,7 +710,7 @@ let g:tex_flavor = 'latex'
 
 """" coc.nvim
 " Extensions need to be installed at first startup
-" :CocInstall coc-json coc-python coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp
+" :CocInstall coc-json coc-pyright coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp
 
 " Tweak insert mode completion
 "   noinsert: Do not insert text before accepting the completion
@@ -868,6 +867,11 @@ nmap <Leader>gc <Plug>(coc-git-commit)
 nnoremap <silent><Leader>y :<C-u>CocList -A --normal yank<cr>
 
 
+""" coc-pyright
+command! -nargs=0 SortImports call CocAction('runCommand', 'editor.action.organizeImport')
+nnoremap <c-i> :SortImports<CR>
+
+
 """" git-messenger
 let g:git_messenger_no_default_mappings = v:true
 nmap <Leader>gm <Plug>(git-messenger)
@@ -919,9 +923,6 @@ let g:neomake_error_sign = {
   \ 'text': '',
   \ 'texthl': 'ErrorMsg',
   \ }
-
-"""" vim-isort
-let g:vim_isort_map = '<C-i>'
 
 
 """" vim-tmux-navigator
