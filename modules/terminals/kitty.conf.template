@@ -187,6 +187,7 @@ map ctrl+shift+plus      increase_font_size
 map ctrl+shift+minus     decrease_font_size
 map ctrl+shift+=         restore_font_size
 map ctrl+shift+f11       toggle_fullscreen
+map ctrl+f               launch --allow-remote-control kitty +kitten kitty_search/search.py @active-kitty-window-id
 
 # Allow remote control of terminals
 allow_remote_control true
