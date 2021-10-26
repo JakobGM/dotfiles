@@ -61,6 +61,11 @@ zplug load
 
 
 # -------- SOURCE CUSTOM ZSH SCRIPTS ---------
+# Autocompletions for Hub git wrapper
+# Must be done before any completions set by the autoload directory
+fpath=(~/.dotfiles/home/.zsh/completions $fpath) 
+autoload -U compinit && compinit
+
 # Use dotfiles repository for custom zsh files
 AUTOLOAD="$DOTREPO/autoload"
 
@@ -71,10 +76,6 @@ done
 
 # Enable fzf related functionity, such as <C-r>
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Autocompletions for Hub git wrapper
-fpath=(~/.dotfiles/home/.zsh/completions $fpath) 
-autoload -U compinit && compinit
 
 # Path modifications which need to be sourced last
 source $DOTREPO/scripts/paths.zsh
