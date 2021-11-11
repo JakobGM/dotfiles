@@ -43,6 +43,7 @@ Plug 'majutsushi/tagbar'                                                " Open t
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
 Plug 'thalesmello/lkml.vim'                                             " Syntax highlighting for LookML code
+Plug 'luukvbaal/stabilize.nvim'                                         " Stabilize buffer content on pane changes and so on
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
@@ -931,6 +932,12 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+"""" stabilize.nvim
+" Enable the plugin
+lua << EOF
+require("stabilize").setup()
+EOF
 
 " Modifications made to vim-slime (kept for posterity)
 " Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
