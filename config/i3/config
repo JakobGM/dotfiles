@@ -44,8 +44,7 @@ bindsym $mod+w [floating con_id="__focused__"] move to scratchpad
 # ------------------------------------------------------------------- 
 
 # --- Emoji picker ---
-exec --no-startup-id emote
-bindsym $mod+e exec --no-startup-id emote
+bindsym $mod+e exec --no-startup-id rofimoji --skin-tone neutral
 
 # Prevent floating windows going offscreen
 floating_maximum_size 1920 x 1080
