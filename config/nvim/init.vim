@@ -852,7 +852,7 @@ nmap <Leader>gN <Plug>(coc-git-prevchunk)
 nmap <Leader>gn <Plug>(coc-git-nextchunk)
 
 " Hunk-add and hunk-revert for chunk staging
-nmap <silent><Leader>ga :w<CR>:CocCommand git.chunkStage<CR>
+nmap <silent><Leader>ga :CocCommand git.chunkStage<CR>
 nmap <silent><Leader>gu :CocCommand git.chunkUndo<CR>
 
 " Show chunk diff at current position
