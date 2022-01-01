@@ -744,10 +744,6 @@ set cmdheight=2
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 " Navigate diagnostics
 nmap <silent> <Leader>en <Plug>(coc-diagnostic-prev)
 nmap <silent> <Leader>eN <Plug>(coc-diagnostic-next)
