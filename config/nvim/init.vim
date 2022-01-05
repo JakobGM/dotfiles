@@ -174,6 +174,11 @@ function! MyHighlights() abort
     highlight SignColumn guibg=bg
     highlight SignColumn ctermbg=bg
 
+    " Make background of error signs the same as a regular sign column
+    highlight CocErrorSign guifg=red
+    highlight CocErrorSign guibg=bg
+    highlight CocErrorSign ctermbg=bg
+
     " Use underlined, bold, green for current tag
     highlight TagbarHighlight guifg=#b8bb26
     highlight TagbarHighlight gui=bold,underline
