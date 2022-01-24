@@ -1,7 +1,9 @@
 [user]
     name = Jakob Gerhard Martinussen
-    email = jakobgm@gmail.com
-    signingkey = 8ED3F2AA6368045B
+	email = jakobgm@gmail.com
+    signingkey = BBB90A8EA49E444FC0767EA18ED3F2AA6368045B
+[includeIf "gitdir:~/oda/"]
+    path = .gitconfig-oda
 [core]
     editor = nvim
     excludesfile = ~/.config/git/ignore
