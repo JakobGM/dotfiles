@@ -13,46 +13,8 @@ font_size        {{ fonts.terminal.size }}
 # the font size in a running terminal.
 font_size_delta 1
 
-# Nord theme - ported from https://github.com/arcticicestudio/nord-hyper
-foreground            #{{ colors.foreground.1 | upper }}
-background            #{{ colors.background.1 | upper }}
-selection_foreground  #{{ colors.foreground.4 | upper }}
-selection_background  #{{ colors.background.4 | upper }}
-url_color             #{{ colors.bright.blue | upper }}
-cursor                #{{ colors.foreground.1 | upper }}
-cursor_text_color     #{{ colors.background.1 | upper }}
-
-# black
-color0   #{{ colors.normal.black | upper }}
-color8   #{{ colors.bright.black | upper }}
-
-# red
-color1   #{{ colors.normal.red | upper }}
-color9   #{{ colors.normal.red | upper }}
-
-# green
-color2   #{{ colors.normal.green | upper }}
-color10  #{{ colors.bright.green | upper }}
-
-# yellow
-color3   #{{ colors.normal.yellow | upper }}
-color11  #{{ colors.bright.yellow | upper }}
-
-# blue
-color4  #{{ colors.normal.blue | upper }}
-color12 #{{ colors.bright.blue | upper }}
-
-# magenta
-color5   #{{ colors.normal.magenta | upper }}
-color13  #{{ colors.bright.magenta | upper }}
-
-# cyan
-color6   #{{ colors.normal.cyan | upper }}
-color14  #{{ colors.bright.cyan | upper }}
-
-# white
-color7   #{{ colors.normal.white | upper }}
-color15  #{{ colors.bright.white | upper }}
+# Set color theme according to kitty +kitten themes
+include current-theme.conf
 
 # Mouse & cursor
 cursor_blink_interval     0.4
