@@ -129,9 +129,9 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 
 
 # --- System specific environment variables ---
-local OS=$(uname -o)
+local OS=$(uname)
 
-if [[ $OS == "GNU/Linux" ]]
+if [[ $OS == "Linux" ]]
 then
     export BROWSER=xdg-open
 fi
