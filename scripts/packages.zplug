@@ -13,7 +13,7 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-syntax-highlighting"
 
 # For faster, history based cd'ing using "z" instead
-zplug "plugins/z", from:oh-my-zsh
+zplug "agkozak/zsh-z"
 
 # For gpg signing git commits with keychain support
 zplug "plugins/gpg-agent", from:oh-my-zsh
