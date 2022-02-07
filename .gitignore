@@ -172,3 +172,4 @@ config/git/gitk
 config/raycast/
 config/gcloud/
 config/gh/
+config/zsh/.zcompdump.zwc
