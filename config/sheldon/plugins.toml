@@ -1,0 +1,43 @@
+shell = "zsh"
+
+[plugins]
+
+[plugins.zsh-history-substring-search]
+# Press up/down on half-written input, and restrict history accordingly
+github = "zsh-users/zsh-history-substring-search"
+use = ["zsh-history-substring-search.zsh"]
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+[plugins.zsh-autosuggestions]
+# Fish like autocompletions
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-syntax-highlighting]
+# Highlighting in terminal
+github = "zsh-users/zsh-syntax-highlighting"
+
+[plugins.z]
+# For faster, history based cd'ing using "z" instead
+github = "agkozak/zsh-z"
+
+[plugins.enhancd]
+# Fuzzy searchable cd command
+github = "b4b4r07/enhancd"
+use = ["init.sh"]
+
+[plugins.zsh-wakatime]
+# Track activity in terminal to wakatime.com
+github = "wbinglee/zsh-wakatime"
+
+[plugins.zsh-async]
+github = "mafredri/zsh-async"
+
+[plugins.pure]
+github = "sindresorhus/pure"
+use = ["pure.zsh"]
+
+[plugins.ohmyzsh]
+github = "ohmyzsh/ohmyzsh"
+use = ["plugins/gpg-agent/gpg-agent.plugin.zsh"]

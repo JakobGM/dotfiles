@@ -33,43 +33,19 @@ setopt interactivecomments
 setopt hist_ignore_space
 
 
-# --------------- INSTALL ZPLUG ------------------
-# Install zplug zsh packages to the following path
-export ZPLUG_HOME=$XDG_CONFIG_HOME/zplug
-
-# Cache zplug plugins in order to improve zsh startup time
-export ZPLUG_USE_CACHE=true
-
-# Load zplug packages from the following path
-export ZPLUG_LOADFILE="$DOTREPO/scripts/packages.zplug"
-
-# Check if zplug is installed
-if [[ ! -d $ZPLUG_HOME ]]; then
-  echo "Installing zplug..."
-
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  source $ZPLUG_HOME/init.zsh && zplug update --self
-
-  echo "Zplug has been installed"
-fi
-
-# Source zplug package manager script
-source $ZPLUG_HOME/init.zsh
-
-# Then, source plugins and add commands to $PATH
-zplug load
-
-
-
-# -------- SOURCE CUSTOM ZSH SCRIPTS ---------
-# Autocompletions for Hub git wrapper
-# Must be done before any completions set by the autoload directory
+# Initialize autocompletions
 fpath=("$DOTREPO/home/.zsh/completions" $fpath) 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 autoload -Uz compinit && compinit
 
+
+# --------------- LOAD PLUGIN MANAGER ------------------
+eval "$(sheldon source)"
+
+
+# -------- SOURCE CUSTOM ZSH SCRIPTS ---------
 # Completions for gcloud
 if type brew &>/dev/null; then
     source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
