@@ -53,3 +53,6 @@ modules:
         # Module containing secret context values
         - name: github::jakobgm/secrets.astrality
           autoupdate: true
+
+        # Templated dotfiles
+        - name: dotfiles
