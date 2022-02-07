@@ -52,9 +52,7 @@ config/nvim/undodir
 config/okularrc
 config/qutebrowser
 config/spotify
-config/wakatime/.wakatime.data
-config/wakatime/.wakatime.db
-config/wakatime/.wakatime.log
+config/wakatime
 config/xfce4
 config/zplug
 
