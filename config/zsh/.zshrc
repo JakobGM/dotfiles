@@ -1,9 +1,10 @@
 # ---------- SETUP ENVIRONMENT VARIABLES --------------
 # Where we have placed the repository with all dotfiles
 export DOTREPO=$HOME/.dotfiles
-
 source $DOTREPO/scripts/env.zsh
 
+# Make brew installed binaries available before the rest of the script runs
+export PATH="/opt/homebrew/bin:${PATH}"
 
 
 # ---------------- ZSH OPTIONS -------------------
@@ -63,8 +64,21 @@ zplug load
 # -------- SOURCE CUSTOM ZSH SCRIPTS ---------
 # Autocompletions for Hub git wrapper
 # Must be done before any completions set by the autoload directory
-fpath=(~/.dotfiles/home/.zsh/completions $fpath) 
-autoload -U compinit && compinit
+fpath=("$DOTREPO/home/.zsh/completions" $fpath) 
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+autoload -Uz compinit && compinit
+
+# Completions for gcloud
+if type brew &>/dev/null; then
+    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+fi
+
+# Completions for fabrica CLI
+if [[ -f ~/oda/fabrica/bin/fabrica ]]; then
+    eval "$(~/oda/fabrica/bin/fabrica completions)"
+fi
 
 # Use dotfiles repository for custom zsh files
 AUTOLOAD="$DOTREPO/autoload"
@@ -77,12 +91,9 @@ done
 # Enable fzf related functionity, such as <C-r>
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Path modifications which need to be sourced last
-source $DOTREPO/scripts/paths.zsh
 
 
-
-# ----------- ARCHLINUX STUFF ---------------
+# ----------- OS-SPECIFIC STUFF ---------------
 # If on ArchLinux, start the Xorg instance
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
   exec startx
@@ -91,9 +102,12 @@ fi
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakobgm/.netlify/helper/path.zsh.inc'; fi
 
-# Miniconda3
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
 
-# Dirty hack to unset VIRTUALENVWRAPPER_VIRTUALENV_ARGS="--no-site-packages"
-# Can't find out where this is set at the moment.
-unset VIRTUALENVWRAPPER_VIRTUALENV_ARGS
+# ----------------- ASDF -----------------------
+source $(brew --prefix asdf)/libexec/asdf.sh
+
+# Hook direnv into your shell.
+eval "$(asdf exec direnv hook zsh)"
+
+# A shortcut for asdf managed direnv.
+direnv() { asdf exec direnv "$@"; }
