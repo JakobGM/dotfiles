@@ -10,7 +10,6 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 
 " Python
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}                  " Semantic highlighter for python
 Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
 
 " R-lang
