@@ -71,7 +71,7 @@ fonts:
         size: 8
 
     2:
-        name: DejaVu Sans Code
+        name: Cascadia Code
         size: 8
 
     3:
