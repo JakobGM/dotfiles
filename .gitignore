@@ -169,3 +169,6 @@ config/Mailspring/
 config/pgcli
 config/supertuxkart
 config/git/gitk
+config/raycast/
+config/gcloud/
+config/gh/
