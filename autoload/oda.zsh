@@ -8,4 +8,4 @@ eval "$(_KLIPY_COMPLETE=source_zsh klipy)"
 export PATH="${PATH}:/home/jakobgm/.klipy/bin/"
 
 # Completions for the Fabrica CLI
-eval "$(~/oda/fabrica/bin/fabrica completions)"
+autoload bashcompinit && bashcompinit && eval "$(~/oda/fabrica/bin/fabrica completions)"
