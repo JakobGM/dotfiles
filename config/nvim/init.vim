@@ -938,11 +938,17 @@ EOF
 
 """" voldikss/vim-floaterm
 " Create an IPython scratchpad
-command FloatermSpawn FloatermNew! --name=ipython --silent clear && ipython
+command FloatermSpawnIPython FloatermNew! --name=ipython --silent clear && ipython
+command FloatermSpawnTerminal FloatermNew! --name=terminal --silent clear
 
 " Run the command defined above on startup
-autocmd VimEnter * FloatermSpawn
+autocmd VimEnter * FloatermSpawnIPython
+autocmd VimEnter * FloatermSpawnTerminal
 
 " Toggle the ipython terminal with ctrl+p
 map <C-p> :FloatermToggle ipython<CR>
 tmap <C-p> <esc>:FloatermToggle ipython<CR>
+
+" Toggle the floating terminal with ctrl+t
+map <C-t> :FloatermToggle terminal<CR>
+tmap <C-t> <esc>:FloatermToggle terminal<CR>
