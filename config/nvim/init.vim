@@ -52,6 +52,7 @@ Plug 'nhooyr/neoman.vim'                                                " Using 
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
+Plug 'voldikss/vim-floaterm'                                            " Floating terminals within vim
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
@@ -482,18 +483,6 @@ set noswapfile
 
 " Save valid words to file (used with :set spell)
 set spellfile=$XDG_CONFIG_HOME/nvim/spell/en.utf-8.add
-
-" Copy to system clipboard
-vnoremap  <leader>y  "+y
-vnoremap  <leader>Y  "+yg$
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
-" Paste from system clipboard
-nnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
-nnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
-vnoremap <leader>p :set paste<CR> "+p :set nopaste<CR>
-vnoremap <leader>P :set paste<CR> "+P :set nopaste<CR>
 
 " Make < > shifts keep selection
 vnoremap < <gv
@@ -945,3 +934,15 @@ EOF
 " Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
   " call system("kitty @ --to unix:@slime send-text --from-file " . g:slime_paste_file)
   " call system("kitty -o allow_remote_control=yes --listen-on=unix:@slime --detach")
+
+
+"""" voldikss/vim-floaterm
+" Create an IPython scratchpad
+command FloatermSpawn FloatermNew! --name=ipython --silent clear && ipython
+
+" Run the command defined above on startup
+autocmd VimEnter * FloatermSpawn
+
+" Toggle the ipython terminal with ctrl+p
+map <C-p> :FloatermToggle ipython<CR>
+tmap <C-p> <esc>:FloatermToggle ipython<CR>
