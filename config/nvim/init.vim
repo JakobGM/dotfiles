@@ -92,7 +92,7 @@ let g:lightline = {
       \ 'component_function': {
       \   'filetype': 'MyFiletype',
       \   'fileformat': 'MyFileformat',
-      \   'gitbranch': 'fugitive#head',
+      \   'gitbranch': 'FugitiveHead',
       \   'bufferinfo': 'lightline#buffer#bufferinfo',
       \ },
       \ 'tab': {
