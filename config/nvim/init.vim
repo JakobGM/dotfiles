@@ -731,8 +731,8 @@ set updatetime=300
 set nobackup
 set nowritebackup
 
-" Better display for messages
-set cmdheight=2
+" Save space by only having one line for cmdline
+set cmdheight=1
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
