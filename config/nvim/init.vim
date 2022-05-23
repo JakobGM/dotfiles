@@ -237,6 +237,9 @@ set textwidth=0 wrapmargin=0
 " Do not let vim force line breaks when exceeding textwidth in insert mode
 set formatoptions-=t
 
+" Let status line span across multiple panes (showing info for focused pane)
+set laststatus=3
+
 
 """ Keybindings
 
