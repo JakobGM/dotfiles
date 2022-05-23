@@ -709,7 +709,18 @@ let g:tex_flavor = 'latex'
 
 """" coc.nvim
 " Extensions need to be installed at first startup
-" :CocInstall coc-json coc-pyright coc-snippets coc-git coc-r-lsp coc-html coc-css coc-highlight coc-vimlsp
+let g:coc_global_extensions = [
+      \'coc-json',
+      \'coc-git',
+      \'coc-pyright',
+      \'coc-snippets',
+      \'coc-r-lsp',
+      \'coc-html',
+      \'coc-css',
+      \'coc-highlight',
+      \'coc-vimlsp',
+      \'coc-spell-checker',
+      \]
 
 " Tweak insert mode completion
 "   noinsert: Do not insert text before accepting the completion
