@@ -77,6 +77,12 @@ window_padding_width 0
 active_border_color #{{ colors.background.3 }}
 inactive_border_color #{{ colors.background.2 }}
 
+# Hide top bar on MacOS
+hide_window_decorations yes
+
+# Use PowerLine theme to display tabs on bottom
+tab_bar_style powerline
+
 # Tab-bar colors
 active_tab_foreground   #{{ colors.foreground.2 }}
 active_tab_background   #{{ colors.background.2 }}
