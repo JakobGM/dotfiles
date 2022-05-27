@@ -23,7 +23,7 @@ Plug 'cskeeters/vim-smooth-scroll'                                      " Smooth
 Plug 'farmergreg/vim-lastplace'                                         " Move cursor to last edit location when reopening files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy file++ searching
 Plug 'junegunn/fzf.vim'                                                 " Asynchronous file/tags searcher
-Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :Gbrowse and autocompletion for GitHub issues
+Plug 'tpope/vim-rhubarb'                                                " Open GitHub source with :GBrowse and autocompletion for GitHub issues
 
 " Editing
 Plug 'danro/rename.vim'                                                 " Enables :Rename <new_name>
@@ -305,7 +305,7 @@ function! ConstructGithubMarkdownLink() abort
   " Paste the following markdown into the pasteboard:
   " [`ClassName.method_name()`](<github_line_link>)
   let tagname = tagbar#currenttag("%s", "", "f")
-  let url = split(execute(".Gbrowse!"))[5]
+  let url = split(execute(".GBrowse!"))[5]
   let markdown = "[`" . tagname . "`](" . url . ")"
   let @+ = markdown
 endfunction
@@ -628,8 +628,8 @@ let g:tagbar_iconchars = ['', '']
 
 """" vim-rhubarb
 " Open current line on GitHub
-nnoremap <Leader>gh :Gbrowse!<CR>:Gbrowse<CR>
-vnoremap <Leader>gh :GBrowse!<CR>gv:Gbrowse<CR>
+nnoremap <Leader>gh :GBrowse!<CR>:GBrowse<CR>
+vnoremap <Leader>gh :GBrowse!<CR>gv:GBrowse<CR>
 
 
 """" black
@@ -710,16 +710,17 @@ let g:tex_flavor = 'latex'
 """" coc.nvim
 " Extensions need to be installed at first startup
 let g:coc_global_extensions = [
-      \'coc-json',
-      \'coc-git',
-      \'coc-pyright',
-      \'coc-snippets',
-      \'coc-r-lsp',
-      \'coc-html',
       \'coc-css',
+      \'coc-git',
       \'coc-highlight',
-      \'coc-vimlsp',
+      \'coc-html',
+      \'coc-json',
+      \'coc-pyright',
+      \'coc-r-lsp',
+      \'coc-rust-analyzer',
+      \'coc-snippets',
       \'coc-spell-checker',
+      \'coc-vimlsp',
       \]
 
 " Tweak insert mode completion
