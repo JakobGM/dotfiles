@@ -40,4 +40,7 @@ yabai -m config left_padding                 6
 yabai -m config right_padding                6
 yabai -m config window_gap                   3
 
+# Automatically close empty spaces
+yabai -m signal --add event=space_changed action="~/.dotfiles/macOS/bin/clean-empty-spaces.sh"
+
 echo "yabai configuration loaded.."
