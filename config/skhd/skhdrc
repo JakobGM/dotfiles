@@ -101,8 +101,10 @@ shift + cmd - n : yabai -m space --create && \
                   yabai -m window --space "${index}" && \
                   yabai -m space --focus "${index}"
 
+# New terminal
+cmd - return : kitty --config /Users/jakobgm/.dotfiles/config/kitty/kitty.conf
+
 # Scratchpads
-alt - t : /Users/jakobgm/.dotfiles/macOS/scratchpads/kitty.sh
 alt - s : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Slack
 alt - n : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Timery
 alt - q : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Quip
