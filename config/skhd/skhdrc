@@ -103,4 +103,9 @@ shift + cmd - n : yabai -m space --create && \
 
 # Scratchpads
 alt - t : /Users/jakobgm/.dotfiles/macOS/scratchpads/kitty.sh
-alt - s : /Users/jakobgm/.dotfiles/macOS/scratchpads/slack.sh
+alt - s : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Slack
+alt - n : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Timery
+alt - q : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Quip
+alt - s : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Slack
+alt - t : /Users/jakobgm/.dotfiles/macOS/scratchpads/kitty.sh
+shift + alt - m : /Users/jakobgm/.dotfiles/macOS/scratchpads/scrathpad.sh Spotify
