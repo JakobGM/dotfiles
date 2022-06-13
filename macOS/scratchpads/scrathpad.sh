@@ -3,7 +3,7 @@
 app=$1
 grid=$2
 if [[ "${grid}" = "" ]]; then
-  grid='1:1:0:0:1:1'
+  grid='100:100:5:5:90:90'
 fi
 
 scratchpad_id=$(yabai -m query --windows | jq ".[] | select(.app==\"${app}\").id")
