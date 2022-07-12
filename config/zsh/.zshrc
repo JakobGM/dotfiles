@@ -64,6 +64,8 @@ eval "$(sheldon source)"
 # Completions for gcloud
 if type brew &>/dev/null; then
     source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+    # Put all Google Cloud SDK components in path
+    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
 
 # Completions for fabrica CLI
