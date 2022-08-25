@@ -967,3 +967,7 @@ tmap <C-p> <esc>:FloatermToggle ipython<CR>
 " Toggle the floating terminal with ctrl+t
 map <C-t> :FloatermToggle terminal<CR>
 tmap <C-t> <esc>:FloatermToggle terminal<CR>
+
+"""" vim-smooth-scroll
+" Make the scroll animation twice as fast (default 8 ms)
+let g:ms_per_line = 4
