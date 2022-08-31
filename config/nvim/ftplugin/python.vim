@@ -27,3 +27,6 @@ endfunction
 
 " Automatically execute black on write
 autocmd BufWritePre *.py silent execute ':Black'
+
+" Format the current document with blackdoc
+nnoremap <silent> <Leader>bd :w<CR>:!poetry run blackdoc %<CR>:e!<CR>
