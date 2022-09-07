@@ -34,8 +34,6 @@ Plug 'tpope/vim-commentary'                                             " Adds c
 Plug 'tpope/vim-surround'                                               " Adds the surround motion bound to s
 
 " Visual
-Plug 'glench/vim-jinja2-syntax'                                         " Better support for Jinja2 syntax
-Plug 'lepture/vim-jinja'                                                " Works well in combination with previous plugin
 Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
@@ -46,9 +44,9 @@ Plug 'luukvbaal/stabilize.nvim'                                         " Stabil
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
-Plug 'ivanovyordan/dbt.vim'                                             " Syntax highlighting and support for dbt projects (JinjaSQL)
 Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
@@ -968,6 +966,41 @@ tmap <C-p> <esc>:FloatermToggle ipython<CR>
 map <C-t> :FloatermToggle terminal<CR>
 tmap <C-t> <esc>:FloatermToggle terminal<CR>
 
+
 """" vim-smooth-scroll
 " Make the scroll animation twice as fast (default 8 ms)
 let g:ms_per_line = 4
+
+
+"""" nvim/treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all"
+  ensure_installed = { "python", "rust" },
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.dbt = {
+  install_info = {
+    url = "~/dev/tree-sitter-jinja2", -- local path or git repo
+    files = {"src/parser.c"},
+    branch = "main",
+    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+  },
+  filetype = "sql.jinja", -- if filetype does not match the parser name
+}
+EOF
