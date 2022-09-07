@@ -7,7 +7,22 @@
 [core]
     editor = nvim
     excludesfile = ~/.config/git/ignore
-    pager = "diff-so-fancy | less --tabs=4 -RFX"
+    pager = delta
+[interactive]
+    # Delta configuration
+    diffFilter = delta --color-only
+[add.interactive]
+    # Delta configuration
+    useBuiltin = false # required for git 2.37.0
+[delta]
+    # Delta configuration
+    # Use n and N to move between diff sections
+    navigate = true    
+    light = false
+    syntax-theme = gruvbox-dark
+    line-numbers = true
+[merge]
+    conflictstyle = diff3
 [web]
     browser = firefox
 [commit]
@@ -15,8 +30,8 @@
 [tag]
     gpgsign = true
 [diff]
-    tool = kitty
-    guitool = kitty.gui
+    # Delta configuration
+    colorMoved = default
 [difftool]
     prompt = false
     trustExitCode = true
