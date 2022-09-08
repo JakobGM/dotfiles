@@ -36,17 +36,17 @@ Plug 'tpope/vim-surround'                                               " Adds t
 " Visual
 Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
+Plug 'luukvbaal/stabilize.nvim'                                         " Stabilize buffer content on pane changes and so on
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
-Plug 'thalesmello/lkml.vim'                                             " Syntax highlighting for LookML code
-Plug 'luukvbaal/stabilize.nvim'                                         " Stabilize buffer content on pane changes and so on
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
 Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " Tree-sitter based syntax highlighting
+Plug 'nvim-treesitter/playground'                                       " Annotate current buffer with tree-sitter nodes using :TSPlaygroundToggle
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
@@ -990,6 +990,32 @@ require'nvim-treesitter.configs'.setup {
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
+  },
+
+  playground = {
+    enable = true,
+    disable = {},
+    -- Debounced time for highlighting nodes in the playground from source code
+    updatetime = 25,
+     -- Whether the query persists across vim sessions
+    persist_queries = false,
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
+  },
+  query_linter = {
+    enable = true,
+    use_virtual_text = true,
+    lint_events = {"BufWrite", "CursorHold"},
   },
 }
 
