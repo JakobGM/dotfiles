@@ -68,11 +68,6 @@ if type brew &>/dev/null; then
     source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
 
-# Completions for fabrica CLI
-if [[ -f ~/oda/fabrica/bin/fabrica ]]; then
-    eval "$(~/oda/fabrica/bin/fabrica completions)"
-fi
-
 # Use dotfiles repository for custom zsh files
 AUTOLOAD="$DOTREPO/autoload"
 
