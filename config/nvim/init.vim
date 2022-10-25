@@ -43,6 +43,7 @@ Plug 'sheerun/vim-polyglot'                                             " Add sy
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
+Plug 'kristijanhusak/vim-carbon-now-sh'                                 " Create screenshot of code with :CarbonNowSh
 Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}             " Tree-sitter based syntax highlighting
@@ -1030,3 +1031,24 @@ parser_config.dbt = {
   filetype = "sql.jinja", -- if filetype does not match the parser name
 }
 EOF
+
+"""" kristijanhusak/vim-carbon-now-sh
+let g:carbon_now_sh_options =
+\ { 'ln': 'false',
+  \ 'fm': 'Fira Code',
+  \ 't': 'monokai',
+  \ 'bg': 'none',
+  \ 'wt': 'none',
+  \ 'wc': 'true',
+  \ 'fs': '18px',
+  \ 'ds': 'true',
+  \ 'dsyoff': '3px',
+  \ 'dsblur': '5px',
+  \ 'wa': 'true',
+  \ 'pv': '15px',
+  \ 'ph': '15px',
+  \ 'si': 'false',
+  \ 'wm': 'false',
+  \ 'es': '2x',
+  \ 'type': 'png'
+  \ }
