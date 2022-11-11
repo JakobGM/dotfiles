@@ -92,7 +92,11 @@ if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakob
 
 
 # ----------------- ASDF -----------------------
-source $(brew --prefix asdf)/libexec/asdf.sh
+if command_exists brew; then
+    source $(brew --prefix asdf)/libexec/asdf.sh
+elif [[ "$OS" = "Linux" ]]; then
+    source /opt/asdf-vm/asdf.sh
+fi
 
 # Hook direnv into your shell.
 eval "$(asdf exec direnv hook zsh)"
