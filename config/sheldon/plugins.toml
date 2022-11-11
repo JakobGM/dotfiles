@@ -2,6 +2,10 @@ shell = "zsh"
 
 [plugins]
 
+# https://sheldon.cli.rs/Examples.html#deferred-loading-of-plugins-in-zsh
+[plugins.zsh-defer]
+github = "romkatv/zsh-defer"
+
 [plugins.zsh-history-substring-search]
 # Press up/down on half-written input, and restrict history accordingly
 github = "zsh-users/zsh-history-substring-search"
@@ -17,27 +21,23 @@ github = "zsh-users/zsh-autosuggestions"
 [plugins.zsh-syntax-highlighting]
 # Highlighting in terminal
 github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
 
 [plugins.z]
 # For faster, history based cd'ing using "z" instead
 github = "agkozak/zsh-z"
 
-[plugins.enhancd]
-# Fuzzy searchable cd command
-github = "b4b4r07/enhancd"
-use = ["init.sh"]
-
 [plugins.zsh-wakatime]
 # Track activity in terminal to wakatime.com
 github = "wbinglee/zsh-wakatime"
 
-[plugins.zsh-async]
-github = "mafredri/zsh-async"
-
 [plugins.pure]
 github = "sindresorhus/pure"
-use = ["pure.zsh"]
+use = ["async.zsh", "pure.zsh"]
 
 [plugins.ohmyzsh]
 github = "ohmyzsh/ohmyzsh"
 use = ["plugins/gpg-agent/gpg-agent.plugin.zsh"]
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
