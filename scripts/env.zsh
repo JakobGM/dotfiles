@@ -10,10 +10,6 @@ export PIP_REQUIRE_VIRTUALENV=true  # But there are some global packages that ar
 # Virtual Environment
 export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/dev"
-export VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
-export VIRTUALENV_PYTHON='/usr/bin/python3'
-export VIRTUALENVWRAPPER_WORKON_CD=1
-export VIRTUALENVWRAPPER_HOOK_DIR="$DOTREPO/python/virtualenvwrapper_hook_dir"
 
 # For python [https://coderwall.com/p/-k_93g/mac-os-x-valueerror-unknown-locale-utf-8-in-python]
 export LC_ALL=en_US.UTF-8
@@ -42,6 +38,9 @@ export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
 
 # Add pip --user installed packages
 export PATH=`python3 -c 'import site; print(site.USER_BASE)'`/bin":$PATH"
+
+# Add cargo installed binaries
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # How to invoke the fzf command, especially in fzf.vim
     # --files: List files that would be searched but do not search

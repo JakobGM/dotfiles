@@ -1,6 +1,5 @@
 # Ignore virtual environments managed by asdf-direnv
 .direnv
-.tool-versions
 
 # Don't track personal pre-commit config files
 .pre-commit-config.yaml

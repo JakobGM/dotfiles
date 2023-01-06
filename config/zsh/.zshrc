@@ -84,7 +84,7 @@ done
 # ----------- OS-SPECIFIC STUFF ---------------
 # If on ArchLinux, start the Xorg instance
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-  exec startx
+    :
 fi
 
 # The next line updates PATH for Netlify's Git Credential Helper.

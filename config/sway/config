@@ -43,6 +43,9 @@ bindsym $mod+w [floating] move to scratchpad
 
 # ------------------------------------------------------------------- 
 
+# Random background image from ~/Wallpapers
+exec_always 'swaybg --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
+
 # --- Emoji picker ---
 exec emote
 bindsym $mod+e exec emote
@@ -60,7 +63,7 @@ bindsym $mod+q kill
 # bindsym $mod+d exec i3-dmenu-desktop
 
 # Start rofi in program launcher mode
-bindsym $mod+r exec rofi -show run
+bindsym $mod+r exec kickoff
 
 # change focus
 bindsym $mod+h focus left
@@ -118,7 +121,9 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
 # Open new workspace
-bindsym $mod+n exec "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/new_workspace.py"
+bindsym $mod+n exec sway-new-workspace open
+bindsym $mod+Shift+n exec sway-new-workspace move
+bindsym $mod+Shift+d exec sway-new-workspace open; exec $menu
 
 # move focused container to workspace
 bindsym $mod+1 move container to workspace number 1, workspace number 1
@@ -189,17 +194,14 @@ exec "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 # Use programmer-dvorak keybindings
 exec setxkbmap dvp
 
-# For use with albert
-exec_always "picom -b --config $XDG_CONFIG_HOME/picom/picom.conf"
-
 # Start polybar, even on restart
 exec waybar
 
 # Start astrality
-exec_always "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
+exec_always "$PROJECT_HOME/astrality/.direnv/python-*/bin/python $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
 # Automatically rename workspaces in i3
-exec_always "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/autoname_workspaces.py &"
+exec_always "$XDG_CONFIG_HOME/sway/.direnv/python-*/bin/python $XDG_CONFIG_HOME/sway/autoname-workspaces.py &"
 
 # Start service for managing notifications
 exec mako
@@ -225,7 +227,7 @@ set $white #ffffff
 
 # green gruvbox
 # class                 border|backgr|text|indicator|child_border
-client.focused          $green $green $darkgray $purple $darkgray
+client.focused          $green $green $darkgray $purple $green
 client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
 client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
 client.urgent           $red $red $white $red $red

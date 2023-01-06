@@ -84,5 +84,6 @@
       "filetypes": ["sh", "zsh"],
       "ignoredRootPaths": ["~"]
     }
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
