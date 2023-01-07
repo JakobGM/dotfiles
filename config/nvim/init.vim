@@ -10,7 +10,6 @@ Plug 'tpope/vim-fugitive'                                               " Git pl
 
 " Python
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
-Plug 'psf/black', { 'tag': '20.8b1' }                                   " Python code formatter
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -713,6 +712,8 @@ let g:coc_global_extensions = [
       \'coc-git',
       \'coc-highlight',
       \'coc-html',
+      \'coc-html',
+      \'coc-htmldjango',
       \'coc-json',
       \'coc-pyright',
       \'coc-r-lsp',
@@ -831,6 +832,11 @@ nnoremap <silent> <Leader>ck :<C-u>CocPrev<CR>
 
 " Resume latest coc list
 nnoremap <silent> <Leader>cl :<C-u>CocListResume<CR>
+
+" Enable coc-htmldjango for Jinja2 HTML templates
+autocmd BufNewFile,BufRead *.j2.html setfiletype htmldjango
+
+
 
 
 """" coc-snippets
