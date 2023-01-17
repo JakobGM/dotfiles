@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 source ~/.config/zsh/.zshrc
-workon scratchpad
-cd ~/dev/scratchpad
+cd ~/vibako/hub
 clear
-ipython
+poetry run python ~/vibako/hub/src/hub/manage.py shell_plus

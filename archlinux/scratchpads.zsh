@@ -26,7 +26,7 @@ then
         --name dropdown_ipython \
         --override initial_window_width=1600 \
         --override initial_window_height=720 \
-        --directory $PROJECT_HOME/sunmapper \
+        --directory ~/vibako/hub \
         --instance-group ipython \
         --hold \
         -o allow_remote_control=yes \
