@@ -56,6 +56,7 @@
     pr = !"pr() { git fetch origin pull/$1/head:pr-$1; }; pr"
     f = commit --fixup
     mt = mergetool
+    set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
     program = gpg
 # The first line resets the list of helpers so we can check Netlify's first.
