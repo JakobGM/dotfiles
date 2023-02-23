@@ -578,14 +578,14 @@ command! -bang -nargs=* Find
   \   <bang>0
   \ )
 
-" [Tags] Command to generate tags file
-let g:fzf_tags_command = 'ctags -R --exclude=@.gitignore --exclude=.mypy_cache --exclude=node_modules --exclude=.direnv --kinds-python=cfmIix --languages=python'
-
 
 """" vim-gutentags
 " Exclude file patterns
-let g:gutentags_ctags_exclude = [ ".mypy_cache", "@.gitignore", "node_modules", ".direnv" ]
+let g:gutentags_ctags_exclude = [ ".mypy_cache", "@.gitignore", "node_modules", ".direnv", ".venv" ]
 let g:gutentags_ctags_extra_args = [ "--kinds-python=cfmIix", "--languages=python" ]
+
+" [Tags] Command to generate tags file
+let g:fzf_tags_command = 'ctags -R ' . join(g:gutentags_ctags_extra_args, ' ') . ' --exclude=' . join(g:gutentags_ctags_exclude, ' --exclude=')
 
 """" Vimagit
 nnoremap <leader>gg :Magit<CR>
@@ -708,6 +708,7 @@ let g:tex_flavor = 'latex'
 """" coc.nvim
 " Extensions need to be installed at first startup
 let g:coc_global_extensions = [
+      \'@yaegassy/coc-ruff',
       \'coc-css',
       \'coc-git',
       \'coc-highlight',
