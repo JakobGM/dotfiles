@@ -34,6 +34,7 @@
 
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": true,
+  "python.linting.ruffEnabled": false,
   "python.linting.banditEnabled": false,
   "python.linting.mypyEnabled": true,
   "python.linting.pytypeEnabled": false,

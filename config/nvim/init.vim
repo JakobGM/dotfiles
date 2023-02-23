@@ -350,7 +350,7 @@ function! EditFiltetypeConfig() abort
   execute 'vsp ' . filepath
 endfunction
 
-nnoremap <Leader>ft :call EditFiltetypeConfig()<CR>
+command FT call EditFiltetypeConfig()
 
 " Switch to alternative file, most often the previous buffer
 nnoremap <CR> :b#<CR>
@@ -711,7 +711,6 @@ let g:coc_global_extensions = [
       \'coc-css',
       \'coc-git',
       \'coc-highlight',
-      \'coc-html',
       \'coc-html',
       \'coc-htmldjango',
       \'coc-json',

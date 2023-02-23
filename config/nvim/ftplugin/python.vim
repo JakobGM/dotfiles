@@ -27,3 +27,9 @@ endfunction
 
 " Format the current document with blackdoc
 nnoremap <silent> <Leader>bd :w<CR>:!poetry run blackdoc %<CR>:e!<CR>
+
+" Automatically sort imports on save
+autocmd BufWrite *.py :silent call CocAction('runCommand', 'ruff.executeOrganizeImports')
+
+" Bind <Leader>f to run "ruff --fix"
+nmap <silent> <Leader>f :silent call CocAction('runCommand', 'ruff.executeAutofix')<CR>
