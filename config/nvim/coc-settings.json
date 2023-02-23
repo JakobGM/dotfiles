@@ -21,7 +21,7 @@
   "pyright.enable": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": true,
-  "python.analysis.diagnosticMode": "openFilesOnly",
+  "python.analysis.diagnosticMode": "workspace",
   "python.analysis.stubPath": "~/dev/python-type-stubs",
   "python.analysis.typeCheckingMode": "strict",
   "python.venvPath": "~/.virtualenvs",
