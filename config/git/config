@@ -51,6 +51,8 @@
     pl = pull
     s = status
     r = rebase
+    rc = rebase --continue
+    rom = rebase -i origin/main
     cf = commit --fixup
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
