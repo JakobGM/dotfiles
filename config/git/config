@@ -40,22 +40,18 @@
 [github]
     user = jakobgm
 [alias]
-    A = add --all
     a = add
     b = branch
     c = checkout
     cl = clone
     d = diff
-    ud = difftool --no-symlinks --dir-diff
     ds = diff --staged
     l = log
     p = push
     pl = pull
     s = status
     r = rebase
-    pr = !"pr() { git fetch origin pull/$1/head:pr-$1; }; pr"
-    f = commit --fixup
-    mt = mergetool
+    cf = commit --fixup
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
     program = gpg
