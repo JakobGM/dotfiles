@@ -1,4 +1,4 @@
-# Ignore virtual environments managed by asdf-direnv
+# Ignore virtual environments managed by direnv
 .direnv
 
 # Don't track personal pre-commit config files
