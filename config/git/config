@@ -43,17 +43,18 @@
     a = add
     b = branch
     c = checkout
+    cf = commit --fixup
     cl = clone
     d = diff
     ds = diff --staged
+    f = fetch
     l = log
     p = push
     pl = pull
-    s = status
     r = rebase
     rc = rebase --continue
     rom = rebase -i origin/main
-    cf = commit --fixup
+    s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
     program = gpg
