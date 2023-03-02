@@ -9,7 +9,9 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
+Plug 'andythigpen/nvim-coverage'
 Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
+Plug 'nvim-lua/plenary.nvim'
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -1058,3 +1060,38 @@ let g:carbon_now_sh_options =
   \ 'es': '2x',
   \ 'type': 'png'
   \ }
+
+
+"""" andythigpen/nvim-coverage
+" Enable the plugin
+lua << EOF
+require("coverage").setup({
+  auto_reload = true,
+  commands = true, -- create commands
+  highlights = {
+    -- customize highlight groups created by the plugin
+    covered = { fg = "#B7F071" },   -- supports style, fg, bg, sp (see :h highlight-gui)
+    uncovered = { fg = "#F07178" },
+    partial = { fg = "#AA71F0" },
+  },
+  signs = {
+    -- use your own highlight groups or text markers
+    covered = { hl = "CoverageCovered", text = "▎" },
+    uncovered = { hl = "CoverageUncovered", text = "▎" },
+    partial = { hl = "CoveragePartial", text = "▎" },
+  },
+  summary = {
+    -- customize the summary pop-up
+    min_coverage = 80.0,      -- minimum coverage threshold (used for highlighting)
+  },
+  lang = {
+    -- customize language specific settings
+    python = {
+      coverage_file = "coverage.xml",
+    },
+  },
+  load_coverage_cb = function (ftype)
+    vim.notify("Loaded " .. ftype .. " coverage")
+  end,
+})
+EOF
