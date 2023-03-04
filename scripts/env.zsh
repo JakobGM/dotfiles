@@ -43,12 +43,9 @@ export PATH=`python3 -c 'import site; print(site.USER_BASE)'`/bin":$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # How to invoke the fzf command, especially in fzf.vim
-    # --files: List files that would be searched but do not search
-    # --no-ignore: Do not respect .gitignore, etc...
-    # --hidden: Search hidden files and folders
-    # --follow: Follow symlinks
-    # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
-export FZF_DEFAULT_COMMAND='rg --smart-case --files --hidden --follow --glob "!.git/*"'
+    # --type file: List only files
+    # --hidden: Search hidden files and folders; naming starting with a period (.)
+export FZF_DEFAULT_COMMAND='fd --type file --hidden'
 
 # Setting default username such that it doesn´t always state it in the terminal
 export DEFAULT_USER="jakobgm"
