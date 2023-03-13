@@ -33,8 +33,8 @@
   "python.formatting.autopep8Args": [],
 
   "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.ruffEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.linting.ruffEnabled": true,
   "python.linting.banditEnabled": false,
   "python.linting.mypyEnabled": true,
   "python.linting.pytypeEnabled": false,
