@@ -44,6 +44,7 @@ Plug 'sheerun/vim-polyglot'                                             " Add sy
 
 " Behaviour/tools
 Plug 'gillyb/stable-windows'                                            " Keep panes in stable position when layout changes
+Plug 'github/copilot.vim'                                               " GitHub Copilot integration
 Plug 'kristijanhusak/vim-carbon-now-sh'                                 " Create screenshot of code with :CarbonNowSh
 Plug 'neomake/neomake', {'for': ['latex', 'tex', 'plaintex']}           " Linting latex documents
 Plug 'nhooyr/neoman.vim'                                                " Using vim as a manpager
