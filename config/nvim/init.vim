@@ -367,7 +367,7 @@ cmap w!! w !sudo tee > /dev/null %
 """ Python
 
 " Python path for current python project, used with Jedi-vim
-let g:python3_host_prog = $XDG_CONFIG_HOME.'/nvim/.direnv/python-3.11.1/bin/python'
+let g:python3_host_prog = $XDG_CONFIG_HOME.'/nvim/.venv/bin/python'
 
 
 """ htmldjango
