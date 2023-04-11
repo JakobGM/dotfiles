@@ -2,4 +2,5 @@
 source ~/.config/zsh/.zshrc
 cd ~/vibako/hub
 clear
-poetry run python ~/vibako/hub/src/hub/manage.py shell_plus
+source .venv/bin/activate
+poetry run python -m hub.manage shell_plus
