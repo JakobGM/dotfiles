@@ -252,4 +252,20 @@ input type:touchpad {
     natural_scroll enabled
 }
 
+# Office monitors
+output DP-2 {
+   mode 3840x2160@60.000Hz
+   pos 3840 0
+}
+output HDMI-A-1 {
+   mode 1920x1080@60.000Hz
+   pos 1920 0
+}
+
+# Disable laptop screen when lid is closed
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+exec_always /home/jakobgm/.dotfiles/bin/toggle_display.sh
+
 # vim:ft=i3config
