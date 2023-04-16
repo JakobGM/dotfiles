@@ -9,9 +9,8 @@ Plug 'jreybert/vimagit'                                                 " Modal 
 Plug 'tpope/vim-fugitive'                                               " Git plugin with commands 'G<command>'
 
 " Python
-Plug 'andythigpen/nvim-coverage'
-Plug 'jpalardy/vim-slime', {'for': 'python'}                            " Send python code to kitty terminal
-Plug 'nvim-lua/plenary.nvim'
+Plug 'andythigpen/nvim-coverage'                                        " Show test coverage in sign gutter
+Plug 'nvim-lua/plenary.nvim'                                            " Transient dependency of nvim-coverage
 
 " R-lang
 Plug 'jalvesaq/Nvim-R'                                                  " Adds lots of Rlang-support
@@ -37,7 +36,6 @@ Plug 'tpope/vim-surround'                                               " Adds t
 " Visual
 Plug 'gruvbox-community/gruvbox'                                        " Gruvbox colorscheme
 Plug 'itchyny/lightline.vim'                                            " Lightweight statusline without slow plugin integrations
-Plug 'luukvbaal/stabilize.nvim'                                         " Stabilize buffer content on pane changes and so on
 Plug 'majutsushi/tagbar'                                                " Open tag navigation split with :Tagbar
 Plug 'ryanoasis/vim-devicons'                                           " For file icons in lots of plugins
 Plug 'sheerun/vim-polyglot'                                             " Add syntax highlighting for a large range of filetypes
@@ -53,7 +51,6 @@ Plug 'nvim-treesitter/playground'                                       " Annota
 Plug 'rhysd/git-messenger.vim'                                          " See git commit message for current line with <Leader>gm
 Plug 'tpope/vim-repeat'                                                 " Add repeat support with '.' for lots of plugins
 Plug 'tpope/vim-sensible'                                               " Sensible vim defaults
-Plug 'voldikss/vim-floaterm'                                            " Floating terminals within vim
 Plug 'wakatime/vim-wakatime'                                            " Automatic timetracking of programming [wakatime.com]
 
 " Auto-completion
@@ -370,12 +367,6 @@ cmap w!! w !sudo tee > /dev/null %
 let g:python3_host_prog = $XDG_CONFIG_HOME.'/nvim/.venv/bin/python'
 
 
-""" htmldjango
-au FileType htmldjango
-    \ set shiftwidth = 2 |
-    \ set softtabstop = 2
-
-
 """ Visual
 
 " Start scrolling when 7 lines from bottom of screen
@@ -455,6 +446,10 @@ set ttyfast
 set lazyredraw
 
 """ Behaviour
+
+" Keep the same screen lines in all split windows
+" Recommended by luukvbaal/stabilize.nvim README.md
+set splitkeep=screen
 
 " Open new splits to the right and below (feels more natural)
 set splitright
@@ -797,7 +792,7 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>Q  <Plug>(coc-fix-current)
 
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python, coc-yank
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-pyright
 nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
@@ -837,7 +832,7 @@ nnoremap <silent> <Leader>ck :<C-u>CocPrev<CR>
 nnoremap <silent> <Leader>cl :<C-u>CocListResume<CR>
 
 " Enable coc-htmldjango for Jinja2 HTML templates
-autocmd BufNewFile,BufRead *.j2.html setfiletype htmldjango
+autocmd BufNewFile,BufRead *.j2 setfiletype htmldjango
 
 
 
@@ -878,10 +873,6 @@ nmap <Leader>gd <Plug>(coc-git-chunkinfo)
 nmap <Leader>gc <Plug>(coc-git-commit)
 
 
-"""" coc-yank
-nnoremap <silent><Leader>y :<C-u>CocList -A --normal yank<cr>
-
-
 """ coc-pyright
 command! -nargs=0 SortImports call CocAction('runCommand', 'editor.action.organizeImport')
 nnoremap <c-i> :SortImports<CR>
@@ -900,26 +891,6 @@ let g:semshi#mark_selected_nodes = 0
 
 " Show a sign in the sign column if a syntax error occurred.
 let g:semshi#error_sign = v:false
-
-
-"""" vim-slime
-" Put temporary paste file in temporary directory
-let g:slime_paste_file = "/tmp/.slime_paste"
-
-" Use kitty terminal as the target environment
-let g:slime_target = "kitty"
-
-" Use the second kitty window as default
-let g:slime_default_config = {"window_id": "2"}
-
-" Use %cpaste magic in python files
-let g:slime_python_ipython = 1
-
-" Send visual selection
-vnoremap <CR> <Plug>SlimeRegionSend
-
-" Send current line and move one line down
-" nmap <CR> :<c-u>call slime#send_lines(v:count1)<cr>j
 
 
 """" Neomake
@@ -946,35 +917,6 @@ nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-"""" stabilize.nvim
-" Enable the plugin
-lua << EOF
-require("stabilize").setup()
-EOF
-
-" Modifications made to vim-slime (kept for posterity)
-" Source file: config/nvim/plugged/vim-slime/autoload/slime.vim
-  " call system("kitty @ --to unix:@slime send-text --from-file " . g:slime_paste_file)
-  " call system("kitty -o allow_remote_control=yes --listen-on=unix:@slime --detach")
-
-
-"""" voldikss/vim-floaterm
-" Create an IPython scratchpad
-command FloatermSpawnIPython FloatermNew! --name=ipython --silent clear && ipython
-command FloatermSpawnTerminal FloatermNew! --name=terminal --silent clear
-
-" Run the command defined above on startup
-autocmd VimEnter * FloatermSpawnIPython
-autocmd VimEnter * FloatermSpawnTerminal
-
-" Toggle the ipython terminal with ctrl+p
-map <C-p> :FloatermToggle ipython<CR>
-tmap <C-p> <esc>:FloatermToggle ipython<CR>
-
-" Toggle the floating terminal with ctrl+t
-map <C-t> :FloatermToggle terminal<CR>
-tmap <C-t> <esc>:FloatermToggle terminal<CR>
 
 
 """" vim-smooth-scroll
