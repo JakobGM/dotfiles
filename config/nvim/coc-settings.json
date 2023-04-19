@@ -1,23 +1,29 @@
 {
+  // General settings
   "coc.preferences.jumpCommand": "drop",
   "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
+    "htmldjango",
     "python"
   ],
+  // Git sign gutter
   "git.changedSign.text": "",
   "git.addedSign.text": "",
   "git.removedSign.text": "",
   "git.topRemovedSign.text": "",
   "git.changeRemovedSign.text": "",
-
+  // Diagnostic icons in sign column
   "diagnostic.infoSign": "",
   "diagnostic.warningSign": "",
   "diagnostic.errorSign": "",
   "diagnostic.checkCurrentLine": true,
-
+  // UltiSnips
   "snippets.userSnippetsDirectory": "~/.dotfiles/config/nvim/UltiSnips",
-  "snippets.ultisnips.directories": ["UltiSnips"],
-
+  "snippets.ultisnips.directories": [
+    "UltiSnips"
+  ],
+  "snippets.ultisnips.pythonPrompt": false,
+  // Python settings
   "pyright.enable": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": true,
@@ -27,11 +33,16 @@
   "python.venvPath": "~/.virtualenvs",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "black",
-  "python.formatting.blackArgs": ["--line-length=88"],
+  "python.formatting.blackArgs": [
+    "--line-length=88"
+  ],
   "python.formatting.blackdPath": "blackd",
   "python.formatting.autopep8Path": "autopep8",
   "python.formatting.autopep8Args": [],
-
+  // Linting
+  "python": {
+    "linting.enabled": true
+  },
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": false,
   "python.linting.ruffEnabled": true,
@@ -43,16 +54,15 @@
   "python.linting.pydocstyleEnabled": false,
   "python.linting.pylamaEnabled": false,
   "python.linting.pylintEnabled": false,
-
+  // Isort
   "python.sortImports.path": "",
   "python.sortImports.args": [],
   "pyright.disableDiagnostics": false,
   "pyright.completion.snippetSupport": true,
   "pyright.organizeimports.provider": "isort",
-
+  // Autocompletion
   "suggest.preferCompleteThanJumpPlaceholder": false,
   "suggest.timeout": 5000,
-  "suggest.echodocSupport": true,
   "suggest.completionItemKindLabels": {
     "keyword": "",
     "variable": "",
@@ -80,13 +90,20 @@
     "typeParameter": "",
     "default": ""
   },
-
+  // Language server settings
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh", "zsh"],
-      "ignoredRootPaths": ["~"]
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh",
+        "zsh"
+      ],
+      "ignoredRootPaths": [
+        "~"
+      ]
     }
   },
   "snippets.ultisnips.pythonPrompt": false
