@@ -40,9 +40,6 @@
   "python.formatting.autopep8Path": "autopep8",
   "python.formatting.autopep8Args": [],
   // Linting
-  "python": {
-    "linting.enabled": true
-  },
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": false,
   "python.linting.ruffEnabled": true,
@@ -106,5 +103,9 @@
       ]
     }
   },
-  "snippets.ultisnips.pythonPrompt": false
+  // coc-htmldjango
+  "htmldjango.enable": true,
+  "htmldjango.formatting.provider": "djhtml",
+  "htmldjango.completion.enable": true,
+  "htmldjango.djhtml.tabWidth": 2,
 }
