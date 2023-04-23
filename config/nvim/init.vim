@@ -319,7 +319,7 @@ function! PutFixupCommandInPasteBoard() abort
     \ ' --porcelain ' . filepath . 
     \ ' | xargs | cut -f 1 -d " "'
     \ )
-  execute 'normal! :Gcommit --fixup ' . sha1_hash
+  execute 'normal! :Git commit --fixup ' . sha1_hash
 endfunction
 
 " Source vimrc config file
