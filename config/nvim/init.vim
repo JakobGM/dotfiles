@@ -707,6 +707,7 @@ let g:tex_flavor = 'latex'
 " Extensions need to be installed at first startup
 let g:coc_global_extensions = [
       \'@yaegassy/coc-ruff',
+      \'@yaegassy/coc-tailwindcss3',
       \'coc-css',
       \'coc-git',
       \'coc-highlight',
