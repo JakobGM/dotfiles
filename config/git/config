@@ -4,6 +4,8 @@
     signingkey = BBB90A8EA49E444FC0767EA18ED3F2AA6368045B
 [includeIf "gitdir:~/crdbrd/"]
     path = gitconfig-crdbrd
+[includeIf "gitdir:~/crdbrd/"]
+    path = gitconfig-crdbrd
 [includeIf "gitdir:~/oda/"]
     path = gitconfig-oda
 [core]
