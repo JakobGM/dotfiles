@@ -111,4 +111,5 @@
   "htmldjango.djhtml.tabWidth": 2,
   // lua
   "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
 }
