@@ -77,26 +77,6 @@ EOF
 "  load matchit.vim                     -  Jump between matching tags with %
 "  backspace=2                          -  Delete over newlines, etc.
 
-""" Formatting
-
-" Display \t as 8 visual spaces (recommended setting)
-set tabstop=8
-
-" Tab is replaced by the spaces specified as above
-set expandtab
-
-" When vim smartwraps overflowing text, the text on the new line is indented properly
-set breakindent
-
-" Don't let the filetype plugin insert newlines automatically
-set textwidth=0 wrapmargin=0
-
-" Do not let vim force line breaks when exceeding textwidth in insert mode
-set formatoptions-=t
-
-" Let status line span across multiple panes (showing info for focused pane)
-set laststatus=3
-
 
 """ Keybindings
 
