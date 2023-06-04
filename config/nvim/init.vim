@@ -719,6 +719,7 @@ let g:coc_global_extensions = [
       \'coc-rust-analyzer',
       \'coc-snippets',
       \'coc-spell-checker',
+      \'coc-sumneko-lua',
       \'coc-vimlsp',
       \]
 

@@ -4,6 +4,7 @@
   "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "htmldjango",
+    "lua",
     "python"
   ],
   // Git sign gutter
@@ -108,4 +109,6 @@
   "htmldjango.formatting.provider": "djhtml",
   "htmldjango.completion.enable": true,
   "htmldjango.djhtml.tabWidth": 2,
+  // lua
+  "sumneko-lua.enableNvimLuaDev": true,
 }
