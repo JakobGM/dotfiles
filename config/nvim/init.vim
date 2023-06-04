@@ -60,6 +60,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}                         " Autoco
 
 call plug#end()
 
+lua << EOF
+  require("config")
+EOF
+
 " Stuff enabled by vim-sensible:
 "  syntax enable                        -  Color highlighting
 "  filetype plugin indent on            -  Filetype detection and correct indentation
@@ -72,62 +76,6 @@ call plug#end()
 "  scrolloff=1                          -  Always show at least one line above/below the cursor
 "  load matchit.vim                     -  Jump between matching tags with %
 "  backspace=2                          -  Delete over newlines, etc.
-
-""" Statusline
-
-" Lightline settings should be placed before setting the colorscheme
-" Settings for vim-devicons for lightline
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left':  [ [ 'mode', 'paste' ],
-      \              [ 'readonly', 'relativepath', 'percent', 'modified' ],
-      \            ],
-      \   'right': [ [ ],
-      \              [ 'filetype' ],
-      \              [ 'tagbar' ] ]
-      \   },
-      \ 'component_function': {
-      \   'filetype': 'MyFiletype',
-      \   'fileformat': 'MyFileformat',
-      \   'gitbranch': 'FugitiveHead',
-      \   'bufferinfo': 'lightline#buffer#bufferinfo',
-      \ },
-      \ 'tab': {
-      \   'active': [ 'filename', 'modified' ],
-      \   'inactive': [ 'filename', 'modified' ],
-      \ },
-      \ 'tabline': {
-      \   'left': [ [ 'tabs' ] ],
-      \   'right': [ [ 'gitbranch' ] ],
-      \ },
-      \ 'component_expand': {
-      \   'buffercurrent': 'lightline#buffer#buffercurrent',
-      \   'bufferbefore': 'lightline#buffer#bufferbefore',
-      \   'bufferafter': 'lightline#buffer#bufferafter',
-      \ },
-      \ 'component_type': {
-      \   'buffercurrent': 'tabsel',
-      \   'bufferbefore': 'raw',
-      \   'bufferafter': 'raw',
-      \ },
-      \ 'component': {
-      \   'separator': '',
-      \   'tagbar': '%{tagbar#currenttag("%s", "", "f")}',
-      \ },
-      \ }
-
-function! MyFiletype() abort
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
-
-function! MyFileformat() abort
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
-
-" Use auocmd to force lightline update when coc.nvim status changes.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-
 
 """ Colors
 
