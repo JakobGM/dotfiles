@@ -1,3 +1,6 @@
+-- Save space by only having one line for cmdline
+vim.opt.cmdheight = 1
+
 -- Start scrolling when 7 lines from bottom of screen
 vim.opt.scrolloff = 7
 

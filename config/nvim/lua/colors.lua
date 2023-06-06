@@ -49,10 +49,6 @@ vim.api.nvim_create_autocmd("ColorScheme *", {
   group = myColorsGrp,
 })
 
--- Colorscheme and settings
-vim.cmd.colorscheme("gruvbox")
-vim.opt.background = "dark"
-
 -- Use 256 colors in gui_running mode
 if not vim.api.nvim_eval("has('gui_running')") then
   vim.opt.t_Co = 256

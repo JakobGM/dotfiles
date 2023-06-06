@@ -1,7 +1,3 @@
--- Set the global and local leader keys
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
 -- iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards
 vim.keymap.set('i', '<M-e>', 'æ')
 vim.keymap.set('i', '<M-o>', 'ø')
