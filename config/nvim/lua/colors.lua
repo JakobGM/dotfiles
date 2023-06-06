@@ -8,19 +8,17 @@ function MyHighlights()
 
   -- Do not use separate background color in sign column
   vim.cmd.highlight { "SignColumn", "guibg=bg" }
-  vim.cmd.highlight { "SignColumn", "ctermbg=bg" }
 
   -- Make background of error signs the same as a regular sign column
   vim.cmd.highlight { "CocErrorSign", "guifg=red" }
   vim.cmd.highlight { "CocErrorSign", "guibg=bg" }
-  vim.cmd.highlight { "CocErrorSign", "ctermbg=bg" }
 
   -- Use underlined, bold, green for current tag
   vim.cmd.highlight { "TagbarHighlight", "guifg=#b8bb26" }
   vim.cmd.highlight { "TagbarHighlight", "gui=bold,underline" }
 
   -- Highlight search results in bold green
-  vim.cmd.highlight { "Search", "guibg=guibg", "guifg=#b8bb26", "gui=bold,underline", "cterm=bold,underline" }
+  vim.cmd.highlight { "Search", "guibg=dark0", "guifg=#b8bb26", "gui=bold,underline", "cterm=bold,underline" }
 
   -- Try to use more subdued colors in vimdiff mode
   vim.cmd.highlight { "DiffAdd", "cterm=bold", "ctermfg=142", "ctermbg=235", "gui=NONE", "guifg=#b8bb26", "guibg=#3c3c25" }

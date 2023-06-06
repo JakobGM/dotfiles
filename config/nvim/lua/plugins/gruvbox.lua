@@ -1,10 +1,14 @@
 -- Gruvbox colorscheme
 return {
-    "gruvbox-community/gruvbox",
+    "ellisonleao/gruvbox.nvim",
     laz = false,
     priority = 1000,
     config = function()
         require("colors")
+        require("gruvbox").setup({
+            contrast = "",
+            dim_inactive = true,
+        })
         vim.cmd("colorscheme gruvbox")
         vim.opt.background = "dark"
     end,
