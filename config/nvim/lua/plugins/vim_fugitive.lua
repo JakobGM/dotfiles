@@ -3,7 +3,8 @@ return {
     "tpope/vim-fugitive",
     cmd = {
         "Git",
-        "GBrowse"
+        "GBrowse",
+        "Gw",
     },
     dependencies = {
         -- Open GitHub source with :GBrowse and autocompletion for GitHub issues

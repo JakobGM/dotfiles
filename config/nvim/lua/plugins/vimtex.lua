@@ -1,6 +1,7 @@
 -- LaTeX completion
 return {
     "lervag/vimtex",
+    ft = { "tex", "latex", "bib" },
     config = function()
         -- Enable vimtex for all .tex files
         vim.g.tex_flavor = "latex"
