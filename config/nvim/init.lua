@@ -5,7 +5,12 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 require("lazy_bootstrap")
-require("lazy").setup("plugins")
+local lazy = require("lazy")
+if vim.g.vscode then
+  lazy.setup("vscode")
+else
+  lazy.setup("plugins")
+end
 require("formatting")
 require("keymaps")
 require("visual")

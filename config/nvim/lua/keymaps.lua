@@ -88,7 +88,7 @@ vim.keymap.set('n', '<leader>v', ':vsplit<CR>')
 
 -- Edit filetype config
 function EditFiltetypeConfig()
-  local filepath = os.getenv('XDG_CONFIG_HOME') .. '/nvim/ftplugin/' .. vim.bo.filetype .. '.vim'
+  local filepath = os.getenv('XDG_CONFIG_HOME') .. '/nvim/ftplugin/' .. vim.bo.filetype .. '.lua'
   vim.api.nvim_command('vsp ' .. filepath)
 end
 

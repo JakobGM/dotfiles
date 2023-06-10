@@ -1,0 +1,239 @@
+// Place your key bindings in this file to override the defaults
+// https://code.visualstudio.com/api/references/when-clause-contexts
+[
+    // Write to file
+    {
+        "key": "space w",
+        "command": "workbench.action.files.save",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Show workspace symbols
+    {
+        "key": "space t",
+        "command": "workbench.action.showAllSymbols",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Show command palette
+    {
+        "key": "space h",
+        "command": "workbench.action.showCommands",
+        "when": "!listFocus && !terminalFocus && !inQuickOpen && !sideBarFocus && neovim.mode == normal",
+    },
+    // Show file explorer
+    {
+        "key": "space space",
+        "command": "workbench.action.quickOpen",
+        "when": "!listFocus && !terminalFocus && !inQuickOpen && !sideBarFocus && neovim.mode == normal",
+    },
+    // Project wide fuzzy search
+    {
+        "key": "space /",
+        "command": "workbench.action.findInFiles",
+        "when": "!listFocus && !terminalFocus && !inQuickOpen && !sideBarFocus && neovim.mode == normal",
+    },
+    // Open recent workspace
+    {
+        "key": "space o",
+        "command": "workbench.action.openRecent",
+        "when": "!listFocus && !terminalFocus && !inQuickOpen && !sideBarFocus && neovim.mode == normal",
+    },
+
+    {
+        "key": "space d",
+        "command": "editor.action.goToDeclaration",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Undo git chunk
+    {
+        "key": "space g u",
+        "command": "git.revertSelectedRanges",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Stage the chunk currently beneath the cursor
+    {
+        "key": "space g a",
+        "cmd": "git.stageSelectedRanges",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+
+    // Navigate to next git chunk
+    {
+        "key": "space g n",
+        "command": "workbench.action.editor.nextChange",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Navigate to previous git chunk
+    {
+        "key": "space g shift+N",
+        "command": "workbench.action.editor.previousChange",
+        "args": "<Space>gN",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Stage file
+    {
+        "key": "space g s",
+        "command": "git.stage",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    // Git blame
+    {
+        "key": "space g b",
+        "command": "gitlens.toggleFileBlame",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Comment line
+    {
+        "key": "g c c",
+        "command": "vscode-neovim.send",
+        "args": "gcc",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+    // Comment selection
+    {
+        "key": "g c",
+        "command": "vscode-neovim.send",
+        "args": "gc",
+        "when": "editorTextFocus && neovim.mode == visual",
+    },
+
+    // Navigate to top
+    {
+        "key": "g g",
+        "command": "vscode-neovim.send",
+        "args": "gg",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Format selection
+    {
+        "key": "space f",
+        "command": "editor.action.formatSelection",
+        "when": "editorTextFocus && neovim.mode == visual",
+    },
+    // Fix ruff errors
+    {
+        "key": "space f",
+        "command": "editor.action.fixAll",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Rename symbol
+    {
+        "key": "space r",
+        "command": "editor.action.rename",
+        "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly && neovim.mode == normal",
+    },
+
+    // Argwrap
+    {
+        "key": "space a",
+        "command": "vscode-neovim.send",
+        "args": "<Space>a",
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Split editor vertically and horizontally
+    {
+        "key": "space v",
+        "command": "workbench.action.splitEditor",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "key": "space s",
+        "command": "workbench.action.splitEditorDown",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+
+    // Trigger new suggestions with ctrl+n
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.triggerSuggest",
+        "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible && neovim.mode == insert",
+    },
+    // Accept suggestions with ctrl+y
+    {
+        "key": "ctrl+y",
+        "command": "acceptSelectedSuggestion",
+        "when": "editorTextFocus && suggestWidgetVisible",
+    },
+
+    // Make quick action open on left side with ctrl+v
+    {
+        "key": "ctrl+v",
+        "command": "workbench.action.alternativeAcceptSelectedQuickOpenItem",
+        "when": "inQuickOpen",
+    },
+    // Regular paste
+    {
+        "key": "ctrl+shift+v",
+        "command": "editor.action.clipboardPasteAction",
+        "when": "inQuickOpen",
+    },
+
+    // Toggle terminal
+    {
+        "key": "ctrl+t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active",
+    },
+
+    // Save and close editor group
+    {
+        "key": "ZZ",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.files.save",
+                "workbench.action.closeActiveEditor",
+            ]
+        },
+        "when": "editorTextFocus && neovim.mode == normal",
+    },
+
+    // Navigate left/right/up/down
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroupWithoutWrap",
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroupWithoutWrap",
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroupWithoutWrap",
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroupWithoutWrap",
+    },
+
+    // Navigate to next/previous tab
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditor",
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditor"
+    },
+    // Close tab
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor",
+    },
+
+    // Vim-like scrolling
+    {
+        "command": "germanScroll.bertholdUp",
+        "key": "ctrl+u",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+    {
+        "command": "germanScroll.bertholdDown",
+        "key": "ctrl+d",
+        "when": "editorTextFocus && neovim.mode != insert",
+    },
+]
