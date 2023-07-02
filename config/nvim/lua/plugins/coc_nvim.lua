@@ -196,6 +196,6 @@ return {
     -- coc-snippets
     { "<TAB>",      vim.F.CocAutocomplete,                        mode = "i" },
     -- Edit UltiSnips snippets for the current file
-    { "leader>us",  ":CocCommand snippets.editSnippets<CR>" },
+    { "<leader>us", ":CocCommand snippets.editSnippets<CR>" },
   },
 }
