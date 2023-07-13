@@ -124,7 +124,11 @@ return {
   end,
   keys = {
     -- Escape completion with ctrl+c
-    { "<C-c>",      "<ESC>",                                      mode = "i" },
+    {
+      "<C-c>",
+      "<ESC>",
+      mode = "i"
+    },
 
     -- Navigate diagnostics
     { "<leader>en", "<Plug>(coc-diagnostic-prev)" },
@@ -147,7 +151,11 @@ return {
     { "<leader>f",  "<Plug>(coc-format-selected)" },
 
     -- Remap for do codeAction of selected region
-    { "<leader>a",  "<Plug>(coc-codeaction-selected)",            mode = "v" },
+    {
+      "<leader>a",
+      "<Plug>(coc-codeaction-selected)",
+      mode = "v"
+    },
 
     -- Remap for do codeAction of current line
     { "<leader>ac", "<Plug>(coc-codeaction)" },
@@ -156,8 +164,16 @@ return {
     { "<leader>Q",  "<Plug>(coc-fix-current)" },
 
     -- Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-pyright
-    { "<TAB>",      "<Plug>(coc-range-select)",                   mode = { "n", "x" } },
-    { "<S-TAB>",    "<Plug>(coc-range-select-backword)",          mode = "x" },
+    {
+      "<TAB>",
+      "<Plug>(coc-range-select)",
+      mode = { "n", "x" }
+    },
+    {
+      "<S-TAB>",
+      "<Plug>(coc-range-select-backword)",
+      mode = "x"
+    },
 
     -- Use `:Format` to format current buffer
     { "<leader>F",  ":Format<CR>" },
@@ -194,8 +210,15 @@ return {
     { "<leader>cl", ":CocListResume<CR>" },
 
     -- coc-snippets
-    { "<TAB>",      vim.F.CocAutocomplete,                        mode = "i" },
+    {
+      "<TAB>",
+      vim.F.CocAutocomplete,
+      mode = "i"
+    },
     -- Edit UltiSnips snippets for the current file
     { "<leader>us", ":CocCommand snippets.editSnippets<CR>" },
+
+    -- coc-spell-checker
+    { "gs",         ":CocCommand cSpell.addWordToUserDictionary<CR>" },
   },
 }
