@@ -102,8 +102,9 @@
   },
   // lua
   "[lua]": {
-    "sumneko-lua.enableNvimLuaDev": true,
-    "Lua.codeLens.enable": true,
     "coc.preferences.formatOnSave": true
-  }
+  },
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
+  "cSpell.userWords": ["credential", "report"]
 }
