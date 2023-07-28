@@ -228,6 +228,19 @@
     "command": "germanScroll.bertholdDown",
     "key": "ctrl+d",
     "when": "editorTextFocus && neovim.mode != insert"
+  },
+
+  // GitHub Copilot suggestions should be acceptable with ctrl+space
+  // https://github.com/orgs/community/discussions/45434
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.inlineSuggest.commit",
+    "when": "inlineSuggestionVisible"
+  },
+  {
+    "key": "tab",
+    "command": "-editor.action.inlineSuggest.commit",
+    "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorTabMovesFocus"
   }
 ]
 
