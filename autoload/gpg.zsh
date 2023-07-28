@@ -3,8 +3,8 @@
 export $(dbus-launch)
 
 # See https://wiki.archlinux.org/title/GNOME/Keyring#xinitrc
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
-export SSH_AUTH_SOCK
+# export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+# export SSH_AUTH_SOCK
 
 # See https://github.com/NixOS/nixpkgs/issues/14966#issuecomment-520083836
 mkdir -p "$HOME/.local/share/keyrings"
