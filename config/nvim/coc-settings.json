@@ -1,7 +1,8 @@
 {
   // General settings
   "coc.preferences.jumpCommand": "drop",
-  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSave": false,
+
   // Disable icons for info/warnings/errors,
   // but still enable signs such that signcolumn numbers are rendered with
   // different colors.
@@ -13,10 +14,12 @@
   // Remove '>>' sign rendered by coc-pyright
   "diagnostic.hintSign": "",
   "diagnostic.checkCurrentLine": true,
+
   // UltiSnips
   "snippets.userSnippetsDirectory": "~/.dotfiles/config/nvim/UltiSnips",
   "snippets.ultisnips.directories": ["UltiSnips"],
   "snippets.ultisnips.pythonPrompt": false,
+
   // Python settings
   "[python]": {
     "coc.preferences.formatOnSave": true,
@@ -35,6 +38,7 @@
   "python.formatting.blackdPath": "blackd",
   "python.formatting.autopep8Path": "autopep8",
   "python.formatting.autopep8Args": [],
+
   // Linting
   "python.linting.enabled": true,
   "python.linting.flake8Enabled": false,
@@ -47,12 +51,14 @@
   "python.linting.pydocstyleEnabled": false,
   "python.linting.pylamaEnabled": false,
   "python.linting.pylintEnabled": false,
+
   // Isort
   "python.sortImports.path": "",
   "python.sortImports.args": [],
   "pyright.disableDiagnostics": false,
   "pyright.completion.snippetSupport": true,
   "pyright.organizeimports.provider": "isort",
+
   // Autocompletion
   "suggest.preferCompleteThanJumpPlaceholder": false,
   "suggest.timeout": 5000,
@@ -83,6 +89,7 @@
     "typeParameter": "",
     "default": ""
   },
+
   // Language server settings
   "languageserver": {
     "bash": {
@@ -92,6 +99,7 @@
       "ignoredRootPaths": ["~"]
     }
   },
+
   // coc-htmldjango
   "htmldjango.enable": true,
   "htmldjango.formatting.provider": "djhtml",
@@ -100,10 +108,17 @@
   "[htmldjango]": {
     "coc.preferences.formatOnSave": true
   },
+
   // lua
   "[lua]": {
     "coc.preferences.formatOnSave": true
   },
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.codeLens.enable": true,
+
+  // json
+  "[json]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "json.format.keepLines": true
 }

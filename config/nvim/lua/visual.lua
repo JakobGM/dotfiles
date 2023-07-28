@@ -1,3 +1,8 @@
+-- Early exit if in VS Code
+if vim.g.vscode then
+  return {}
+end
+
 -- Save space by only having one line for cmdline
 vim.opt.cmdheight = 1
 

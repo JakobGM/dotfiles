@@ -1,70 +1,92 @@
 {
-    // Visuals
-    "editor.fontFamily": "FuraCode Nerd Font",
-    "editor.fontLigatures": true,
-    "editor.language.colorizedBracketPairs": [ ["(", ")"], ["[", "]"], ["{", "}"], ["<", ">"] ],
-    "editor.minimap.enabled": false,
+  // Visuals
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.language.colorizedBracketPairs": [
+    ["(", ")"],
+    ["[", "]"],
+    ["{", "}"],
+    ["<", ">"]
+  ],
+  "editor.minimap.enabled": false,
 
-    // Behavior
-    "editor.cursorSurroundingLines": 7,
-    "editor.smoothScrolling": true,
-    "files.trimTrailingWhitespace": true,
-    "files.trimFinalNewlines": false,
-    "files.insertFinalNewline": false,
-    "editor.renderFinalNewline": "off",
+  // Tabs
+  "workbench.editor.limit.value": 1,
+  "workbench.editor.limit.perEditorGroup": true,
+  "workbench.editor.showTabs": false,
 
-    // Autocomplete
-    "editor.quickSuggestions": {
-        "other": true,
-        "comments": false,
-        "strings": true
+  // Behavior
+  "editor.cursorSurroundingLines": 7,
+  "editor.smoothScrolling": true,
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": false,
+  "files.insertFinalNewline": false,
+  "editor.renderFinalNewline": "off",
+
+  // Autocomplete
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // Set htmldjango as filetype for j2 files
+  "files.associations": {
+    "*.j2": "jinja-html",
+    "*.css": "tailwindcss"
+  },
+
+  // jdinhlife.gruvbox
+  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "editor.renderLineHighlight": "none",
+
+  // asvetliakov.vscode-neovim
+  "keyboard.dispatch": "keyCode",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "editor.inlineSuggest.enabled": true,
+
+  // ms-python.vscode-pylance
+  "python.analysis.autoImportCompletions": true,
+  "python.autoComplete.extraPaths": ["${workspaceFolder}/src"],
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "python.analysis.indexing": true,
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "",
+      "depth": 20,
+      "includeAllSymbols": true
+    }
+  ],
+  "python.formatting.provider": "black",
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
     },
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
 
-    // Set htmldjango as filetype for j2 files
-    "files.associations": {
-        "*.j2": "jinja-html",
-        "*.css": "tailwindcss",
-    },
+  // eamodio.gitlens
+  "gitlens.currentLine.enabled": false,
+  "gitlens.codeLens.enabled": false,
 
-    // jdinhlife.gruvbox
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+  // bradlc.vscode-tailwindcss
+  "tailwindCSS.includeLanguages": {
+    "jinja-html": "html"
+  },
+  "tailwindCSS.validate": true,
 
-    // asvetliakov.vscode-neovim
-    "keyboard.dispatch": "keyCode",
-    "vscode-neovim.neovimExecutablePaths.linux": "nvim",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-    "editor.inlineSuggest.enabled": true,
+  // sumneko.lua
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
 
-    // ms-python.vscode-pylance
-    "python.analysis.autoImportCompletions": true,
-    "python.autoComplete.extraPaths": ["${workspaceFolder}/src"],
-    "python.analysis.extraPaths": ["${workspaceFolder}/src"],
-    "python.analysis.indexing": true,
-    "python.analysis.packageIndexDepths": [
-        { "name": "", "depth": 20, "includeAllSymbols": true }
-    ],
-    "python.formatting.provider": "black",
-    "[python]": {
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        },
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-
-    // eamodio.gitlens
-    "gitlens.currentLine.enabled": false,
-    "gitlens.codeLens.enabled": false,
-
-    // bradlc.vscode-tailwindcss
-    "tailwindCSS.includeLanguages": {
-        "jinja-html": "html"
-    },
-    "tailwindCSS.validate": true,
-
-    // sumneko.lua
-    "sumneko-lua.enableNvimLuaDev": true,
-    "Lua.codeLens.enable": true,
+  // samuelcolvin.jinjahtml
+  "jinja-html.format.enable": false,
+  "[jinja-html]": {
+    "editor.defaultFormatter": "samuelcolvin.jinjahtml"
+  },
+  "window.zoomLevel": 1
 }
