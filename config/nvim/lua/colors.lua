@@ -28,16 +28,6 @@ function MyHighlights()
     "guibg=#483D28" }
   vim.cmd.highlight { "DiffDelete", "cterm=bold", "ctermfg=167", "ctermbg=235", "gui=NONE", "guifg=#fb4934",
     "guibg=#372827" }
-
-  -- Use Gruvbox colors for python semshi semantic highlighter
-  vim.cmd.highlight { "semshiGlobal", "ctermfg=167", "guifg=#fb4934" }
-  vim.cmd.highlight { "semshiImported", "ctermfg=214", "guifg=#fabd2f", "cterm=bold", "gui=bold" }
-  vim.cmd.highlight { "semshiParameter", "ctermfg=142", "guifg=#98971a" }
-  vim.cmd.highlight { "semshiParameterUnused", "ctermfg=106", "guifg=#665c54" }
-  vim.cmd.highlight { "semshiBuiltin", "ctermfg=208", "guifg=#fe8019" }
-  vim.cmd.highlight { "semshiAttribute", "ctermfg=108", "guifg=fg" }
-  vim.cmd.highlight { "semshiSelf", "ctermfg=109", "guifg=#85a598" }
-  vim.cmd.highlight { "semshiSelected", "ctermfg=231", "guifg=#ffffff", "ctermbg=161", "guibg=#d7005f" }
 end
 
 -- MyColors group
