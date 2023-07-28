@@ -2,11 +2,6 @@
   // General settings
   "coc.preferences.jumpCommand": "drop",
   "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "htmldjango",
-    "lua",
-    "python"
-  ],
   // Git sign gutter
   "git.changedSign.text": "",
   "git.addedSign.text": "",
@@ -20,11 +15,13 @@
   "diagnostic.checkCurrentLine": true,
   // UltiSnips
   "snippets.userSnippetsDirectory": "~/.dotfiles/config/nvim/UltiSnips",
-  "snippets.ultisnips.directories": [
-    "UltiSnips"
-  ],
+  "snippets.ultisnips.directories": ["UltiSnips"],
   "snippets.ultisnips.pythonPrompt": false,
   // Python settings
+  "[python]": {
+    "coc.preferences.formatOnSave": true,
+    "coc.preferences.formatOnSaveTimeout": 5000
+  },
   "pyright.enable": true,
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoSearchPaths": true,
@@ -34,9 +31,7 @@
   "python.venvPath": "~/.virtualenvs",
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "black",
-  "python.formatting.blackArgs": [
-    "--line-length=88"
-  ],
+  "python.formatting.blackArgs": ["--line-length=88"],
   "python.formatting.blackdPath": "blackd",
   "python.formatting.autopep8Path": "autopep8",
   "python.formatting.autopep8Args": [],
@@ -92,16 +87,9 @@
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh",
-        "zsh"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
+      "args": ["start"],
+      "filetypes": ["sh", "zsh"],
+      "ignoredRootPaths": ["~"]
     }
   },
   // coc-htmldjango
@@ -109,7 +97,13 @@
   "htmldjango.formatting.provider": "djhtml",
   "htmldjango.completion.enable": true,
   "htmldjango.djhtml.tabWidth": 2,
+  "[htmldjango]": {
+    "coc.preferences.formatOnSave": true
+  },
   // lua
-  "sumneko-lua.enableNvimLuaDev": true,
-  "Lua.codeLens.enable": true,
+  "[lua]": {
+    "sumneko-lua.enableNvimLuaDev": true,
+    "Lua.codeLens.enable": true,
+    "coc.preferences.formatOnSave": true
+  }
 }
