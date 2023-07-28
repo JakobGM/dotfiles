@@ -12,5 +12,5 @@
 --  load matchit.vim                     -  Jump between matching tags with %
 --  backspace=2                          -  Delete over newlines, etc.
 return {
-    "tpope/vim-sensible",
+  "tpope/vim-sensible",
 }

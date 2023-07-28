@@ -1,5 +1,5 @@
 return {
-    "jreybert/vimagit",
-    keys = "<leader>g",
-    cmd = "Magit",
+  "jreybert/vimagit",
+  keys = "<leader>g",
+  cmd = "Magit",
 }

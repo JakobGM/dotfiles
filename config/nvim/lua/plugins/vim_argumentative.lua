@@ -1,4 +1,4 @@
 -- Shifting arguments with <, and >,
 return {
-    "peterrincker/vim-argumentative",
+  "peterrincker/vim-argumentative",
 }

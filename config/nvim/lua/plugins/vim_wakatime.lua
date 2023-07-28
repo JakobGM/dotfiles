@@ -1,4 +1,4 @@
 -- Automatic timetracking of programming [wakatime.com]
 return {
-    "wakatime/vim-wakatime",
+  "wakatime/vim-wakatime",
 }
