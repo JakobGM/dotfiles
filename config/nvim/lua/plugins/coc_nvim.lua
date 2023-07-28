@@ -120,6 +120,18 @@ return {
       }
     )
     vim.g.coc_snippet_next = "<tab>"
+
+    -- coc-json
+    -- Treat all JSON files as JSONC such that comments are allowed
+    vim.api.nvim_create_autocmd(
+      { "BufRead", "BufNewFile" },
+      {
+        pattern = { "*.json" },
+        callback = function(ev)
+          vim.opt_local.filetype = "jsonc"
+        end
+      }
+    )
   end,
   keys = {
     -- Escape completion with ctrl+c
