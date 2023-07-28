@@ -107,7 +107,7 @@ return {
       elseif vim.fn["coc#expandableOrJumpable"]() then
         return vim.fn["coc#rpc#request"]("doKeymap", { "snippets-expand-jump", "" })
       elseif check_back_space() then
-        return api.nvim_replace_termcodes("<Tab>", true, true, true)
+        return vim.api.nvim_replace_termcodes("<Tab>", true, true, true)
       else
         return vim.fn["coc#refresh"]()
       end
