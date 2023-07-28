@@ -13,11 +13,12 @@ function MyHighlights()
   vim.cmd.highlight { "CocErrorSign", "guifg=red" }
   vim.cmd.highlight { "CocErrorSign", "guibg=bg" }
 
-  -- When coc.nvim renders errors/warnings/info,
+  -- When coc.nvim renders errors/warnings/info/hints,
   -- do not change the background color in the signcolumn
   vim.cmd.highlight { "CocErrorHighlight", "guibg=bg", "guifg=#cc241d" }
   vim.cmd.highlight { "CocWarningSign", "guibg=bg", "guifg=#d79921" }
   vim.cmd.highlight { "CocInfoSign", "guibg=bg", "guifg=#458588" }
+  vim.cmd.highlight { "CocHintSign", "guibg=bg", "guifg=#689d6a" }
 
   -- Use underlined, bold, green for current tag
   vim.cmd.highlight { "TagbarHighlight", "guifg=#b8bb26" }

@@ -2,16 +2,16 @@
   // General settings
   "coc.preferences.jumpCommand": "drop",
   "coc.preferences.formatOnSave": true,
-  // Git sign gutter
-  "git.changedSign.text": "",
-  "git.addedSign.text": "",
-  "git.removedSign.text": "",
-  "git.topRemovedSign.text": "",
-  "git.changeRemovedSign.text": "",
-  // Diagnostic icons in sign column
-  "diagnostic.infoSign": "",
-  "diagnostic.warningSign": "",
-  "diagnostic.errorSign": "",
+  // Disable icons for info/warnings/errors,
+  // but still enable signs such that signcolumn numbers are rendered with
+  // different colors.
+  // See: CocErrorHighlight, CocWarningSign, CocInfoSign
+  "diagnostic.enableSign": true,
+  "diagnostic.infoSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.errorSign": "",
+  // Remove '>>' sign rendered by coc-pyright
+  "diagnostic.hintSign": "",
   "diagnostic.checkCurrentLine": true,
   // UltiSnips
   "snippets.userSnippetsDirectory": "~/.dotfiles/config/nvim/UltiSnips",
