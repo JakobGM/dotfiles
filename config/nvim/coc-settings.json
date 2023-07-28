@@ -106,5 +106,4 @@
   },
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua.codeLens.enable": true,
-  "cSpell.userWords": ["credential", "report"]
 }

@@ -17,7 +17,6 @@ return {
       "coc-r-lsp",
       "coc-rust-analyzer",
       "coc-snippets",
-      "coc-spell-checker",
       "coc-sumneko-lua",
       "coc-vimlsp",
     }
@@ -217,8 +216,5 @@ return {
     },
     -- Edit UltiSnips snippets for the current file
     { "<leader>us", ":CocCommand snippets.editSnippets<CR>" },
-
-    -- coc-spell-checker
-    { "gs",         ":CocCommand cSpell.addWordToUserDictionary<CR>" },
   },
 }
