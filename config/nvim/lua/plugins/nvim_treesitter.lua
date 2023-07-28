@@ -24,6 +24,11 @@ return {
         additional_vim_regex_highlighting = false,
       },
 
+      -- Use treesitter to determine indentation level when pressing <CR>
+      indent = {
+        enable = true,
+      },
+
       playground = {
         enable = true,
         disable = {},
