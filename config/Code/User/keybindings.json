@@ -181,17 +181,10 @@
 
   // Save and close editor group
   {
-    "key": "ZZ",
-    "command": "runCommands",
-    "args": {
-      "commands": [
-        "workbench.action.files.save",
-        "workbench.action.closeActiveEditor"
-      ]
-    },
-    "when": "editorTextFocus && neovim.mode == normal"
+    "key": "Shift+z Shift+z",
+    "command": "workbench.action.closeEditorsAndGroup",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
   },
-
   // Navigate left/right/up/down
   {
     "key": "ctrl+l",
