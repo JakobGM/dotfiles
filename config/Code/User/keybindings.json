@@ -241,6 +241,16 @@
     "key": "tab",
     "command": "-editor.action.inlineSuggest.commit",
     "when": "inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorTabMovesFocus"
+  },
+
+  // Zoom editor in our out
+  {
+    "key": "ctrl+shift++",
+    "command": "workbench.action.zoomIn"
+  },
+  {
+    "key": "ctrl+shift+-",
+    "command": "workbench.action.zoomOut"
   }
 ]
 
