@@ -1,7 +1,7 @@
 -- Gruvbox colorscheme
 return {
   "ellisonleao/gruvbox.nvim",
-  laz = false,
+  lazy = false,
   priority = 1000,
   config = function()
     require("colors")
