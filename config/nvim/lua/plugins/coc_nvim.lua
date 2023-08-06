@@ -132,6 +132,18 @@ return {
         end
       }
     )
+
+    -- coc-ruff
+    -- Automatically format Python files on save
+    vim.api.nvim_create_autocmd(
+      { "BufWrite" },
+      {
+        pattern = "*.py",
+        callback = function()
+          vim.fn.CocAction("runCommand", "ruff.executeOrganizeImports")
+        end,
+      }
+    )
   end,
   keys = {
     -- Escape completion with ctrl+c

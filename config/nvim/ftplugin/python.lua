@@ -16,18 +16,6 @@ vim.api.nvim_set_keymap(
   { noremap = true, silent = true }
 )
 
--- " Automatically sort imports on save
--- autocmd BufWrite *.py :silent call CocAction('runCommand', 'ruff.executeOrganizeImports')
-vim.api.nvim_create_autocmd(
-  { "BufWrite" },
-  {
-    pattern = "*.py",
-    callback = function()
-      vim.fn.CocAction("runCommand", "ruff.executeOrganizeImports")
-    end,
-  }
-)
-
 -- " Bind <Leader>f to run "ruff --fix"
 vim.api.nvim_set_keymap(
   "n",
