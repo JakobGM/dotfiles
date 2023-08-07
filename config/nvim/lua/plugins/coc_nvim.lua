@@ -1,6 +1,7 @@
 -- Autocompletion framework
 return {
   "neoclide/coc.nvim",
+  enabled = false,
   lazy = false,
   branch = "release",
   config = function()
