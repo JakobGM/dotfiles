@@ -121,7 +121,44 @@ return {
       config = function()
         vim.g.vsnip_filetypes.python = { "django" }
       end
-    }
+    },
+    {
+      "mhartington/formatter.nvim",
+      config = function()
+        local util = require("formatter.util")
+
+        require("formatter").setup {
+          logging = true,
+          log_level = vim.log.levels.WARN,
+          filetype = {
+            lua = {
+              require("formatter.filetypes.lua").stylua,
+            },
+            python = {
+              function()
+                return {
+                  exe = "black",
+                  args = { "--quiet", "-" },
+                  stdin = true,
+                }
+              end
+            },
+            ["*"] = {
+              require("formatter.filetypes.any").remove_trailing_whitespace
+            }
+          }
+        }
+
+        -- Format on save
+        vim.api.nvim_create_autocmd(
+          "BufWrite",
+          {
+            pattern = "*",
+            command = "Format",
+          }
+        )
+      end
+    },
   },
   config = function()
     -- Setup language servers.
