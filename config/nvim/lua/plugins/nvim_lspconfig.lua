@@ -219,7 +219,12 @@ return {
         return capabilities
       end)(),
     })
-    lspconfig.ruff_lsp.setup({})
+    lspconfig.ruff_lsp.setup({
+      on_attach = function(client, bufnr)
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+      end
+    })
     lspconfig.rust_analyzer.setup({})
     lspconfig.sqlls.setup({})
     lspconfig.tailwindcss.setup({})
