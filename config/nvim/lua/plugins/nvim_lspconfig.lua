@@ -123,40 +123,56 @@ return {
       end
     },
     {
-      "mhartington/formatter.nvim",
+      "elentok/format-on-save.nvim",
       config = function()
-        local util = require("formatter.util")
+        local format_on_save = require("format-on-save")
+        local formatters = require("format-on-save.formatters")
 
-        require("formatter").setup {
-          logging = true,
-          log_level = vim.log.levels.WARN,
-          filetype = {
-            lua = {
-              require("formatter.filetypes.lua").stylua,
-            },
+        format_on_save.setup({
+          auto_commands = true,
+          user_commands = true,
+
+          partial_update = true,
+
+          exclude_path_patterns = {
+            "/node_modules/",
+            ".local/share/nvim/lazy",
+          },
+          formatter_by_ft = {
+            css = formatters.lsp,
+            djhtml = formatters.shell({ cmd = { "ci-djhtml", "%" } }),
+            html = formatters.lsp,
+            java = formatters.lsp,
+            javascript = formatters.lsp,
+            json = formatters.lsp,
+            lua = formatters.lsp,
+            markdown = formatters.prettierd,
+            openscad = formatters.lsp,
             python = {
-              function()
-                return {
-                  exe = "black",
-                  args = { "--quiet", "-" },
-                  stdin = true,
-                }
-              end
+              formatters.remove_trailing_whitespace,
+              formatters.shell({ cmd = {"ruff", "check", "--stdin-filename", "%", "--fix-only", "-"} }),
+              formatters.black,
             },
-            ["*"] = {
-              require("formatter.filetypes.any").remove_trailing_whitespace
-            }
-          }
-        }
+            rust = formatters.lsp,
+            scad = formatters.lsp,
+            scss = formatters.lsp,
+            sh = formatters.shfmt,
+            terraform = formatters.lsp,
+            typescript = formatters.prettierd,
+            typescriptreact = formatters.prettierd,
+            yaml = formatters.lsp,
+          },
 
-        -- Format on save
-        vim.api.nvim_create_autocmd(
-          "BufWrite",
-          {
-            pattern = "*",
-            command = "Format",
-          }
-        )
+          -- Optional: fallback formatter to use when no formatters match the current filetype
+          fallback_formatter = {
+            formatters.remove_trailing_whitespace,
+            formatters.prettierd,
+          },
+
+          -- By default, all shell commands are prefixed with "sh -c" (see PR #3)
+          -- To prevent that set `run_with_sh` to `false`.
+          run_with_sh = false,
+        })
       end
     },
   },
