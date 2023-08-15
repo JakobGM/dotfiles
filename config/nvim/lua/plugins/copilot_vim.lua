@@ -11,7 +11,7 @@ return {
         keymap = {
           jump_prev = "[[",
           jump_next = "]]",
-          accept = "<C-Space>",
+          accept = "<C-l>",
           refresh = "gr",
           open = "<C-s>"
         },
@@ -25,7 +25,7 @@ return {
         auto_trigger = true,
         debounce = 75,
         keymap = {
-          accept = "<C-Space>",
+          accept = "<C-l>",
           accept_word = false,
           accept_line = false,
           next = "<C-h>",
