@@ -67,7 +67,7 @@ fonts:
 
     # These fonts can be installed here: https://nerdfonts.com/
     1:
-        name: FuraCode Nerd Font
+        name: Fura Code
         size: 8
 
     2:
@@ -75,7 +75,7 @@ fonts:
         size: 8
 
     3:
-        name: RobotoMono Nerd Font
+        name: Roboto Mono
         size: 8
 
     terminal:
