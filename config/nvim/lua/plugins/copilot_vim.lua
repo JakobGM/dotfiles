@@ -28,9 +28,9 @@ return {
           accept = "<C-l>",
           accept_word = false,
           accept_line = false,
-          next = "<C-h>",
-          prev = "<C-g>",
-          dismiss = "<C-d>",
+          next = "<C-j>",
+          prev = "<C-k>",
+          dismiss = "<C-h>",
         },
       },
       filetypes = {
@@ -44,7 +44,7 @@ return {
         cvs = false,
         ["."] = false,
       },
-      copilot_node_command = 'node', -- Node.js version must be > 16.x
+      copilot_node_command = 'node',
       server_opts_overrides = {},
     })
   end,
