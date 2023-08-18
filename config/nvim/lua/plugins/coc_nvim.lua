@@ -34,6 +34,9 @@ return {
     -- Do not show in-completion-menu messages, e.g. 'match 1 of 2'
     vim.o.shortmess = vim.o.shortmess .. "c"
 
+    -- Do not write "<PATH> <LINES>L, <BYTES>B written" messages when writing buffers
+    vim.o.shortmess = vim.o.shortmess .. "W"
+
     -- Update sign column every quarter second
     vim.o.updatetime = 300
 
