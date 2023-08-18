@@ -6,10 +6,13 @@ vim.g.maplocalleader = ","
 
 require("lazy_bootstrap")
 local lazy = require("lazy")
+local lazy_config = {
+  change_detection = { enabled = false },
+}
 if vim.g.vscode then
-  lazy.setup("vscode")
+  lazy.setup("vscode", lazy_config)
 else
-  lazy.setup("plugins")
+  lazy.setup("plugins", lazy_config)
 end
 require("formatting")
 require("keymaps")
