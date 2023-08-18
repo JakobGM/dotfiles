@@ -2,6 +2,8 @@ return {
   "lewis6991/gitsigns.nvim",
   lazy = false,
   config = function()
+    -- Always show the signcolumn
+    vim.wo.signcolumn = "yes"
     require("gitsigns").setup({
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
