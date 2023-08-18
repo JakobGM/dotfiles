@@ -67,7 +67,7 @@ fonts:
 
     # These fonts can be installed here: https://nerdfonts.com/
     1:
-        name: Fura Code
+        name: Fira Code
         size: 8
 
     2:
