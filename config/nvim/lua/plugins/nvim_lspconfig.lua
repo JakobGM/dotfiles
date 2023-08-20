@@ -106,7 +106,20 @@ return {
             openscad = formatters.lsp,
             python = {
               formatters.remove_trailing_whitespace,
-              formatters.shell({ cmd = {"ruff", "check", "--stdin-filename", "%", "--fix-only", "-"} }),
+              formatters.shell({
+                cmd = {
+                  "ruff",
+                  "check",
+                  "--stdin-filename",
+                  "%",
+                  -- Do not print errors to STDERR
+                  "--fix-only",
+                  -- Only perform import sorting
+                  "--select",
+                  "I",
+                  "-",
+                },
+              }),
               formatters.black,
             },
             rust = formatters.lsp,
@@ -249,7 +262,12 @@ return {
         vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
         vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<Leader>f', function()
-          vim.lsp.buf.format { async = true }
+          vim.lsp.buf.code_action({
+            apply = true,
+            context = {
+              only = { "source.fixAll" },
+            },
+          })
         end, opts)
       end,
     })
