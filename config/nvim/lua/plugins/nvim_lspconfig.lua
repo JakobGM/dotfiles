@@ -41,6 +41,20 @@ return {
       end,
     },
     {
+      "jay-babu/mason-null-ls.nvim",
+      event = { "BufReadPre", "BufNewFile" },
+      dependencies = {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+      },
+      opts = {
+        ensure_installed = {
+          "prettierd",
+        },
+        automatic_istallation = true,
+      },
+    },
+    {
       -- Better configuration of the lua_ls language server
       "folke/neodev.nvim",
     },
@@ -74,8 +88,14 @@ return {
             djhtml = formatters.shell({ cmd = { "ci-djhtml", "%" } }),
             html = formatters.lsp,
             java = formatters.lsp,
-            javascript = formatters.lsp,
-            json = formatters.lsp,
+            javascript = {
+              formatters.lsp,
+              formatters.prettierd,
+            },
+            json = {
+              formatters.lsp,
+              formatters.prettierd,
+            },
             lua = formatters.lsp,
             markdown = formatters.prettierd,
             openscad = formatters.lsp,
@@ -91,13 +111,15 @@ return {
             terraform = formatters.lsp,
             typescript = formatters.prettierd,
             typescriptreact = formatters.prettierd,
-            yaml = formatters.lsp,
+            yaml = {
+              formatters.lsp,
+              formatters.prettierd,
+            },
           },
 
           -- Optional: fallback formatter to use when no formatters match the current filetype
           fallback_formatter = {
             formatters.remove_trailing_whitespace,
-            formatters.prettierd,
           },
 
           -- By default, all shell commands are prefixed with "sh -c" (see PR #3)
