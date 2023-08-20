@@ -85,8 +85,13 @@ return {
           },
           formatter_by_ft = {
             css = formatters.lsp,
-            djhtml = formatters.shell({ cmd = { "ci-djhtml", "%" } }),
             html = formatters.lsp,
+            htmldjango = {
+              formatters.shell({
+                cmd = { "ci-djhtml", "%", "2>", "/dev/null" },
+                tempfile = "random",
+              }),
+            },
             java = formatters.lsp,
             javascript = {
               formatters.lsp,

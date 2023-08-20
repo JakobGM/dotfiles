@@ -66,5 +66,11 @@ return {
       },
       filetype = "sql.jinja",                   -- if filetype does not match the parser name
     }
+
+    -- Automatically apply the htmldjango filetype for Jinja2 files
+    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+      pattern = { "*.j2" },
+      command = "set filetype=htmldjango",
+    })
   end,
 }
