@@ -39,5 +39,12 @@ use = ["async.zsh", "pure.zsh"]
 github = "ohmyzsh/ohmyzsh"
 use = ["plugins/gpg-agent/gpg-agent.plugin.zsh"]
 
+[plugins.forgit]
+github = "wfxr/forgit"
+
+[plugins.forgit.hooks]
+pre = 'export FORGIT_NO_ALIASES=1'
+post = 'export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"'
+
 [templates]
 defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"
