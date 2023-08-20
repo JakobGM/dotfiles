@@ -47,6 +47,11 @@ export PATH="$HOME/.cargo/bin:$PATH"
     # --hidden: Search hidden files and folders; naming starting with a period (.)
 export FZF_DEFAULT_COMMAND='fd --type file --hidden'
 
+# Use bat to preview content in fzf
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
 # Setting default username such that it doesn´t always state it in the terminal
 export DEFAULT_USER="jakobgm"
 
