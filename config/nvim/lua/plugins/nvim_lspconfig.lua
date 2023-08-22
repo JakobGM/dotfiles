@@ -97,10 +97,7 @@ return {
               formatters.lsp,
               formatters.prettierd,
             },
-            json = {
-              formatters.lsp,
-              formatters.prettierd,
-            },
+            json = formatters.prettierd,
             lua = formatters.lsp,
             markdown = formatters.prettierd,
             openscad = formatters.lsp,
