@@ -1,7 +1,7 @@
 [user]
     name = Jakob Gerhard Martinussen
     email = jakobgm@gmail.com
-    signingkey = BBB90A8EA49E444FC0767EA18ED3F2AA6368045B
+    signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBHZhDMvqt5fOudZ9uj4gyi+CGlLZ6cv2d+RbHl44INWjHZjQcPJm/CbiswDkGS+Zz526MJYmLl5RFLmQMdo8mBFYJGR7NBufDY05Gy1UgXLZpfJH2aD56m35zmZVusTJP/WX8I+/FZ0IZBEEAnwj669OTgARRnnPurvKknjM8oMvuFcZxIlQLPgz/0z7eMlXoqO8BnpUSbtHMaHzw5CmdTCABiyxxFuCyg6d6aG7u9b4WfOidZrw3c8yup4gcalDFMoZ+gWoGONqKNNoDC6bSTdH2OKRLsXVPk6E3p5+1sLc3GqpKWgsG8Quhntd1AuZFnywpGn8xgg0Ju5QZeXYd
 [includeIf "gitdir:~/crdbrd/"]
     path = gitconfig-crdbrd
 [includeIf "gitdir:~/crdbrd/"]
@@ -21,7 +21,7 @@
 [delta]
     # Delta configuration
     # Use n and N to move between diff sections
-    navigate = true    
+    navigate = true
     light = false
     syntax-theme = gruvbox-dark
     line-numbers = true
@@ -58,7 +58,9 @@
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
-    program = gpg
+  format = ssh
+[gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
 # The first line resets the list of helpers so we can check Netlify's first.
 [credential]
   helper = ""
