@@ -19,7 +19,14 @@ bindsym $mod+Return exec $TERMINAL
 # Restart astrality
 bindsym $mod+Shift+a exec "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
-# ----------------------- Scratchpad settings ----------------------- 
+# Set up keychain manager correctly - interacts with autoload/gpg.zsh
+# Can be debugged with `loginctl session-status`
+# NB! Important to uninstall xdg-desktop-portal-* and install xdg-desktop-portal-wlr
+# https://github.com/swaywm/sway/issues/5732#issuecomment-1583336383
+# https://www.reddit.com/r/swaywm/comments/n13tro/problem_with_dbus_auto_activation_in_archsway/
+include /etc/sway/config.d/*
+
+# ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
 exec_always "$DOTREPO/archlinux/scratchpads.zsh"
@@ -41,7 +48,7 @@ bindsym $mod+m [class="Spotify" instance="spotify"] scratchpad show
 bindsym $mod+Shift+m [class="Caprine" instance="caprine"] scratchpad show
 bindsym $mod+w [floating] move to scratchpad
 
-# ------------------------------------------------------------------- 
+# -------------------------------------------------------------------
 
 # Random background image from ~/Wallpapers
 exec_always 'swaybg --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
