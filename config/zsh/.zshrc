@@ -78,6 +78,8 @@ done
 
 # Enable fzf related functionity, such as <C-r>
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/fzf-extras.zsh ] && . /usr/share/fzf/fzf-extras.zsh
 
 
 
