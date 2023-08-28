@@ -35,6 +35,12 @@ function MyHighlights()
     "guibg=#483D28" }
   vim.cmd.highlight { "DiffDelete", "cterm=bold", "ctermfg=167", "ctermbg=235", "gui=NONE", "guifg=#fb4934",
     "guibg=#372827" }
+
+  -- Tab (barbar.nvim)
+  vim.cmd.highlight { "TabLine", "guibg=bg" }
+  vim.cmd.highlight { "TabLineFill", "guibg=bg" }
+  vim.cmd.highlight { "TabLineSel", "guibg=bg" }
+  vim.cmd.highlight { "BufferTabpageFill", "guibg=bg" }
 end
 
 -- MyColors group
