@@ -77,7 +77,9 @@ return {
           auto_commands = true,
           user_commands = true,
 
-          partial_update = true,
+          experiments = {
+            partial_update = "diff",
+          },
 
           exclude_path_patterns = {
             "/node_modules/",
