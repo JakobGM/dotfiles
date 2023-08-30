@@ -17,5 +17,4 @@ end
 require("formatting")
 require("keymaps")
 require("visual")
-require("performance")
 require("behavior")
