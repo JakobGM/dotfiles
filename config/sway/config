@@ -26,6 +26,11 @@ bindsym $mod+Shift+a exec "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astr
 # https://www.reddit.com/r/swaywm/comments/n13tro/problem_with_dbus_auto_activation_in_archsway/
 include /etc/sway/config.d/*
 
+# ----------------------- Autostart programs -----------------------
+
+# Start 1Password in the background since it is responsible for starting the GPG agent and keychain manager
+exec_always 1password --silent
+
 # ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
