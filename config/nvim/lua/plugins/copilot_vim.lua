@@ -47,5 +47,14 @@ return {
       copilot_node_command = 'node',
       server_opts_overrides = {},
     })
+    -- Press ctrl+e to accept just a single word from the suggestion
+    vim.keymap.set(
+      "i",
+      "<C-e>",
+      function()
+        require("copilot.suggestion").accept_word()
+      end,
+      { noremap = true }
+    )
   end,
 }
