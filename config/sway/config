@@ -31,6 +31,14 @@ include /etc/sway/config.d/*
 # Start 1Password in the background since it is responsible for starting the GPG agent and keychain manager
 exec_always 1password --silent
 
+# Automatically lock and turn of screen after 10 minutes of idle time
+exec swayidle -w \
+    timeout 600 'swaylock -f' \
+    timeout 605 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f'
+
+
 # ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
