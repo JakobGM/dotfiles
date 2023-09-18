@@ -124,7 +124,7 @@ bindsym $mod+shift+x exec betterlockscreen -l dim
 
 # Printscreen selection tool
 exec_always flameshot
-bindsym Print exec flameshot gui
+bindsym $mod+shift+p exec flameshot gui
 
 # --- Workspace related keybindings ---
 
