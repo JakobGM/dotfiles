@@ -9,9 +9,6 @@ vim.opt.cmdheight = 1
 -- Start scrolling when 7 lines from bottom of screen
 vim.opt.scrolloff = 7
 
--- Do not need to show -- Insert --, as lightline handles it already
-vim.opt.showmode = false
-
 -- Relative line numbering
 vim.opt.number = true
 vim.opt.relativenumber = true
