@@ -7,7 +7,7 @@ return {
     require("colors")
     require("gruvbox").setup({
       contrast = "",
-      dim_inactive = true,
+      dim_inactive = false,
       -- Prevent wrong background color in sign column
       -- https://github.com/ellisonleao/gruvbox.nvim/issues/230#issuecomment-1493883602
       overrides = {
