@@ -9,9 +9,11 @@ return {
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-vsnip",
     "hrsh7th/vim-vsnip",
+    "onsails/lspkind.nvim",
   },
   config = function()
     local cmp = require('cmp')
+    local lspkind = require('lspkind')
 
     cmp.setup({
       snippet = {
@@ -31,12 +33,19 @@ return {
         -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
       }),
-      sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'vsnip' },
-      }, {
-        { name = 'buffer' },
-      })
+      sources = {
+        { name = 'nvim_lsp', },
+        { name = 'copilot', },
+        { name = 'vsnip', },
+        { name = 'buffer', },
+      },
+      formatting = {
+        format = lspkind.cmp_format({
+          mode = "symbol",
+          max_width = 50,
+          symbol_map = { Copilot = "" }
+        })
+      },
     })
 
     -- Set configuration for specific filetype.
