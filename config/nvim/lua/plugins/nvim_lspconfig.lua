@@ -157,19 +157,38 @@ return {
       end
     end
 
-    -- Setup language servers.
     local lspconfig = require('lspconfig')
-    lspconfig.awk_ls.setup({})
-    lspconfig.bashls.setup({})
-    lspconfig.cssls.setup({})
-    lspconfig.docker_compose_language_service.setup({})
-    lspconfig.dockerls.setup({})
-    lspconfig.efm.setup({})
-    lspconfig.grammarly.setup({})
-    lspconfig.graphql.setup({})
-    lspconfig.html.setup({})
-    lspconfig.jsonls.setup({})
+
+    -- Default on_attach function for all language servers
+    on_attach = function(client, bufnr)
+      -- Make <leader>w format document if available
+      -- https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
+      if client.server_capabilities.documentFormattingProvider then
+        vim.keymap.set(
+          'n',
+          '<Leader>w',
+          function()
+            vim.lsp.buf.format({ async = true })
+            vim.api.nvim_command('silent write')
+          end,
+          { buffer = bufnr, silent = true }
+        )
+      end
+    end
+
+    -- Setup language servers.
+    lspconfig.awk_ls.setup({ on_attach = on_attach })
+    lspconfig.bashls.setup({ on_attach = on_attach })
+    lspconfig.cssls.setup({ on_attach = on_attach })
+    lspconfig.docker_compose_language_service.setup({ on_attach = on_attach })
+    lspconfig.dockerls.setup({ on_attach = on_attach })
+    lspconfig.efm.setup({ on_attach = on_attach })
+    lspconfig.grammarly.setup({ on_attach = on_attach })
+    lspconfig.graphql.setup({ on_attach = on_attach })
+    lspconfig.html.setup({ on_attach = on_attach })
+    lspconfig.jsonls.setup({ on_attach = on_attach })
     lspconfig.lua_ls.setup({
+      on_attach = on_attach,
       settings = {
         Lua = {
           runtime = {
@@ -219,14 +238,15 @@ return {
       on_attach = function(client, bufnr)
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
+        on_attach(client, bufnr)
       end
     })
-    lspconfig.rust_analyzer.setup({})
-    lspconfig.sqlls.setup({})
-    lspconfig.tailwindcss.setup({})
-    lspconfig.tsserver.setup({})
-    lspconfig.vimls.setup({})
-    lspconfig.yamlls.setup({})
+    lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+    lspconfig.sqlls.setup({ on_attach = on_attach })
+    lspconfig.tailwindcss.setup({ on_attach = on_attach })
+    lspconfig.tsserver.setup({ on_attach = on_attach })
+    lspconfig.vimls.setup({ on_attach = on_attach })
+    lspconfig.yamlls.setup({ on_attach = on_attach })
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
