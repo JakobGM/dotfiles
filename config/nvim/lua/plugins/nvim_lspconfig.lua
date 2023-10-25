@@ -119,7 +119,6 @@ return {
                   "-",
                 },
               }),
-              formatters.black,
             },
             rust = formatters.lsp,
             scad = formatters.lsp,
