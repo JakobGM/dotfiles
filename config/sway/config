@@ -273,7 +273,7 @@ input type:touchpad {
 }
 
 # Office monitors
-output DP-1 {
+output DP-2 {
    mode 3840x2160@60.000Hz
    pos 0 0
 }
