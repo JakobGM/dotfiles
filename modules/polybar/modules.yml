@@ -4,15 +4,15 @@ polybar:
 
     on_startup:
         compile:
-            - content: config.template
+            - content: config.ini.template
 
         run:
             - shell: killall -q polybar
             {% for display in host.displays.values() %}
-            - shell: polybar --config={config.template} --reload {{ display.handle }}
+            - shell: polybar --config={config.ini.template} --reload {{ display.handle }}
             {% endfor %}
 
     on_modified:
-        modules/polybar/config.template:
+        modules/polybar/config.ini.template:
             compile:
                 - content: config.template
