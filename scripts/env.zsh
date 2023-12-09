@@ -8,7 +8,6 @@ export PATH=$PATH:/Users/jakobgm/.cargo/bin:/Library/Frameworks/Python.framework
 export PIP_REQUIRE_VIRTUALENV=true  # But there are some global packages that are needed
 
 # Virtual Environment
-export WORKON_HOME="$HOME/.virtualenvs"
 export PROJECT_HOME="$HOME/dev"
 
 # For python [https://coderwall.com/p/-k_93g/mac-os-x-valueerror-unknown-locale-utf-8-in-python]

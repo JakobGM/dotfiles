@@ -17,7 +17,7 @@ floating_modifier $mod
 bindsym $mod+Return exec $TERMINAL
 
 # Restart astrality
-bindsym $mod+Shift+a exec "$WORKON_HOME/astrality/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
+bindsym $mod+Shift+a exec "$PROJECT_HOME/astrality/.venv/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
 # Set up keychain manager correctly - interacts with autoload/gpg.zsh
 # Can be debugged with `loginctl session-status`

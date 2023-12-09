@@ -1,0 +1,4 @@
+fontawesome
+i3-py
+i3ipc
+requests

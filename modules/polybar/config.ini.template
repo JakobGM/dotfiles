@@ -435,7 +435,7 @@ margin-bottom = 5
 [module/now_playing]
 type = custom/script
 
-exec = "$WORKON_HOME/i3/bin/python $DOTREPO/archlinux/now_playing/now_playing.py"
+exec = "$DOTREPO/config/i3/.venv/bin/python $DOTREPO/archlinux/now_playing/now_playing.py"
 
 tail = true
 
