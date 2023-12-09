@@ -35,7 +35,7 @@ host:
             #
             # This is also used by the polybar template to point the
             # wireless-internet polybar module to the correct interface.
-            handle: {{ 'iwconfig 2>/dev/null | grep -o "^\w*"' | shell }}
+            handle: {{ 'iwconfig 2>/dev/null | grep -o "^\w*" | head -n 1' | shell }}
 
         ethernet:
             handle: eno0
