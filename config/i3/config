@@ -122,7 +122,10 @@ bindsym $mod+Tab workspace next_on_output
 bindsym $mod+Shift+Tab workspace prev_on_output
 
 # Open new workspace
-bindsym $mod+n exec --no-startup-id "~/.virtualenvs/i3/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/new_workspace.py"
+bindsym $mod+n exec --no-startup-id "~/.config/i3/i3-new-workspace"
+
+# Move current container to new workspace
+bindsym $mod+shift+n exec --no-startup-id "~/.config/i3/i3-new-workspace -c"
 
 # switch to workspace
 bindsym $mod+1 workspace number 1
