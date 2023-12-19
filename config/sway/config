@@ -82,8 +82,9 @@ bindsym $mod+q kill
 # installed.
 # bindsym $mod+d exec i3-dmenu-desktop
 
-# Start rofi in program launcher mode
-bindsym $mod+r exec kickoff
+# Start the Ulauncher application launcher without borders
+bindsym $mod+r exec ulauncher
+for_window [app_id="ulauncher"] border none
 
 # change focus
 bindsym $mod+h focus left
@@ -128,7 +129,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c move position center
 
 # Lock screen
-bindsym $mod+shift+x exec betterlockscreen -l dim
+bindsym $mod+shift+x exec swaylock
 
 # Printscreen selection tool
 exec_always flameshot
@@ -197,9 +198,6 @@ mode "resize" {
 #############################
 ### settings for i3-gaps: ###
 #############################
-
-# i3-gaps requires disabling titlebars
-for_window [class="^.*"] border pixel 2
 
 # Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
