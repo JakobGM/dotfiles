@@ -96,4 +96,4 @@ if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakob
 # ----------------- RTX -----------------------
 # It is important to hook direnv into the shell _before_ rtx
 eval "$(direnv hook zsh)"
-eval "$(rtx activate -s zsh)"
+eval "$(mise activate -s zsh)"
