@@ -73,8 +73,8 @@ vim.keymap.set('n', 'gsv', ':so $MYVIMRC<CR>')
 vim.keymap.set('n', '<Esc><Esc>', ':noh<CR>')
 
 -- Navigate between diagnostic items in signcolumn
-vim.keymap.set('n', '<Leader>q', '<Plug>(coc-diagnostic-next)')
-vim.keymap.set('n', '<Leader>Q', '<Plug>(coc-diagnostic-prev)')
+vim.keymap.set('n', '<Leader>q', function() vim.diagnostic.goto_next() end)
+vim.keymap.set('n', '<Leader>Q', function() vim.diagnostic.goto_prev() end)
 
 -- Bind g(l|L) to next item in location list
 vim.keymap.set('n', '<Leader>l', ':lne<CR>')
