@@ -21,9 +21,15 @@ return {
     -- [Buffers] Jump to the existing window if possible
     vim.g.fzf_buffers_jump = 1
 
-    require("fzf-lua").setup {
+    require("fzf-lua").setup({
       colorscheme = "gruvbox",
-    }
+      winopts = {
+        fullscreen = true,
+        preview = {
+          default = "bat",
+        },
+      },
+    })
   end,
 
   keys = {
