@@ -29,6 +29,16 @@ return {
           default = "bat",
         },
       },
+      keymap = {
+        fzf = {
+          -- Select all items
+          ["ctrl-a"] = "toggle-all",
+          -- Clear selection
+          ["ctrl-u"] = "clear-query",
+          -- Toggle preview
+          ["ctrl-p"] = "toggle-preview",
+        },
+      },
     })
   end,
 
