@@ -36,6 +36,10 @@
 [diff]
     # Delta configuration
     colorMoved = default
+[diff.lfs]
+    # Show LFS-tracked diffs with bat utility,
+    # instead of just showing a pointer to the file.
+    textconv = bat
 [difftool]
     prompt = false
     trustExitCode = true
