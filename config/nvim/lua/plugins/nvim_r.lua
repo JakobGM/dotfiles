@@ -1,7 +1,7 @@
 -- Adds lots of Rlang-support
 return {
   "jalvesaq/Nvim-R",
-  ft = "r",
+  ft = { "r", "rmd" },
   config = function()
     -- Disable replacing underscore with '->'
     vim.g.R_assign_map = '<M-->'
