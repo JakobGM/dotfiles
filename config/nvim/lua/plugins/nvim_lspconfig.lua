@@ -29,7 +29,7 @@ return {
             "jsonls",
             "lua_ls",
             "pyright",
-            "ruff_lsp",
+            "ruff",
             "rust_analyzer",
             "sqlls",
             "tailwindcss",
@@ -160,7 +160,7 @@ return {
         return capabilities
       end)(),
     })
-    lspconfig.ruff_lsp.setup({
+    lspconfig.ruff.setup({
       on_attach = function(client, bufnr)
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
