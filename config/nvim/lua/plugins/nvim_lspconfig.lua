@@ -138,7 +138,11 @@ return {
     lspconfig.pyright.setup({
       on_attach = on_attach,
       settings = {
-        pyright = { autoImportCompletion = true, },
+        pyright = {
+          autoImportCompletion = true,
+          -- Using Ruff's import organizer
+          disableOrganizeImports = true,
+        },
         python = {
           analysis = {
             autoSearchPaths = true,
