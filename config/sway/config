@@ -132,8 +132,10 @@ bindsym $mod+c move position center
 bindsym $mod+shift+x exec swaylock
 
 # Printscreen selection tool
-exec_always flameshot
-bindsym $mod+shift+p exec flameshot gui
+# Workaround for multi-monitor setup in Sway:
+# https://github.com/flameshot-org/flameshot/issues/1184#issuecomment-744761384
+exec_always QT_QPA_PLATFORM=xcb flameshot
+bindsym $mod+shift+p exec QT_QPA_PLATFORM=xcb flameshot gui
 
 # --- Workspace related keybindings ---
 
