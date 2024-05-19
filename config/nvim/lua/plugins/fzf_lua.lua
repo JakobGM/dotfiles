@@ -22,6 +22,10 @@ return {
     vim.g.fzf_buffers_jump = 1
 
     require("fzf-lua").setup({
+      "default-title",
+      defaults = {
+        formatter = "path.filename_first",
+      },
       colorscheme = "gruvbox",
       winopts = {
         fullscreen = true,
