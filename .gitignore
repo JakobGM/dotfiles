@@ -75,6 +75,7 @@ config/Zeal/Zeal.conf
 config/alacritty/
 config/asciinema/
 config/autostart/
+config/chatgpt/
 config/chromium/
 config/coc
 config/configstore
@@ -89,6 +90,7 @@ config/gconf
 config/gh/
 config/ghb/
 config/git/gitk
+config/github-copilot/
 config/gnupg/
 config/google-chrome-beta/
 config/google-chrome-unstable/
@@ -102,10 +104,12 @@ config/i3/i3scripts/
 config/icedtea-web/
 config/inkscape/
 config/jupyter/history.sqlite
+config/jupyter/lab/user-settings/@jupyterlab/extensionmanager-extension/plugin.jupyterlab-settings
 config/jupyter/lab/workspaces/
 config/jupyter/migrated
 config/jupyter/profile_default/db/dhist
 config/jupyter/profile_default/history.sqlite
+config/k9s/
 config/keybase/
 config/kitty/
 config/kitty/cached*
@@ -121,6 +125,7 @@ config/mono.addins
 config/mopidy/
 config/neofetch/
 config/nvim/.netrwhist
+config/nvim/lazy-lock.json
 config/nvim/plugged/
 config/nvim/spell/en.utf-8.add.spl
 config/nvim/spell/en.utf-8.spl
@@ -132,6 +137,7 @@ config/okular-generator-ghostscriptrc/
 config/okularpartrc/
 config/okularrc/
 config/oni/
+config/op
 config/packrat/
 config/pavucontrol.ini
 config/pgcli/
@@ -149,8 +155,10 @@ config/slack-term/slack-term.json
 config/spotify/
 config/sublime-merge/
 config/supertuxkart/
+config/tailscale
 config/tmux/plugins/
 config/transmission/
+config/ulauncher
 config/urlwatch/
 config/vivaldi-snapshot/
 config/vivaldi/
