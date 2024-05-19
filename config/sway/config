@@ -3,6 +3,8 @@
 
 # Use superbutton as modifier
 set $mod Mod4
+# Alias the right alt key (Alt Gr)
+set $altgr Mod5
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -224,7 +226,8 @@ exec_always "$PROJECT_HOME/astrality/.direnv/python-*/bin/python $PROJECT_HOME/a
 exec_always "$XDG_CONFIG_HOME/sway/.direnv/python-*/bin/python $XDG_CONFIG_HOME/sway/autoname-workspaces.py &"
 
 # Start service for managing notifications
-exec mako
+exec swaync
+bindsym $altgr+n exec swaync-client -t -sw
 
 
 #######
