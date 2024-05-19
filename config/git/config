@@ -53,7 +53,7 @@
     ds = diff --staged
     f = fetch
     fu = forgit fixup
-    l = log
+    l = forgit log
     p = push
     pl = pull
     rb = forgit rebase
