@@ -1,0 +1,4 @@
+[settings]
+experimental = true
+# Fix for this issue: https://github.com/jdx/mise/issues/1743
+python_compile = true
