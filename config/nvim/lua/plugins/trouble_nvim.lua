@@ -17,5 +17,9 @@ return {
     { "<Leader>xq", "<cmd>TroubleToggle quickfix<cr>" },
     { "<Leader>xl", "<cmd>TroubleToggle loclist<cr>" },
     { "gR",         "<cmd>TroubleToggle lsp_references<cr>" },
+    -- Navigate to next/previous diagnostic item across files
+    { "<Leader>q",  function() require("trouble").next({ skip_groups = true, jump = true }); end },
+    { "<Leader>Q",  function() require("trouble").previous({ skip_groups = true, jump = true }); end },
+
   }
 }
