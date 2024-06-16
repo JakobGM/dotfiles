@@ -22,7 +22,6 @@ return {
             "cssls",
             "docker_compose_language_service",
             "dockerls",
-            "efm",
             "grammarly",
             "graphql",
             "html",
@@ -104,7 +103,6 @@ return {
     lspconfig.cssls.setup({ on_attach = on_attach })
     lspconfig.docker_compose_language_service.setup({ on_attach = on_attach })
     lspconfig.dockerls.setup({ on_attach = on_attach })
-    lspconfig.efm.setup({ on_attach = on_attach })
     lspconfig.grammarly.setup({ on_attach = on_attach })
     lspconfig.graphql.setup({ on_attach = on_attach })
     lspconfig.html.setup({ on_attach = on_attach })

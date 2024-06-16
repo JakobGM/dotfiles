@@ -2,24 +2,58 @@ return {
   "folke/trouble.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-    position = "right",
-    -- Do not add empty line at top of diagnostic window
-    padding = false,
-    -- Do not navigate to top upon reaching bottom
-    cycle_results = false,
-    -- Use signs defined by the LSP client
-    use_diagnostic_signs = true,
+    -- Do not show a warning when there are no results,
+    -- but just open the window instead.
+    warn_no_results = false,
+    open_no_results = true,
+    win = {
+      position = "right",
+      size = 80,
+    }
   },
   keys = {
-    { "<Leader>xx", "<cmd>TroubleToggle<cr>" },
-    { "<Leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>" },
-    { "<Leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>" },
-    { "<Leader>xq", "<cmd>TroubleToggle quickfix<cr>" },
-    { "<Leader>xl", "<cmd>TroubleToggle loclist<cr>" },
-    { "gR",         "<cmd>TroubleToggle lsp_references<cr>" },
+    {
+      "<leader>xx",
+      "<cmd>Trouble diagnostics toggle<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "<leader>xb",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      desc = "Buffer Diagnostics (Trouble)",
+    },
+    {
+      "<leader>xs",
+      "<cmd>Trouble symbols toggle focus=false<cr>",
+      desc = "Symbols (Trouble)",
+    },
+    {
+      "<leader>xd",
+      "<cmd>Trouble lsp_definitions toggle focus=false<cr>",
+      desc = "LSP Definitions / references / ... (Trouble)",
+    },
+    {
+      "<leader>xl",
+      "<cmd>Trouble loclist toggle<cr>",
+      desc = "Location List (Trouble)",
+    },
+    {
+      "<leader>xq",
+      "<cmd>Trouble qflist toggle<cr>",
+      desc = "Quickfix List (Trouble)",
+    },
+    {
+      "gR",
+      "<cmd>Trouble lsp_references toggle<cr>",
+    },
     -- Navigate to next/previous diagnostic item across files
-    { "<Leader>q",  function() require("trouble").next({ skip_groups = true, jump = true }); end },
-    { "<Leader>Q",  function() require("trouble").previous({ skip_groups = true, jump = true }); end },
-
+    {
+      "<Leader>q",
+      function() require("trouble").next({ skip_groups = true, jump = true }); end,
+    },
+    {
+      "<Leader>Q",
+      function() require("trouble").previous({ skip_groups = true, jump = true }); end,
+    },
   }
 }
