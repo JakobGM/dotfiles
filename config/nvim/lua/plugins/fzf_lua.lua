@@ -14,7 +14,6 @@ return {
 
   config = function()
     vim.g.fzf_action = {
-      ["ctrl-t"] = "tab split",
       ["ctrl-s"] = "split",
       ["ctrl-v"] = "vsplit",
     }
@@ -44,6 +43,10 @@ return {
         },
       },
     })
+
+    local config = require("fzf-lua.config")
+    local actions = require("trouble.sources.fzf").actions
+    config.defaults.actions.files["ctrl-t"] = actions.open
   end,
 
   keys = {
