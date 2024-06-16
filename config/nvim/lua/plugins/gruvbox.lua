@@ -19,6 +19,8 @@ return {
         GruvboxRedSign = { bg = "" },
         GruvboxBlueSign = { bg = "" },
         GruvboxAquaSign = { bg = "" },
+        -- Do not render floating windows with a brighter background color
+        NormalFloat = { bg = "" },
       },
     })
     vim.cmd("colorscheme gruvbox")
