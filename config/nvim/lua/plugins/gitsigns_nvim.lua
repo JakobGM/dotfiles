@@ -15,17 +15,29 @@ return {
         end
 
         -- Navigation
-        map("n", "<Leader>gn", function()
-          if vim.wo.diff then return "]c" end
-          vim.schedule(function() gs.next_hunk() end)
-          return "<Ignore>"
-        end, { expr = true })
+        map(
+          "n",
+          "<Leader>gn",
+          function()
+            if vim.wo.diff then
+              vim.cmd.normal({ ']c', bang = true })
+            else
+              gs.nav_hunk('next')
+            end
+          end
+        )
 
-        map("n", "<Leader>gN", function()
-          if vim.wo.diff then return "[c" end
-          vim.schedule(function() gs.prev_hunk() end)
-          return "<Ignore>"
-        end, { expr = true })
+        map(
+          "n",
+          "<Leader>gN",
+          function()
+            if vim.wo.diff then
+              vim.cmd.normal({ '[c', bang = true })
+            else
+              gs.nav_hunk('prev')
+            end
+          end
+        )
 
         -- Actions
         map("n", "<leader>gu", gs.reset_hunk)
@@ -33,7 +45,7 @@ return {
         map("v", "<leader>ga", function() gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") } end)
         map("v", "<leader>gu", function() gs.reset_hunk { vim.fn.line("."), vim.fn.line("v") } end)
         map("n", "<leader>gs", gs.stage_buffer)
-        map("n", "<leader>gS", gs.undo_stage_hunk)
+        map("n", "<leader>gA", gs.undo_stage_hunk)
         map("n", "<leader>gR", gs.reset_buffer)
         map("n", "<leader>gp", gs.preview_hunk)
         map("n", "<leader>gbb", function() gs.blame_line { full = true } end)
@@ -41,6 +53,9 @@ return {
         -- map("n", "<leader>gd", gs.diffthis)
         -- map("n", "<leader>hD", function() gs.diffthis("~") end)
         -- map("n", "<leader>td", gs.toggle_deleted)
+
+        -- Text object
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       end
     })
   end
