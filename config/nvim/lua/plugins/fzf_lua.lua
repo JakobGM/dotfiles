@@ -68,5 +68,7 @@ return {
     { "<leader><Esc>",   function() require("fzf-lua").keymaps() end },
     -- Search helptags
     { "<leader>hh",      function() require("fzf-lua").help_tags() end },
+    -- LSP commands
+    { "gd",              function() require('fzf-lua').lsp_definitions({ jump_to_single_result = true }) end },
   }
 }
