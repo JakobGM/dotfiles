@@ -11,7 +11,15 @@ return {
     require("neotest").setup({
       adapters = {
         require("neotest-python")
-      }
+      },
+      output = {
+        enabled = true,
+        open_on_run = false,
+      },
+      output_panel = {
+        enabled = true,
+        open = 'botright vsplit | vertical resize 80',
+      },
     })
   end,
   keys = {
@@ -20,5 +28,6 @@ return {
     { "gtw", function() require("neotest").watch.toggle() end },
     { "gtd", function() require("neotest").run.run({ strategy = "dap" }) end },
     { "gta", function() require("neotest").run.attach() end },
+    { "gts", function() require("neotest").output_panel.toggle() end },
   }
 }
