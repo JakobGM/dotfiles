@@ -203,7 +203,7 @@ return {
         -- end, opts)
         vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
-        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts) -- See fzf_lua.lua
         vim.keymap.set('n', '<Leader>f', function()
           vim.lsp.buf.code_action({
             apply = true,
