@@ -190,7 +190,7 @@ return {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
-        vim.keymap.set('n', '<Leader>d', vim.lsp.buf.declaration, opts)
+        -- vim.keymap.set('n', '<Leader>d', vim.lsp.buf.declaration, opts) -- See fzf_lua.lua
         -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- See fzf_lua.lua
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
