@@ -276,11 +276,11 @@ input type:touchpad {
 # Office monitors
 output DP-2 {
    mode 3840x2160@60.000Hz
-   pos 1920 0
+   pos 3840 0
 }
 output HDMI-A-1 {
-   mode 1920x1080@60.000Hz
-   pos 0 540
+   mode 3840x2160@60.000Hz
+   pos 0 0
 }
 
 # Disable laptop screen when lid is closed
