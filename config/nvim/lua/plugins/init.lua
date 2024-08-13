@@ -63,6 +63,7 @@ return {
   require("plugins.vim_smooth_scroll"),
   require("plugins.stable_windows"),
   require("plugins.neomake"),
+  require("plugins.kulala_nvim"),
 
   -- Documentation and Help
   require("plugins.neoman_vim"),
