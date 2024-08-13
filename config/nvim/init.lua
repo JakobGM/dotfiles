@@ -12,7 +12,7 @@ local lazy_config = {
 if vim.g.vscode then
   lazy.setup("vscode", lazy_config)
 else
-  lazy.setup("plugins", lazy_config)
+  lazy.setup(require("plugins"), lazy_config)
 end
 require("formatting")
 require("keymaps")
