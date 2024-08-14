@@ -55,7 +55,6 @@ return {
   require("plugins.vimtex"),
   require("plugins.vim_pandoc"),
   require("plugins.vim_pandoc_syntax"),
-  require("plugins.r_nvim"),
 
   -- Utility
   require("plugins.vim_sensible"),
