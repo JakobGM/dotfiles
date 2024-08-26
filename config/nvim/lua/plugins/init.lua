@@ -50,6 +50,7 @@ return {
   require("plugins.tabular"),
   require("plugins.nvim_comment"),
   require("plugins.rename"),
+  require("plugins.nvim_spectre"),
 
   -- File Type Specific
   require("plugins.vimtex"),
