@@ -1,6 +1,9 @@
 return {
   "folke/trouble.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "lewis6991/gitsigns.nvim",
+  },
   opts = {
     -- Do not show a warning when there are no results,
     -- but just open the window instead.
@@ -41,6 +44,11 @@ return {
       "<leader>xq",
       "<cmd>Trouble qflist toggle<cr>",
       desc = "Quickfix List (Trouble)",
+    },
+    {
+      "<leader>xg",
+      function() require("gitsigns").setqflist("all"); end,
+      desc = "Put all git hunks in the quickfix list (Gitsigns + Trouble)",
     },
     {
       "gR",
