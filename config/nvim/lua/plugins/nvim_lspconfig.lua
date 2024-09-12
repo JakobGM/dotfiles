@@ -32,7 +32,7 @@ return {
             "rust_analyzer",
             "sqlls",
             "tailwindcss",
-            "tsserver",
+            "ts_ls",
             "vimls",
             "yamlls",
           }
@@ -168,7 +168,7 @@ return {
     lspconfig.rust_analyzer.setup({ on_attach = on_attach })
     lspconfig.sqlls.setup({ on_attach = on_attach })
     lspconfig.tailwindcss.setup({ on_attach = on_attach })
-    lspconfig.tsserver.setup({ on_attach = on_attach })
+    lspconfig.tl_ls.setup({ on_attach = on_attach })
     lspconfig.vimls.setup({ on_attach = on_attach })
     lspconfig.yamlls.setup({ on_attach = on_attach })
 
