@@ -54,3 +54,12 @@ alias wrapon='tput smam'
 alias icat="kitty +kitten icat"
 
 if command_exists bat; then alias cat=bat; fi
+
+# Mise tasks
+alias mr='mise run'
+function app() {mise run app:$1}
+function ci() {mise run ci:$1}
+function db() {mise run db:$1}
+function dev() {mise run dev:$1}
+function fix() {mise run fix:$1}
+function lint() {mise run lint:$1}
