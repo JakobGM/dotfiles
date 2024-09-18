@@ -58,9 +58,18 @@ if command_exists bat; then alias cat=bat; fi
 # Mise tasks
 alias m='mise'
 alias mr='mise run'
-function app() {mise run app:$1 ${@:2}}
-function ci() {mise run ci:$1 ${@:2}}
-function db() {mise run db:$1 ${@:2}}
-function dev() {mise run dev:$1 ${@:2}}
-function fix() {mise run fix:$1 ${@:2}}
-function lint() {mise run lint:$1 ${@:2}}
+
+mise_run() {
+    local cmd=$1
+    shift
+    case $# in
+        0) mise run $cmd ;;
+        1) mise run $cmd:$1 ;;
+        *) mise run $cmd:$1 "${@:2}" ;;
+    esac
+}
+
+for cmd in app ci db dev fix lint; do
+    eval "function $cmd() { mise_run $cmd \"\$@\"; }"
+done
+
