@@ -3,8 +3,9 @@ if vim.g.vscode then
   return {}
 end
 
--- Save space by only having one line for cmdline
-vim.opt.cmdheight = 1
+-- Remove the empty line beneath the status line and
+-- let the command line take its place when needed
+vim.opt.cmdheight = 0
 
 -- Start scrolling when 7 lines from bottom of screen
 vim.opt.scrolloff = 7
