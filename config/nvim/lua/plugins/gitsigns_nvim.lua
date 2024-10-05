@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  name = "gitsigns.nvim",
   lazy = false,
   config = function()
     -- Always show the signcolumn

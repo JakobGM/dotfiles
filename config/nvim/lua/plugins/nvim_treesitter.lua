@@ -1,6 +1,7 @@
 -- Tree-sitter based syntax highlighting
 return {
   "nvim-treesitter/nvim-treesitter",
+  name = "nvim-treesitter",
   -- Equivalent of {'do': ':TSUpdate'} in vim-plug just for lazy.nvim
   build = function()
     require("nvim-treesitter.install").update({ with_sync = true })
@@ -73,4 +74,14 @@ return {
       command = "set filetype=htmldjango",
     })
   end,
+  dependencies = {
+    {
+      -- Annotate current buffer with tree-sitter nodes using :TSPlaygroundToggle
+      "nvim-treesitter/playground",
+      dependencies = {
+        "nvim-treesitter",
+      },
+      cmd = "TSPlaygroundToggle",
+    }
+  }
 }

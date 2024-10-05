@@ -1,6 +1,7 @@
 -- Asynchronous file/tags searcher
 return {
   "ibhagwan/fzf-lua",
+  name = "fzf-lua",
   dependencies = {
     {
       "junegunn/fzf",
@@ -8,7 +9,6 @@ return {
         vim.fn["fzf#install"]()
       end,
     },
-    -- Optional for icon support
     "nvim-tree/nvim-web-devicons",
   },
 

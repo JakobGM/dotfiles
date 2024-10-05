@@ -2,7 +2,7 @@ return {
   "folke/trouble.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "lewis6991/gitsigns.nvim",
+    "gitsigns.nvim",
   },
   opts = {
     -- Do not show a warning when there are no results,

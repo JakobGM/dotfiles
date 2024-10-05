@@ -12,7 +12,6 @@ return {
 
   -- Syntax Highlighting and Parsing
   require("plugins.nvim_treesitter"),
-  require("plugins.nvim_treesitter_playground"),
   require("plugins.vim_polyglot"),
 
   -- File Navigation and Search

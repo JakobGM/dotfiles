@@ -1,9 +1,11 @@
 return {
   "neovim/nvim-lspconfig",
+  name = "nvim-lspconfig",
   lazy = false,
   dependencies = {
     {
       "williamboman/mason.nvim",
+      name = "mason.nvim",
       lazy = false,
       config = function()
         require("mason").setup({
@@ -43,7 +45,7 @@ return {
       "jay-babu/mason-null-ls.nvim",
       event = { "BufReadPre", "BufNewFile" },
       dependencies = {
-        "williamboman/mason.nvim",
+        "mason.nvim",
         "nvimtools/none-ls.nvim",
       },
       opts = {
@@ -55,7 +57,7 @@ return {
     },
     {
       -- Better configuration of the lua_ls language server
-      "folke/neodev.nvim",
+      "neodev.nvim",
     },
     {
       "rafamadriz/friendly-snippets",
