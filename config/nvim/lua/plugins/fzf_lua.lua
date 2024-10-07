@@ -3,12 +3,6 @@ return {
   "ibhagwan/fzf-lua",
   name = "fzf-lua",
   dependencies = {
-    {
-      "junegunn/fzf",
-      build = function()
-        vim.fn["fzf#install"]()
-      end,
-    },
     "nvim-tree/nvim-web-devicons",
   },
 
