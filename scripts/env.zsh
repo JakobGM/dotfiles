@@ -158,3 +158,10 @@ export HISTSIZE=1000000
 export SECRETS_GPG_COMMAND='gpg2'
 
 export R_PDFVIEWER='zathura'
+
+
+# --- Fix webkit+nvidia issue resulting in blank GUIs ---
+# https://askubuntu.com/questions/1493204/apps-using-webkit-like-foliate-wike-caveliar-or-gnome-web-do-not-show-content
+if [ -n "$(lsmod | grep nvidia)" ]; then
+    export WEBKIT_DISABLE_DMABUF_RENDERER=1
+fi
