@@ -85,7 +85,8 @@ bindsym $mod+q kill
 # bindsym $mod+d exec i3-dmenu-desktop
 
 # Start the Ulauncher application launcher without borders
-bindsym $mod+r exec ulauncher
+exec ulauncher --hide-window
+bindsym $mod+r exec ulauncher-toggle
 for_window [app_id="ulauncher"] border none
 
 # change focus
