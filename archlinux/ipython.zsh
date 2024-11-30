@@ -2,4 +2,4 @@
 source ~/.config/zsh/.zshrc
 cd ~/crdbrd/hub
 clear
-hub-shell
+mise run shell
