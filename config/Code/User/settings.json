@@ -13,7 +13,7 @@
   // Tabs
   "workbench.editor.limit.value": 1,
   "workbench.editor.limit.perEditorGroup": true,
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
 
   // Behavior
   "editor.cursorSurroundingLines": 7,
