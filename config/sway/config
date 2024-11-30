@@ -267,6 +267,14 @@ input * {
     repeat_delay 200
 }
 
+# Disable mouse acceleration
+# Fixes stuttering mouse movement in sway
+# https://github.com/swaywm/sway/issues/7714#issue-1858987067
+input type:pointer {
+    accel_profile "flat"
+    pointer_accel 1
+}
+
 bindsym $mod+period exec 'swayprop | xargs -0 notify-send swayprop'
 
 input type:touchpad {
