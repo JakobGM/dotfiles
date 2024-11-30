@@ -25,9 +25,17 @@ swaymsg -t get_tree | jq -r --arg target "$target_identifier" '..
       "swaymsg \"[class=\"\(.window_properties.class)\" instance=\"\(.window_properties.instance)\"] move scratchpad\""
     end' | sh
 
-# Toggle target window
-if swaymsg "[$1] scratchpad show" 2>/dev/null; then
+# Check if window is visible first
+is_visible=$(swaymsg -t get_tree | jq --arg target "$target_identifier" '.. 
+  | select(.type? and .type=="floating_con")
+  | select(.app_id == $target or .window_properties.class == $target)
+  | .visible' | grep -m1 "true" || echo "")
+
+if [[ -z "$is_visible" ]]; then
+  # Window is hidden, show it
+  swaymsg "[$1] scratchpad show"
   swaymsg "[$1] floating enable, resize set 99ppt 99ppt, move position center, border normal, border pixel 3"
 else
+  # Window is visible, hide it
   swaymsg "[$1] move scratchpad"
 fi
