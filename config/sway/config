@@ -47,6 +47,7 @@ exec swayidle -w \
 exec_always "$DOTREPO/archlinux/scratchpads.zsh"
 
 # Enable floating mode for these scratchpads
+for_window [app_id="dropdown_firefox" title="^(?!Save As|Open|Print).*$"] floating enable, move to scratchpad
 for_window [app_id="dropdown_terminal"] floating enable, move to scratchpad
 for_window [app_id="dropdown_ipython"] floating enable, move to scratchpad
 for_window [app_id="devdocs-desktop"] floating enable, move to scratchpad
@@ -54,6 +55,7 @@ for_window [class="Caprine" instance="caprine"] floating enable, move to scratch
 for_window [class="Slack" instance="slack"] floating enable, move to scratchpad
 for_window [class="Spotify" instance="spotify"] floating enable, move to scratchpad
 
+bindsym $mod+u exec sway-toggle-scratchpad 'app_id="dropdown_firefox"'
 bindsym $mod+t exec sway-toggle-scratchpad 'app_id="dropdown_terminal"'
 bindsym $mod+p exec sway-toggle-scratchpad 'app_id="dropdown_ipython"'
 bindsym $mod+d exec sway-toggle-scratchpad 'app_id="devdocs-desktop"'

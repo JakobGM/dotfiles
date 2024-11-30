@@ -33,3 +33,15 @@ then
         --listen-on unix:/tmp/kitty_python \
         $DOTREPO/archlinux/ipython.zsh &
 fi
+
+if ! pgrep -f dropdown_firefox > /dev/null
+then
+    echo 'Starting dropdown firefox'
+    firefox \
+        --class="dropdown_firefox" \
+        --name="dropdown_firefox" \
+        --new-instance \
+        --profile ~/.mozilla/firefox/*.scratchpad \
+        --no-remote &
+fi
+
