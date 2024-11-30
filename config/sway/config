@@ -286,10 +286,12 @@ input type:touchpad {
 output DP-2 {
    mode 3840x2160@60.000Hz
    pos 3840 0
+   adaptive_sync on
 }
 output HDMI-A-1 {
    mode 3840x2160@60.000Hz
    pos 0 0
+   adaptive_sync on
 }
 
 # Disable laptop screen when lid is closed
