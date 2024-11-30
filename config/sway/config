@@ -132,7 +132,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c move position center
 
 # Lock screen
-bindsym $mod+shift+x exec swaylock
+bindsym $mod+shift+x exec 'swaylock --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
 
 # Printscreen selection tool
 exec_always flameshot
