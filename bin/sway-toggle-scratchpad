@@ -27,7 +27,7 @@ swaymsg -t get_tree | jq -r --arg target "$target_identifier" '..
 
 # Toggle target window
 if swaymsg "[$1] scratchpad show" 2>/dev/null; then
-  swaymsg "[$1] floating enable, resize set 100ppt 100ppt, move position center"
+  swaymsg "[$1] floating enable, resize set 99ppt 99ppt, move position center, border normal, border pixel 3"
 else
   swaymsg "[$1] move scratchpad"
 fi
