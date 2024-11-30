@@ -63,6 +63,11 @@ bindsym $mod+m exec sway-toggle-scratchpad 'class="Caprine" instance="caprine"'
 bindsym $mod+s exec sway-toggle-scratchpad 'class="Slack" instance="slack"'
 bindsym $mod+y exec sway-toggle-scratchpad 'class="Spotify" instance="spotify"'
 
+# Move all floating windows to scratchpad
+bindsym $mod+w [floating] move scratchpad
+# Rotate through scratchpad windows
+bindsym $mod+shift+w scratchpad show
+
 # -------------------------------------------------------------------
 
 # Random background image from ~/Wallpapers
