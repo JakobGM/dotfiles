@@ -4,7 +4,13 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
+
 # Disable the use of XWayland in firefox
 export MOZ_ENABLE_WAYLAND=1
+
+# Make sure that GTK4 applications use the correct cursor size
+# Source: https://bbs.archlinux.org/viewtopic.php?id=299624
+dconf write /org/gnome/desktop/interface/cursor-size 32
+
 # Disable scanout in order to make adaptive sync work reliably
 exec sway --unsupported-gpu -Dnoscanout
