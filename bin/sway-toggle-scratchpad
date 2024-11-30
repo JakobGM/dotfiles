@@ -1,0 +1,33 @@
+#!/usr/bin/env zsh
+
+set -e
+[[ -n "$DEBUG" ]] && set -x
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: $(basename $0) 'criteria'"
+  echo "Example: $(basename $0) 'app_id=\"dropdown_terminal\"'"
+  exit 1
+fi
+
+[[ -n "$DEBUG" ]] && echo "Looking for windows matching criteria: [$1]"
+
+# Get target window identifiers
+target_identifier=$(echo "$1" | sed -n 's/.*\(app_id\|class\)="\([^"]*\)".*/\2/p')
+
+# Hide all visible floating windows except target
+swaymsg -t get_tree | jq -r --arg target "$target_identifier" '.. 
+  | select(.type? and .type=="floating_con" and .visible==true)
+  | select(.app_id != null or .window_properties.class != null)
+  | select(.app_id != $target and .window_properties.class != $target)
+  | if .app_id != null then
+      "swaymsg \"[app_id=\"\(.app_id)\"] move scratchpad\""
+    else
+      "swaymsg \"[class=\"\(.window_properties.class)\" instance=\"\(.window_properties.instance)\"] move scratchpad\""
+    end' | sh
+
+# Toggle target window
+if swaymsg "[$1] scratchpad show" 2>/dev/null; then
+  swaymsg "[$1] floating enable, resize set 100ppt 100ppt, move position center"
+else
+  swaymsg "[$1] move scratchpad"
+fi

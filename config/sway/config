@@ -49,19 +49,17 @@ exec_always "$DOTREPO/archlinux/scratchpads.zsh"
 # Enable floating mode for these scratchpads
 for_window [app_id="dropdown_terminal"] floating enable, move to scratchpad
 for_window [app_id="dropdown_ipython"] floating enable, move to scratchpad
-for_window [app_id="devdocs-desktop"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
+for_window [app_id="devdocs-desktop"] floating enable, move to scratchpad
 for_window [class="Caprine" instance="caprine"] floating enable, move to scratchpad
-for_window [class="Slack" instance="slack"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
-for_window [class="Spotify" instance="spotify"] floating enable, move to scratchpad, resize set 100 ppt 100 ppt
+for_window [class="Slack" instance="slack"] floating enable, move to scratchpad
+for_window [class="Spotify" instance="spotify"] floating enable, move to scratchpad
 
-# Keybind the toggling of the scratchpad area
-bindsym $mod+t [app_id="dropdown_terminal"] scratchpad show
-bindsym $mod+p [app_id="dropdown_ipython"] scratchpad show
-bindsym $mod+d [app_id="devdocs-desktop"] scratchpad show
-bindsym $mod+s [class="Slack" instance="slack"] scratchpad show
-bindsym $mod+m [class="Spotify" instance="spotify"] scratchpad show
-bindsym $mod+Shift+m [class="Caprine" instance="caprine"] scratchpad show
-bindsym $mod+w [floating] move to scratchpad
+bindsym $mod+t exec sway-toggle-scratchpad 'app_id="dropdown_terminal"'
+bindsym $mod+p exec sway-toggle-scratchpad 'app_id="dropdown_ipython"'
+bindsym $mod+d exec sway-toggle-scratchpad 'app_id="devdocs-desktop"'
+bindsym $mod+m exec sway-toggle-scratchpad 'class="Caprine" instance="caprine"'
+bindsym $mod+s exec sway-toggle-scratchpad 'class="Slack" instance="slack"'
+bindsym $mod+y exec sway-toggle-scratchpad 'class="Spotify" instance="spotify"'
 
 # -------------------------------------------------------------------
 
