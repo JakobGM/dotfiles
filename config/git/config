@@ -58,6 +58,7 @@
     pl = pull
     rb = forgit rebase
     rc = rebase --continue
+    rho = !git fetch origin && git reset --hard @{u} && git clean -df
     rom = rebase -i origin/main
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
