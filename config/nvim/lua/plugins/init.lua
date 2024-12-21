@@ -35,6 +35,7 @@ return {
 
   -- Language Server Protocol (LSP)
   require("plugins.nvim_lspconfig"),
+  require("plugins.prettier_nvim"),
 
   -- Debugging
   require("plugins.nvim_dap"),

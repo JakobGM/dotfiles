@@ -29,6 +29,7 @@ return {
             "html",
             "jsonls",
             "lua_ls",
+            "prettierd",
             "pyright",
             "ruff",
             "rust_analyzer",
@@ -42,11 +43,33 @@ return {
       end,
     },
     {
+      "nvimtools/none-ls.nvim",
+      name = "none-ls.nvim",
+      config = function()
+        -- Taken from here: https://github.com/MunifTanjim/prettier.nvim
+        local null_ls = require("null-ls")
+
+        local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+        local event = "BufWritePre" -- or "BufWritePost"
+        local async = event == "BufWritePost"
+
+        null_ls.setup({
+          on_attach = function(client, bufnr)
+            if client.supports_method("textDocument/formatting") then
+              vim.keymap.set("n", "<Leader>w", function()
+                vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+              end, { buffer = bufnr, desc = "[lsp] format" })
+            end
+          end,
+        })
+      end,
+    },
+    {
       "jay-babu/mason-null-ls.nvim",
       event = { "BufReadPre", "BufNewFile" },
       dependencies = {
         "mason.nvim",
-        "nvimtools/none-ls.nvim",
+        "none-ls.nvim",
       },
       opts = {
         ensure_installed = {
@@ -170,7 +193,15 @@ return {
     lspconfig.rust_analyzer.setup({ on_attach = on_attach })
     lspconfig.sqlls.setup({ on_attach = on_attach })
     lspconfig.tailwindcss.setup({ on_attach = on_attach })
-    lspconfig.ts_ls.setup({ on_attach = on_attach })
+    lspconfig.ts_ls.setup({
+      on_attach = function(client, bufnr)
+        -- Disable formatting capability
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+        -- Call the default on_attach to retain other functionality
+        on_attach(client, bufnr)
+      end
+    })
     lspconfig.vimls.setup({ on_attach = on_attach })
     lspconfig.yamlls.setup({ on_attach = on_attach })
 
