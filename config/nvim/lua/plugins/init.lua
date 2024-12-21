@@ -19,6 +19,7 @@ return {
   require("plugins.vim_tmux_navigator"),
   require("plugins.tagbar"),
   require("plugins.vim_gutentags"),
+  require("plugins.neo_tree_nvim"),
 
   -- Git Integration
   require("plugins.git_messeger_vim"),
