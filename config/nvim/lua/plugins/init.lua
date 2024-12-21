@@ -31,6 +31,7 @@ return {
   -- Code Completion and Snippets
   require("plugins.coc_nvim"),
   require("plugins.nvim_cmp"),
+  require("plugins.blink_cmp"),
   require("plugins.copilot_vim"),
 
   -- Language Server Protocol (LSP)
