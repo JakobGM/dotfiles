@@ -34,7 +34,7 @@ is_visible=$(swaymsg -t get_tree | jq --arg target "$target_identifier" '..
 if [[ -z "$is_visible" ]]; then
   # Window is hidden, show it
   swaymsg "[$1] scratchpad show"
-  swaymsg "[$1] floating enable, resize set 85ppt 85ppt, move position center, move up 140 ppt, border normal, border pixel 3"
+  swaymsg "[$1] floating enable, resize set 85ppt 85ppt, move position center, border normal, border pixel 3"
 else
   # Window is visible, hide it
   swaymsg "[$1] move scratchpad"
