@@ -52,7 +52,7 @@ return {
     },
     {
       "gR",
-      "<cmd>Trouble lsp_references toggle<cr>",
+      "<cmd>Trouble lsp_references toggle auto_refresh=false<cr>",
     },
     -- Navigate to next/previous diagnostic item across files
     {
