@@ -8,6 +8,9 @@ function command_exists() {
     return 0
 }
 
+# Chezmoi
+alias cz='chezmoi'
+
 # Git aliases
 if which hub > /dev/null 2>&1; then
     eval "$(hub alias -s)"
