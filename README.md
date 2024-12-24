@@ -12,17 +12,3 @@ Dotfiles for a workflow which focuses on:
 * Zsh-shell in the Tmux-multiplexer.
 * Both MacOS and Linux support.
 * Brew for packages management.
-
-
-## Installation
-Run the following commands in the terminal:
-
-```{bash}
-# Clone the repository to your homefolder
-git clone https://github.com/JakobGM/dotfiles.git ~/.dotfiles
-
-# Run the initialize script
-~/.dotfiles/scripts/init.sh
-```
-
-This symlinks the most common configuration files into your home folder.
