@@ -2,14 +2,14 @@
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "config/refind/themes"]
-	path = config/refind/themes
+	path = home/dot_config/refind/themes
 	url = https://gitlab.com/realmain/rEFInd-sunset.git
 [submodule "config/i3/i3scripts"]
-	path = config/i3/i3scripts
+	path = home/dot_config/i3/i3scripts
 	url = https://github.com/justbuchanan/i3scripts
 [submodule "config/astrality"]
 	path = config/astrality
 	url = https://github.com/jakobgm/astrality
 [submodule "config/kitty/kitty_search"]
-	path = config/kitty/kitty_search
+	path = home/dot_config/kitty/kitty_search
 	url = https://github.com/trygveaa/kitty-kitten-search
