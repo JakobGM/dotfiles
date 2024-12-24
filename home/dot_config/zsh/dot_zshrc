@@ -1,6 +1,5 @@
 # ---------- SETUP ENVIRONMENT VARIABLES --------------
 # Where we have placed the repository with all dotfiles
-export DOTREPO=$HOME/.dotfiles
 source ${ZDOTDIR}/env.zsh
 
 # Make brew installed binaries available before the rest of the script runs

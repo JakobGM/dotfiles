@@ -6,5 +6,5 @@ fi
 
 # Source rest of ZSH config files from ZDOTDIR
 # http://zsh.sourceforge.net/Intro/intro_3.html
-export XDG_CONFIG_HOME="$HOME/.dotfiles/config"
+export XDG_CONFIG_HOME="$HOME/.config"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"

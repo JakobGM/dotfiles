@@ -303,6 +303,5 @@ output HDMI-A-1 {
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
-exec_always /home/jakobgm/.dotfiles/bin/toggle_display.sh
 
 # vim:ft=i3config

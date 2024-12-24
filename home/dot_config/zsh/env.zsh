@@ -30,7 +30,7 @@ fi
 export EDITOR=$VISUAL
 
 # Add user binaries
-export PATH="$HOME/.dotfiles/bin:$PATH"
+export PATH="$HOME/.local/share/chezmoi/bin:$PATH"
 
 # Add linuxbrew paths [http://linuxbrew.sh/]
 export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
