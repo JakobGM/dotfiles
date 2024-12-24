@@ -61,6 +61,9 @@ alias wrapon='tput smam'
 # Cat image to terminal using kitty terminal
 alias icat="kitty +kitten icat"
 
+# Make ripgrep produce hyperlinks that can be opened in the terminal
+alias rg="rg --hyperlink-format=kitty"
+
 if command_exists bat; then alias cat=bat; fi
 
 # Mise tasks
