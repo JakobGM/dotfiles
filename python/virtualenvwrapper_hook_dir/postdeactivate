@@ -1,8 +1,0 @@
-#!/bin/zsh
-# This hook is sourced after every virtualenv is deactivated.
-
-# Reset the prompt, see postactivate
-RPROMPT="$_OLD_RPROMPT"
-
-# Rehash $PATH programs
-rehash
