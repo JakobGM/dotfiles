@@ -47,6 +47,9 @@ tags.temp
 # Auto-generated file from `gh copilot alias -- zsh`
 config/zsh/autoload/gh.zsh
 
+# Host-specific chezmoi configuration
+config/chezmoi
+
 modules/secrets/context.yml
 home/.emacs.d/
 home/.fonts/.uuid
