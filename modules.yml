@@ -28,5 +28,3 @@ terminals:
     compile:
         - content: modules/terminals/kitty.conf.template
           target: {{ env.XDG_CONFIG_HOME }}/kitty/kitty.conf
-        - content: modules/terminals/diff.conf.template
-          target: {{ env.XDG_CONFIG_HOME }}/kitty/diff.conf
