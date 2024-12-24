@@ -1,5 +1,6 @@
 return {
   "hrsh7th/nvim-cmp",
+  enabled = false,
   lazy = false,
   dependencies = {
     "nvim-lspconfig",
