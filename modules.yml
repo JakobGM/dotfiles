@@ -20,7 +20,6 @@ terminals:
     # same time.
     #
     # Terminals:
-    # Alacritty: https://github.com/jwilm/alacritty
     # Kitty: https://github.com/kovidgoyal/kitty
 
     requires:
