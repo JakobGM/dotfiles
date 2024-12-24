@@ -1,7 +1,7 @@
 # ---------- SETUP ENVIRONMENT VARIABLES --------------
 # Where we have placed the repository with all dotfiles
 export DOTREPO=$HOME/.dotfiles
-source $DOTREPO/scripts/env.zsh
+source ${ZDOTDIR}/env.zsh
 
 # Make brew installed binaries available before the rest of the script runs
 export PATH="/opt/homebrew/bin:${PATH}"
@@ -34,7 +34,7 @@ setopt hist_ignore_space
 
 
 # Initialize autocompletions
-fpath=("$DOTREPO/home/.zsh/completions" $fpath) 
+fpath=("${ZDOTDIR}/completions" $fpath) 
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
@@ -68,11 +68,8 @@ if type brew &>/dev/null; then
     source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
 fi
 
-# Use dotfiles repository for custom zsh files
-AUTOLOAD="$DOTREPO/autoload"
-
-# Source all files in $AUTOLOAD having file extension .zsh
-for file in $AUTOLOAD/*.zsh; do
+# Files to be sourced from the autoload directory
+for file in ${ZDOTDIR}/autoload/*.zsh; do
     source "$file"
 done
 
@@ -80,7 +77,6 @@ done
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/fzf-extras.zsh ] && . /usr/share/fzf/fzf-extras.zsh
-
 
 
 # ----------- OS-SPECIFIC STUFF ---------------
