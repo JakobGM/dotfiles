@@ -27,7 +27,7 @@ exec_always 1password --silent
 # ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
-exec_always --no-startup-id "$DOTREPO/archlinux/scratchpads.zsh"
+exec_always --no-startup-id "launch-scratchpads.zsh"
 
 # Enable floating mode for these scratchpads
 for_window [instance="dropdown_terminal"] floating enable, move to scratchpad

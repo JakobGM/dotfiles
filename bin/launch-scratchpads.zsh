@@ -31,7 +31,7 @@ then
         --hold \
         -o allow_remote_control=yes \
         --listen-on unix:/tmp/kitty_python \
-        $DOTREPO/archlinux/ipython.zsh &
+        ipython-scratchpad.zsh &
 fi
 
 if ! pgrep -f dropdown_firefox > /dev/null

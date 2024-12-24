@@ -44,7 +44,7 @@ exec swayidle -w \
 # ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
-exec_always "$DOTREPO/archlinux/scratchpads.zsh"
+exec_always "launch-scratchpads.zsh"
 
 # Enable floating mode for these scratchpads
 for_window [app_id="dropdown_firefox" title="^(?!Save As|Open|Print).*$"] floating enable, move to scratchpad
