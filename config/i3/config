@@ -218,7 +218,7 @@ exec_always --no-startup-id $HOME/.config/polybar/init.zsh &
 exec_always --no-startup-id "$PROJECT_HOME/astrality/.venv/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
 # Automatically rename workspaces in i3
-exec_always --no-startup-id "$DOTREPO/config/i3/.venv/bin/python3 $DOTREPO/config/i3/i3scripts/autoname_workspaces.py &"
+exec_always --no-startup-id "$XDG_CONFIG_HOME/i3/.venv/bin/python3 $XDG_CONFIG_HOME/i3/i3scripts/autoname_workspaces.py &"
 
 # Start automatic activity tracker
 exec --no-startup-id "aw-qt"

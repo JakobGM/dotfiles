@@ -62,14 +62,11 @@ export ENHANCD_DISABLE_DOT=1
 export ENHANCD_HOOK_AFTER_CD='ls -l'
 export ENHANCD_USE_FUZZY_MATCH=1
 
-# This variable should point directly to the dotfiles repository root
-export DOTREPO="$HOME/.dotfiles"
-
 # How to open MIME-types from terminal
-export MAILCAPS=$DOTREPO/home/.mailcap
+export MAILCAPS="$HOME/.mailcap"
 
 # Use the dotfiles-repo config folder as XDG Base Directory
-export XDG_CONFIG_HOME="$DOTREPO/config"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # Application data directory
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -101,7 +98,7 @@ export PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 
 # Make the dotfiles repository the home for Astrality
-export ASTRALITY_CONFIG_HOME=$DOTREPO
+export ASTRALITY_CONFIG_HOME="$HOME/.local/share/chezmoi/"
 
 # Add ruby gems to path
 export PATH="$HOME/.gem/ruby/2.5.0/bin:${PATH}"
