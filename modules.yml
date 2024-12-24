@@ -6,25 +6,3 @@ dotfiles:
         content: $XDG_CONFIG_HOME
         target: $XDG_CONFIG_HOME
         include: 'template\.(.+)'
-
-
-terminals:
-    # By default, this module is not enabled, since it overwrites possibly
-    # pre-existing configuration files. Enable it in config/modules.
-    #
-    # This module uses the color scheme context syntax from:
-    # github::jakobgm/color-schemes.astrality
-    # And the color scheme can be changed in context/color_schemes_config
-    #
-    # It makes it easy to change color schemes for all your terminals at the
-    # same time.
-    #
-    # Terminals:
-    # Kitty: https://github.com/kovidgoyal/kitty
-
-    requires:
-        - installed: 'kitty'
-
-    compile:
-        - content: modules/terminals/kitty.conf.template
-          target: {{ env.XDG_CONFIG_HOME }}/kitty/kitty.conf

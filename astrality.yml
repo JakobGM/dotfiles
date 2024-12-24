@@ -40,7 +40,6 @@ modules:
     enabled_modules:
         # Module defined in this file
         - name: polybar::*
-        - name: terminals
 
         # All modules defined in <modules_directory>/solar_desktop/config.yml
         # - name: solar_desktop::*

@@ -1,13 +1,13 @@
 # vim:fileencoding=utf-8:ft=conf
 
 # Fully featured
-font_family      {{ fonts.2.name }}
+font_family      {{ .terminal.font_family }}
 italic_font      auto
 bold_font        auto
 bold_italic_font auto
 
 # Font size (in pts)
-font_size        {{ fonts.terminal.size }}
+font_size        {{ .terminal.font_size }}
 
 # The amount the font size is changed by (in pts) when increasing/decreasing
 # the font size in a running terminal.
@@ -74,8 +74,8 @@ term xterm-kitty
 #window decorations
 window_border_width 1
 window_padding_width 0
-active_border_color #{{ colors.background.3 }}
-inactive_border_color #{{ colors.background.2 }}
+active_border_color #{{ index .colors.background 2 }}
+inactive_border_color #{{ index .colors.background 1 }}
 
 # Hide top bar on MacOS
 hide_window_decorations yes
@@ -84,10 +84,10 @@ hide_window_decorations yes
 tab_bar_style powerline
 
 # Tab-bar colors
-active_tab_foreground   #{{ colors.foreground.2 }}
-active_tab_background   #{{ colors.background.2 }}
-inactive_tab_foreground #{{ colors.foreground.1 }}
-inactive_tab_background #{{ colors.background.1 }}
+active_tab_foreground   #{{ index .colors.foreground 1 }}
+active_tab_background   #{{ index .colors.background 1 }}
+inactive_tab_foreground #{{ index .colors.foreground 0 }}
+inactive_tab_background #{{ index .colors.background 0 }}
 
 
 # Key mappings
