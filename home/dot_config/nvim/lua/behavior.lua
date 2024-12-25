@@ -78,7 +78,7 @@ local chezmoiApplyGroup = vim.api.nvim_create_augroup('ChezmoiApply', { clear = 
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
   pattern = vim.env.HOME .. '/.local/share/chezmoi/**',
   group = chezmoiApplyGroup,
-  callback = function()
-    vim.fn.jobstart('chezmoi apply', { detach = true })
+  callback = function(args)
+    vim.fn.jobstart('chezmoi apply --source-path ' .. args.file, { detach = true })
   end,
 })
