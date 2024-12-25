@@ -30,7 +30,7 @@ return {
   -- Code Completion and Snippets
   require("plugins.nvim_cmp"),
   require("plugins.blink_cmp"),
-  require("plugins.copilot_vim"),
+  require("plugins.copilot_lua"),
 
   -- Language Server Protocol (LSP)
   require("plugins.nvim_lspconfig"),
