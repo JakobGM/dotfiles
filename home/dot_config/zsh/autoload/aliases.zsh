@@ -10,6 +10,7 @@ function command_exists() {
 
 # Chezmoi
 alias cz='chezmoi'
+alias dot='chezmoi cd'
 
 # Git aliases
 if which hub > /dev/null 2>&1; then
