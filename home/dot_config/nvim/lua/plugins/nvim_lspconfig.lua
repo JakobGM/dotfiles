@@ -45,24 +45,7 @@ return {
     {
       "nvimtools/none-ls.nvim",
       name = "none-ls.nvim",
-      config = function()
-        -- Taken from here: https://github.com/MunifTanjim/prettier.nvim
-        local null_ls = require("null-ls")
-
-        local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-        local event = "BufWritePre" -- or "BufWritePost"
-        local async = event == "BufWritePost"
-
-        null_ls.setup({
-          on_attach = function(client, bufnr)
-            if client.supports_method("textDocument/formatting") then
-              vim.keymap.set("n", "<Leader>w", function()
-                vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-              end, { buffer = bufnr, desc = "[lsp] format" })
-            end
-          end,
-        })
-      end,
+      opts = true,
     },
     {
       "jay-babu/mason-null-ls.nvim",
@@ -107,19 +90,6 @@ return {
 
     -- Default on_attach function for all language servers
     on_attach = function(client, bufnr)
-      -- Make <leader>w format document if available
-      -- https://github.com/neovim/nvim-lspconfig/issues/1891#issuecomment-1157964108
-      if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set(
-          'n',
-          '<Leader>w',
-          function()
-            vim.lsp.buf.format({ async = true })
-            vim.api.nvim_command('silent write')
-          end,
-          { buffer = bufnr, silent = true }
-        )
-      end
     end
 
     -- Setup language servers.

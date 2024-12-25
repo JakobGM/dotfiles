@@ -3,9 +3,6 @@ vim.keymap.set('i', '<M-e>', 'æ')
 vim.keymap.set('i', '<M-o>', 'ø')
 vim.keymap.set('i', '<M-a>', 'å')
 
--- Write to file
-vim.keymap.set('n', '<Leader>w', ':silent write<CR>', { silent = true })
-
 -- Make Y yank the rest of the line
 vim.keymap.set('n', 'Y', 'y$')
 
