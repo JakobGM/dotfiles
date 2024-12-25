@@ -24,6 +24,7 @@ return {
   require("plugins.git_messeger_vim"),
   require("plugins.gitsigns_nvim"),
   require("plugins.magit"),
+  require("plugins.mini_diff"),
   require("plugins.neogit"),
   require("plugins.vim_fugitive"),
 
@@ -54,8 +55,7 @@ return {
 
   -- File Type Specific
   require("plugins.vimtex"),
-  require("plugins.vim_pandoc"),
-  require("plugins.vim_pandoc_syntax"),
+  require("plugins.render_markdown_nvim"),
 
   -- Utility
   require("plugins.chezmoi_nvim"),
@@ -73,7 +73,7 @@ return {
   require("plugins.kitty_scrollback_nvim"),
 
   -- Artificial Intelligence
-  require("plugins.gp_nvim"),
+  require("plugins.codecompanion_nvim"),
 
   -- Miscellaneous
   require("plugins.neodev_nvim"),

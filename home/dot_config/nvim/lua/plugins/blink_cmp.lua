@@ -2,6 +2,7 @@ return {
   'saghen/blink.cmp',
   enabled = true,
   dependencies = 'rafamadriz/friendly-snippets',
+  event = "InsertEnter",
 
   version = '*',
 
@@ -14,7 +15,20 @@ return {
       nerd_font_variant = 'mono'
     },
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
+      default = {
+        'codecompanion',
+        'lsp',
+        'path',
+        'snippets',
+        'buffer',
+      },
+      providers = {
+        codecompanion = {
+          name = "CodeCompanion",
+          module = "codecompanion.providers.completion.blink",
+          enabled = true,
+        },
+      },
     },
     completion = {
       list = {
