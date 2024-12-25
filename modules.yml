@@ -1,8 +1,0 @@
-dotfiles:
-    # This module automatically compiles all filenames within $XDG_CONFIG_HOME
-    # prefixed with 'template.'. It removes the prefix for the compile target,
-    # placing it in the same directory as the template.
-    compile:
-        content: $XDG_CONFIG_HOME
-        target: $XDG_CONFIG_HOME
-        include: 'template\.(.+)'
