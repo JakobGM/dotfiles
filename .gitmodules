@@ -1,6 +1,3 @@
-[submodule "config/refind/themes"]
-	path = home/dot_config/refind/themes
-	url = https://gitlab.com/realmain/rEFInd-sunset.git
 [submodule "config/i3/i3scripts"]
 	path = home/dot_config/i3/i3scripts
 	url = https://github.com/justbuchanan/i3scripts

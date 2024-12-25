@@ -6,8 +6,6 @@
     path = gitconfig-crdbrd
 [includeIf "gitdir:~/crdbrd/"]
     path = gitconfig-crdbrd
-[includeIf "gitdir:~/oda/"]
-    path = gitconfig-oda
 [core]
     editor = nvim
     excludesfile = ~/.config/git/ignore

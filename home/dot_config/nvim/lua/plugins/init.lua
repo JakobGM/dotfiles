@@ -12,7 +12,6 @@ return {
 
   -- Syntax Highlighting and Parsing
   require("plugins.nvim_treesitter"),
-  require("plugins.vim_polyglot"),
 
   -- File Navigation and Search
   require("plugins.fzf_lua"),
@@ -29,7 +28,6 @@ return {
   require("plugins.vim_fugitive"),
 
   -- Code Completion and Snippets
-  require("plugins.coc_nvim"),
   require("plugins.nvim_cmp"),
   require("plugins.blink_cmp"),
   require("plugins.copilot_vim"),
