@@ -74,8 +74,11 @@ bindsym $mod+shift+w scratchpad show
 exec_always 'swaybg --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
 
 # --- Emoji picker ---
-exec emote
-bindsym $mod+e exec emote
+# Requires:
+# - "bemoji" package for emoji picker.
+# - "wtype" package for auto-pasting.
+# - "noto-fonts-emoji" for emoji font.
+bindsym $mod+e exec bemoji --type
 
 # Prevent floating windows going offscreen
 floating_maximum_size 3840 x 2160
