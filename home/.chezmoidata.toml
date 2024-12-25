@@ -1,3 +1,7 @@
+[fonts]
+terminal = { family = "JetBrains Mono", size = 12 }
+ui = { family = "Fira Code", size = 12 }
+
 [displays]
 primary = { handle = "DP2", dpi = 96, font_size = 9 }
 secondary = { handle = "HDMI2", dpi = 96, font_size = 8 }
@@ -6,22 +10,6 @@ tertiary = { handle = "eDP1", dpi = 96, font_size = 12 }
 [network]
 wlan = "wlan0"
 ethernet = "eno0"
-
-[system]
-shutdown = "systemctl poweroff -i"
-reboot = "systemctl reboot -i"
-
-[fonts]
-primary = "Fira Code"
-secondary = "JetBrains Mono"
-
-[urls]
-calendar = "calendar.google.com"
-browser = "firefox"
-
-[terminal]
-font_family = "JetBrains Mono"
-font_size = 12
 
 [colors]
 # Gruvbox dark
