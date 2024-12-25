@@ -29,7 +29,6 @@ return {
             "html",
             "jsonls",
             "lua_ls",
-            "prettierd",
             "pyright",
             "ruff",
             "rust_analyzer",

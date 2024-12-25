@@ -1,7 +1,10 @@
 return {
   'saghen/blink.cmp',
   enabled = true,
-  dependencies = 'rafamadriz/friendly-snippets',
+  dependencies = {
+    'rafamadriz/friendly-snippets',
+    'lazydev.nvim',
+  },
   event = "InsertEnter",
 
   version = '*',
@@ -16,6 +19,7 @@ return {
     },
     sources = {
       default = {
+        'lazydev',
         'codecompanion',
         'lsp',
         'path',
@@ -27,6 +31,12 @@ return {
           name = "CodeCompanion",
           module = "codecompanion.providers.completion.blink",
           enabled = true,
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          -- Make lazydev completions top priority
+          score_offset = 100,
         },
       },
     },

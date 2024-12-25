@@ -75,7 +75,7 @@ return {
   require("plugins.codecompanion_nvim"),
 
   -- Miscellaneous
-  require("plugins.neodev_nvim"),
+  require("plugins.lazydev_nvim"),
   require("plugins.vim_carbon_now_sh"),
   require("plugins.vim_wakatime"),
 }
