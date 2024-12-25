@@ -60,6 +60,7 @@ return {
   require("plugins.vim_pandoc_syntax"),
 
   -- Utility
+  require("plugins.chezmoi_nvim"),
   require("plugins.vim_sensible"),
   require("plugins.vim_lastplace"),
   require("plugins.vim_smooth_scroll"),
