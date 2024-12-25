@@ -72,3 +72,13 @@ vim.opt.secure = true
 
 -- Prefer python3 when both can be used
 vim.opt.pyx = 3
+
+-- Run "chezmoi apply" after saving chezmoi source files
+local chezmoiApplyGroup = vim.api.nvim_create_augroup('ChezmoiApply', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  pattern = vim.env.HOME .. '/.local/share/chezmoi/**',
+  group = chezmoiApplyGroup,
+  callback = function()
+    vim.fn.jobstart('chezmoi apply', { detach = true })
+  end,
+})

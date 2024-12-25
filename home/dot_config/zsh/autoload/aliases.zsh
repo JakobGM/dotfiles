@@ -10,7 +10,9 @@ function command_exists() {
 
 # Chezmoi
 alias cz='chezmoi'
-alias dot='chezmoi cd'
+
+# Navigate to the chezmoi source directory, open NeoVim and run ":FzfLua files"
+alias dot='cd ~/.local/share/chezmoi/home && nvim -c "FzfLua files"'
 
 # Git aliases
 if which hub > /dev/null 2>&1; then

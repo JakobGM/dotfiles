@@ -58,7 +58,6 @@ return {
   require("plugins.render_markdown_nvim"),
 
   -- Utility
-  require("plugins.chezmoi_nvim"),
   require("plugins.vim_sensible"),
   require("plugins.vim_lastplace"),
   require("plugins.vim_smooth_scroll"),
