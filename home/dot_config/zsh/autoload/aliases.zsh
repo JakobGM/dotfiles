@@ -24,11 +24,6 @@ alias gpgenable="git config commit.gpgsign true"
 alias ds='diff-so-fancy'
 alias ud="kitty +kitten diff"
 
-# GitHub copilot
-# Enable the use of the ghcs and ghce commands
-# Requires: `gh extension install github/gh-copilot`
-{ echo "$(gh copilot alias -- zsh)" > ${ZDOTDIR}/autoload/gh.zsh } &!
-
 # Application aliases
 alias n='nvim'
 alias nn='nvim .'
