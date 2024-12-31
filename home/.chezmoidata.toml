@@ -1,5 +1,5 @@
 [fonts]
-terminal = { family = "JetBrains Mono", size = 12 }
+terminal = { family = "MonoLisa", size = 12 }
 ui = { family = "Fira Code", size = 12 }
 
 [displays]
