@@ -18,6 +18,7 @@ return {
       "default-title",
       defaults = {
         formatter = "path.filename_first",
+        multiline = 1,
       },
       colorscheme = "gruvbox",
       winopts = {
