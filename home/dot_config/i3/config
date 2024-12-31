@@ -24,6 +24,10 @@ bindsym $mod+Shift+a exec --no-startup-id "$PROJECT_HOME/astrality/.venv/bin/pyt
 # Start 1Password in the background since it is responsible for starting the GPG agent and keychain manager
 exec_always 1password --silent
 
+# ----------------------- Window layout rules -----------------------
+# Render Firefox notifications as floating windows
+for_window [window_role="alert"] floating enable
+
 # ----------------------- Scratchpad settings -----------------------
 
 # Start all the scratchpad instances if they are not already running
