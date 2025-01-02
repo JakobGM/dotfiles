@@ -1,0 +1,8 @@
+# Display file icons
+icons = true
+
+# Print disk usage in human-readable format
+human = true
+
+# Outputs the tree with the root node at the top of the output
+layout = "inverted"
