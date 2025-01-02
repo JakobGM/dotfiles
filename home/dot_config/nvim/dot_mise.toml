@@ -1,2 +1,9 @@
+[env]
+
+# Create and load virtualenv automatically
+_.python.venv = { path = ".venv", create = true }
+
+MISE_PYTHON_DEFAULT_PACKAGES_FILE = "requirements.txt"
+
 [tools]
-python = { version = "3.11.2", virtualenv = ".venv" }
+python = "3.13.1"
