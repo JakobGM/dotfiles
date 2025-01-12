@@ -29,7 +29,7 @@ return {
             "html",
             "jsonls",
             "lua_ls",
-            "pyright",
+            "basedpyright",
             "ruff",
             "rust_analyzer",
             "sqlls",
@@ -127,11 +127,16 @@ return {
         },
       },
     })
-    lspconfig.pyright.setup({
+    lspconfig.basedpyright.setup({
       on_attach = on_attach,
       settings = {
-        pyright = {
-          autoImportCompletion = true,
+        basedpyright = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            useLibraryCodeForTypes = true,
+            autoImportCompletion = true,
+          },
           -- Using Ruff's import organizer
           disableOrganizeImports = true,
         },
@@ -154,7 +159,7 @@ return {
     })
     lspconfig.ruff.setup({
       on_attach = function(client, bufnr)
-        -- Disable hover in favor of Pyright
+        -- Disable hover in favor of basedpyright
         client.server_capabilities.hoverProvider = false
         on_attach(client, bufnr)
       end
