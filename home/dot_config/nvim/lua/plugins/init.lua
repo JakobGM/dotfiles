@@ -13,12 +13,13 @@ return {
   -- Syntax Highlighting and Parsing
   require("plugins.nvim_treesitter"),
 
-  -- File Navigation and Search
+  -- File Navigation, Search and Management
   require("plugins.fzf_lua"),
   require("plugins.vim_tmux_navigator"),
   require("plugins.tagbar"),
   require("plugins.vim_gutentags"),
   require("plugins.neo_tree_nvim"),
+  require("plugins.nvim_lsp_file_operations"),
 
   -- Git Integration
   require("plugins.git_messeger_vim"),
