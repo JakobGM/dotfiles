@@ -17,6 +17,6 @@ return {
     },
   },
   keys = {
-    { "<Leader>n", ":Neotree show<CR>", mode = { "n" } },
+    { "<Leader>n", ":Neotree toggle<CR>", mode = { "n" } },
   },
 }
