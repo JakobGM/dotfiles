@@ -1,6 +1,7 @@
 return {
   -- UI and Appearance
   require("plugins.barbecue_nvim"),
+  require("plugins.fix_auto_scroll_nvim"),
   require("plugins.gruvbox"),
   require("plugins.lualine_nvim"),
   require("plugins.noice_nvim"),
