@@ -1,25 +1,25 @@
 return {
   -- UI and Appearance
+  require("plugins.barbecue_nvim"),
   require("plugins.gruvbox"),
   require("plugins.lualine_nvim"),
-  require("plugins.barbecue_nvim"),
-  require("plugins.vim_devicons"),
   require("plugins.noice_nvim"),
+  require("plugins.vim_devicons"),
 
   -- Code Analysis and Diagnostics
-  require("plugins.trouble_nvim"),
   require("plugins.nvim_coverage"),
+  require("plugins.trouble_nvim"),
 
   -- Syntax Highlighting and Parsing
   require("plugins.nvim_treesitter"),
 
   -- File Navigation, Search and Management
   require("plugins.fzf_lua"),
-  require("plugins.vim_tmux_navigator"),
-  require("plugins.tagbar"),
-  require("plugins.vim_gutentags"),
   require("plugins.neo_tree_nvim"),
   require("plugins.nvim_lsp_file_operations"),
+  require("plugins.tagbar"),
+  require("plugins.vim_gutentags"),
+  require("plugins.vim_tmux_navigator"),
 
   -- Git Integration
   require("plugins.git_messeger_vim"),
@@ -30,9 +30,9 @@ return {
   require("plugins.vim_fugitive"),
 
   -- Code Completion and Snippets
-  require("plugins.nvim_cmp"),
   require("plugins.blink_cmp"),
   require("plugins.copilot_lua"),
+  require("plugins.nvim_cmp"),
 
   -- Language Server Protocol (LSP)
   require("plugins.nvim_lspconfig"),
@@ -45,26 +45,26 @@ return {
 
   -- Text Editing and Manipulation
   require("plugins.conform_nvim"),
-  require("plugins.vim_surround"),
-  require("plugins.vim_repeat"),
+  require("plugins.nvim_comment"),
+  require("plugins.nvim_spectre"),
+  require("plugins.rename"),
+  require("plugins.tabular"),
   require("plugins.vim_argumentative"),
   require("plugins.vim_argwrap"),
-  require("plugins.tabular"),
-  require("plugins.nvim_comment"),
-  require("plugins.rename"),
-  require("plugins.nvim_spectre"),
+  require("plugins.vim_repeat"),
+  require("plugins.vim_surround"),
 
   -- File Type Specific
-  require("plugins.vimtex"),
   require("plugins.render_markdown_nvim"),
+  require("plugins.vimtex"),
 
   -- Utility
-  require("plugins.vim_sensible"),
-  require("plugins.vim_lastplace"),
-  require("plugins.vim_smooth_scroll"),
-  require("plugins.stable_windows"),
-  require("plugins.neomake"),
   require("plugins.kulala_nvim"),
+  require("plugins.neomake"),
+  require("plugins.stable_windows"),
+  require("plugins.vim_lastplace"),
+  require("plugins.vim_sensible"),
+  require("plugins.vim_smooth_scroll"),
 
   -- Documentation and Help
   require("plugins.neoman_vim"),
