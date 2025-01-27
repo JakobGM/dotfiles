@@ -25,12 +25,17 @@ return {
         'path',
         'snippets',
         'buffer',
+        'dadbod',
       },
       providers = {
         codecompanion = {
           name = "CodeCompanion",
           module = "codecompanion.providers.completion.blink",
           enabled = true,
+        },
+        dadbod = {
+          name = "Dadbod",
+          module = "vim_dadbod_completion.blink",
         },
         lazydev = {
           name = "LazyDev",
