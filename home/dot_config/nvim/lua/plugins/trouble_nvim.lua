@@ -17,7 +17,7 @@ return {
   keys = {
     {
       "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
+      "<cmd>Trouble diagnostics toggle filter = { severity=vim.diagnostic.severity.ERROR }<cr>",
       desc = "Diagnostics (Trouble)",
     },
     {
