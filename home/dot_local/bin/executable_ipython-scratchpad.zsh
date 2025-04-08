@@ -2,4 +2,4 @@
 source ~/.config/zsh/.zshrc
 cd ~/crdbrd/hub
 clear
-mise run shell
+mise run dev:python
