@@ -310,3 +310,5 @@ vignettes/*.pdf
 
 # End of https://www.gitignore.io/api/r,node,linux,macos,matlab,python,archlinuxpackages
 
+# Aider-generated files, an AI pair programmer
+.aider*
