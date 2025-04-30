@@ -14,5 +14,8 @@ return {
       "--kinds-python=cfmIix",
       "--languages=python",
     }
+
+    -- Generate tags right after opening Neovim
+    vim.g.gutentags_generate_on_empty_buffer = true
   end,
 }
