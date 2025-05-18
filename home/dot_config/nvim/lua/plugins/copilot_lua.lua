@@ -29,6 +29,7 @@ return {
         cvs = false,
         ["."] = false,
       },
+      copilot_model = "gpt-4o-copilot",
     })
     -- Press ctrl+e to accept just a single word from the suggestion
     vim.keymap.set(
