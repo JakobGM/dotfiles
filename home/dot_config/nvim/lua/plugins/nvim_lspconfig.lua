@@ -15,6 +15,8 @@ return {
     },
     {
       "williamboman/mason-lspconfig.nvim",
+      -- Pin to v1.32.0 until duplicate go-to-definition issue is resolved
+      tag = "v1.32.0",
       config = function()
         require("mason-lspconfig").setup {
           -- Options for mason-lspconfig.nvim
