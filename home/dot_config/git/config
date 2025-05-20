@@ -54,10 +54,13 @@
     l = forgit log
     p = push
     pl = pull
+    r = restore
+    R = !git restore --staged . && git restore .
     rb = forgit rebase
     rc = rebase --continue
     rho = !git fetch origin && git reset --hard @{u} && git clean -df
     rom = rebase -i origin/main
+    rs = restore --staged
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 [gpg]
