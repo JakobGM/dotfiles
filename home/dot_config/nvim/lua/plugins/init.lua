@@ -23,7 +23,6 @@ return {
   require("plugins.vim_tmux_navigator"),
 
   -- Git Integration
-  require("plugins.git_messeger_vim"),
   require("plugins.gitsigns_nvim"),
   require("plugins.magit"),
   require("plugins.mini_diff"),
