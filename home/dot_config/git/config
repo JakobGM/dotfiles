@@ -63,6 +63,7 @@
     rs = restore --staged
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+    push-upstream = !git push --set-upstream origin `git symbolic-ref --short HEAD`
 [gpg]
   format = ssh
 [gpg "ssh"]
