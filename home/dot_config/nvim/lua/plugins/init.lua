@@ -62,7 +62,6 @@ return {
   -- Utility
   require("plugins.kulala_nvim"),
   require("plugins.neomake"),
-  require("plugins.stable_windows"),
   require("plugins.vim_lastplace"),
   require("plugins.vim_sensible"),
   require("plugins.vim_smooth_scroll"),
