@@ -36,6 +36,11 @@ return {
       desc = "Run test file"
     },
     {
+      "gtT",
+      function() require("neotest").run.run(vim.fn.getcwd() .. "/tests") end,
+      desc = "Run all tests in project"
+    },
+    {
       "gtw",
       function() require("neotest").watch.toggle() end,
 
@@ -56,6 +61,11 @@ return {
       "gts",
       function() require("neotest").output_panel.toggle() end,
       desc = "Toggle test output panel",
+    },
+    {
+      "gtS",
+      function() require("neotest").summary.toggle() end,
+      desc = "Toggle test summary panel",
     },
   }
 }
