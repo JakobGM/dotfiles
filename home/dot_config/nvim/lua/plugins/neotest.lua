@@ -25,11 +25,37 @@ return {
     })
   end,
   keys = {
-    { "gtt", function() require("neotest").run.run() end },
-    { "gtf", function() require("neotest").run.run(vim.fn.expand("%")) end },
-    { "gtw", function() require("neotest").watch.toggle() end },
-    { "gtd", function() require("neotest").run.run({ strategy = "dap" }) end },
-    { "gta", function() require("neotest").run.attach() end },
-    { "gts", function() require("neotest").output_panel.toggle() end },
+    {
+      "gtt",
+      function() require("neotest").run.run() end,
+      desc = "Run closed test",
+    },
+    {
+      "gtf",
+      function() require("neotest").run.run(vim.fn.expand("%")) end,
+      desc = "Run test file"
+    },
+    {
+      "gtw",
+      function() require("neotest").watch.toggle() end,
+
+      desc = "Re-run tests on file change"
+    },
+    {
+      "gtd",
+      function() require("neotest").run.run({ strategy = "dap" }) end,
+      desc = "Run test with debugger",
+    },
+    {
+      "gta",
+      function() require("neotest").run.attach() end,
+      desc = "Attach to test"
+
+    },
+    {
+      "gts",
+      function() require("neotest").output_panel.toggle() end,
+      desc = "Toggle test output panel",
+    },
   }
 }
