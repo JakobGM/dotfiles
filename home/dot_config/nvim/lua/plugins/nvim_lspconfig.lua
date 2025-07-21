@@ -15,13 +15,12 @@ return {
     },
     {
       "williamboman/mason-lspconfig.nvim",
-      -- Pin to v1.32.0 until duplicate go-to-definition issue is resolved
-      tag = "v1.32.0",
       config = function()
         require("mason-lspconfig").setup {
-          -- Options for mason-lspconfig.nvim
           ensure_installed = {
+            "postgres_lsp",
             "awk_ls",
+            "basedpyright",
             "bashls",
             "cssls",
             "docker_compose_language_service",
@@ -31,15 +30,14 @@ return {
             "html",
             "jsonls",
             "lua_ls",
-            "basedpyright",
             "ruff",
             "rust_analyzer",
-            "sqlls",
             "tailwindcss",
             "ts_ls",
             "vimls",
             "yamlls",
-          }
+          },
+          automatic_enable = false,
         }
       end,
     },
@@ -87,50 +85,10 @@ return {
       end
     end
 
+    -- Setup Python LSP servers
     local lspconfig = require('lspconfig')
 
-    -- Default on_attach function for all language servers
-    on_attach = function(client, bufnr)
-    end
-
-    -- Setup language servers.
-    lspconfig.awk_ls.setup({ on_attach = on_attach })
-    lspconfig.bashls.setup({ on_attach = on_attach })
-    lspconfig.cssls.setup({ on_attach = on_attach })
-    lspconfig.docker_compose_language_service.setup({ on_attach = on_attach })
-    lspconfig.dockerls.setup({ on_attach = on_attach })
-    lspconfig.grammarly.setup({ on_attach = on_attach })
-    lspconfig.graphql.setup({ on_attach = on_attach })
-    lspconfig.html.setup({ on_attach = on_attach })
-    lspconfig.jsonls.setup({ on_attach = on_attach })
-    lspconfig.lua_ls.setup({
-      on_attach = on_attach,
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { 'vim' },
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
-          },
-          completion = {
-            callSnippet = "Replace"
-          },
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    })
     lspconfig.basedpyright.setup({
-      on_attach = on_attach,
       settings = {
         basedpyright = {
           analysis = {
@@ -139,7 +97,6 @@ return {
             useLibraryCodeForTypes = true,
             autoImportCompletion = true,
           },
-          -- Using Ruff's import organizer
           disableOrganizeImports = true,
         },
         python = {
@@ -151,35 +108,22 @@ return {
           }
         }
       },
-      -- Disable hints
-      -- https://www.reddit.com/r/neovim/comments/11k5but/comment/jbjwwtf
       capabilities = (function()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
         return capabilities
       end)(),
     })
+
     lspconfig.ruff.setup({
       on_attach = function(client, bufnr)
-        -- Disable hover in favor of basedpyright
+        -- Disable capabilities that basedpyright should handle
         client.server_capabilities.hoverProvider = false
-        on_attach(client, bufnr)
+        client.server_capabilities.definitionProvider = false
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.documentSymbolProvider = false
       end
     })
-    lspconfig.rust_analyzer.setup({ on_attach = on_attach })
-    lspconfig.sqlls.setup({ on_attach = on_attach })
-    lspconfig.tailwindcss.setup({ on_attach = on_attach })
-    lspconfig.ts_ls.setup({
-      on_attach = function(client, bufnr)
-        -- Disable formatting capability
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-        -- Call the default on_attach to retain other functionality
-        on_attach(client, bufnr)
-      end
-    })
-    lspconfig.vimls.setup({ on_attach = on_attach })
-    lspconfig.yamlls.setup({ on_attach = on_attach })
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
