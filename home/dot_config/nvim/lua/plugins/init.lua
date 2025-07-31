@@ -6,6 +6,7 @@ return {
   require("plugins.lualine_nvim"),
   require("plugins.noice_nvim"),
   require("plugins.vim_devicons"),
+  require("plugins.image_nvim"),
 
   -- Code Analysis and Diagnostics
   require("plugins.nvim_coverage"),
@@ -55,6 +56,7 @@ return {
   require("plugins.vim_surround"),
 
   -- File Type Specific
+  require("plugins.molten_nvim"),
   require("plugins.render_markdown_nvim"),
   require("plugins.vim_dadbod_ui"),
   require("plugins.vimtex"),

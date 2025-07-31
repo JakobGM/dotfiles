@@ -1,0 +1,7 @@
+[env]
+# Create and load virtualenv automatically
+_.python.venv = { path = ".venv", create = true }
+
+[tools]
+python = "3.13.5"
+uv = "0.8.3"

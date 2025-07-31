@@ -1,0 +1,20 @@
+[project]
+name = "nvim"
+version = "0.1.0"
+description = "Python environment for my Neovim setup"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # Dependencies of molten-nvim
+    # https://github.com/benlubas/molten-nvim/blob/main/docs/Virtual-Environments.md#install-dependencies
+    "cairosvg>=2.8.2",
+    "jupyter-client>=8.6.3",
+    "kaleido>=1.0.0",
+    "nbconvert>=7.16.6",
+    "plotly>=6.2.0",
+    "pnglatex>=1.1",
+    "pynvim>=0.5.2",
+    "pyperclip>=1.9.0",
+    # Noevim complains if pip is not installed
+    "pip>=25.2",
+]
