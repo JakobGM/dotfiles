@@ -53,7 +53,7 @@ return {
       anthropic = function()
         return require("codecompanion.adapters").extend("anthropic", {
           env = {
-            api_key = "cmd:op --account=crdbrd read 'op://vesk7mrpebygjjb4yzyo7wvzwa/Anthropic/credential' --no-newline",
+            api_key = "cmd:op --account=crdbrd read 'op://vesk7mrpebygjjb4yzyo7wvzwa/jpjeiuo2rngait7lqasyqqswu4/credential' --no-newline",
           },
         })
       end,
