@@ -41,38 +41,6 @@ return {
         }
       end,
     },
-    {
-      "nvimtools/none-ls.nvim",
-      name = "none-ls.nvim",
-      opts = true,
-    },
-    {
-      "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "mason.nvim",
-        "none-ls.nvim",
-      },
-      opts = {
-        ensure_installed = {
-          "prettierd",
-        },
-        automatic_istallation = true,
-      },
-    },
-    {
-      -- Better configuration of the lua_ls language server
-      "neodev.nvim",
-    },
-    {
-      "rafamadriz/friendly-snippets",
-      dependencies = {
-        "hrsh7th/vim-vsnip",
-      },
-      config = function()
-        vim.g.vsnip_filetypes.python = { "django" }
-      end
-    },
   },
   config = function()
     -- Workaround for: https://github.com/neovim/neovim/issues/23291
@@ -106,11 +74,6 @@ return {
           }
         }
       },
-      capabilities = (function()
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-        return capabilities
-      end)(),
     }
 
     vim.lsp.config.ruff = {
@@ -144,20 +107,12 @@ return {
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf }
-        -- vim.keymap.set('n', '<Leader>d', vim.lsp.buf.declaration, opts) -- See fzf_lua.lua
-        -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts) -- See fzf_lua.lua
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
         vim.keymap.set('n', 'gtD', vim.lsp.buf.type_definition, opts)
         vim.keymap.set({ 'n', 'i' }, '<C-k>', vim.lsp.buf.signature_help, opts)
-        -- vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-        -- vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-        -- vim.keymap.set('n', '<space>wl', function()
-        --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-        -- end, opts)
         vim.keymap.set('n', '<Leader>r', vim.lsp.buf.rename, opts)
         vim.keymap.set({ 'n', 'v' }, '<Leader>ca', vim.lsp.buf.code_action, opts)
-        -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts) -- See fzf_lua.lua
         vim.keymap.set('n', '<Leader>f', function()
           vim.lsp.buf.code_action({
             apply = true,
@@ -169,16 +124,6 @@ return {
       end,
     })
 
-    -- local signs = {
-    --   Error = "❌",
-    --   Warn = "⚠",
-    --   Hint = "💡",
-    --   Info = "ℹ️",
-    -- }
-    -- for type, icon in pairs(signs) do
-    --   local hl = "DiagnosticSign" .. type
-    --   vim.fn.sign_define(hl, { text = "", texthl = "", numhl = "" })
-    -- end
     -- Disable signs in gutter showing diagnostic errors
     vim.diagnostic.config({
       virtual_text = true,
