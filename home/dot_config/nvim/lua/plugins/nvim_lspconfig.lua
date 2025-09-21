@@ -85,10 +85,8 @@ return {
       end
     end
 
-    -- Setup Python LSP servers
-    local lspconfig = require('lspconfig')
-
-    lspconfig.basedpyright.setup({
+    -- Configure LSP servers using nvim-0.11 API
+    vim.lsp.config.basedpyright = {
       settings = {
         basedpyright = {
           analysis = {
@@ -113,9 +111,9 @@ return {
         capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
         return capabilities
       end)(),
-    })
+    }
 
-    lspconfig.ruff.setup({
+    vim.lsp.config.ruff = {
       on_attach = function(client, bufnr)
         -- Disable capabilities that basedpyright should handle
         client.server_capabilities.hoverProvider = false
@@ -123,7 +121,10 @@ return {
         client.server_capabilities.referencesProvider = false
         client.server_capabilities.documentSymbolProvider = false
       end
-    })
+    }
+
+    -- Enable configured LSP servers
+    vim.lsp.enable({'basedpyright', 'ruff'})
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
