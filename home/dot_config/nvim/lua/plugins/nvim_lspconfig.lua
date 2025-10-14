@@ -86,8 +86,34 @@ return {
       end
     }
 
+    vim.lsp.config.tailwindcss = {
+      filetypes = { "htmldjango", "python" },
+      settings = {
+        tailwindCSS = {
+          experimental = {
+            classRegex = {
+              -- htpy: class_="px-1" or class_=[foo, "px-1"] on a single line
+              "class_=[^\"]*\"([^\"]*)\"",
+              -- htpy: class_=[\n"px-1",\n] on multiple lines
+              "\\s+\"([^\"]*)\",",
+              -- htpy: class_=[\n{"px-1": bool},\n] on multiple lines
+              "\\s+\\{\"([^\"]*)\":\\s[^\\}]*\\},",
+              -- Custom component default args
+              "_class: str = \"([^\"]*)\",",
+              -- Variables and custom component args
+              "_class\\s?=\\s?\"([^\"]*)\""
+            },
+          },
+        },
+      },
+    }
+
     -- Enable configured LSP servers
-    vim.lsp.enable({'basedpyright', 'ruff'})
+    vim.lsp.enable({
+      'basedpyright',
+      'ruff',
+      'tailwindcss',
+    })
 
     -- Global mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
