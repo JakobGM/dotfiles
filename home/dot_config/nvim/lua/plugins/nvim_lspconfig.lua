@@ -33,6 +33,7 @@ return {
             "ruff",
             "rust_analyzer",
             "tailwindcss",
+            "tombi",
             "ts_ls",
             "vimls",
             "yamlls",
@@ -113,6 +114,7 @@ return {
       'basedpyright',
       'ruff',
       'tailwindcss',
+      'tombi',
     })
 
     -- Global mappings.
