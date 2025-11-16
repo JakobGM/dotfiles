@@ -16,6 +16,7 @@ return {
   require("plugins.nvim_treesitter"),
 
   -- File Navigation, Search and Management
+  require("plugins.fff_nvim"),
   require("plugins.fzf_lua"),
   require("plugins.neo_tree_nvim"),
   require("plugins.nvim_lsp_file_operations"),
