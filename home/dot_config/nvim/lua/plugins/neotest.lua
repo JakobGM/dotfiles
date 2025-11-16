@@ -11,7 +11,7 @@ return {
     require("neotest").setup({
       adapters = {
         require("neotest-python")({
-          args = { "--create-db" },
+          args = { "--create-db", "-vv" },
         })
       },
       output = {
@@ -20,7 +20,7 @@ return {
       },
       output_panel = {
         enabled = true,
-        open = 'botright vsplit | vertical resize 80',
+        open = 'botright vsplit',
       },
     })
   end,
