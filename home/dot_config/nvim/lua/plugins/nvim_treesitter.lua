@@ -9,7 +9,11 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup {
       -- A list of parser names, or "all"
-      ensure_installed = { "python", "rust" },
+      ensure_installed = {
+        "python", "rust",
+        -- Recommended R.nvim parsers
+        "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv"
+      },
 
       -- Automatically install missing parsers when entering buffer
       auto_install = true,
