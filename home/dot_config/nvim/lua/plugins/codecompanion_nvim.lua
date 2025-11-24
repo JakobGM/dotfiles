@@ -3,7 +3,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter",
-    "render-markdown.nvim",
     "mini.diff",
   },
   opts = {
