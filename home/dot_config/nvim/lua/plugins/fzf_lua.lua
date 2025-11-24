@@ -67,6 +67,8 @@ return {
     -- LSP commands
     { "<leader>d",       function() require('fzf-lua').lsp_definitions() end },
     { "gr",              function() require('fzf-lua').lsp_references() end },
+    -- LSP symbols
+    { "gS",              function() require('fzf-lua').lsp_live_workspace_symbols() end },
   },
   cmd = "FzfLua",
 }
