@@ -47,7 +47,7 @@ return {
   keys = {
     -- All files in project
     -- Replaced by fff.nvim during a testing period
-    -- { "<leader><space>", function() require("fzf-lua").files() end },
+    { "<leader><space>", function() require("fzf-lua").files() end },
     -- All tags in current buffer
     { "<leader>T",       function() require("fzf-lua").btags() end },
     -- All tags in project
