@@ -51,7 +51,7 @@ for_window [app_id="dropdown_firefox" title="^(?!Save As|Open|Print).*$"] floati
 for_window [app_id="dropdown_terminal"] floating enable, move to scratchpad
 for_window [app_id="dropdown_ipython"] floating enable, move to scratchpad
 for_window [app_id="devdocs-desktop"] floating enable, move to scratchpad
-for_window [app_id="Slack"] floating enable, move to scratchpad
+for_window [class="Slack" instance="slack"] floating enable, move to scratchpad
 for_window [class="Caprine" instance="caprine"] floating enable, move to scratchpad
 for_window [class="Spotify" instance="spotify"] floating enable, move to scratchpad
 
@@ -59,7 +59,7 @@ bindsym $mod+u exec sway-toggle-scratchpad 'app_id="dropdown_firefox"'
 bindsym $mod+t exec sway-toggle-scratchpad 'app_id="dropdown_terminal"'
 bindsym $mod+p exec sway-toggle-scratchpad 'app_id="dropdown_ipython"'
 bindsym $mod+d exec sway-toggle-scratchpad 'app_id="devdocs-desktop"'
-bindsym $mod+s exec sway-toggle-scratchpad 'app_id="Slack"'
+bindsym $mod+s exec sway-toggle-scratchpad 'class="Slack" instance="slack"'
 bindsym $mod+m exec sway-toggle-scratchpad 'class="Caprine" instance="caprine"'
 bindsym $mod+y exec sway-toggle-scratchpad 'class="Spotify" instance="spotify"'
 
