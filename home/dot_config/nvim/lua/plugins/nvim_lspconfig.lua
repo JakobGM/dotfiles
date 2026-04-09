@@ -44,16 +44,6 @@ return {
     },
   },
   config = function()
-    -- Workaround for: https://github.com/neovim/neovim/issues/23291
-    -- Source: https://github.com/neovim/neovim/issues/23725#issuecomment-1561364086
-    local ok, wf = pcall(require, "vim.lsp._watchfiles")
-    if ok then
-      -- disable lsp watcher. Too slow on linux
-      wf._watchfunc = function()
-        return function() end
-      end
-    end
-
     -- Configure LSP servers using nvim-0.11 API
     vim.lsp.config.basedpyright = {
       settings = {
@@ -112,6 +102,7 @@ return {
     -- Enable configured LSP servers
     vim.lsp.enable({
       'basedpyright',
+      'postgres_lsp',
       'ruff',
       'tailwindcss',
       'tombi',
