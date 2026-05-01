@@ -15,9 +15,6 @@ alias cz='chezmoi'
 alias dot='cd ~/.local/share/chezmoi/home && nvim -c "FzfLua files"'
 
 # Git aliases
-if which hub > /dev/null 2>&1; then
-    eval "$(hub alias -s)"
-fi
 alias g="git"
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
@@ -48,9 +45,6 @@ alias ..='cd ../'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-
-# ArchLinux aliases
-alias ie="i3-msg exit"
 
 # Enable/disable terminal line wraps
 alias wrapoff='tput rmam'
