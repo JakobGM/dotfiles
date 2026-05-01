@@ -1,0 +1,7 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Re-runs whenever the Brewfile content changes.
+# Brewfile sha256: {{ include "dot_config/brew/Brewfile" | sha256sum }}
+set -euo pipefail
+brew bundle install --file="${HOME}/.config/brew/Brewfile"
+{{- end -}}
