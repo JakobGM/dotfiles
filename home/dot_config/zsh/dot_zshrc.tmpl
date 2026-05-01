@@ -2,8 +2,11 @@
 # Where we have placed the repository with all dotfiles
 source ${ZDOTDIR}/env.zsh
 
-# Make brew installed binaries available before the rest of the script runs
-export PATH="/opt/homebrew/bin:${PATH}"
+{{- if eq .chezmoi.os "darwin" }}
+# Set up Homebrew env (PATH, MANPATH, INFOPATH, HOMEBREW_PREFIX, …) before the
+# rest of the script runs so subsequent `brew` lookups resolve correctly.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
 
 
 # ---------------- ZSH OPTIONS -------------------
