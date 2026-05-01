@@ -6,4 +6,4 @@ _.python.venv = { path = ".venv", create = true }
 MISE_PYTHON_DEFAULT_PACKAGES_FILE = "requirements.txt"
 
 [tools]
-python = "3.13.1"
+python = "latest"
