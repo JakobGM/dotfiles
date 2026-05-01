@@ -81,12 +81,6 @@ done
 [ -f /usr/share/fzf/fzf-extras.zsh ] && . /usr/share/fzf/fzf-extras.zsh
 
 
-# ----------- OS-SPECIFIC STUFF ---------------
-# If on ArchLinux, start the Xorg instance
-if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
-    :
-fi
-
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/home/jakobgm/.netlify/helper/path.zsh.inc' ]; then source '/home/jakobgm/.netlify/helper/path.zsh.inc'; fi
 
