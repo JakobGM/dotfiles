@@ -1,4 +1,8 @@
+{{- if eq .chezmoi.os "darwin" }}
 pinentry-program /opt/homebrew/bin/pinentry-tty
+{{- else if eq .chezmoi.os "linux" }}
+pinentry-program /usr/bin/pinentry-tty
+{{- end }}
 allow-loopback-pinentry
 
 # Save the passphrase for the entire session
