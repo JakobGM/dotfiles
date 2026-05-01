@@ -26,6 +26,7 @@
 .local/bin/sway-toggle-scratchpad
 .local/bin/i3-get-window-criteria
 .local/bin/launch-scratchpads.zsh
+.local/bin/ipython-scratchpad.zsh
 
 # Firefox profile lives at a different path on macOS;
 # revisit if/when we want to share userChrome.css across OSes.
