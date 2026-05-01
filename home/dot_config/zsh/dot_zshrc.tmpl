@@ -79,10 +79,12 @@ for file in ${ZDOTDIR}/autoload/*.zsh; do
     source "$file"
 done
 
-# Enable fzf related functionity, such as <C-r>
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+# Enable fzf shell integration: Ctrl+R history, Ctrl+T file picker, Alt+C cd
+command -v fzf >/dev/null && eval "$(fzf --zsh)"
+{{- if eq .chezmoi.os "linux" }}
+# Extra fzf utilities (https://github.com/atweiden/fzf-extras), Arch-only
 [ -f /usr/share/fzf/fzf-extras.zsh ] && . /usr/share/fzf/fzf-extras.zsh
+{{- end }}
 
 
 # ----------------- RTX -----------------------
