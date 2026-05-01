@@ -1,0 +1,33 @@
+{{- if eq .chezmoi.os "darwin" }}
+# Linux/Wayland/Xorg-only window-manager and desktop bits
+.config/sway
+.config/i3
+.config/polybar
+.config/waybar
+.config/dunst
+.config/picom
+.config/rofi
+.config/X11
+.config/flameshot
+.config/zathura
+.config/xdg-desktop-portal
+.config/fontconfig
+
+# Arch-specific package manager config
+.config/paru
+
+# Xorg / ALSA / Linux font cache
+.xinitrc
+.asoundrc
+.fonts
+
+# Linux-only helper scripts in ~/.local/bin
+.local/bin/startsway
+.local/bin/sway-toggle-scratchpad
+.local/bin/i3-get-window-criteria
+.local/bin/launch-scratchpads.zsh
+
+# Firefox profile lives at a different path on macOS;
+# revisit if/when we want to share userChrome.css across OSes.
+.mozilla
+{{- end }}
