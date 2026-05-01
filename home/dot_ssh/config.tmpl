@@ -1,5 +1,9 @@
 Host *
+{{- if eq .chezmoi.os "darwin" }}
+    IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- else if eq .chezmoi.os "linux" }}
     IdentityAgent ~/.1password/agent.sock
+{{- end }}
     PermitLocalCommand yes
 
 Host silver gold oxygen
