@@ -34,7 +34,7 @@ brew "gnupg"            # gpg2; SECRETS_GPG_COMMAND, fallback commit signing
 brew "pinentry"         # pinentry-tty; referenced from gpg-agent.conf
 
 # Secrets / 1Password
-brew "1password-cli"    # op; chezmoi onepasswordRead in wakatime template
+cask "1password-cli"    # op; chezmoi onepasswordRead in wakatime template
 cask "1password"        # GUI app provides op-ssh-sign + the ssh-agent socket
 
 # Browser (for tridactyl)
