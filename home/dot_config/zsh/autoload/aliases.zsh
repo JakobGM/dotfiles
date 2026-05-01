@@ -18,7 +18,6 @@ alias dot='cd ~/.local/share/chezmoi/home && nvim -c "FzfLua files"'
 alias g="git"
 alias gpgdisable="git config commit.gpgsign false"
 alias gpgenable="git config commit.gpgsign true"
-alias ds='diff-so-fancy'
 alias ud="kitty +kitten diff"
 
 # Application aliases
