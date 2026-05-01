@@ -63,11 +63,15 @@ eval "$(sheldon source)"
 
 
 # -------- SOURCE CUSTOM ZSH SCRIPTS ---------
-# Completions for gcloud
+# Completions and PATH for the Google Cloud SDK (installed via the
+# google-cloud-sdk cask on macOS).
 if type brew &>/dev/null; then
-    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
-    # Put all Google Cloud SDK components in path
-    source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+    gcloud_sdk="$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk"
+    if [ -d "$gcloud_sdk" ]; then
+        source "${gcloud_sdk}/completion.zsh.inc"
+        source "${gcloud_sdk}/path.zsh.inc"
+    fi
+    unset gcloud_sdk
 fi
 
 # Files to be sourced from the autoload directory
