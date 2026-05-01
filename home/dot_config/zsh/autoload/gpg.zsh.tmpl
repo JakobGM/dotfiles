@@ -1,0 +1,12 @@
+# Use 1Password as the provider of the ssh-agent.
+# Skip when already inside an SSH session so remote agent forwarding wins.
+if [ -z "$SSH_AUTH_SOCK" ]; then
+{{- if eq .chezmoi.os "darwin" }}
+  export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- else if eq .chezmoi.os "linux" }}
+  export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+{{- end }}
+fi
+
+# See https://github.com/NixOS/nixpkgs/issues/14966#issuecomment-520083836
+mkdir -p "$HOME/.local/share/keyrings"
