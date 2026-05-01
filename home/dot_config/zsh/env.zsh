@@ -61,11 +61,6 @@ export TERMINAL=kitty
 # "fatal: could not read Username for 'https://github.com': terminal prompts disabled"
 export GIT_TERMINAL_PROMPT=1
 
-# Allaw global packages install with npm -g without use of sudo
-export PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
-
-
 # --- Fix lacking XDG Home Directory support ---
 # TMUX
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
@@ -79,13 +74,6 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 
 # WakaTime
 export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
-
-# Prevent ranger from reading default configurations twice
-export RANGER_LOAD_DEFAULT_RC=FALSE
-
-# Weechat IRC client
-export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
-
 
 # --- System specific environment variables ---
 local OS=$(uname)
