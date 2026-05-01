@@ -32,3 +32,8 @@
 # revisit if/when we want to share userChrome.css across OSes.
 .mozilla
 {{- end }}
+
+{{- if ne .chezmoi.os "darwin" }}
+# Brewfile is only meaningful on macOS
+.config/brew
+{{- end }}

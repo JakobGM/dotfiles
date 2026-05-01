@@ -1,0 +1,45 @@
+# Curated Brewfile — declares everything these dotfiles assume to be on PATH.
+# Run `brew bundle install --file ~/.config/brew/Brewfile` to install missing
+# entries; the chezmoi run_onchange hook does this automatically when this file
+# changes.
+
+# Shell & terminal
+brew "sheldon"          # zsh plugin manager (~/.config/sheldon/plugins.toml)
+brew "direnv"           # zshrc hooks direnv into the shell
+brew "fzf"              # fuzzy finder; sourced from zshrc and FZF_* env vars
+brew "fd"               # FZF_DEFAULT_COMMAND='fd --type file --hidden'
+cask "kitty"            # terminal emulator (~/.config/kitty/)
+
+# Editor — track Neovim HEAD/nightly
+brew "neovim", args: ["HEAD"]
+brew "neovim-remote"    # nvr; VISUAL=nvr when $NVIM_LISTEN_ADDRESS is set
+
+# Modern unix replacements (referenced from autoload/aliases.zsh)
+brew "bat"              # cat
+brew "eza"              # ls
+brew "ripgrep"          # rg; also referenced from MANPAGER and completions
+brew "git-delta"        # delta; git's [core] pager
+
+# Toolchains
+brew "mise"             # runtime/version manager
+brew "uv"               # python package manager (used by nvim venv setup)
+brew "pre-commit"       # personal pre-commit hooks (per ~/.config/git/ignore)
+
+# Git
+brew "gh"               # GitHub CLI; gh-copilot wraps it
+brew "git-lfs"          # filter "lfs" in ~/.config/git/config + .gitattributes
+
+# GPG / signing
+brew "gnupg"            # gpg2; SECRETS_GPG_COMMAND, fallback commit signing
+brew "pinentry"         # pinentry-tty; referenced from gpg-agent.conf
+
+# Secrets / 1Password
+brew "1password-cli"    # op; chezmoi onepasswordRead in wakatime template
+cask "1password"        # GUI app provides op-ssh-sign + the ssh-agent socket
+
+# Browser (for tridactyl)
+cask "firefox"          # tridactyl runs as a Firefox extension
+
+# Bootstrap (declared for documentation; chezmoi must be installed to clone
+# this repo in the first place)
+brew "chezmoi"
