@@ -1,0 +1,4 @@
+font-family = MonoLisa
+
+# OS-aware theme switching: ghostty follows the system appearance setting.
+theme = light:Gruvbox Light,dark:Gruvbox Dark
