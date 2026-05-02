@@ -13,6 +13,7 @@ cask "kitty"            # terminal emulator (~/.config/kitty/)
 # Editor — track Neovim HEAD/nightly
 brew "neovim", args: ["HEAD"]
 brew "neovim-remote"    # nvr; VISUAL=nvr when $NVIM_LISTEN_ADDRESS is set
+brew "tree-sitter-cli"  # required by nvim-treesitter `main` branch (`tree-sitter build`)
 
 # Modern unix replacements (referenced from autoload/aliases.zsh)
 brew "bat"              # cat
