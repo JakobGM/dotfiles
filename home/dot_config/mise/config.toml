@@ -1,2 +1,7 @@
 [settings]
 experimental = true
+
+# Globally-installed runtimes. Picked up in any shell via the mise activate hook
+# in zshrc. Mason (in nvim) shells out to `npm`, so Node must be on PATH.
+[tools]
+node = "lts"
