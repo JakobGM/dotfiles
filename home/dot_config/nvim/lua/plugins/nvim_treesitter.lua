@@ -1,91 +1,44 @@
--- Tree-sitter based syntax highlighting
+-- nvim-treesitter `main` branch: parsers + queries only. Highlight/fold/indent
+-- are wired manually via the FileType autocmd below.
 return {
   "nvim-treesitter/nvim-treesitter",
   name = "nvim-treesitter",
-  -- Equivalent of {'do': ':TSUpdate'} in vim-plug just for lazy.nvim
-  build = function()
-    require("nvim-treesitter.install").update({ with_sync = true })
-  end,
+  branch = "main",
+  lazy = false,
+  build = ":TSUpdate",
   config = function()
-    require("nvim-treesitter.configs").setup {
-      -- A list of parser names, or "all"
-      ensure_installed = {
-        "python", "rust",
-        -- Recommended R.nvim parsers
-        "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv"
-      },
-
-      -- Automatically install missing parsers when entering buffer
-      auto_install = true,
-
-      highlight = {
-        -- `false` will disable the whole extension
-        enable = not vim.g.vscode,
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-      },
-
-      -- Use treesitter to determine indentation level when pressing <CR>
-      indent = {
-        enable = true,
-      },
-
-      playground = {
-        enable = true,
-        disable = {},
-        -- Debounced time for highlighting nodes in the playground from source code
-        updatetime = 25,
-        -- Whether the query persists across vim sessions
-        persist_queries = false,
-        keybindings = {
-          toggle_query_editor = 'o',
-          toggle_hl_groups = 'i',
-          toggle_injected_languages = 't',
-          toggle_anonymous_nodes = 'a',
-          toggle_language_display = 'I',
-          focus_language = 'f',
-          unfocus_language = 'F',
-          update = 'R',
-          goto_node = '<cr>',
-          show_help = '?',
-        },
-      },
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-    }
-
-    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-    parser_config.dbt = {
+    -- Custom dbt parser sourced from a local Jinja2 grammar checkout. Kept out
+    -- of ensure_installed because ~/dev/tree-sitter-jinja2 isn't always cloned;
+    -- run `:TSInstall dbt` once the repo is present.
+    require("nvim-treesitter.parsers").dbt = {
       install_info = {
-        url = "~/dev/tree-sitter-jinja2", -- local path or git repo
-        files = { "src/parser.c" },
-        branch = "main",
-        requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+        path = "~/dev/tree-sitter-jinja2",
       },
-      filetype = "sql.jinja",                   -- if filetype does not match the parser name
     }
+    vim.treesitter.language.register("dbt", "sql.jinja")
+    vim.filetype.add({ extension = { j2 = "htmldjango" } })
 
-    -- Automatically apply the htmldjango filetype for Jinja2 files
-    vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-      pattern = { "*.j2" },
-      command = "set filetype=htmldjango",
+    local ensure_installed = {
+      "python", "rust",
+      "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
+    }
+    local installed = require("nvim-treesitter").get_installed("parsers")
+    local to_install = vim.iter(ensure_installed)
+        :filter(function(lang) return not vim.tbl_contains(installed, lang) end)
+        :totable()
+    if #to_install > 0 then
+      require("nvim-treesitter").install(to_install)
+    end
+
+    vim.api.nvim_create_autocmd("FileType", {
+      callback = function(args)
+        if vim.g.vscode then return end
+        if not pcall(vim.treesitter.start, args.buf) then return end
+        vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo[0][0].foldmethod = "expr"
+        vim.wo[0][0].foldlevel = 99
+        vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
     })
   end,
-  dependencies = {
-    {
-      -- Annotate current buffer with tree-sitter nodes using :TSPlaygroundToggle
-      "nvim-treesitter/playground",
-      dependencies = {
-        "nvim-treesitter",
-      },
-      cmd = "TSPlaygroundToggle",
-    }
-  }
 }
