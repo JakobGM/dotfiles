@@ -2,3 +2,6 @@ font-family = MonoLisa
 
 # OS-aware theme switching: ghostty follows the system appearance setting.
 theme = light:Gruvbox Light,dark:Gruvbox Dark
+
+# Linux/GTK only — macOS uses AppKit's native tab bar which is fixed to the top.
+gtk-tabs-location = bottom
