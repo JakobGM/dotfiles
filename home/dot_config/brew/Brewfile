@@ -14,6 +14,7 @@ cask "kitty"            # terminal emulator (~/.config/kitty/)
 brew "neovim", args: ["HEAD"]
 brew "neovim-remote"    # nvr; VISUAL=nvr when $NVIM_LISTEN_ADDRESS is set
 brew "tree-sitter-cli"  # required by nvim-treesitter `main` branch (`tree-sitter build`)
+brew "universal-ctags"  # vim-gutentags shells out to this; macOS ships BSD ctags which is incompatible
 
 # Modern unix replacements (referenced from autoload/aliases.zsh)
 brew "bat"              # cat
