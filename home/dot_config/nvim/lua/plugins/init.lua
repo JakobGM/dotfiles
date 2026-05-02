@@ -57,7 +57,6 @@ return {
 
   -- File Type Specific
   require("plugins.molten_nvim"),
-  require("plugins.render_markdown_nvim"),
   require("plugins.vim_caddyfile"),
   require("plugins.vim_dadbod_ui"),
   require("plugins.vimtex"),
