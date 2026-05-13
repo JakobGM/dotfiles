@@ -1,5 +1,6 @@
 [settings]
 experimental = true
+minimum_release_age = "5d"
 
 # Globally-installed runtimes. Picked up in any shell via the mise activate hook
 # in zshrc. Mason (in nvim) shells out to `npm`, so Node must be on PATH.
