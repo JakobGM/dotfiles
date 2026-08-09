@@ -30,6 +30,7 @@ brew "pre-commit"       # personal pre-commit hooks (per ~/.config/git/ignore)
 # Git
 brew "gh"               # GitHub CLI; gh-copilot wraps it
 brew "git-lfs"          # filter "lfs" in ~/.config/git/config + .gitattributes
+brew "jq"               # `git rs` parses `gh stack view --json` with it
 
 # GPG / signing
 brew "gnupg"            # gpg2; SECRETS_GPG_COMMAND, fallback commit signing

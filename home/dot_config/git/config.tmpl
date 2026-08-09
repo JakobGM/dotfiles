@@ -60,7 +60,14 @@
     rc = rebase --continue
     rho = !git fetch origin && git reset --hard @{u} && git clean -df
     rom = rebase -i origin/main
-    rs = restore --staged
+    # Interactively rebase the current gh-stack layer onto the tip of the layer
+    # below it, leaving the commits of every layer underneath untouched.
+    rs = "!f() { \
+        stack=$(gh stack view --json) || exit 1; \
+        set -- $(printf '%s' \"$stack\" | jq -r '(.branches | map(.isCurrent) | index(true)) as $i | if $i == null then empty else (if $i == 0 then .trunk else .branches[$i-1].head end) + \" \" + .branches[$i].base end'); \
+        [ $# -eq 2 ] || { echo 'git rs: current branch is not part of a gh stack' >&2; exit 1; }; \
+        git rebase -i --onto \"$1\" \"$2\"; \
+    }; f"
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
     push-upstream = !git push --set-upstream origin `git symbolic-ref --short HEAD`
