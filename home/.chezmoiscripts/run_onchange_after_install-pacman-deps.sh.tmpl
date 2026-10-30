@@ -1,0 +1,8 @@
+{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") -}}
+#!/usr/bin/env bash
+# Re-runs whenever this script's content changes.
+set -euo pipefail
+# inotify-tools: inotifywait is Neovim's LSP file watcher backend on Linux (macOS uses FSEvents)
+sudo pacman -S --needed --noconfirm \
+    inotify-tools
+{{- end -}}

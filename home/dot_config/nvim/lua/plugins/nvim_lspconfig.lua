@@ -50,20 +50,14 @@ return {
         basedpyright = {
           analysis = {
             autoSearchPaths = true,
-            diagnosticMode = "workspace",
+            -- "workspace" floods Neovim with diagnostics for every file in large projects.
+            -- Use <leader>xw for on-demand workspace-wide results.
+            diagnosticMode = "openFilesOnly",
             useLibraryCodeForTypes = true,
             autoImportCompletion = true,
           },
           disableOrganizeImports = true,
         },
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            diagnosticMode = 'workspace',
-            useLibraryCodeForTypes = true,
-            typeCheckingMode = 'off'
-          }
-        }
       },
     }
 
@@ -79,6 +73,13 @@ return {
 
     vim.lsp.config.tailwindcss = {
       filetypes = { "htmldjango", "python" },
+      -- Each tailwindcss file watcher registration starts a recursive inotifywait over the
+      -- whole workspace, which exhausts fs.inotify.max_user_watches in large repositories.
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = { dynamicRegistration = false },
+        },
+      },
       settings = {
         tailwindCSS = {
           experimental = {

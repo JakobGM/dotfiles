@@ -21,6 +21,11 @@ return {
       desc = "Diagnostics (Trouble)",
     },
     {
+      "<leader>xw",
+      function() require("workspace_diagnostics").run(); end,
+      desc = "Workspace-wide basedpyright + ruff diagnostics (Trouble)",
+    },
+    {
       "<leader>xb",
       "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
       desc = "Buffer Diagnostics (Trouble)",
