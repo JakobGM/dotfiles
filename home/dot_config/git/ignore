@@ -7,6 +7,10 @@
 # Ignore project specific vim settings
 .exrc
 
+# Claude Code worktrees and personal settings
+**/.claude/worktrees/
+**/.claude/settings.local.json
+
 # Automatically created by GitHub for Mac
 # To make edits, delete these initial comments, or else your changes may be lost!
 
