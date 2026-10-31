@@ -13,8 +13,8 @@ font_size        {{ .fonts.terminal.size }}
 # the font size in a running terminal.
 font_size_delta 1
 
-# Set color theme according to kitty +kitten themes
-include current-theme.conf
+# Color theme follows the system light/dark preference via
+# {dark,light,no-preference}-theme.auto.conf, see run_onchange_set_kitty_theme.zsh
 
 # Mouse & cursor
 cursor_blink_interval     0.4
