@@ -45,6 +45,7 @@
 
     "bluetooth",            // bluetooth
     "custom/update",        // system update
+    "custom/theme",         // light/dark toggle
     "custom/right5"
   ],
 
@@ -307,6 +308,12 @@
     "tooltip": true,
     "min-length": 1,
     "max-length": 1
+  },
+
+  "custom/theme": {
+    "exec": "~/.config/waybar/scripts/theme-toggle.sh",
+    "on-click": "~/.config/waybar/scripts/theme-toggle.sh toggle",
+    "tooltip-format": "Toggle light/dark mode"
   },
 
   "custom/spotify": {

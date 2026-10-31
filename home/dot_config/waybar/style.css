@@ -76,6 +76,7 @@ tooltip label {
 #custom-wifi,
 #bluetooth,
 #custom-update,
+#custom-theme,
 #custom-media,
 #pulseaudio,
 #custom-backlight,
@@ -104,6 +105,15 @@ tooltip label {
 #custom-right2,
 #custom-right3,
 #custom-right4,
+#custom-theme {
+  padding-right: 8px;
+  background: @tray;
+}
+#custom-theme:hover {
+  color: @hover-fg;
+  text-shadow: none;
+  box-shadow: none;
+}
 #custom-right5 {
   font-size: 11pt;
   padding-right: 3px;
@@ -266,6 +276,15 @@ tooltip label {
   background: @tray;
 }
 #custom-update:hover {
+  color: @hover-fg;
+  text-shadow: none;
+  box-shadow: none;
+}
+#custom-theme {
+  padding-right: 8px;
+  background: @tray;
+}
+#custom-theme:hover {
   color: @hover-fg;
   text-shadow: none;
   box-shadow: none;
