@@ -1,0 +1,54 @@
+{
+  "policies": {
+    "SearchEngines": {
+      "Default": "Kagi",
+      "Remove": ["Google", "Bing", "DuckDuckGo", "MDN", "Perplexity", "Wikipedia (en)"]
+    },
+    "ExtensionSettings": {
+      "{d634138d-c276-4fc8-924b-40a0ea21d284}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/1password-x-password-manager/latest.xpi"
+      },
+      "uBlock0@raymondhill.net": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
+      },
+      "tridactyl.vim.betas@cmcaine.co.uk": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://tridactyl.cmcaine.co.uk/betas/tridactyl-latest.xpi"
+      },
+      "@testpilot-containers": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/multi-account-containers/latest.xpi"
+      },
+      "idcac-pub@guus.ninja": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/istilldontcareaboutcookies/latest.xpi"
+      },
+      "search@kagi.com": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/kagi-search-for-firefox/latest.xpi"
+      },
+      "jid0-adyhmvsP91nUO8pRv0Mn2VKeB84@jetpack": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/raindropio/latest.xpi"
+      },
+      "{a4c4eda4-fb84-4a84-b4a1-f7c1cbf2a1ad}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/refined-github-/latest.xpi"
+      },
+      "{01b776e4-a3fd-40a8-adcb-f7f5fee9ea52}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/github-filter-defaults/latest.xpi"
+      },
+      "{6af6eb89-61d0-4c5b-8c3c-cd208f90a1e4}": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/crdbrd/latest.xpi"
+      },
+      "nb-NO@dictionaries.addons.mozilla.org": {
+        "installation_mode": "normal_installed",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/norsk-bokm%C3%A5l-ordliste/latest.xpi"
+      }
+    }
+  }
+}

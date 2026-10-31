@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# Install Firefox enterprise policies (extensions). Read by both Firefox and
+# Firefox Developer Edition. Re-runs whenever the policies change.
+set -euo pipefail
+sudo install -Dm644 /dev/stdin /etc/firefox/policies/policies.json <<'POLICIES'
+{{ template "firefox-policies.json" . }}
+POLICIES
+{{ end -}}

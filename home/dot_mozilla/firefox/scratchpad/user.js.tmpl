@@ -1,0 +1,11 @@
+{{ template "firefox-user.js" . }}
+
+// Scratchpad: a single-page browser without tabs, see chrome/userChrome.css
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+// Open links that request a new tab or window in the current tab instead
+user_pref("browser.link.open_newwindow", 1);
+user_pref("browser.link.open_newwindow.restriction", 0);
+// Start empty and don't restore previous pages
+user_pref("browser.startup.page", 0);
+user_pref("browser.startup.homepage", "about:blank");
+user_pref("browser.newtabpage.enabled", false);

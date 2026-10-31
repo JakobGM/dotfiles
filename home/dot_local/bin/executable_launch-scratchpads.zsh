@@ -37,11 +37,11 @@ fi
 if ! pgrep -f dropdown_firefox > /dev/null
 then
     echo 'Starting dropdown firefox'
-    firefox \
+    firefox-developer-edition \
         --class="dropdown_firefox" \
         --name="dropdown_firefox" \
         --new-instance \
-        --profile ~/.mozilla/firefox/*.scratchpad \
+        --profile ~/.mozilla/firefox/scratchpad \
         --no-remote &
 fi
 

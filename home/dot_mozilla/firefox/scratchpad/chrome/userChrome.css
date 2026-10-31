@@ -1,0 +1,6 @@
+/* Scratchpad: hide the tab strip. Links that would open a new tab load in the
+ * current one instead (browser.link.open_newwindow in user.js). */
+#TabsToolbar,
+#sidebar-main {
+  visibility: collapse !important;
+}
