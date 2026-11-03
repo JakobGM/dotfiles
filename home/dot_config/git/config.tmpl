@@ -68,6 +68,30 @@
         [ $# -eq 2 ] || { echo 'git rs: current branch is not part of a gh stack' >&2; exit 1; }; \
         git rebase -i --onto \"$1\" \"$2\"; \
     }; f"
+    # Split the current gh-stack layer in two: <sha> and every commit after it
+    # move onto a new layer named <github.user>/<suffix>, inserted directly
+    # above the current branch. No commit is rewritten, only refs are moved.
+    split-stack = "!f() { \
+        [ $# -eq 2 ] || { echo 'usage: git split-stack <sha> <new-branch-suffix>' >&2; exit 1; }; \
+        git diff --quiet HEAD || { echo 'git split-stack: commit or stash your changes first' >&2; exit 1; }; \
+        branch=$(git symbolic-ref --short HEAD) || exit 1; \
+        user=$(git config github.user) || { echo 'git split-stack: github.user is not set' >&2; exit 1; }; \
+        new=$user/$2; \
+        git rev-parse --verify --quiet \"refs/heads/$new\" >/dev/null && { echo \"git split-stack: $new already exists\" >&2; exit 1; }; \
+        state=$(git rev-parse --path-format=absolute --git-common-dir)/gh-stack; \
+        [ \"$(jq -r .schemaVersion \"$state\" 2>/dev/null)\" = 1 ] || { echo \"git split-stack: no usable gh stack state in $state\" >&2; exit 1; }; \
+        below=$(jq -r --arg b \"$branch\" '.stacks[] | select(any(.branches[]; .branch == $b)) | (.branches | map(.branch) | index($b)) as $i | if $i == 0 then .trunk.branch else .branches[$i-1].branch end' \"$state\"); \
+        [ -n \"$below\" ] || { echo \"git split-stack: $branch is not part of a gh stack\" >&2; exit 1; }; \
+        floor=$(git rev-parse --verify \"$below\") || exit 1; \
+        tip=$(git rev-parse HEAD); \
+        keep=$(git rev-parse --verify \"$1^{commit}^\") || exit 1; \
+        git merge-base --is-ancestor \"$1\" HEAD || { echo \"git split-stack: $1 is not on $branch\" >&2; exit 1; }; \
+        [ \"$keep\" != \"$floor\" ] && git merge-base --is-ancestor \"$floor\" \"$keep\" || { echo \"git split-stack: $1 would leave $branch without commits of its own\" >&2; exit 1; }; \
+        jq --arg b \"$branch\" --arg new \"$new\" --arg keep \"$keep\" --arg tip \"$tip\" '.stacks |= map(if any(.branches[]; .branch == $b) then .branches |= (map(if .branch == $b then .head = $keep else . end) | . as $bs | ($bs | map(.branch) | index($b)) as $i | $bs[0:$i+1] + [{branch: $new, head: $tip, base: $keep}] + $bs[$i+1:]) else . end)' \"$state\" > \"$state.new\" || exit 1; \
+        git branch \"$new\" \"$tip\" && git reset --hard \"$keep\" && mv \"$state.new\" \"$state\" || { rm -f \"$state.new\"; exit 1; }; \
+        echo \"$branch now ends at $(git rev-parse --short \"$keep\"), $new carries $(git rev-list --count \"$keep..$tip\") commit(s)\"; \
+        echo 'Next: gh stack submit'; \
+    }; f"
     s = status
     set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
     push-upstream = !git push --set-upstream origin `git symbolic-ref --short HEAD`
