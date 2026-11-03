@@ -1,3 +1,7 @@
+.prompts/*
+PLAN.md
+agent/
+
 # Ignore virtual environments managed by direnv
 .direnv
 
