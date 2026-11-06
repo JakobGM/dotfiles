@@ -12,5 +12,4 @@ export MOZ_ENABLE_WAYLAND=1
 # Source: https://bbs.archlinux.org/viewtopic.php?id=299624
 dconf write /org/gnome/desktop/interface/cursor-size 32
 
-# Disable scanout in order to make adaptive sync work reliably
-exec sway --unsupported-gpu -Dnoscanout
+exec sway --unsupported-gpu

@@ -21,6 +21,8 @@ set -gx VISUAL nvim
 set -gx EDITOR $VISUAL
 set -gx MANPAGER "nvim -c 'set ft=neoman' -"
 set -gx TERMINAL kitty
+# Where projects are checked out; sway's config runs astrality from here
+set -gx PROJECT_HOME $HOME/dev
 {{- if eq .chezmoi.os "darwin" }}
 set -gx BROWSER open
 {{- else if eq .chezmoi.os "linux" }}
