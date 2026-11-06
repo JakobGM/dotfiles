@@ -52,8 +52,6 @@ bind gD composite tabduplicate | tabdetach
 " Misc settings
 "
 
-" Make Tridactyl work on more sites at the expense of some security
-set csp clobber
 " Make Tridactyl work on addons.mozilla.org
 fixamo_quiet
 
