@@ -2,7 +2,11 @@
 #!/usr/bin/env bash
 # Re-runs whenever this script's content changes.
 set -euo pipefail
-# inotify-tools: inotifywait is Neovim's LSP file watcher backend on Linux (macOS uses FSEvents)
-sudo pacman -S --needed --noconfirm \
+packages=(
+    # inotifywait is Neovim's LSP file watcher backend on Linux (macOS uses FSEvents)
     inotify-tools
+    # ssh client, and sshd for `mise run ssh:server`
+    openssh
+)
+sudo pacman -S --needed --noconfirm "${packages[@]}"
 {{- end -}}

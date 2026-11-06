@@ -8,6 +8,11 @@ Host *
 Host silver gold oxygen
     ForwardAgent yes
 
+# Work desktop, by Tailscale (MagicDNS) name; server set up with `mise run ssh:server`
+Host oxygen
+    HostName jakobgm-work
+    User jakobgm
+
 Host aur.archlinux.org
     IdentityFile ~/.ssh/aur
     User aur

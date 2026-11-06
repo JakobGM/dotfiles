@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#MISE description="Enable an OpenSSH server on this machine (key-only logins)"
+#MISE confirm="Enable sshd, disable password logins and open port 22 on this machine?"
+#
+# One-time, idempotent, per machine; chezmoi apply never runs it, since it changes system state.
+# The allowed key comes from chezmoi: ~/.ssh/authorized_keys (private_dot_ssh/private_authorized_keys).
+set -euo pipefail
+
+sudo ssh-keygen -A  # host keys, so the config test can run on a fresh machine
+sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<'SSHD'
+# Written by `mise run ssh:server` (chezmoi: dot_config/mise/tasks/ssh/executable_server)
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PermitRootLogin no
+SSHD
+sudo sshd -t
+
+case "$(uname -s)" in
+Linux)
+    sudo systemctl unmask sshd.service
+    sudo systemctl enable sshd.service
+    sudo systemctl restart sshd.service
+    if command -v ufw >/dev/null && sudo ufw status | grep -q "Status: active"; then
+        sudo ufw allow ssh
+    fi
+    ;;
+Darwin)
+    sudo systemsetup -setremotelogin on || true
+    sudo systemsetup -getremotelogin | grep -q 'On$' || {
+        echo "Enable System Settings → General → Sharing → Remote Login by hand" >&2
+        echo "(systemsetup needs Full Disk Access for this terminal)." >&2
+        exit 1
+    }
+    ;;
+*)
+    echo "Unsupported OS: $(uname -s)" >&2
+    exit 1
+    ;;
+esac
+
+echo "Done. Connect with: ssh $(id -un)@$(uname -n | cut -d. -f1)"

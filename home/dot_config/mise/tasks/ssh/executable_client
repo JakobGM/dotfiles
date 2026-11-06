@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#MISE description="Check that ssh on this machine uses the 1Password SSH agent"
+#
+# The client is configured by chezmoi: private_dot_ssh/config.tmpl sets IdentityAgent.
+set -uo pipefail
+
+sock="$(ssh -G example.invalid 2>/dev/null | sed -n 's/^identityagent //p')"
+sock="${sock/#\~/$HOME}"
+if [[ "$sock" != *1password* ]]; then
+    echo "✗ ~/.ssh/config does not use the 1Password agent; run: chezmoi apply ~/.ssh" >&2
+    exit 1
+fi
+if ! SSH_AUTH_SOCK="$sock" ssh-add -l; then
+    echo "✗ No keys from $sock; unlock 1Password and enable Settings → Developer → SSH agent" >&2
+    exit 1
+fi
+echo "✓ ssh uses the 1Password agent"
