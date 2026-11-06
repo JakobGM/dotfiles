@@ -19,6 +19,8 @@ packages=(
     atuin
     # zsh stays installed for the *.zsh scripts sway, waybar and kitty run
     zsh
+    # CLI spec tool; mise needs it for shell completions
+    usage
 )
 sudo pacman -S --needed --noconfirm "${packages[@]}"
 {{- end -}}

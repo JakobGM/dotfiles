@@ -28,6 +28,7 @@ brew "git-delta"        # delta; git's [core] pager
 
 # Toolchains
 brew "mise"             # runtime/version manager
+brew "usage"            # CLI spec tool; mise needs it for shell completions
 brew "uv"               # python package manager (used by nvim venv setup)
 brew "pre-commit"       # personal pre-commit hooks (per ~/.config/git/ignore)
 
