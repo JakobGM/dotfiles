@@ -35,10 +35,10 @@ exec_always 1password --silent
 
 # Automatically lock and turn of screen after 10 minutes of idle time
 exec swayidle -w \
-    timeout 600 'swaylock -f' \
+    timeout 600 'swaylock -f --show-failed-attempts' \
     timeout 605 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f'
+    before-sleep 'swaylock -f --show-failed-attempts'
 
 
 # ----------------------- Scratchpad settings -----------------------
@@ -140,7 +140,7 @@ bindsym $mod+a focus parent
 bindsym $mod+c move position center
 
 # Lock screen
-bindsym $mod+shift+x exec 'swaylock --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
+bindsym $mod+shift+x exec 'swaylock --show-failed-attempts --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
 
 # Printscreen selection tool
 exec flameshot
