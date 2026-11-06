@@ -8,7 +8,7 @@ These are my [chezmoi](https://www.chezmoi.io/)-managed dotfiles.
 > * `dot_` prefixes in filenames are replaced with `.`.
 > * Files with `.tmpl` suffixes are [rendered as templates](https://www.chezmoi.io/user-guide/templating/).
 >
-> E.g. `home/dot_config/wakatime/dot_wakatime.cfg.tmpl` is rendered to `~/.config/wakatime/.wakatime.cfg`.
+> E.g. `home/dot_config/wakatime/private_dot_wakatime.cfg.tmpl` is rendered to `~/.config/wakatime/.wakatime.cfg`.
 
 My setup has the following scopes:
 
