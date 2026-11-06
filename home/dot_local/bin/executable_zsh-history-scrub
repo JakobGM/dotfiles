@@ -1,0 +1,269 @@
+#!/usr/bin/env python3
+"""Find and drop secret-looking entries in a zsh history file.
+
+Usage:
+    zsh-history-scrub scan  [HISTFILE]          # redacted report, writes nothing
+    zsh-history-scrub write [HISTFILE] OUTFILE  # cleaned copy without flagged entries
+
+HISTFILE defaults to $HISTFILE or ~/.local/share/zsh/history. The cleaned copy
+keeps zsh's extended-history format (and its metafied bytes) so that
+`HISTFILE=OUTFILE atuin import zsh` can read it. Flagged entries are dropped
+whole, so a false positive only costs one forgotten command. Rotate anything
+the scan finds: removing it from history does not un-leak it.
+"""
+
+import math
+import os
+import re
+import shutil
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+HEADER = re.compile(r"^: \d+:\d+;")
+# Start of a shell word: start of command, whitespace, or a command separator
+W = r"(?:^|[\s;|&(`])"
+# A shell argument: quoted string or bare word
+ARG = r"""(?:'[^']*'|"[^"]*"|[^\s'"]+)"""
+
+# Matched against the command with its `: ts:dur;` header removed and line
+# continuations joined, decoded as latin-1 so metafied bytes never fail.
+PATTERNS: dict[str, str] = {
+    # Provider token formats
+    "github-token": r"\b(gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})",
+    "gitlab-token": r"\bgl(pat|dt|rt|ptt|cbt|imt|soat|ft|agent|oas|wt|ffct)-[A-Za-z0-9_-]{16,}|\bGR1348941[A-Za-z0-9_-]{16,}",
+    "slack-token": r"\bxox[abposre]-[A-Za-z0-9-]{10,}|\bxapp-\d-[A-Za-z0-9-]{10,}|\bxoxe\.xox[bp]-",
+    "slack-webhook": r"hooks\.slack\.com/(services|workflows|triggers)/[A-Za-z0-9/_-]+",
+    "discord-webhook": r"discord(app)?\.com/api/webhooks/\d+/[A-Za-z0-9_-]+",
+    "anthropic-key": r"\bsk-ant-[A-Za-z0-9_-]{16,}",
+    "openai-key": r"\bsk-(proj-|svcacct-|admin-)?[A-Za-z0-9_-]{20,}",
+    "stripe-key": r"\b[rsp]k_(live|test)_[A-Za-z0-9]{10,}|\bwhsec_[A-Za-z0-9]{10,}",
+    "aws-access-key": r"\b(AKIA|ASIA|AGPA|AIDA|AROA|ANPA|ABIA|ACCA|A3T[A-Z0-9])[A-Z0-9]{16}\b",
+    "aws-configure-set": r"\baws\s+configure\s+set\s+\S*(secret|session_token)\S*\s+\S+",
+    "google-api-key": r"\bAIza[0-9A-Za-z_-]{30,}",
+    "google-oauth": r"\bya29\.[0-9A-Za-z_-]{20,}|\bGOCSPX-[A-Za-z0-9_-]{10,}|\b1//0[A-Za-z0-9_-]{20,}",
+    "azure-secret": r"[A-Za-z0-9_~.-]{3}\dQ~[A-Za-z0-9_~.-]{31,34}|\b(?i:AccountKey|SharedAccessKey)=",
+    "npm-token": r"\bnpm_[A-Za-z0-9]{30,}",
+    "pypi-token": r"\bpypi-[A-Za-z0-9_-]{30,}",
+    "sendgrid-key": r"\bSG\.[A-Za-z0-9_-]{16,}\.[A-Za-z0-9_-]{16,}",
+    "twilio": r"\b(AC|SK)[0-9a-f]{32}\b",
+    "mailgun": r"\bkey-[0-9a-f]{32}\b",
+    "digitalocean": r"\bdo[por]_v1_[a-f0-9]{64}",
+    "hf-token": r"\bhf_[A-Za-z0-9]{30,}",
+    "sentry": r"https://[0-9a-f]{32}@[^ ]*sentry|\bsntry[su]_[A-Za-z0-9_=+/-]{20,}",
+    "linear-key": r"\blin_(api|oauth)_[A-Za-z0-9]{20,}",
+    "grafana-token": r"\bglsa_[A-Za-z0-9_]{20,}|\bglc_[A-Za-z0-9+/=]{20,}",
+    "atlassian-token": r"\bATATT[A-Za-z0-9_=-]{20,}",
+    "shopify-token": r"\bshp(at|ca|pa|ss)_[a-fA-F0-9]{20,}",
+    "pulumi-token": r"\bpul-[a-f0-9]{40}\b",
+    "supabase-key": r"\bsbp_[a-f0-9]{40}\b|\bsb_secret_[A-Za-z0-9_-]{20,}",
+    "wakatime-key": r"\bwaka_[0-9a-f-]{36}",
+    "hubspot-pat": r"\bpat-(na|eu)\d-[0-9a-f-]{36}",
+    "heroku-key": r"\bHRKU-[A-Za-z0-9_-]{20,}",
+    "docker-pat": r"\bdckr_(pat|oat)_[A-Za-z0-9_-]{20,}",
+    "tailscale-key": r"\btskey-[a-z]+-[A-Za-z0-9-]{10,}",
+    "1password-sa": r"\bops_eyJ[A-Za-z0-9_=-]{20,}",
+    "mapbox-token": r"\b[ps]k\.eyJ[A-Za-z0-9_-]{10,}\.",
+    "age-secret-key": r"(?i)age-secret-key-1[0-9a-z]{20,}",
+    "jwt": r"\beyJ[A-Za-z0-9_-]{8,}\.eyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}",
+    "private-key-block": r"-----BEGIN [A-Z ]*PRIVATE KEY",
+    "firecrawl-key": r"\bfc-[0-9a-f]{32}\b",
+    "logo-dev-key": r"\b(pk|sk)_[A-Za-z0-9_-]{20,}",
+    "k8s-sa-token": r"(?i)--token[= ]\S{20,}|\bkubectl\b.*\bconfig\s+set-credentials\b.*--(token|password|client-key-data)[= ]\S+",
+    "tmate-session": r"\b[A-Za-z0-9-]{20,}@[a-z0-9]+\.tmate\.io\b",
+    # Credentials in URLs, headers, query strings and JSON bodies
+    "url-credentials": r"[a-zA-Z][a-zA-Z0-9+.-]*://[^/\s:@'\"]*:[^\s@'\"]+@[^\s/@]+",
+    "auth-header": r"(?i)authori[sz]ation\s*:\s*(bearer|basic|token|bot)?\s*\S{8,}",
+    "api-key-header": r"(?i)\b(x-[a-z-]*(api|auth|access)[a-z-]*-?(key|token)|api-?key|private-token)\s*:\s*\S{8,}",
+    "basic-auth-b64": r"(?i)\bbasic\s+[A-Za-z0-9+/]{16,}={0,2}",
+    "url-secret-param": r"(?i)[?&](key|api_?key|token|access_token|auth|sig|signature|secret|password|passwd|pwd)=[^&\s'\"]{8,}",
+    "json-secret": r"""(?i)["'](pass(word|wd)?|secret|token|api_?key|apikey|access_token|refresh_token|client_secret|private_key)["']\s*:\s*["'][^"']{4,}""",
+    # Credentials passed as flags
+    "curl-user": W + r"(-u|--user)(\s+|=)['\"]?[^\s:'\"]+:[^\s'\"]+",
+    "password-flag": r"(?i)" + W + r"--?([a-z]+-)?(pass(word|wd|phrase)?|pwd|secret|token|api[-_]?key|access[-_]?key|secret[-_]?key|auth[-_]?(token|key)|authkey|bearer|client[-_]?secret)(\s+|=)(?![-/~$])" + ARG,
+    "mysql-inline-pw": W + r"(mysql|mariadb|mysqldump|mysqladmin)\b.*\s-p[^\s-]\S*",
+    "redis-cli-pw": r"\bredis-cli\b.*\s(-a\s+\S+|--pass\s)",
+    "sshpass": r"\bsshpass\b.*\s-p\s*\S+",
+    "registry-login-pw": r"\b(docker|podman|helm|oras|skopeo|buildah)\b.*\blogin\b.*\s(-p|--password)[\s=]\S+",
+    "archive-pw": r"\b(7z|7za|7zz|rar)\b.*\s-p\S+|\b(zip|unzip)\b.*\s-P\s*\S+",
+    "openssl-pw": r"-pass(in|out)?\s+(pass|env):\S+|\bopenssl\b.*\s-k\s+\S+",
+    "ssh-keygen-pw": r"\bssh-keygen\b.*\s-[NP]\s*['\"]?[^'\"\s]+",
+    "smb-user-pw": r"\s(-U|--user)[= ]\S+%\S+",
+    "htpasswd": r"\bhtpasswd\b.*\s-b\b",
+    "from-literal": r"--from-literal[= ][^ =]+=\S{4,}",
+    "wifi-psk": r"\bwpa_passphrase\s+" + ARG + r"\s+(?![>|])" + ARG + r"|\bnmcli\b.*\b(password|wifi-sec\.psk|psk)\s+\S+|\biwctl\b.*--passphrase[= ]\S+",
+    "atuin-login-pw": r"\batuin\s+(login|register)\b.*\s(-p|--password)\b",
+    "piped-password": r"\becho\s+['\"]?[^\s'\"|]{4,}['\"]?\s*\|\s*(sudo\s+)?\S*\s*(docker|podman|helm|oras|sudo\s+-S|passwd|chpasswd|cryptsetup|kinit|gpg)\b",
+    # Secret-named variables. The value must not be a reference ($VAR, <…>,
+    # {{…}}, op://); $(…) is not exempt since it may wrap a literal.
+    "secret-assignment": r"(?i)\b[A-Z0-9_]*(PASS(WORD|WD|PHRASE)?|PWD|PSK|SECRET|TOKEN|API_?KEY|ACCESS_?KEY|PRIVATE_?KEY|CREDENTIALS?|AUTH|SESSION|COOKIE|DSN|SALT|SIGNING_?KEY|WEBHOOK)[A-Z0-9_]*\s*[=:]\s*(?!\$[A-Za-z{_]|<|\{\{|op://)(['\"][^'\"]{4,}|[^\s'\";|&]{6,})",
+    "password-var-short": r"\b(PGPASSWORD|MYSQL_PWD|REDISCLI_AUTH|[A-Z_]*(PASSWORD|PASSWD|PASSPHRASE|PSK))=(?!\$[A-Za-z{_])[^\s;|&]+",
+    # Hex/UUID keys only count next to a keyword, since bare hex is mostly SHAs
+    "keyword-hex": r"(?i)(key|token|secret|auth|pass\w*|-H)[\s=:'\"]{1,3}([0-9a-f]{32,}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\b",
+}
+COMPILED = {name: re.compile(p) for name, p in PATTERNS.items()}
+
+TOKEN = re.compile(r"[A-Za-z0-9+/_=~.%-]{16,}")
+HEX_ONLY = re.compile(r"^[0-9a-fA-F]+$")
+CLASSES = (re.compile(r"[a-z]"), re.compile(r"[A-Z]"), re.compile(r"\d"))
+
+
+def entropy(s: str) -> float:
+    counts = Counter(s)
+    return -sum(c / len(s) * math.log2(c / len(s)) for c in counts.values())
+
+
+def class_switch_rate(s: str) -> float:
+    """How often consecutive characters change class (lower/upper/digit/other).
+
+    Random tokens switch often (~0.5+); human-made names stay below ~0.4.
+    """
+    def cls(c: str) -> int:
+        return 0 if c.islower() else 1 if c.isupper() else 2 if c.isdigit() else 3
+    return sum(cls(a) != cls(b) for a, b in zip(s, s[1:])) / max(len(s) - 1, 1)
+
+
+def looks_random(seg: str) -> bool:
+    if HEX_ONLY.match(seg):
+        return False
+    classes = sum(bool(rx.search(seg)) for rx in CLASSES)
+    if len(seg) >= 24 and classes == 3 and entropy(seg) >= 4.0:
+        return True
+    if len(seg) >= 24 and classes >= 2 and entropy(seg) >= 3.5 and class_switch_rate(seg) >= 0.45:
+        return True
+    return len(seg) >= 16 and classes == 3 and entropy(seg) >= 3.5 and class_switch_rate(seg) >= 0.45
+
+
+def high_entropy_spans(text: str) -> list[tuple[int, int]]:
+    """Spans of random-looking tokens. Paths are split on `/` and `.` and each
+    segment is judged on its own, so a key inside a path or URL still counts."""
+    spans = []
+    for m in TOKEN.finditer(text):
+        offset = m.start()
+        for seg in re.split(r"([/.])", m.group(0)):
+            if len(seg) >= 16 and looks_random(seg):
+                spans.append((offset, offset + len(seg)))
+            offset += len(seg)
+    return spans
+
+
+def parse_entries(raw: bytes) -> list[bytes]:
+    """Split a zsh history file into entries, the same way zsh and atuin do.
+
+    Lines are split on `\\n` only. A line ending in a backslash always
+    continues onto the next line, even if that line looks like a header.
+    A header-less line that is not a continuation becomes its own entry.
+    """
+    entries: list[bytes] = []
+    current: list[bytes] = []
+    lines = raw.split(b"\n")
+    for i, line in enumerate(lines):
+        if i < len(lines) - 1:
+            line += b"\n"
+        elif not line:
+            break
+        continues = bool(current) and current[-1].endswith(b"\\\n")
+        if current and not continues:
+            entries.append(b"".join(current))
+            current = []
+        current.append(line)
+    if current:
+        entries.append(b"".join(current))
+    return entries
+
+
+def command_text(entry: bytes) -> str:
+    """The entry as one line of text: header removed, continuations joined."""
+    text = entry.decode("latin-1")
+    return HEADER.sub("", text).rstrip("\n").replace("\\\n", " ")
+
+
+def first_words(entries: list[bytes]) -> Counter:
+    return Counter(t.split()[0] for t in map(command_text, entries) if t.split())
+
+
+def typed_password(text: str, word_counts: Counter) -> bool:
+    """A lone random-looking word that is not a command: likely a password
+    typed at the prompt after a sudo/ssh/gpg password prompt went away."""
+    word = text.strip()
+    if not word or any(c.isspace() for c in word) or "=" in word or "/" in word:
+        return False
+    if not 6 <= len(word) <= 64 or not all(rx.search(word) for rx in CLASSES):
+        return False
+    return word_counts[word] < 2 and shutil.which(word) is None
+
+
+def findings(text: str, word_counts: Counter) -> list[tuple[str, int, int]]:
+    found = [(name, m.start(), m.end()) for name, rx in COMPILED.items() for m in rx.finditer(text)]
+    found += [("high-entropy", s, e) for s, e in high_entropy_spans(text)]
+    if typed_password(text, word_counts):
+        found.append(("typed-password", 0, len(text)))
+    return found
+
+
+def redact(text: str, spans: list[tuple[str, int, int]]) -> str:
+    """Show the command only up to its first finding, then the categories.
+
+    A span can end before the value it flagged does (e.g. a pattern matching
+    only the first character of a password), so nothing after the first
+    finding is ever shown. Long tokens before it are masked too.
+    """
+    cut = min(s for _, s, _ in spans)
+    prefix = TOKEN.sub("<<token>>", text[:cut])
+    prefix = prefix.encode("latin-1", errors="replace").decode("utf-8", errors="replace")
+    if len(prefix) > 120:
+        prefix = prefix[:119] + "…"
+    names = ", ".join(sorted({name for name, _, _ in spans}))
+    return f"{prefix}<<{names}>>"
+
+
+def main() -> int:
+    args = sys.argv[1:]
+    if not args or args[0] not in {"scan", "write"}:
+        print(__doc__.strip(), file=sys.stderr)
+        return 2
+    mode, rest = args[0], args[1:]
+    default = os.environ.get("HISTFILE") or str(Path.home() / ".local/share/zsh/history")
+    if mode == "write":
+        if len(rest) not in (1, 2):
+            print(__doc__.strip(), file=sys.stderr)
+            return 2
+        src, out = (rest[0], rest[1]) if len(rest) == 2 else (default, rest[0])
+    else:
+        src, out = (rest[0] if rest else default), None
+
+    entries = parse_entries(Path(src).expanduser().read_bytes())
+    word_counts = first_words(entries)
+    texts = [command_text(e) for e in entries]
+    flagged: dict[int, list[tuple[str, int, int]]] = {}
+    for i, text in enumerate(texts):
+        if hits := findings(text, word_counts):
+            flagged[i] = hits
+
+    by_category: dict[str, list[int]] = defaultdict(list)
+    for i, hits in flagged.items():
+        for name in sorted({h[0] for h in hits}):
+            by_category[name].append(i)
+
+    print(f"{len(entries)} entries, {len(flagged)} flagged", file=sys.stderr)
+    if mode == "scan":
+        for name, idxs in sorted(by_category.items(), key=lambda kv: -len(kv[1])):
+            print(f"\n## {name} ({len(idxs)} entries)")
+            for i in idxs:
+                print(f"  [{i}] {redact(texts[i], flagged[i])}")
+        return 0
+
+    out_path = Path(out).expanduser()
+    fd = os.open(out_path, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600)
+    with os.fdopen(fd, "wb") as fh:
+        for i, entry in enumerate(entries):
+            if i not in flagged:
+                # Never leave a kept entry ending in a continuation backslash,
+                # or atuin would glue the next entry onto it.
+                fh.write(entry if entry.endswith(b"\n") else entry + b"\n")
+    print(f"wrote {len(entries) - len(flagged)} entries to {out_path}", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
