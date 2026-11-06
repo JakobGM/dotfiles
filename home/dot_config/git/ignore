@@ -1,6 +1,8 @@
-.prompts/*
-PLAN.md
+# Write prompts and agent scratch files in separate folders in all repositories
+.prompts
+.agent
 agent/
+PLAN.md
 
 # Ignore virtual environments managed by direnv
 .direnv
