@@ -29,8 +29,8 @@ then
         --directory ~/crdbrd/hub \
         --instance-group ipython \
         --hold \
-        -o allow_remote_control=yes \
-        --listen-on unix:/tmp/kitty_python \
+        -o allow_remote_control=socket-only \
+        --listen-on "unix:${XDG_RUNTIME_DIR}/kitty_python" \
         ipython-scratchpad.zsh &
 fi
 

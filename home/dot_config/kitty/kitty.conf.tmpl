@@ -159,10 +159,18 @@ map ctrl+f               launch --allow-remote-control kitty +kitten kitty_searc
 
 # --- kitty-scrollback.nvim integration ---
 
-# Allow remote control of terminals
-allow_remote_control true
-# Allow remote control by kitty-scrollback.nvim
-listen_on unix:/tmp/kitty
+# Allow remote control of terminals, but only over the socket. Requests sent as
+# escape codes over the TTY (e.g. by `cat`-ing a hostile file or from an SSH
+# session) are denied.
+allow_remote_control socket-only
+# Allow remote control by kitty-scrollback.nvim. Keep the socket in a per-user
+# directory rather than the world-writable /tmp.
+{{- if eq .chezmoi.os "linux" }}
+listen_on unix:${XDG_RUNTIME_DIR}/kitty
+{{- else }}
+# Relative paths resolve against the per-user $TMPDIR on macOS
+listen_on unix:kitty
+{{- end }}
 
 # Allow deep integration with ZSH
 shell_integration enabled
