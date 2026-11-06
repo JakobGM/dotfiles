@@ -1,0 +1,14 @@
+# Leftovers from the zsh setup, removed from every machine on `chezmoi apply`.
+# ~/.config/zsh/.zshenv stays as a guard (see dot_config/zsh/dot_zshenv), so
+# the files in that directory are listed one by one.
+# zsh history (~/.local/share/zsh/history) is kept until it is imported into
+# atuin; see run_once_after_migrate-to-fish.sh.tmpl.
+.zshenv
+.zsh
+.config/zsh/.zshrc
+.config/zsh/.zprofile
+.config/zsh/env.zsh
+.config/zsh/autoload
+.config/zsh/.zcompdump
+.config/zsh/.zcompdump.zwc
+.config/sheldon

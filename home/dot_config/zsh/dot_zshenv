@@ -1,10 +1,11 @@
-# Make sure that workon is called in subshells, ensuring vim using the correct venv
-# https://vi.stackexchange.com/questions/7644/use-vim-with-virtualenv/7654#7654
-if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
-  source "${VIRTUAL_ENV}/bin/activate"
-fi
-
-# Source rest of ZSH config files from ZDOTDIR
-# http://zsh.sourceforge.net/Intro/intro_3.html
-export XDG_CONFIG_HOME="$HOME/.config"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# Guard for machines migrating from zsh to fish. Nothing else in this
+# directory is managed any more; see .chezmoiremove.
+#
+# Until the next login, the session started by the old zsh setup still exports
+# ZDOTDIR=~/.config/zsh, HISTFILE and SAVEHIST. A zsh started then (e.g. a new
+# kitty window) reads only this file, and without the old options it would
+# rewrite the history file in the plain format, dropping every timestamp.
+# After logging in with fish as the login shell, ZDOTDIR is not set and this
+# file is never read.
+SAVEHIST=0
+unset HISTFILE

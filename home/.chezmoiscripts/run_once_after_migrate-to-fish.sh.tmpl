@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# One-time switch from zsh to fish on each machine. Runs after the install-*
+# scripts (alphabetical order), so fish, zoxide and atuin are installed by now.
+# Safe to re-run: every step checks whether it is already done.
+set -euo pipefail
+
+fish_path="$(command -v fish || true)"
+if [[ -z "$fish_path" ]]; then
+    # Fail rather than skip: a run_once script that exits 0 never runs again
+    echo "migrate-to-fish: fish is not installed; install it and run 'chezmoi apply' again" >&2
+    exit 1
+fi
+
+# 1. Make fish the login shell
+if ! grep -qx "$fish_path" /etc/shells; then
+    echo "migrate-to-fish: adding $fish_path to /etc/shells (needs sudo)"
+    echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
+fi
+{{- if eq .chezmoi.os "darwin" }}
+current_shell="$(dscl . -read "/Users/$USER" UserShell | awk '{print $2}')"
+{{- else }}
+current_shell="$(getent passwd "$USER" | cut -d: -f7)"
+{{- end }}
+if [[ "$current_shell" != "$fish_path" ]]; then
+    echo "migrate-to-fish: changing login shell from $current_shell to $fish_path"
+    chsh -s "$fish_path" || echo "migrate-to-fish: chsh failed; run 'chsh -s $fish_path' yourself" >&2
+fi
+
+# 2. Move zsh-z's directory database into zoxide
+zoxide_db="${XDG_DATA_HOME:-$HOME/.local/share}/zoxide/db.zo"
+if [[ -f "$HOME/.z" && ! -f "$zoxide_db" ]] && command -v zoxide >/dev/null; then
+    zoxide import zsh-z
+    echo "migrate-to-fish: imported ~/.z into zoxide"
+fi
+
+# 3. Shell history needs a human to review it, so only print the steps. The
+# backup is made by run_once_before_backup-zsh-history.sh and keeps timestamps.
+zsh_history="${XDG_DATA_HOME:-$HOME/.local/share}/zsh/history.pre-fish"
+if [[ -s "$zsh_history" ]]; then
+    cat <<EOF
+
+migrate-to-fish: log out and back in now, then import your zsh history into
+atuin by hand (log in first, so the import is encrypted with the account key):
+  atuin login                     # username, password and key are in 1Password
+  zsh-history-scrub scan "$zsh_history" | less      # review what gets dropped
+  zsh-history-scrub write "$zsh_history" /tmp/zsh-history.cleaned
+  HISTFILE=/tmp/zsh-history.cleaned atuin import zsh
+  rm /tmp/zsh-history.cleaned
+  atuin sync && atuin status      # check that the history was uploaded
+  rm "$zsh_history" "${zsh_history%.pre-fish}"   # only then; both hold the dropped secrets
+EOF
+fi

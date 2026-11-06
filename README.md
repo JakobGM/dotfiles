@@ -15,7 +15,7 @@ My setup has the following scopes:
 * **Multiple hosts**: a low-specced mDPI laptop, headless servers, and desktops with both Nvidia and AMD GPUs. 
 * One operating system: Linux, specifically the **Arch Linux** distribution.
 * Wayland-based tiling window manager: **Sway**.
-* Terminal-based workflows: using **Kitty** and **ZSH**.
+* Terminal-based workflows: using **Kitty** and **fish**, with **Atuin** for shell history.
 * Modal editing: using **Neovim** with the **lazy.nvim** package manager and a **lua**-based configuration.
 * **Python** as the programming language of choice.
 
@@ -23,10 +23,49 @@ My setup has the following scopes:
 
 Provided that you already have `chezmoi` installed, run the following:
 
-```zsh
+```sh
 chezmoi init git@github.com:JakobGM/dotfiles.git
 chezmoi apply
 ```
+
+## Shell
+
+fish is the login shell. Environment variables live in `home/dot_config/fish/conf.d/00-env.fish.tmpl`,
+so they reach sway and GUI programs too. Interactive setup is in `config.fish`.
+zsh stays installed only for the `*.zsh` scripts.
+
+Shell history is in [Atuin](https://atuin.sh), synced end-to-end encrypted to `api.atuin.sh`.
+The account was created once with `atuin register -u <user> -e <email>`;
+the password and the encryption key (`atuin key`) are stored in 1Password,
+and `atuin login` asks for both on every other machine.
+
+### Migrating a machine from zsh
+
+`chezmoi apply` backs up the zsh history to `~/.local/share/zsh/history.pre-fish`,
+installs fish/starship/zoxide/atuin (pacman or Brewfile), removes the old zsh config,
+makes fish the login shell and imports `~/.z` into zoxide. Log out and back in right after.
+Until then, the session still exports the old zsh variables; `~/.config/zsh/.zshenv`
+stays behind as a guard so that a new zsh cannot rewrite the history without timestamps.
+Do not `exit` zsh shells that were started before the apply; close their windows instead.
+
+Importing the old zsh history is manual, because it may contain secrets.
+Log in first, so that the import is encrypted with the account's key:
+
+```sh
+atuin login
+cd ~/.local/share/zsh
+zsh-history-scrub scan history.pre-fish | less   # review what gets dropped
+zsh-history-scrub write history.pre-fish /tmp/zsh-history.cleaned
+HISTFILE=/tmp/zsh-history.cleaned atuin import zsh
+rm /tmp/zsh-history.cleaned
+atuin sync && atuin status    # check that the history was uploaded
+rm history history.pre-fish   # only then; both hold the secrets the scrub dropped
+```
+
+Never run `atuin import auto` or `atuin import zsh` against the original file,
+since that would import the dropped entries.
+
+Rotate any credential the scan finds; dropping it from history does not un-leak it.
 
 ## SSH
 
