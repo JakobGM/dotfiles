@@ -21,7 +21,7 @@ bindsym $mod+Return exec $TERMINAL
 # Restart astrality
 bindsym $mod+Shift+a exec "$PROJECT_HOME/astrality/.venv/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
-# Set up keychain manager correctly - interacts with autoload/gpg.zsh
+# Set up keychain manager correctly - interacts with SSH_AUTH_SOCK in fish/conf.d/00-env.fish
 # Can be debugged with `loginctl session-status`
 # NB! Important to uninstall xdg-desktop-portal-* and install xdg-desktop-portal-wlr
 # https://github.com/swaywm/sway/issues/5732#issuecomment-1583336383

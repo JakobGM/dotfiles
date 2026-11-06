@@ -102,6 +102,7 @@
 
       "~": "  Terminal",
       "zsh": "  Terminal",
+      "fish": "  Terminal",
       "kitty": "  Terminal",
       "sejjy@archlinux:(.*)": "  Terminal",
       "(.*)sejjy@archlinux:~": "  Terminal",

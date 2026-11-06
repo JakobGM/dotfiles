@@ -1,0 +1,26 @@
+# Atuin shell history: https://docs.atuin.sh/configuration/config/
+# History syncs end-to-end encrypted to the default server (api.atuin.sh).
+# The encryption key is ~/.local/share/atuin/key; it is kept in 1Password and
+# must be the same on every machine (`atuin login` asks for it).
+
+auto_sync = true
+sync_frequency = "10m"
+
+# Built-in patterns for common token formats (AWS, GitHub, Slack, Stripe, …)
+secrets_filter = true
+
+# Commands matching these regexes are never saved. They mirror the categories
+# of zsh-history-scrub (~/.local/bin) that the built-in filter does not cover.
+history_filter = [
+    # Credentials inside URLs: scheme://user:password@host
+    '[a-zA-Z][a-zA-Z0-9+.-]*://[^/\s:@]+:[^/\s@]+@',
+    # Authorization / API key headers
+    '(?i)authori[sz]ation\s*:',
+    '(?i)\b(x-[a-z-]*(api|auth)[a-z-]*-?(key|token)|api-?key)\s*:',
+    # Secrets passed as flags
+    '(?i)\s--?(pass(word|wd|phrase)?|secret|token|api[-_]?key|client[-_]?secret)(\s+|=)[^-\s]',
+    # Secret-looking variable assignments, unless the value is a reference
+    '(?i)\b[A-Z0-9_]*(PASSWORD|PASSWD|SECRET|TOKEN|API_?KEY|ACCESS_?KEY|PRIVATE_?KEY)[A-Z0-9_]*=[^$\s<]',
+    '--from-literal',
+    '-----BEGIN [A-Z ]*PRIVATE KEY',
+]

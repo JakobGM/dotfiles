@@ -1,0 +1,85 @@
+# Environment for every fish instance, including the login shell that starts
+# sway, so that GUI programs launched from sway inherit it too.
+# conf.d files are sourced in name order before config.fish; the 00- prefix
+# makes this run first.
+
+{{- if eq .chezmoi.os "darwin" }}
+# Homebrew env (PATH, MANPATH, INFOPATH, HOMEBREW_PREFIX, …) before anything
+# below looks up brew-installed programs.
+/opt/homebrew/bin/brew shellenv fish | source
+{{- end }}
+
+# Cargo binaries take precedence; ~/.local/bin is a fallback after system paths
+fish_add_path --global --path --move $HOME/.cargo/bin
+fish_add_path --global --path --append $HOME/.local/bin
+
+# Locale. Python fails with "unknown locale: UTF-8" on macOS without it.
+set -gx LC_ALL en_US.UTF-8
+set -gx LANG en_US.UTF-8
+
+set -gx VISUAL nvim
+set -gx EDITOR $VISUAL
+set -gx MANPAGER "nvim -c 'set ft=neoman' -"
+set -gx TERMINAL kitty
+{{- if eq .chezmoi.os "darwin" }}
+set -gx BROWSER open
+{{- else if eq .chezmoi.os "linux" }}
+set -gx BROWSER xdg-open
+{{- end }}
+
+# XDG base directories, plus programs that need to be told to use them
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx GNUPGHOME $XDG_CONFIG_HOME/gnupg
+set -gx IPYTHONDIR $XDG_CONFIG_HOME/jupyter
+set -gx JUPYTER_CONFIG_DIR $XDG_CONFIG_HOME/jupyter
+set -gx WAKATIME_HOME $XDG_CONFIG_HOME/wakatime
+# Relocates ~/.claude and ~/.claude.json. This is the only knob available, so
+# config, state, and caches all end up here rather than split across
+# XDG_DATA_HOME/XDG_CACHE_HOME.
+set -gx CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude
+
+# fzf: list files with fd (including hidden ones), preview them with bat
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden'
+set -gx FZF_CTRL_T_OPTS "
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# Fix "fatal: could not read Username for 'https://github.com': terminal
+# prompts disabled"
+set -gx GIT_TERMINAL_PROMPT 1
+
+# forgit: only provide the git-forgit command, not its short aliases
+set -gx FORGIT_NO_ALIASES 1
+
+# Use 1Password as the ssh-agent, unless inside an SSH session where the
+# forwarded agent should win.
+if not set -q SSH_AUTH_SOCK
+{{- if eq .chezmoi.os "darwin" }}
+    set -gx SSH_AUTH_SOCK "$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+{{- else if eq .chezmoi.os "linux" }}
+    set -gx SSH_AUTH_SOCK $HOME/.1password/agent.sock
+{{- end }}
+end
+
+# See https://github.com/NixOS/nixpkgs/issues/14966#issuecomment-520083836
+mkdir -p $HOME/.local/share/keyrings
+
+{{- if eq .chezmoi.os "linux" }}
+
+# Parts of /etc/profile.d that fish does not read (fish has no /etc/profile,
+# and its vendor_conf.d only covers perl, rustup and flatpak's XDG_DATA_DIRS).
+# Flatpak app commands, e.g. com.slack.Slack (fish_add_path skips missing dirs):
+fish_add_path --global --path --append $XDG_DATA_HOME/flatpak/exports/bin /var/lib/flatpak/exports/bin
+# Debug symbol servers for gdb and other debuginfod clients
+if not set -q DEBUGINFOD_URLS; and test -d /etc/debuginfod
+    set -l urls (cat /etc/debuginfod/*.urls 2>/dev/null)
+    test -n "$urls"; and set -gx DEBUGINFOD_URLS (string join ' ' $urls)
+end
+
+# Fix webkit+nvidia issue resulting in blank GUIs
+# https://askubuntu.com/questions/1493204/apps-using-webkit-like-foliate-wike-caveliar-or-gnome-web-do-not-show-content
+if lsmod 2>/dev/null | string match -q '*nvidia*'
+    set -gx WEBKIT_DISABLE_DMABUF_RENDERER 1
+end
+{{- end }}

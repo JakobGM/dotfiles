@@ -7,6 +7,18 @@ packages=(
     inotify-tools
     # ssh client, and sshd for `mise run ssh:server`
     openssh
+    # interactive login shell (~/.config/fish/)
+    fish
+    # fish plugin manager; installs forgit from ~/.config/fish/fish_plugins
+    fisher
+    # prompt (~/.config/starship.toml)
+    starship
+    # `z` directory jumping, initialised in config.fish
+    zoxide
+    # shell history search and encrypted sync (~/.config/atuin/)
+    atuin
+    # zsh stays installed for the *.zsh scripts sway, waybar and kitty run
+    zsh
 )
 sudo pacman -S --needed --noconfirm "${packages[@]}"
 {{- end -}}

@@ -4,9 +4,13 @@
 # changes.
 
 # Shell & terminal
-brew "sheldon"          # zsh plugin manager (~/.config/sheldon/plugins.toml)
-brew "direnv"           # zshrc hooks direnv into the shell
-brew "fzf"              # fuzzy finder; sourced from zshrc and FZF_* env vars
+brew "fish"             # interactive login shell (~/.config/fish/)
+brew "fisher"           # fish plugin manager; installs forgit from fish_plugins
+brew "starship"         # prompt (~/.config/starship.toml)
+brew "zoxide"           # `z` directory jumping, initialised in config.fish
+brew "atuin"            # shell history search and encrypted sync (~/.config/atuin/)
+brew "direnv"           # config.fish hooks direnv into the shell
+brew "fzf"              # fuzzy finder; sourced from config.fish and FZF_* env vars
 brew "fd"               # FZF_DEFAULT_COMMAND='fd --type file --hidden'
 cask "kitty"            # terminal emulator (~/.config/kitty/)
 
@@ -16,7 +20,7 @@ brew "neovim-remote"    # nvr; VISUAL=nvr when $NVIM_LISTEN_ADDRESS is set
 brew "tree-sitter-cli"  # required by nvim-treesitter `main` branch (`tree-sitter build`)
 brew "universal-ctags"  # vim-gutentags shells out to this; macOS ships BSD ctags which is incompatible
 
-# Modern unix replacements (referenced from autoload/aliases.zsh)
+# Modern unix replacements (referenced from fish/config.fish)
 brew "bat"              # cat
 brew "eza"              # ls
 brew "ripgrep"          # rg; also referenced from MANPAGER and completions
@@ -44,7 +48,7 @@ cask "1password"        # GUI app provides op-ssh-sign + the ssh-agent socket
 cask "firefox"          # tridactyl runs as a Firefox extension
 
 # Cloud
-cask "google-cloud-sdk" # gcloud + zsh completions sourced from zshrc
+cask "google-cloud-sdk" # gcloud, bq and gsutil (the cask links them into brew's bin)
 
 # Bootstrap (declared for documentation; chezmoi must be installed to clone
 # this repo in the first place)
