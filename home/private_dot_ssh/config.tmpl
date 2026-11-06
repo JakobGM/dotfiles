@@ -4,7 +4,6 @@ Host *
 {{- else if eq .chezmoi.os "linux" }}
     IdentityAgent ~/.1password/agent.sock
 {{- end }}
-    PermitLocalCommand yes
 
 Host silver gold oxygen
     ForwardAgent yes
