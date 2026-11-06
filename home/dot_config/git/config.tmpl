@@ -4,8 +4,6 @@
     signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBHZhDMvqt5fOudZ9uj4gyi+CGlLZ6cv2d+RbHl44INWjHZjQcPJm/CbiswDkGS+Zz526MJYmLl5RFLmQMdo8mBFYJGR7NBufDY05Gy1UgXLZpfJH2aD56m35zmZVusTJP/WX8I+/FZ0IZBEEAnwj669OTgARRnnPurvKknjM8oMvuFcZxIlQLPgz/0z7eMlXoqO8BnpUSbtHMaHzw5CmdTCABiyxxFuCyg6d6aG7u9b4WfOidZrw3c8yup4gcalDFMoZ+gWoGONqKNNoDC6bSTdH2OKRLsXVPk6E3p5+1sLc3GqpKWgsG8Quhntd1AuZFnywpGn8xgg0Ju5QZeXYd
 [includeIf "gitdir:~/crdbrd/"]
     path = gitconfig-crdbrd
-[includeIf "gitdir:~/crdbrd/"]
-    path = gitconfig-crdbrd
 [core]
     editor = nvim
     excludesfile = ~/.config/git/ignore
@@ -109,6 +107,9 @@
 [credential]
   helper = netlify
   helper = cache
+# Verify integrity of every object received or sent, rejecting malformed objects
+[transfer]
+    fsckObjects = true
 [pull]
     rebase = true
 [push]
