@@ -38,7 +38,6 @@ return {
   require("plugins.nvim_lspconfig"),
 
   -- Debugging
-  require("plugins.nvim_dap"),
 
   -- Testing
   require("plugins.neotest"),
