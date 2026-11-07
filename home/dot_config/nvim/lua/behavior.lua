@@ -6,14 +6,7 @@ vim.opt.ignorecase = true
 -- Except when using Capital letters
 vim.opt.smartcase = true
 
--- Move to first search occurence which matches
-vim.opt.incsearch = true
-
--- Highlight search matches
-vim.opt.hlsearch = true
-
 -- Keep the same screen lines in all split windows
--- Recommended by luukvbaal/stabilize.nvim README.md
 vim.opt.splitkeep = "screen"
 
 -- Open new splits to the right and below (feels more natural)
@@ -31,9 +24,6 @@ vim.api.nvim_set_keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', { noremap = true })
 vim.api.nvim_set_keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', { noremap = true })
 vim.api.nvim_set_keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', { noremap = true })
 vim.api.nvim_set_keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', { noremap = true })
-
--- Required for operations modifying multiple buffers like rename (used by nLSP)
-vim.opt.hidden = true
 
 -- Turn Vim swapfile off
 vim.opt.swapfile = false
@@ -66,12 +56,6 @@ vim.opt.complete:append("kspell")
 
 -- Source .exrc files in project directories for project-specific vim settings
 vim.opt.exrc = true
-
--- Only allow sourcing of unsafe commands if such files are owned by my user
-vim.opt.secure = true
-
--- Prefer python3 when both can be used
-vim.opt.pyx = 3
 
 -- Run "chezmoi apply" after saving chezmoi source files
 local chezmoiApplyGroup = vim.api.nvim_create_augroup('ChezmoiApply', { clear = true })
