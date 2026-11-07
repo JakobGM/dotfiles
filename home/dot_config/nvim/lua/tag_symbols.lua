@@ -41,8 +41,10 @@ local function ansi(groups)
   return ""
 end
 
--- awk argv that renders `file` with the current colorscheme.
-local function awk_argv(file)
+-- Shell command that renders `file` with the current colorscheme. Lines are sorted by
+-- the length of the qualified symbol name, so with `--tiebreak=index` the shortest of
+-- equally good matches ranks first (an exact `Receipt` above `ReceiptInline`).
+local function render_cmd(file)
   local vars = {
     SEP = require("fzf-lua.utils").nbsp,
     DIM = ansi({ "Comment" }),
@@ -53,22 +55,28 @@ local function awk_argv(file)
     vars["HL_" .. kind] = ansi(spec.hl)
   end
   local argv = { "awk" }
-  -- Sorted, as the argv is also the cache key.
-  local names = vim.tbl_keys(vars)
-  table.sort(names)
-  for _, name in ipairs(names) do
-    vim.list_extend(argv, { "-v", name .. "=" .. vars[name] })
+  for name, value in pairs(vars) do
+    vim.list_extend(argv, { "-v", name .. "=" .. value })
   end
   vim.list_extend(argv, { "-f", script, file })
-  return argv
+  return table.concat(vim.tbl_map(vim.fn.shellescape, argv), " ") .. " | sort -s -n -k1,1 | cut -d ' ' -f2-"
 end
 
 -- The cache file name covers everything the output depends on, so a colorscheme or
--- script change renders to a new file instead of serving stale lines.
-local function cache_file(argv)
+-- script change renders to a new file instead of serving stale lines. It is built from
+-- the resolved highlight definitions rather than the ANSI sequences, whose attribute
+-- order fzf-lua takes from a hash table and can differ between Neovim sessions.
+local function cache_file(file)
   local stat = vim.uv.fs_stat(script)
-  local key = table.concat(argv, "\0") .. (stat and stat.mtime.sec or "")
-  return vim.fs.joinpath(cache_dir, vim.fn.sha256(key))
+  local parts = { file, tostring(stat and stat.mtime.sec),vim.inspect(vim.api.nvim_get_hl(0, { name = "Comment", link = false })) }
+  for _, spec in pairs(kinds) do
+    table.insert(parts, spec.icon)
+    for _, group in ipairs(spec.hl) do
+      table.insert(parts, group .. vim.inspect(vim.api.nvim_get_hl(0, { name = group, link = false })))
+    end
+  end
+  table.sort(parts)
+  return vim.fs.joinpath(cache_dir, vim.fn.sha256(table.concat(parts, "\0")))
 end
 
 local function mtime_ns(path)
@@ -87,13 +95,13 @@ function M.refresh()
   if not file or vim.fn.filereadable(file) == 0 then
     return
   end
-  local argv = awk_argv(file)
-  local cache = cache_file(argv)
+  local cache = cache_file(file)
   vim.fn.mkdir(cache_dir, "p")
   -- Write to a temporary file first so the picker never reads a partial cache.
   local tmp = cache .. ".tmp"
-  vim.system({ "sh", "-c", 'out="$1"; shift; "$@" > "$out.tmp" && mv "$out.tmp" "$out"', "sh", cache, unpack(argv) },
-    {}, function(result)
+  local q_cache, q_tmp = vim.fn.shellescape(cache), vim.fn.shellescape(tmp)
+  vim.system({ "sh", "-c", ("%s > %s && mv %s %s"):format(render_cmd(file), q_tmp, q_tmp, q_cache) }, {},
+    function(result)
       if result.code ~= 0 then
         vim.uv.fs_unlink(tmp)
       end
@@ -107,13 +115,12 @@ function M.pick()
     return
   end
 
-  local argv = awk_argv(file)
-  local cache = cache_file(argv)
+  local cache = cache_file(file)
   local cmd
   if is_fresh(cache, file) then
     cmd = "cat " .. vim.fn.shellescape(cache)
   else
-    cmd = table.concat(vim.tbl_map(vim.fn.shellescape, argv), " ")
+    cmd = render_cmd(file)
     M.refresh()
   end
 
@@ -134,6 +141,8 @@ function M.pick()
       -- Match on the icon and qualified name only, not on the file path.
       ["--delimiter"] = utils.nbsp,
       ["--nth"] = "1",
+      -- Equal scores keep the input order, which is sorted by name length.
+      ["--tiebreak"] = "index",
     },
   })
 end

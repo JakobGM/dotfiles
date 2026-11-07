@@ -3,7 +3,8 @@
 # the !_TAG_ header lines.
 #
 # Input line: name<TAB>file<TAB>excmd;"<TAB>kind<TAB>field:value...
-# Output line: <icon> <scope.>name<pad><SEP>file:line:
+# Output line: <length> <icon> <scope.>name<pad><SEP>file:line:
+# where <length> is the length of the qualified name, used for sorting and then cut.
 # Everything before SEP is what fzf matches on; the trailing file:line: is parsed
 # by fzf-lua's path.entry_to_file for jumping and previewing.
 #
@@ -44,5 +45,5 @@ BEGIN {
   }
   pad = WIDTH - length(plain)
   if (pad < 2) pad = 2
-  printf "%s %s%*s%s%s%s:%s:%s\n", hl[kind] icon[kind] RESET, label, pad, "", SEP, DIM, $2, line, RESET
+  printf "%d %s %s%*s%s%s%s:%s:%s\n", length(plain), hl[kind] icon[kind] RESET, label, pad, "", SEP, DIM, $2, line, RESET
 }
