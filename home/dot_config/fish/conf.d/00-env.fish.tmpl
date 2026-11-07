@@ -41,6 +41,12 @@ set -gx CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude
 # mise installs and updates Claude Code (see ~/.config/mise/config.toml), so
 # Claude Code's own background updater stays off.
 set -gx DISABLE_AUTOUPDATER 1
+# The chezmoi source copy of the global mise config, dot_config/mise/config.toml,
+# matches mise's `mise/config.toml` project-config pattern. Without this, shells
+# under dot_config load it as a project config and warn that its
+# trusted_config_paths is ignored. mise only honours this as an env var: the
+# ignored_config_paths setting in a config file does not stop config discovery.
+set -gx MISE_IGNORED_CONFIG_PATHS {{ .chezmoi.sourceDir | quote }}
 
 # fzf: list files with fd (including hidden ones), preview them with bat
 set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden'
