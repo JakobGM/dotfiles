@@ -53,6 +53,10 @@ set -gx GIT_TERMINAL_PROMPT 1
 
 # forgit: only provide the git-forgit command, not its short aliases
 set -gx FORGIT_NO_ALIASES 1
+# fisher puts the git-forgit executable in conf.d/bin, and the plugin only
+# wraps it in a fish alias. git aliases (`git l` = `forgit log`) need it on
+# PATH.
+fish_add_path --global --path --append $__fish_config_dir/conf.d/bin
 
 # Use 1Password as the ssh-agent, unless inside an SSH session where the
 # forwarded agent should win.
