@@ -17,6 +17,8 @@ fi
 plugins=(
     # https://github.com/mattpocock/skills
     "mattpocock-skills@claude-plugins-official anthropics/claude-plugins-official"
+    # https://github.com/blader/humanizer
+    "humanizer@humanizer blader/humanizer"
 )
 
 installed="$(claude plugin list 2>/dev/null || true)"
