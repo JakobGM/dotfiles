@@ -1,6 +1,3 @@
--- Display \t as 8 visual spaces (recommended setting)
-vim.opt.tabstop = 8
-
 -- Tab is replaced by the spaces specified as above
 vim.opt.expandtab = true
 
@@ -13,6 +10,3 @@ vim.opt.wrapmargin = 0
 
 -- Do not let vim force line breaks when exceeding textwidth in insert mode
 vim.opt.formatoptions:remove("t")
-
--- Let status line span across multiple panes (showing info for focused pane)
-vim.opt.laststatus = 3
