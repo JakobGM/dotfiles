@@ -42,7 +42,6 @@ return {
   require("plugins.nvim_comment"),
   require("plugins.nvim_spectre"),
   require("plugins.rename"),
-  require("plugins.tabular"),
   require("plugins.vim_argumentative"),
   require("plugins.vim_argwrap"),
   require("plugins.vim_repeat"),
