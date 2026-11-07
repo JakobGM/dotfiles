@@ -21,7 +21,6 @@ return {
   require("plugins.nvim_lsp_file_operations"),
   require("plugins.tagbar"),
   require("plugins.vim_gutentags"),
-  require("plugins.vim_tmux_navigator"),
 
   -- Git Integration
   require("plugins.gitsigns_nvim"),
