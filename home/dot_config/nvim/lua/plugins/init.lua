@@ -7,7 +7,6 @@ return {
   require("plugins.noice_nvim"),
 
   -- Code Analysis and Diagnostics
-  require("plugins.nvim_coverage"),
   require("plugins.trouble_nvim"),
 
   -- Syntax Highlighting and Parsing
@@ -48,7 +47,6 @@ return {
 
   -- File Type Specific
   require("plugins.vim_caddyfile"),
-  require("plugins.vim_dadbod_ui"),
 
   -- Utility
   require("plugins.kulala_nvim"),

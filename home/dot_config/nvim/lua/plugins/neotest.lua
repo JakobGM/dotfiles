@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-neotest/nvim-nio",
     "nvim-neotest/neotest-python",
+    "marilari88/neotest-vitest",
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter"
@@ -12,7 +13,8 @@ return {
       adapters = {
         require("neotest-python")({
           args = { "--create-db", "-vv" },
-        })
+        }),
+        require("neotest-vitest"),
       },
       output = {
         enabled = true,

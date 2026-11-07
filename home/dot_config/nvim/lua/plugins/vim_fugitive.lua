@@ -18,7 +18,7 @@ return {
   keys = {
     -- Write to git staging area
     { "<Leader>gw", ":Gw<CR>" },
-    -- Open GitHub source
-    { "<Leader>gb", ":Gblame<CR>" },
+    -- Blame the whole file. <Leader>gb* belongs to gitsigns.
+    { "<Leader>gB", "<cmd>Git blame<CR>" },
   },
 }
