@@ -60,7 +60,6 @@ return {
   require("plugins.vim_caddyfile"),
   require("plugins.vim_dadbod_ui"),
   require("plugins.vimtex"),
-  require("plugins.r_nvim"),
 
   -- Utility
   require("plugins.kulala_nvim"),
