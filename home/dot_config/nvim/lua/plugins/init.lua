@@ -60,7 +60,6 @@ return {
   require("plugins.vim_smooth_scroll"),
 
   -- Documentation and Help
-  require("plugins.neoman_vim"),
 
   -- Terminal Integration
   require("plugins.kitty_scrollback_nvim"),
