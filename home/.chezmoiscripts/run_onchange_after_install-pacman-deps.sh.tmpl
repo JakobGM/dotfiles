@@ -23,6 +23,9 @@ packages=(
     zsh
     # CLI spec tool; mise needs it for shell completions
     usage
+    # GTK3 Adwaita-dark theme; theme-toggle.sh sets gtk-theme to it, and
+    # Electron apps (e.g. Claude Desktop) fall back to light without it
+    gnome-themes-extra
 )
 sudo pacman -S --needed --noconfirm "${packages[@]}"
 {{- end -}}
