@@ -5,18 +5,22 @@ Host *
     IdentityAgent ~/.1password/agent.sock
 {{- end }}
 
+# Own machines, by Tailscale (MagicDNS) name; servers set up with `mise run ssh:server`
 Host silver gold oxygen
+    User jakobgm
     ForwardAgent yes
 
-# Home desktop, by Tailscale (MagicDNS) name; server set up with `mise run ssh:server`
+# Laptop (macOS)
+Host silver
+    HostName jakobgm-laptop
+
+# Home desktop
 Host gold
     HostName jakobgm-home
-    User jakobgm
 
-# Work desktop, by Tailscale (MagicDNS) name; server set up with `mise run ssh:server`
+# Work desktop
 Host oxygen
     HostName jakobgm-work
-    User jakobgm
 
 Host aur.archlinux.org
     IdentityFile ~/.ssh/aur
