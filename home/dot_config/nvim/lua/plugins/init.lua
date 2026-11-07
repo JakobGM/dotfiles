@@ -5,7 +5,6 @@ return {
   require("plugins.gruvbox"),
   require("plugins.lualine_nvim"),
   require("plugins.noice_nvim"),
-  require("plugins.vim_devicons"),
 
   -- Code Analysis and Diagnostics
   require("plugins.nvim_coverage"),
