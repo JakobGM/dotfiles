@@ -1,4 +1,6 @@
-Host *
+# 1Password is the agent, except inside an SSH session: there the agent forwarded by
+# `ssh -A`/ForwardAgent (SSH_AUTH_SOCK) is used, so 1Password asks on the machine you connect from.
+Match !exec "printenv SSH_CONNECTION >/dev/null"
 {{- if eq .chezmoi.os "darwin" }}
     IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 {{- else if eq .chezmoi.os "linux" }}
