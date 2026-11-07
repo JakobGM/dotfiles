@@ -7,7 +7,6 @@ return {
   require("plugins.noice_nvim"),
 
   -- Code Analysis and Diagnostics
-  require("plugins.nvim_coverage"),
   require("plugins.trouble_nvim"),
 
   -- Syntax Highlighting and Parsing
