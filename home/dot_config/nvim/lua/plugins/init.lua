@@ -56,11 +56,9 @@ return {
   require("plugins.molten_nvim"),
   require("plugins.vim_caddyfile"),
   require("plugins.vim_dadbod_ui"),
-  require("plugins.vimtex"),
 
   -- Utility
   require("plugins.kulala_nvim"),
-  require("plugins.neomake"),
   require("plugins.vim_lastplace"),
   require("plugins.vim_sensible"),
   require("plugins.vim_smooth_scroll"),
