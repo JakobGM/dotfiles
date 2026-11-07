@@ -1,6 +1,3 @@
-[submodule "config/i3/i3scripts"]
-	path = home/dot_config/i3/i3scripts
-	url = https://github.com/justbuchanan/i3scripts
 [submodule "config/kitty/kitty_search"]
 	path = home/dot_config/kitty/kitty_search
 	url = https://github.com/trygveaa/kitty-kitten-search
