@@ -220,9 +220,6 @@ default_border pixel 2
 # Initialize diplay(s) with mons
 exec "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 
-# Use programmer-dvorak keybindings
-exec setxkbmap dvp
-
 # Start polybar, even on restart
 exec waybar
 
