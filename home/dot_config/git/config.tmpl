@@ -101,11 +101,9 @@
 {{- else if eq .chezmoi.os "linux" }}
   program = "/opt/1Password/op-ssh-sign"
 {{- end }}
-# The first line resets the list of helpers so we can check Netlify's first.
+# Reset the system helper list and only cache credentials in memory
 [credential]
   helper = ""
-[credential]
-  helper = netlify
   helper = cache
 # Verify integrity of every object received or sent, rejecting malformed objects
 [transfer]
