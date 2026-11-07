@@ -1,5 +1,6 @@
 return {
   -- UI and Appearance
+  require("plugins.dropbar_nvim"),
   require("plugins.fix_auto_scroll_nvim"),
   require("plugins.gruvbox"),
   require("plugins.lualine_nvim"),
