@@ -38,6 +38,9 @@ set -gx WAKATIME_HOME $XDG_CONFIG_HOME/wakatime
 # config, state, and caches all end up here rather than split across
 # XDG_DATA_HOME/XDG_CACHE_HOME.
 set -gx CLAUDE_CONFIG_DIR $XDG_CONFIG_HOME/claude
+# mise installs and updates Claude Code (see ~/.config/mise/config.toml), so
+# Claude Code's own background updater stays off.
+set -gx DISABLE_AUTOUPDATER 1
 
 # fzf: list files with fd (including hidden ones), preview them with bat
 set -gx FZF_DEFAULT_COMMAND 'fd --type file --hidden'
