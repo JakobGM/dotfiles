@@ -14,7 +14,9 @@ if [ "$(uname -s)" = Linux ] && ! grep -qE '^\s*Include\s+/etc/ssh/sshd_config\.
 fi
 
 sudo ssh-keygen -A  # host keys, so the config test can run on a fresh machine
-sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<'SSHD'
+# tee, not `install /dev/stdin`, which macOS's install rejects for a heredoc under sudo
+sudo mkdir -p /etc/ssh/sshd_config.d
+sudo tee /etc/ssh/sshd_config.d/10-local.conf >/dev/null <<'SSHD'
 # Written by `mise run ssh:server` (chezmoi: dot_config/mise/tasks/ssh/executable_server)
 PasswordAuthentication no
 KbdInteractiveAuthentication no
