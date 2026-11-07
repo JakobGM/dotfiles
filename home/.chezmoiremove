@@ -12,3 +12,8 @@
 .config/zsh/.zcompdump
 .config/zsh/.zcompdump.zwc
 .config/sheldon
+
+# Claude Code from the native installer (claude.ai/install.sh). mise installs
+# Claude Code now; see dot_config/mise/config.toml.
+.local/bin/claude
+.local/share/claude/versions

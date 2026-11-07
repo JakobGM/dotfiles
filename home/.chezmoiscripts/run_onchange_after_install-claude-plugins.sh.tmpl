@@ -9,9 +9,15 @@
 # Claude Code also writes machine-specific state to it.
 set -euo pipefail
 
+# mise installs claude (dot_config/mise/config.toml). chezmoi runs this script
+# before install-mise-tools, so on a new machine `mise exec` installs claude
+# first.
 if ! command -v claude >/dev/null; then
-    echo "install-claude-plugins: claude missing, skipping" >&2
-    exit 0
+    if ! command -v mise >/dev/null; then
+        echo "install-claude-plugins: claude and mise missing, skipping" >&2
+        exit 0
+    fi
+    claude() { (cd "$HOME" && mise exec -- claude "$@"); }
 fi
 
 # "<plugin>@<marketplace> <marketplace source>"

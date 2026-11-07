@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Installs the global mise tools (node, claude, ...). chezmoi runs this script
+# again whenever the global mise config changes, so a tool added there gets
+# installed on every machine at the next `chezmoi apply`. Tools declared as
+# `latest` with `auto_update = true` update themselves after that.
+# mise config sha256: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -euo pipefail
+
+if ! command -v mise >/dev/null; then
+    echo "install-mise-tools: mise missing, skipping" >&2
+    exit 0
+fi
+
+# The global config applies in every directory; $HOME keeps project configs
+# out of scope.
+cd "$HOME"
+mise install
