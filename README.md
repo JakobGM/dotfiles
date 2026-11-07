@@ -77,9 +77,18 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
 * **Inside an SSH session** (`SSH_CONNECTION` set), SSH and git commit signing use the forwarded
   agent instead of the remote 1Password, so 1Password asks on the machine you connect from.
   Own hosts have `ForwardAgent yes`; signing goes through `~/.local/bin/git-ssh-sign`.
-  chezmoi's `onepasswordRead` runs `op` through `~/.local/bin/op-forwarded`, which inside an SSH
-  session calls `op` on the connecting machine over SSH, so that machine needs `mise run ssh:server`.
-* **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key".
+* **Secrets**: write them inline in any template as
+  `{{ onepasswordRead "op://vault/item/field" "<account>" }}`; nothing else needs editing.
+  chezmoi runs `op` through `~/.local/bin/op-forwarded`. On a cache miss it reads every literal
+  `onepasswordRead` reference in the chezmoi source in one process (one 1Password prompt per
+  account) and caches the values for 12 hours; `op-forwarded --clear` drops the cache after a
+  secret changes in 1Password. A reference must not occur in both accounts (use IDs, not names).
+  Inside an SSH session the values come from the machine you connected from
+  (`ssh <it> op-forwarded --serve`, only if `tailscale whois` shows it is yours), which serves
+  the references in **its own** chezmoi source, so pull your dotfiles there after adding one.
+* **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key". Logins from
+  remote-only machines (oxygen) may only run `op-forwarded --serve`, so code there that uses the
+  forwarded agent gets no shell on your other machines (and `ssh gold` from oxygen is refused).
   Run `mise run ssh:server` once per machine to disable password logins, allow only `jakobgm`,
   enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
   (opt-in, since it changes system state). Hosts: `silver` (laptop), `gold` (home), `oxygen` (work).

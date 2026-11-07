@@ -2,3 +2,5 @@
 [onepassword]
     # Inside an SSH session, 1Password asks on the machine you connected from.
     command = "{{ .chezmoi.homeDir }}/.local/bin/op-forwarded"
+    # No `op signin` first: op-forwarded reads all secrets with one approval and caches them.
+    prompt = false
