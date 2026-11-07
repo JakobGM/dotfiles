@@ -125,6 +125,9 @@ function M.pick()
     previewer = "builtin",
     -- The global `path.filename_first` formatter would rewrite the entries.
     formatter = false,
+    -- The global `multiline = 1` default adds --read0, which would read the whole
+    -- newline-separated list as a single entry.
+    _multiline = false,
     actions = require("fzf-lua.config").globals.actions.files,
     fzf_opts = {
       ["--ansi"] = true,
