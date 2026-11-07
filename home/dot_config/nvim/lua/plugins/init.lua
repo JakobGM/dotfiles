@@ -39,7 +39,6 @@ return {
 
   -- Text Editing and Manipulation
   require("plugins.conform_nvim"),
-  require("plugins.nvim_comment"),
   require("plugins.nvim_spectre"),
   require("plugins.rename"),
   require("plugins.vim_argumentative"),
