@@ -1,6 +1,7 @@
 [settings]
 experimental = true
 minimum_release_age = "5d"
+trusted_config_paths = ["/home/jakobgm/.herdr/worktrees"]
 
 # Globally-installed runtimes. Picked up in any shell via the mise activate hook
 # in config.fish. Mason (in nvim) shells out to `npm`, so Node must be on PATH.
