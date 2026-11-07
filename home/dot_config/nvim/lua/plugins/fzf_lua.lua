@@ -49,8 +49,8 @@ return {
     { "<leader><space>", function() require("fzf-lua").files() end },
     -- All tags in current buffer
     { "<leader>T",       function() require("fzf-lua").btags() end },
-    -- All tags in project
-    { "<leader>t",       function() require("fzf-lua").tags() end },
+    -- All classes, functions and methods in project
+    { "<leader>t",       function() require("tag_symbols").pick() end },
     -- Command
     { "<leader>:",       function() require("fzf-lua").commands() end },
     -- All git commits
