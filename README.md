@@ -87,8 +87,9 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
   (`ssh <it> op-forwarded --serve`, only if `tailscale whois` shows it is yours), which serves
   the references in **its own** chezmoi source, so pull your dotfiles there after adding one.
 * **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key". Logins from
-  remote-only machines (oxygen) may only run `op-forwarded --serve`, so code there that uses the
-  forwarded agent gets no shell on your other machines (and `ssh gold` from oxygen is refused).
-  Run `mise run ssh:server` once per machine to disable password logins, allow only `jakobgm`,
-  enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
-  (opt-in, since it changes system state). Hosts: `silver` (laptop), `gold` (home), `oxygen` (work).
+  remote-only machines (jakobgm-work) may only run `op-forwarded --serve`, so code there that uses
+  the forwarded agent gets no shell on your other machines (and `ssh jakobgm-home` from
+  jakobgm-work is refused). Run `mise run ssh:server` once per machine to disable password logins,
+  allow only `jakobgm`, enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
+  (opt-in, since it changes system state). Hosts, by Tailscale name: `jakobgm-laptop` (MacBook),
+  `jakobgm-home` (hostname `gold`), `jakobgm-work` (hostname `oxygen`).
