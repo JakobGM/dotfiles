@@ -8,6 +8,11 @@ Host *
 Host silver gold oxygen
     ForwardAgent yes
 
+# Home desktop, by Tailscale (MagicDNS) name; server set up with `mise run ssh:server`
+Host gold
+    HostName jakobgm-home
+    User jakobgm
+
 # Work desktop, by Tailscale (MagicDNS) name; server set up with `mise run ssh:server`
 Host oxygen
     HostName jakobgm-work

@@ -6,12 +6,20 @@
 # The allowed key comes from chezmoi: ~/.ssh/authorized_keys (private_dot_ssh/private_authorized_keys).
 set -euo pipefail
 
+if [ "$(uname -s)" = Linux ] && ! grep -qE '^\s*Include\s+/etc/ssh/sshd_config\.d/' /etc/ssh/sshd_config; then
+    echo "/etc/ssh/sshd_config does not include /etc/ssh/sshd_config.d/*.conf, so sshd would ignore" >&2
+    echo "the drop-in this task writes. Replace it with the package default, then run again:" >&2
+    echo "  sudo mv /etc/ssh/sshd_config.pacnew /etc/ssh/sshd_config" >&2
+    exit 1
+fi
+
 sudo ssh-keygen -A  # host keys, so the config test can run on a fresh machine
-sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<'SSHD'
-# Written by `mise run ssh:server` (chezmoi: dot_config/mise/tasks/ssh/executable_server)
+sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<SSHD
+# Written by \`mise run ssh:server\` (chezmoi: dot_config/mise/tasks/ssh/executable_server)
 PasswordAuthentication no
 KbdInteractiveAuthentication no
 PermitRootLogin no
+AllowUsers $(id -un)
 SSHD
 sudo sshd -t
 
