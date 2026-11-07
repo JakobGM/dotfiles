@@ -77,6 +77,8 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
 * **Inside an SSH session** (`SSH_CONNECTION` set), SSH and git commit signing use the forwarded
   agent instead of the remote 1Password, so 1Password asks on the machine you connect from.
   Own hosts have `ForwardAgent yes`; signing goes through `~/.local/bin/git-ssh-sign`.
+  chezmoi's `onepasswordRead` runs `op` through `~/.local/bin/op-forwarded`, which inside an SSH
+  session calls `op` on the connecting machine over SSH, so that machine needs `mise run ssh:server`.
 * **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key".
   Run `mise run ssh:server` once per machine to disable password logins, allow only `jakobgm`,
   enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
