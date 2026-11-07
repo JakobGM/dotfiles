@@ -18,9 +18,6 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec $TERMINAL
 
-# Restart astrality
-bindsym $mod+Shift+a exec "$PROJECT_HOME/astrality/.venv/bin/python3 $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
-
 # Set up keychain manager correctly - interacts with SSH_AUTH_SOCK in fish/conf.d/00-env.fish
 # Can be debugged with `loginctl session-status`
 # NB! Important to uninstall xdg-desktop-portal-* and install xdg-desktop-portal-wlr
@@ -222,9 +219,6 @@ exec "$XDG_CONFIG_HOME/mons/setup_displays.zsh"
 
 # Start polybar, even on restart
 exec waybar
-
-# Start astrality
-exec_always "$PROJECT_HOME/astrality/.direnv/python-*/bin/python $PROJECT_HOME/astrality/bin/astrality -l CRITICAL &"
 
 # Automatically rename workspaces in i3
 exec_always "$XDG_CONFIG_HOME/sway/.direnv/python-*/bin/python $XDG_CONFIG_HOME/sway/autoname-workspaces.py &"
