@@ -74,6 +74,9 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
 * **Client**: `~/.ssh/config` points `IdentityAgent` at the 1Password agent.
   Add short aliases as `Host` entries in `home/private_dot_ssh/config.tmpl`.
   Verify a machine with `mise run ssh:client`.
+* **Inside an SSH session** (`SSH_CONNECTION` set), SSH and git commit signing use the forwarded
+  agent instead of the remote 1Password, so 1Password asks on the machine you connect from.
+  Own hosts have `ForwardAgent yes`; signing goes through `~/.local/bin/git-ssh-sign`.
 * **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key".
   Run `mise run ssh:server` once per machine to disable password logins, allow only `jakobgm`,
   enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only

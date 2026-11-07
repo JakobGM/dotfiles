@@ -1,0 +1,12 @@
+#!/bin/sh
+# git's gpg.ssh.program (chezmoi: dot_local/bin/executable_git-ssh-sign.tmpl).
+# Inside an SSH session, sign with the forwarded agent, so 1Password asks on the machine you
+# connect from. Otherwise use 1Password's op-ssh-sign, which talks to the local app.
+if [ -n "${SSH_CONNECTION:-}" ] && [ -S "${SSH_AUTH_SOCK:-}" ]; then
+    exec ssh-keygen "$@"
+fi
+{{- if eq .chezmoi.os "darwin" }}
+exec /Applications/1Password.app/Contents/MacOS/op-ssh-sign "$@"
+{{- else }}
+exec /opt/1Password/op-ssh-sign "$@"
+{{- end }}

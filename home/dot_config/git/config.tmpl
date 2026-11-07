@@ -96,11 +96,8 @@
 [gpg]
   format = ssh
 [gpg "ssh"]
-{{- if eq .chezmoi.os "darwin" }}
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-{{- else if eq .chezmoi.os "linux" }}
-  program = "/opt/1Password/op-ssh-sign"
-{{- end }}
+  # op-ssh-sign locally, the forwarded agent inside an SSH session (dot_local/bin/git-ssh-sign)
+  program = "{{ .chezmoi.homeDir }}/.local/bin/git-ssh-sign"
 # Reset the system helper list and only cache credentials in memory
 [credential]
   helper = ""
