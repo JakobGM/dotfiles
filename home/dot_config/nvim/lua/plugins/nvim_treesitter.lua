@@ -20,7 +20,7 @@ return {
 
     local ensure_installed = {
       "python", "rust",
-      "markdown", "markdown_inline", "r", "rnoweb", "yaml", "latex", "csv",
+      "markdown", "markdown_inline", "yaml", "latex", "csv",
     }
     local installed = require("nvim-treesitter").get_installed("parsers")
     local to_install = vim.iter(ensure_installed)
