@@ -33,7 +33,6 @@ return {
   -- Code Completion and Snippets
   require("plugins.blink_cmp"),
   require("plugins.copilot_lua"),
-  require("plugins.nvim_cmp"),
 
   -- Language Server Protocol (LSP)
   require("plugins.nvim_lspconfig"),
