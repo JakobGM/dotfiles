@@ -1,8 +1,3 @@
--- iTerm2 Esc+ mode for the alt/meta key prevents insertion of Norwegian characters on english keyboards
-vim.keymap.set('i', '<M-e>', 'æ')
-vim.keymap.set('i', '<M-o>', 'ø')
-vim.keymap.set('i', '<M-a>', 'å')
-
 -- Make Y yank the rest of the line
 vim.keymap.set('n', 'Y', 'y$')
 
@@ -89,3 +84,9 @@ vim.api.nvim_command('command FT call v:lua.EditFiltetypeConfig()')
 
 -- Switch to alternative file, most often the previous buffer
 vim.keymap.set('n', '<CR>', ':b#<CR>')
+
+-- Move between windows with ctrl + hjkl
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')

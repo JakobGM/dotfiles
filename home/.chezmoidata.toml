@@ -1,15 +1,5 @@
 [fonts]
 terminal = { family = "MonoLisa", size = 12 }
-ui = { family = "Fira Code", size = 12 }
-
-[displays]
-primary = { handle = "DP2", dpi = 96, font_size = 9 }
-secondary = { handle = "HDMI2", dpi = 96, font_size = 8 }
-tertiary = { handle = "eDP1", dpi = 96, font_size = 12 }
-
-[network]
-wlan = "wlan0"
-ethernet = "eno0"
 
 [colors]
 # Gruvbox dark
@@ -28,39 +18,3 @@ foreground = [
     "bdae93",
     "a89984"
 ]
-
-primary = [
-    "98971a",
-    "458588",
-    "d79921",
-    "d65d0e",
-    "cc249d"
-]
-
-[colors.normal]
-black = "282828"
-red = "cc241d"
-green = "98971a"
-yellow = "d79921"
-blue = "458588"
-purple = "b16286"
-aqua = "689d6a"
-gray = "928374"
-magenta = "b16286"
-cyan = "689d6a"
-orange = "d65d0e"
-white = "a89984"
-
-[colors.bright]
-black = "928374"
-red = "fb4934"
-green = "b8bb26"
-yellow = "fabd2f"
-blue = "83a598"
-purple = "d3869b"
-aqua = "8ec07c"
-gray = "a89984"
-magenta = "d3869b"
-cyan = "8ec07c"
-orange = "d65d0e"
-white = "ebdbb2"

@@ -47,11 +47,6 @@ return {
       desc = "Re-run tests on file change"
     },
     {
-      "gtd",
-      function() require("neotest").run.run({ strategy = "dap" }) end,
-      desc = "Run test with debugger",
-    },
-    {
       "gta",
       function() require("neotest").run.attach() end,
       desc = "Attach to test"

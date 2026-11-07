@@ -1,8 +1,3 @@
--- Early exit if in VS Code
-if vim.g.vscode then
-  return {}
-end
-
 -- Remove the empty line beneath the status line and
 -- let the command line take its place when needed
 vim.opt.cmdheight = 0
@@ -16,9 +11,6 @@ vim.opt.relativenumber = true
 
 -- Do not show command in bottom bar
 vim.opt.showcmd = false
-
--- Highlight current line
-vim.opt.cursorline = true
 
 -- Hide fold numbering in left column
 vim.opt.foldcolumn = "0"
@@ -54,21 +46,6 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 vim.api.nvim_create_autocmd({ 'WinLeave' }, {
   group = crosshairGroup,
   command = 'setlocal nocursorline',
-})
-
--- Show directory hierarchy in netrw
-vim.g.netrw_liststyle = 3
-
--- Remove directory banner in netrw
-vim.g.netrw_banner = 0
-
--- Prevent duplicate netrw buffers (bug caused by vinegar)
--- See: https://codeyarns.com/2015/02/02/cannot-close-buffer-of-netrw-in-vim/
-local netrwGroup = vim.api.nvim_create_augroup('NetrwGroup', { clear = true })
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = 'netrw',
-  group = netrwGroup,
-  command = 'setl bufhidden=wipe',
 })
 
 -- Automatically place help buffer in vertical split layout
