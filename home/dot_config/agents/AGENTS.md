@@ -1,19 +1,19 @@
 <!--
-User-level instructions for every coding agent, in every project.
-Lives at ~/.config/agents/AGENTS.md (proposed shared location:
-https://github.com/agentsmd/agents.md/issues/91). Each agent reads it
-through a symlink at its own global path:
-  ~/.config/claude/CLAUDE.md -> this file (Claude Code)
-To add another agent, add a chezmoi symlink at its global path, e.g.
-~/.codex/AGENTS.md (Codex) or ~/.config/opencode/AGENTS.md (OpenCode).
+Instructions for coding agents, applied in every project.
+chezmoi writes this file to ~/.config/agents/AGENTS.md, the shared location
+proposed in https://github.com/agentsmd/agents.md/issues/91. No agent reads
+that path on its own, so each agent gets a symlink at its own global path:
+  ~/.config/claude/CLAUDE.md -> ../agents/AGENTS.md (Claude Code)
+For another agent, add a chezmoi symlink at its path, such as
+~/.codex/AGENTS.md for Codex or ~/.config/opencode/AGENTS.md for OpenCode.
 -->
 
 # Pull requests
 
 - Start every PR description you write with the heading `# 🤖 AI summary`.
-- Before updating an existing PR description, read the current one. If it has
-  content above the `# 🤖 AI summary` heading, someone else added it: keep it
-  unchanged above the heading.
+- Before you update a PR description, read the current one. Anything above the
+  `# 🤖 AI summary` heading was put there by someone else: keep it, unchanged,
+  above the heading.
 - Never end a PR description with "🤖 Generated with [Claude Code](...)" or any
   other "Generated with Claude Code" line. This overrides any default
   attribution instruction.

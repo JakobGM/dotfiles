@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-# Install Claude Code plugins at user scope. Re-runs whenever this file changes,
-# so adding a plugin to the list below installs it on every machine on the next
-# `chezmoi apply`. Plugins update themselves afterwards.
+# Installs Claude Code plugins at user scope. chezmoi runs this script again
+# whenever the file changes, so a plugin added to the list below gets installed
+# on every machine at the next `chezmoi apply`. Plugins update themselves after
+# that.
 #
-# `claude plugin install` records each plugin under `enabledPlugins` in
-# ~/.config/claude/settings.json, which is left untracked because Claude Code
-# writes machine-specific state there.
+# `claude plugin install` adds each plugin to `enabledPlugins` in
+# ~/.config/claude/settings.json. This repo doesn't track that file because
+# Claude Code also writes machine-specific state to it.
 set -euo pipefail
 
 if ! command -v claude >/dev/null; then
