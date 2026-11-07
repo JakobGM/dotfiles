@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+# Start Flameshot after making sure its config passes `flameshot config --check`.
+#
+# Flameshot shows a modal "Resolve configuration errors" dialog, and does not
+# take screenshots, when flameshot.ini has keys that the installed version does
+# not know. This happens after upgrades that remove tools (for example
+# TYPE_IMAGEUPLOADER, TYPE_SELECTIONINDICATOR). Before each start this script:
+#   1. writes the seed config if the file is missing,
+#   2. deletes each key that `--check` reports as unrecognized,
+#   3. if `--check` still fails, moves the file to flameshot.ini.broken-<time>
+#      and writes the seed config,
+#   4. restarts a running daemon if the config was changed, so it rereads it.
+#
+# Usage: flameshot-launch [flameshot arguments...]   e.g. `flameshot-launch gui`
+
+set -uo pipefail
+
+config_dir="${XDG_CONFIG_HOME:-$HOME/.config}/flameshot"
+config="$config_dir/flameshot.ini"
+
+write_seed() {
+    mkdir -p "$config_dir"
+    cat > "$config" <<'SEED'
+{{ includeTemplate "dot_config/flameshot/create_flameshot.ini.tmpl" . }}
+SEED
+}
+
+check() {
+    timeout 10 flameshot config --check 2>&1
+}
+
+changed=false
+
+if [[ ! -s "$config" ]]; then
+    write_seed
+    changed=true
+fi
+
+if ! output="$(check)"; then
+    changed=true
+    # Lines look like: flameshot: error: Unrecognized setting: 'bogusKey'
+    #                  flameshot: error: Unrecognized shortcut name: 'TYPE_X'.
+    mapfile -t bad_keys < <(
+        grep -oE "Unrecognized (setting|shortcut name): '[^']+'" <<<"$output" \
+            | sed -E "s/.*'([^']+)'/\1/" | sort -u
+    )
+    for key in "${bad_keys[@]}"; do
+        sed -i "/^${key}=/d" "$config"
+    done
+
+    if ! output="$(check)"; then
+        backup="$config.broken-$(date +%Y%m%dT%H%M%S)"
+        mv "$config" "$backup"
+        write_seed
+        notify-send --app-name=flameshot "Flameshot config reset" \
+            "The config failed validation and was replaced with the seed. Old file: $backup" \
+            2>/dev/null || true
+    fi
+fi
+
+if $changed && pgrep -x flameshot >/dev/null; then
+    pkill -x flameshot
+    for _ in $(seq 20); do
+        pgrep -x flameshot >/dev/null || break
+        sleep 0.1
+    done
+    pkill -9 -x flameshot 2>/dev/null || true
+    # `flameshot gui` without a daemon runs one capture and exits, so start
+    # the daemon again for the next capture.
+    if [[ $# -gt 0 ]]; then
+        setsid -f flameshot >/dev/null 2>&1
+        sleep 0.5
+    fi
+fi
+
+exec flameshot "$@"
