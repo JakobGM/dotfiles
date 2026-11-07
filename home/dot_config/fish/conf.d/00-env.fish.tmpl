@@ -19,7 +19,7 @@ set -gx LANG en_US.UTF-8
 
 set -gx VISUAL nvim
 set -gx EDITOR $VISUAL
-set -gx MANPAGER "nvim -c 'set ft=neoman' -"
+set -gx MANPAGER "nvim +Man!"
 set -gx TERMINAL kitty
 {{- if eq .chezmoi.os "darwin" }}
 set -gx BROWSER open
