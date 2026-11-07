@@ -1,28 +1,119 @@
 #!/bin/sh
 # chezmoi's onepassword.command (chezmoi: .chezmoi.toml.tmpl, dot_local/bin/executable_op-forwarded).
-# Inside an SSH session, run op on the machine you connected from, over SSH with the forwarded
-# agent, so 1Password asks there and not on this machine's screen. Otherwise run the local op.
+#
+# Secrets stay inline in templates, as onepasswordRead with a literal op:// reference. On a cache
+# miss, this reads every such reference in the chezmoi source in one process, so 1Password asks
+# once (per account). Values are cached for 12 hours in a private per-user directory (a tmpfs on
+# Linux); the files chezmoi renders hold the same values on disk. `op-forwarded --clear` empties
+# the cache, e.g. after a secret changed in 1Password. The cache is keyed by reference alone,
+# since chezmoi passes op another account ID than the template names, so a reference must not
+# occur in two accounts (IDs instead of names avoid that).
+#
+# Inside an SSH session, the values come from the machine you connected from, so 1Password asks
+# there: `ssh <client> op-forwarded --serve` returns that machine's cached values for the
+# references in its own chezmoi source. Its authorized_keys forces that command for logins from
+# remote-only machines, so a login from those can neither get a shell nor choose what to read.
 set -eu
 
-if [ -z "${SSH_CONNECTION:-}" ] || [ ! -S "${SSH_AUTH_SOCK:-}" ]; then
-    exec op "$@"
+cache=${XDG_RUNTIME_DIR:-$(getconf DARWIN_USER_TEMP_DIR 2>/dev/null || echo "$HOME/.cache")}/op-forwarded
+src=${CHEZMOI_SOURCE_DIR:-$HOME/.local/share/chezmoi/home}
+umask 077
+mkdir -p "$cache"
+
+fresh() { [ -n "$(find "$1" -mmin -720 2>/dev/null)" ]; }
+key() { printf '%s' "$1" | base64 | tr -d '\n=' | tr '/+' '_-'; }
+
+# Move the files of a temporary directory into the cache, so readers never see half a file.
+commit() {
+    for f in "$1"/*; do
+        [ -e "$f" ] && mv -f "$f" "$cache/"
+    done
+    rmdir "$1"
+}
+
+# Fill the cache from this machine's 1Password with the account list and every literal
+# onepasswordRead reference in the chezmoi source, plus the "<account>|<ref>" lines in $1,
+# unless all of them are fresh.
+fill() {
+    pairs=$({
+        grep -rhoE 'onepasswordRead +"op://[^"]+"( +"[^"]+")?' "$src" 2>/dev/null |
+            sed -E 's/^onepasswordRead +"([^"]+)"( +"([^"]+)")?$/\3|\1/'
+        [ -z "${1:-}" ] || echo "$1"
+    } | sort -u)
+    stale=$({
+        fresh "$cache/account-list" || echo y
+        echo "$pairs" | while IFS='|' read -r account ref; do
+            [ -z "$ref" ] || fresh "$cache/$(key "$ref")" || echo y
+        done
+    })
+    [ -n "$stale" ] || return 0
+
+    tmp=$(mktemp -d "$cache.XXXXXX")
+    op account list --format=json </dev/null >"$tmp/account-list"
+    echo "$pairs" | while IFS='|' read -r account ref; do
+        [ -n "$ref" ] || continue
+        f=$tmp/$(key "$ref")
+        op read --no-newline ${account:+--account "$account"} "$ref" </dev/null >"$f" ||
+            { rm -f "$f"; echo "op-forwarded: cannot read $ref" >&2; }
+    done
+    commit "$tmp"
+}
+
+# Fill the cache from the SSH client's `op-forwarded --serve`. The client must be a Tailscale node
+# of the same Tailscale user as this machine: WireGuard then guarantees who answers at that IP.
+fetch() {
+    client=${SSH_CONNECTION%% *}
+    ts=$(command -v tailscale || echo /Applications/Tailscale.app/Contents/MacOS/Tailscale)
+    owner() { "$ts" whois "$1" 2>/dev/null | sed -n '/^User:/,$p'; }
+    me=$(owner "$("$ts" ip -4)")
+    if [ -z "$me" ] || [ "$(owner "$client")" != "$me" ]; then
+        echo "op-forwarded: $client is not one of your Tailscale machines; not calling it" >&2
+        exit 1
+    fi
+    out=$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new "jakobgm@$client" \
+        '~/.local/bin/op-forwarded --serve') || { echo "op-forwarded: $client did not serve secrets" >&2; exit 1; }
+    tmp=$(mktemp -d "$cache.XXXXXX")
+    echo "$out" | while read -r k v; do
+        case $k in '' | *[!A-Za-z0-9_-]*) continue ;; esac
+        printf '%s' "$v" | base64 --decode >"$tmp/$k"
+    done
+    commit "$tmp"
+}
+
+ref='' account=''
+case "$*" in
+--clear) exec rm -rf "$cache" ;;
+--serve)
+    # One "<cache file> <base64 value>" line per cached value of this machine's own references.
+    fill
+    for f in "$cache"/*; do
+        printf '%s %s\n' "${f##*/}" "$(base64 <"$f" | tr -d '\n')"
+    done
+    exit
+    ;;
+"account list --format=json") target=account-list ;;
+read*)
+    # chezmoi (with onepassword.prompt = false) calls `op read --no-newline <op://ref> [--account A]`.
+    prev=''
+    for arg in "$@"; do
+        [ "$prev" = --account ] && account=$arg
+        case $arg in op://*) ref=$arg ;; esac
+        prev=$arg
+    done
+    target=$(key "$ref")
+    ;;
+*) exec op "$@" ;;
+esac
+
+if ! fresh "$cache/$target"; then
+    if [ -n "${SSH_CONNECTION:-}" ]; then
+        fetch
+    else
+        fill "${ref:+$account|$ref}"
+    fi
 fi
-
-# The client's address, e.g. its Tailscale IP. Its host key is trusted on first use.
-client=${SSH_CONNECTION%% *}
-
-# The remote login shell may be fish, so quote each argument in single quotes, and refuse
-# arguments that would need escaping (op's arguments never do).
-cmd=op
-for arg in "$@"; do
-    case $arg in
-    *\'* | *\\*)
-        echo "op-forwarded: cannot pass an argument with ' or \\ over SSH: $arg" >&2
-        exit 2
-        ;;
-    esac
-    cmd="$cmd '$arg'"
-done
-
-exec ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o IdentityAgent=SSH_AUTH_SOCK \
-    "jakobgm@$client" "$cmd"
+[ -f "$cache/$target" ] || {
+    echo "op-forwarded: no value for ${ref:-$*}; it must be a literal onepasswordRead in the chezmoi source${SSH_CONNECTION:+ of ${SSH_CONNECTION%% *} (pull your dotfiles there)}" >&2
+    exit 1
+}
+exec cat "$cache/$target"

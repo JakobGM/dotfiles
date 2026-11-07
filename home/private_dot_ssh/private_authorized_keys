@@ -1,2 +1,7 @@
 # Only the 1Password "Main SSH key" may log in (sshd enabled with `mise run ssh:server`).
+#
+# Logins from remote-only machines (oxygen, by Tailscale IPv4 and IPv6) may only run
+# `op-forwarded --serve`: code there that uses the forwarded agent gets neither a shell here nor a
+# choice of which secrets to read. sshd uses the first line whose key and from= both match.
+from="100.127.95.46,fd7a:115c:a1e0::d601:5f2e",restrict,command=".local/bin/op-forwarded --serve" ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBHZhDMvqt5fOudZ9uj4gyi+CGlLZ6cv2d+RbHl44INWjHZjQcPJm/CbiswDkGS+Zz526MJYmLl5RFLmQMdo8mBFYJGR7NBufDY05Gy1UgXLZpfJH2aD56m35zmZVusTJP/WX8I+/FZ0IZBEEAnwj669OTgARRnnPurvKknjM8oMvuFcZxIlQLPgz/0z7eMlXoqO8BnpUSbtHMaHzw5CmdTCABiyxxFuCyg6d6aG7u9b4WfOidZrw3c8yup4gcalDFMoZ+gWoGONqKNNoDC6bSTdH2OKRLsXVPk6E3p5+1sLc3GqpKWgsG8Quhntd1AuZFnywpGn8xgg0Ju5QZeXYd
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDBHZhDMvqt5fOudZ9uj4gyi+CGlLZ6cv2d+RbHl44INWjHZjQcPJm/CbiswDkGS+Zz526MJYmLl5RFLmQMdo8mBFYJGR7NBufDY05Gy1UgXLZpfJH2aD56m35zmZVusTJP/WX8I+/FZ0IZBEEAnwj669OTgARRnnPurvKknjM8oMvuFcZxIlQLPgz/0z7eMlXoqO8BnpUSbtHMaHzw5CmdTCABiyxxFuCyg6d6aG7u9b4WfOidZrw3c8yup4gcalDFMoZ+gWoGONqKNNoDC6bSTdH2OKRLsXVPk6E3p5+1sLc3GqpKWgsG8Quhntd1AuZFnywpGn8xgg0Ju5QZeXYd
