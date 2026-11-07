@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Installs Claude Code plugins at user scope. chezmoi runs this script again
+# whenever the file changes, so a plugin added to the list below gets installed
+# on every machine at the next `chezmoi apply`. Plugins update themselves after
+# that.
+#
+# `claude plugin install` adds each plugin to `enabledPlugins` in
+# ~/.config/claude/settings.json. This repo doesn't track that file because
+# Claude Code also writes machine-specific state to it.
+set -euo pipefail
+
+if ! command -v claude >/dev/null; then
+    echo "install-claude-plugins: claude missing, skipping" >&2
+    exit 0
+fi
+
+# "<plugin>@<marketplace> <marketplace source>"
+plugins=(
+    # https://github.com/mattpocock/skills
+    "mattpocock-skills@claude-plugins-official anthropics/claude-plugins-official"
+    # https://github.com/blader/humanizer
+    "humanizer@humanizer blader/humanizer"
+)
+
+installed="$(claude plugin list 2>/dev/null || true)"
+for entry in "${plugins[@]}"; do
+    read -r plugin source <<<"$entry"
+    if grep -qF "${plugin}" <<<"$installed"; then
+        continue
+    fi
+    echo "install-claude-plugins: installing ${plugin}"
+    # --marketplace adds the marketplace first on machines that lack it.
+    claude plugin install "${plugin%@*}" --marketplace "$source" --scope user
+done
