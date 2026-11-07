@@ -75,5 +75,6 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
   Add short aliases as `Host` entries in `home/private_dot_ssh/config.tmpl`.
   Verify a machine with `mise run ssh:client`.
 * **Server**: `~/.ssh/authorized_keys` allows only the 1Password "Main SSH key".
-  Run `mise run ssh:server` once per machine to disable password logins and enable `sshd`
-  (opt-in, since it changes system state).
+  Run `mise run ssh:server` once per machine to disable password logins, allow only `jakobgm`,
+  enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
+  (opt-in, since it changes system state). Hosts: `silver` (laptop), `gold` (home), `oxygen` (work).

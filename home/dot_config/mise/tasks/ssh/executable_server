@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 #MISE description="Enable an OpenSSH server on this machine (key-only logins)"
-#MISE confirm="Enable sshd, disable password logins and open port 22 on this machine?"
+#MISE confirm="Enable sshd, disable password logins and allow port 22 over Tailscale only on this machine?"
 #
 # One-time, idempotent, per machine; chezmoi apply never runs it, since it changes system state.
 # The allowed key comes from chezmoi: ~/.ssh/authorized_keys (private_dot_ssh/private_authorized_keys).
 set -euo pipefail
+
+if [ "$(uname -s)" = Linux ] && ! grep -qE '^\s*Include\s+/etc/ssh/sshd_config\.d/' /etc/ssh/sshd_config; then
+    echo "/etc/ssh/sshd_config does not include /etc/ssh/sshd_config.d/*.conf, so sshd would ignore" >&2
+    echo "the drop-in this task writes. Replace it with the package default, then run again:" >&2
+    echo "  sudo mv /etc/ssh/sshd_config.pacnew /etc/ssh/sshd_config" >&2
+    exit 1
+fi
 
 sudo ssh-keygen -A  # host keys, so the config test can run on a fresh machine
 sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<'SSHD'
@@ -12,6 +19,7 @@ sudo install -Dm644 /dev/stdin /etc/ssh/sshd_config.d/10-local.conf <<'SSHD'
 PasswordAuthentication no
 KbdInteractiveAuthentication no
 PermitRootLogin no
+AllowUsers jakobgm
 SSHD
 sudo sshd -t
 
@@ -20,8 +28,16 @@ Linux)
     sudo systemctl unmask sshd.service
     sudo systemctl enable sshd.service
     sudo systemctl restart sshd.service
-    if command -v ufw >/dev/null && sudo ufw status | grep -q "Status: active"; then
-        sudo ufw allow ssh
+    if command -v ufw >/dev/null; then
+        # SSH only over Tailscale, not from the LAN or the internet. The rule is saved even while
+        # ufw is inactive, and applies once it is enabled. Add the new rule before deleting the
+        # broad ones, so an SSH session over Tailscale never depends on a missing rule.
+        sudo ufw allow in on tailscale0 to any port 22 proto tcp comment 'SSH over Tailscale'
+        for rule in ssh 22 22/tcp; do
+            sudo ufw delete allow "$rule" >/dev/null 2>&1 || true
+        done
+        sudo ufw status | grep -q "Status: active" ||
+            echo "Note: ufw is inactive, so sshd is reachable on all interfaces until 'sudo ufw enable'." >&2
     fi
     ;;
 Darwin)
