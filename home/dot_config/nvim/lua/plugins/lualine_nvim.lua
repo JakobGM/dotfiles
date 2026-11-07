@@ -3,14 +3,16 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
-    "luisiacc/gruvbox-baby",
+    "ellisonleao/gruvbox.nvim",
   },
   opts = {
     options = {
       -- Single statusline across panes
       globalstatus = true,
 
-      theme = "gruvbox-baby",
+      -- Picks gruvbox_dark or gruvbox_light from 'background', and lualine
+      -- reloads it on every ColorScheme event
+      theme = "gruvbox",
     },
   }
 }
