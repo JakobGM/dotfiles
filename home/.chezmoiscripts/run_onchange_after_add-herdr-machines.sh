@@ -5,12 +5,8 @@
 # changes. Machines herdr already has, and this machine itself, are skipped.
 set -euo pipefail
 
-# herdr name (= Tailscale name) -> ssh target (a Host in ~/.ssh/config)
-machines=(
-    "jakobgm-laptop silver"
-    "jakobgm-home gold"
-    "jakobgm-work oxygen"
-)
+# Tailscale names, which are also the ssh Hosts (~/.ssh/config) and herdr names
+machines=(jakobgm-laptop jakobgm-home jakobgm-work)
 
 if ! command -v hc >/dev/null || ! command -v tailscale >/dev/null; then
     echo "add-herdr-machines: hc or tailscale missing, skipping" >&2
@@ -24,11 +20,10 @@ self=$(tailscale status --peers=false 2>/dev/null | awk 'NR==1 { print $2 }') ||
 [[ $self == jakobgm-work ]] && exit 0
 
 existing=$(hc machine ls --json)
-for machine in "${machines[@]}"; do
-    read -r name target <<<"$machine"
+for name in "${machines[@]}"; do
     [[ $name == "$self" ]] && continue
     grep -qF "\"name\":\"$name\"" <<<"$existing" && continue
     # --install copies this hc there when it has none or an older one.
-    hc machine add "$target" --name "$name" --install >/dev/null ||
-        echo "add-herdr-machines: could not add $name ($target)" >&2
+    hc machine add "$name" --install >/dev/null ||
+        echo "add-herdr-machines: could not add $name" >&2
 done
