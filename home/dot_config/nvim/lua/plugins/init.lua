@@ -22,7 +22,6 @@ return {
 
   -- Git Integration
   require("plugins.gitsigns_nvim"),
-  require("plugins.magit"),
   require("plugins.mini_diff"),
   require("plugins.neogit"),
   require("plugins.vim_fugitive"),
