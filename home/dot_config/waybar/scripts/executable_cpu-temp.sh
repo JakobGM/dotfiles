@@ -24,7 +24,7 @@ get_cpu_temperature() {
 
 # Get the corresponding icon based on temperature
 get_temperature_icon() {
-  temp_value=${1%.*}  # Remove decimal part
+  temp_value=${1%.*} # Remove decimal part
   if [ "$temp_value" -ge 80 ]; then
     icon="󰸁" # High temperature
   elif [ "$temp_value" -ge 70 ]; then
@@ -44,16 +44,16 @@ temp=$(echo "$temp_info" | awk '{print $1}')   # Celsius
 temp_f=$(echo "$temp_info" | awk '{print $2}') # Fahrenheit
 
 # Determine the temperature icon
-temp_int=${temp%.*}  # Remove decimal part
+temp_int=${temp%.*} # Remove decimal part
 thermo_icon=$(get_temperature_icon "$temp_int")
 
 # Set color based on temperature
 if [ "${temp%.*}" -ge 80 ]; then
-    # If temperature is >= 80%, set color to #f38ba8
-    text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
+  # If temperature is >= 80%, set color to #f38ba8
+  text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
 else
-    # Default color
-    text_output="${thermo_icon} ${temp}°C"
+  # Default color
+  text_output="${thermo_icon} ${temp}°C"
 fi
 
 tooltip="Temperature: ${temp_f}°F\nClock Speed: ${cpu_frequency}"
