@@ -67,6 +67,5 @@ return {
 
   -- Miscellaneous
   require("plugins.lazydev_nvim"),
-  require("plugins.vim_carbon_now_sh"),
   require("plugins.vim_wakatime"),
 }
