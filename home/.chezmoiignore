@@ -3,7 +3,6 @@
 .config/sway
 .config/waybar
 .config/rofi
-.config/X11
 .config/flameshot
 .config/zathura
 .config/xdg-desktop-portal
@@ -13,7 +12,6 @@
 .config/paru
 
 # Xorg / ALSA / Linux font cache
-.xinitrc
 .asoundrc
 .fonts
 
