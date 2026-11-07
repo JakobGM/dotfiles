@@ -53,7 +53,6 @@ return {
   require("plugins.vim_surround"),
 
   -- File Type Specific
-  require("plugins.molten_nvim"),
   require("plugins.vim_caddyfile"),
   require("plugins.vim_dadbod_ui"),
 
