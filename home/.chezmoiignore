@@ -1,7 +1,6 @@
 {{- if eq .chezmoi.os "darwin" }}
 # Linux/Wayland/Xorg-only window-manager and desktop bits
 .config/sway
-.config/polybar
 .config/waybar
 .config/dunst
 .config/picom
