@@ -12,7 +12,6 @@
 .config/paru
 
 # Xorg / ALSA / Linux font cache
-.asoundrc
 .fonts
 
 # Linux-only helper scripts in ~/.local/bin
