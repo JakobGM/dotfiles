@@ -23,7 +23,6 @@ return {
 
     vim.api.nvim_create_autocmd("FileType", {
       callback = function(args)
-        if vim.g.vscode then return end
         if not pcall(vim.treesitter.start, args.buf) then return end
         vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
         vim.wo[0][0].foldmethod = "expr"

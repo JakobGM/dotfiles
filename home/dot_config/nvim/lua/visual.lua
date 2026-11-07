@@ -1,8 +1,3 @@
--- Early exit if in VS Code
-if vim.g.vscode then
-  return {}
-end
-
 -- Remove the empty line beneath the status line and
 -- let the command line take its place when needed
 vim.opt.cmdheight = 0
