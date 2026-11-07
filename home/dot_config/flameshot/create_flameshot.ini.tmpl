@@ -1,0 +1,9 @@
+; Seed config only: chezmoi writes this file when it is missing (create_ prefix)
+; and leaves it alone afterwards. ~/.local/bin/flameshot-launch also writes it
+; when the live config fails `flameshot config --check` and cannot be repaired.
+; Only non-default settings belong here.
+[General]
+drawColor=#f58f00
+drawThickness=15
+savePath={{ .chezmoi.homeDir }}/Screenshots
+showDesktopNotification=false

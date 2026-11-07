@@ -140,8 +140,8 @@ bindsym $mod+c move position center
 bindsym $mod+shift+x exec 'swaylock --show-failed-attempts --image "${HOME}/Wallpapers/$(ls ${HOME}/Wallpapers | shuf -n 1)"'
 
 # Printscreen selection tool
-exec flameshot
-bindsym $mod+shift+p exec flameshot gui
+exec flameshot-launch
+bindsym $mod+shift+p exec flameshot-launch gui
 
 # --- Workspace related keybindings ---
 

@@ -16,6 +16,7 @@
 # Linux-only helper scripts in ~/.local/bin
 .local/bin/startsway
 .local/bin/sway-toggle-scratchpad
+.local/bin/flameshot-launch
 .local/bin/launch-scratchpads.zsh
 .local/bin/ipython-scratchpad.zsh
 
