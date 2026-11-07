@@ -1,0 +1,28 @@
+#!/bin/sh
+# chezmoi's onepassword.command (chezmoi: .chezmoi.toml.tmpl, dot_local/bin/executable_op-forwarded).
+# Inside an SSH session, run op on the machine you connected from, over SSH with the forwarded
+# agent, so 1Password asks there and not on this machine's screen. Otherwise run the local op.
+set -eu
+
+if [ -z "${SSH_CONNECTION:-}" ] || [ ! -S "${SSH_AUTH_SOCK:-}" ]; then
+    exec op "$@"
+fi
+
+# The client's address, e.g. its Tailscale IP. Its host key is trusted on first use.
+client=${SSH_CONNECTION%% *}
+
+# The remote login shell may be fish, so quote each argument in single quotes, and refuse
+# arguments that would need escaping (op's arguments never do).
+cmd=op
+for arg in "$@"; do
+    case $arg in
+    *\'* | *\\*)
+        echo "op-forwarded: cannot pass an argument with ' or \\ over SSH: $arg" >&2
+        exit 2
+        ;;
+    esac
+    cmd="$cmd '$arg'"
+done
+
+exec ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o IdentityAgent=SSH_AUTH_SOCK \
+    "jakobgm@$client" "$cmd"
