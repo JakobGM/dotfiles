@@ -1,4 +1,4 @@
--- Tab is replaced by the spaces specified as above
+-- Insert spaces instead of tab characters
 vim.opt.expandtab = true
 
 -- When vim smartwraps overflowing text, the text on the new line is indented properly
