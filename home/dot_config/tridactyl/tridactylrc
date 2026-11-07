@@ -103,9 +103,8 @@ unbind >>
 bind j scrollline 2
 bind k scrollline -2
 
-" Disable tridactyl on local development websites
+" Disable tridactyl on 127.0.0.1 and linear.app (localhost stays enabled)
 blacklistadd 127.0.0.1
-blacklistadd localhost
 blacklistadd linear.app
 
 " Hide the mode indicator when in Ignore mode
