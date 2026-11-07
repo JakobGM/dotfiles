@@ -24,13 +24,8 @@ return {
         'path',
         'snippets',
         'buffer',
-        'dadbod',
       },
       providers = {
-        dadbod = {
-          name = "Dadbod",
-          module = "vim_dadbod_completion.blink",
-        },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",

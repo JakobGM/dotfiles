@@ -48,7 +48,6 @@ return {
 
   -- File Type Specific
   require("plugins.vim_caddyfile"),
-  require("plugins.vim_dadbod_ui"),
 
   -- Utility
   require("plugins.kulala_nvim"),
