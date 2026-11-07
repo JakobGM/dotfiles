@@ -10,8 +10,13 @@ return {
     vim.filetype.add({ extension = { j2 = "htmldjango" } })
 
     local ensure_installed = {
-      "python",
-      "markdown", "markdown_inline", "yaml", "csv",
+      "python", "sql", "htmldjango", "html", "css",
+      "typescript", "tsx", "javascript", "svelte",
+      "lua", "luadoc", "vimdoc", "query",
+      "bash", "fish", "dockerfile",
+      "json", "toml", "yaml", "csv",
+      "markdown", "markdown_inline",
+      "diff", "gitcommit", "git_rebase", "regex",
     }
     local installed = require("nvim-treesitter").get_installed("parsers")
     local to_install = vim.iter(ensure_installed)
