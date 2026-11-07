@@ -1,0 +1,11 @@
+# Files chezmoi downloads instead of storing in this repo.
+# https://www.chezmoi.io/reference/special-files/chezmoiexternal-format/
+
+# stop-slop skill for coding agents: https://github.com/hardikpandya/stop-slop
+# Pinned to a commit, so upstream changes reach the agent only after you change
+# the commit here.
+[".config/claude/skills/stop-slop"]
+    type = "archive"
+    url = "https://github.com/hardikpandya/stop-slop/archive/8da1f030185bdfe8471220585162991eaeb970e9.tar.gz"
+    stripComponents = 1
+    exact = true
