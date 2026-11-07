@@ -61,7 +61,6 @@ return {
   require("plugins.kitty_scrollback_nvim"),
 
   -- Artificial Intelligence
-  require("plugins.codecompanion_nvim"),
 
   -- Miscellaneous
   require("plugins.lazydev_nvim"),
