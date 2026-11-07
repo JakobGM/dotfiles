@@ -7,11 +7,15 @@ Match !exec "printenv SSH_CONNECTION >/dev/null"
     IdentityAgent ~/.1password/agent.sock
 {{- end }}
 
-# Own machines, by Tailscale (MagicDNS) name: jakobgm-laptop (MacBook), jakobgm-home and
-# jakobgm-work; servers set up with `mise run ssh:server`. The desktops' hostnames are aliases.
-Host jakobgm-laptop jakobgm-home jakobgm-work gold oxygen
+# Own machines, by Tailscale (MagicDNS) name: jakobgm-laptop (MacBook), jakobgm-laptop-2023
+# (backup Arch laptop), jakobgm-home and jakobgm-work; servers set up with
+# `mise run ssh:server`. The Linux machines' hostnames are aliases.
+Host jakobgm-laptop jakobgm-laptop-2023 jakobgm-home jakobgm-work silver gold oxygen
     User jakobgm
     ForwardAgent yes
+
+Host silver
+    HostName jakobgm-laptop-2023
 
 Host gold
     HostName jakobgm-home

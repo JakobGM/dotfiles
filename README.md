@@ -92,4 +92,5 @@ SSH keys live in 1Password and are served by its SSH agent; private keys never t
   jakobgm-work is refused). Run `mise run ssh:server` once per machine to disable password logins,
   allow only `jakobgm`, enable `sshd` and, on Linux, allow port 22 in ufw on `tailscale0` only
   (opt-in, since it changes system state). Hosts, by Tailscale name: `jakobgm-laptop` (MacBook),
-  `jakobgm-home` (hostname `gold`), `jakobgm-work` (hostname `oxygen`).
+  `jakobgm-laptop-2023` (backup laptop, hostname `silver`), `jakobgm-home` (hostname `gold`),
+  `jakobgm-work` (hostname `oxygen`).
