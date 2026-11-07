@@ -58,10 +58,6 @@ end
 # ---------------- TOOL INTEGRATIONS ------------------
 # fzf: ctrl+t file picker, alt+c cd (atuin below takes over ctrl+r)
 command -q fzf; and fzf --fish | source
-# alt+i pastes a path picked from `locate` output (was fzf-extras in zsh)
-bind -M insert alt-i fzf_locate_widget
-bind alt-i fzf_locate_widget
-
 # direnv must hook in before mise
 command -q direnv; and direnv hook fish | source
 command -q mise; and mise activate fish | source
