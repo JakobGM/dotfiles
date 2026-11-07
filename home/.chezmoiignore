@@ -2,7 +2,6 @@
 # Linux/Wayland/Xorg-only window-manager and desktop bits
 .config/sway
 .config/waybar
-.config/dunst
 .config/rofi
 .config/X11
 .config/flameshot
