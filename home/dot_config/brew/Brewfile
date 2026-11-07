@@ -48,9 +48,6 @@ cask "1password"        # GUI app provides op-ssh-sign + the ssh-agent socket
 # Browser (for tridactyl)
 cask "firefox"          # tridactyl runs as a Firefox extension
 
-# Cloud
-cask "google-cloud-sdk" # gcloud, bq and gsutil (the cask links them into brew's bin)
-
 # Bootstrap (declared for documentation; chezmoi must be installed to clone
 # this repo in the first place)
 brew "chezmoi"
