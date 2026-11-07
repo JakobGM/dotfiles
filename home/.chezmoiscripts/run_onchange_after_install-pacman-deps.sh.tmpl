@@ -26,6 +26,8 @@ packages=(
     # GTK3 Adwaita-dark theme; theme-toggle.sh sets gtk-theme to it, and
     # Electron apps (e.g. Claude Desktop) fall back to light without it
     gnome-themes-extra
+    # Symbols Nerd Font Mono; kitty.conf symbol_maps the Nerd Font icons to it
+    ttf-nerd-fonts-symbols-mono
 )
 sudo pacman -S --needed --noconfirm "${packages[@]}"
 {{- end -}}

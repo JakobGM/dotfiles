@@ -13,6 +13,7 @@ brew "direnv"           # config.fish hooks direnv into the shell
 brew "fzf"              # fuzzy finder; sourced from config.fish and FZF_* env vars
 brew "fd"               # FZF_DEFAULT_COMMAND='fd --type file --hidden'
 cask "kitty"            # terminal emulator (~/.config/kitty/)
+cask "font-symbols-only-nerd-font" # Symbols Nerd Font Mono; kitty.conf symbol_maps Nerd Font icons to it
 
 # Editor — track Neovim HEAD/nightly
 brew "neovim", args: ["HEAD"]
