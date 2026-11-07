@@ -1,3 +1,19 @@
+-- LSP servers that mason installs
+local mason_servers = {
+  "basedpyright",
+  "bashls",
+  "dockerls",
+  "jsonls",
+  "lua_ls",
+  "postgres_lsp",
+  "ruff",
+  "svelte",
+  "tailwindcss",
+  "tombi",
+  "vtsls",
+  "yamlls",
+}
+
 return {
   "neovim/nvim-lspconfig",
   name = "nvim-lspconfig",
@@ -17,17 +33,13 @@ return {
       "williamboman/mason-lspconfig.nvim",
       config = function()
         require("mason-lspconfig").setup {
-          ensure_installed = {
-            "postgres_lsp",
-            "basedpyright",
-            "ruff",
-            "tailwindcss",
-            "tombi",
-          },
+          ensure_installed = mason_servers,
           automatic_enable = false,
         }
       end,
     },
+    -- JSON and YAML schemas for jsonls and yamlls
+    "b0o/SchemaStore.nvim",
   },
   config = function()
     -- Configure LSP servers using nvim-0.11 API
@@ -86,14 +98,27 @@ return {
       },
     }
 
-    -- Enable configured LSP servers
-    vim.lsp.enable({
-      'basedpyright',
-      'postgres_lsp',
-      'ruff',
-      'tailwindcss',
-      'tombi',
-    })
+    vim.lsp.config.jsonls = {
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    }
+
+    vim.lsp.config.yamlls = {
+      settings = {
+        yaml = {
+          -- Use SchemaStore.nvim's catalog instead of the built-in download
+          schemaStore = { enable = false, url = "" },
+          schemas = require("schemastore").yaml.schemas(),
+        },
+      },
+    }
+
+    -- oxlint runs from each project's node_modules, so mason doesn't install it
+    vim.lsp.enable(vim.list_extend({ "oxlint" }, mason_servers))
 
     vim.keymap.set('n', '<Leader>e', vim.diagnostic.open_float)
 
