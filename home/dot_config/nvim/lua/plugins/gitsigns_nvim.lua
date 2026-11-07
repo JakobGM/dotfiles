@@ -3,8 +3,7 @@ return {
   name = "gitsigns.nvim",
   lazy = false,
   config = function()
-    -- Always show the signcolumn
-    vim.wo.signcolumn = "yes"
+    -- Signs are drawn by the custom 'statuscolumn' (see statuscolumn.lua)
     require("gitsigns").setup({
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns

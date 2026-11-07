@@ -9,6 +9,9 @@ vim.opt.scrolloff = 7
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- Git signs as a 1-cell bar left of the line numbers
+require("statuscolumn").setup()
+
 -- Do not show command in bottom bar
 vim.opt.showcmd = false
 
