@@ -17,3 +17,6 @@
 # Claude Code now; see dot_config/mise/config.toml.
 .local/bin/claude
 .local/share/claude/versions
+
+# Neovim's built-in Python ftplugin sets the same 4-space indentation.
+.config/nvim/ftplugin/python.lua
