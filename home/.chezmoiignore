@@ -3,7 +3,6 @@
 .config/sway
 .config/waybar
 .config/dunst
-.config/picom
 .config/rofi
 .config/X11
 .config/flameshot
