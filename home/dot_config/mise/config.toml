@@ -9,9 +9,10 @@ trusted_config_paths = ["/home/jakobgm/.herdr/worktrees"]
 node = "lts"
 # Claude Code tracks the newest release. With auto_update, mise checks for a
 # newer version at most once a day (tool_update.check_duration) when claude
-# runs or a shell prompt draws, and installs it. minimum_release_age above
-# still holds back releases younger than 5 days. Claude Code's own updater is
-# off (DISABLE_AUTOUPDATER in fish/conf.d/00-env.fish.tmpl), so mise is the
-# only thing that installs Claude Code.
+# runs or a shell prompt draws, and installs it. minimum_release_age = "0s"
+# exempts it from the 5-day minimum_release_age above, so new releases install
+# on the day they come out. Claude Code's own updater is off
+# (DISABLE_AUTOUPDATER in fish/conf.d/00-env.fish.tmpl), so mise is the only
+# thing that installs Claude Code.
 # https://mise.jdx.dev/dev-tools/#automatic-tool-updates
-claude = { version = "latest", auto_update = true }
+claude = { version = "latest", auto_update = true, minimum_release_age = "0s" }
